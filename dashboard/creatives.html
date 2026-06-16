@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Approvals | Client Portal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body class="dashboard-body dark-mode">
+
+    <div class="dashboard-wrapper">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                APEXGROWTH<span class="logo-dot">.</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a href="index.html">📊 Overview</a></li>
+                <li class="sidebar-item"><a href="campaigns.html">📈 Campaign Analytics</a></li>
+                <li class="sidebar-item active"><a href="creatives.html">📂 Creative Approvals</a></li>
+                <li class="sidebar-item"><a href="reports.html">📄 Reports Center</a></li>
+                <li class="sidebar-item"><a href="invoices.html">💳 Invoices & Billing</a></li>
+                <li class="sidebar-item"><a href="messaging.html">💬 Direct Messaging</a></li>
+                <li class="sidebar-item"><a href="goals.html">🎯 Goals & KPIs</a></li>
+                <li class="sidebar-item"><a href="settings.html">⚙️ Settings</a></li>
+                <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
+                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="sidebar-avatar">AG</div>
+                <div>
+                    <div style="font-weight:600; font-size:0.875rem;" class="profile-client-name">SaaSify Global</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted);">Premium Client</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Panel Content -->
+        <main class="main-content">
+            
+            <header class="dashboard-header">
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <div class="dashboard-header-title">
+                        <h1>Creative Approval Center</h1>
+                    </div>
+                </div>
+                <div class="dashboard-header-actions">
+                    <button class="control-btn theme-toggle-btn">
+                        <span class="theme-toggle-icon">☀️</span>
+                    </button>
+                    <button class="control-btn rtl-toggle-btn">
+                        <span class="rtl-toggle-text">LTR</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content-inner">
+                
+                <div style="margin-bottom:30px;">
+                    <p style="color:var(--text-muted);">Review pending ad assets, leave feedback or modifications request, and authorize deployments directly.</p>
+                </div>
+
+                <!-- Board containing approved/rejected/pending items -->
+                <div class="creatives-grid" id="creatives-board">
+                    <!-- JS injects creative cards dynamically here -->
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script>
+        document.querySelector('.dashboard-menu-toggle')?.addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

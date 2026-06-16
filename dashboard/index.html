@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Overview | Client Portal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body class="dashboard-body dark-mode">
+
+    <div class="dashboard-wrapper">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                APEXGROWTH<span class="logo-dot">.</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active"><a href="index.html">📊 Overview</a></li>
+                <li class="sidebar-item"><a href="campaigns.html">📈 Campaign Analytics</a></li>
+                <li class="sidebar-item"><a href="creatives.html">📂 Creative Approvals</a></li>
+                <li class="sidebar-item"><a href="reports.html">📄 Reports Center</a></li>
+                <li class="sidebar-item"><a href="invoices.html">💳 Invoices & Billing</a></li>
+                <li class="sidebar-item"><a href="messaging.html">💬 Direct Messaging</a></li>
+                <li class="sidebar-item"><a href="goals.html">🎯 Goals & KPIs</a></li>
+                <li class="sidebar-item"><a href="settings.html">⚙️ Settings</a></li>
+                <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
+                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="sidebar-avatar">AG</div>
+                <div>
+                    <div style="font-weight:600; font-size:0.875rem;" class="profile-client-name">SaaSify Global</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted);">Premium Client</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Panel Content -->
+        <main class="main-content">
+            
+            <!-- Dashboard Header -->
+            <header class="dashboard-header">
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <div class="dashboard-header-title">
+                        <h1>Dashboard Overview</h1>
+                    </div>
+                </div>
+                <div class="dashboard-header-actions">
+                    <!-- Theme and RTL Controls inside dashboard header too -->
+                    <button class="control-btn theme-toggle-btn" title="Toggle Theme">
+                        <span class="theme-toggle-icon">☀️</span>
+                    </button>
+                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL">
+                        <span class="rtl-toggle-text">LTR</span>
+                    </button>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="width:8px; height:8px; background-color:var(--success); border-radius:50%;"></span>
+                        <span style="font-size:0.8rem; font-weight:600; color:var(--text-muted);">Live Sync</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Inner -->
+            <div class="dashboard-content-inner">
+                
+                <!-- Metrics Grid -->
+                <div class="metrics-grid">
+                    <!-- Card 1 -->
+                    <div class="metric-card">
+                        <div class="metric-card-header">
+                            <span class="metric-card-title">Total Leads</span>
+                            <span class="metric-card-icon">👥</span>
+                        </div>
+                        <div class="metric-card-value">1,420</div>
+                        <div class="metric-card-change up">↑ 12% vs last month</div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="metric-card">
+                        <div class="metric-card-header">
+                            <span class="metric-card-title">Ad Spent</span>
+                            <span class="metric-card-icon">💳</span>
+                        </div>
+                        <div class="metric-card-value">$8,450</div>
+                        <div class="metric-card-change down">↓ 4% vs last month</div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="metric-card">
+                        <div class="metric-card-header">
+                            <span class="metric-card-title">Conversion Rate</span>
+                            <span class="metric-card-icon">⚡</span>
+                        </div>
+                        <div class="metric-card-value">3.42%</div>
+                        <div class="metric-card-change up">↑ 0.8% vs last month</div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="metric-card">
+                        <div class="metric-card-header">
+                            <span class="metric-card-title">ROAS Target</span>
+                            <span class="metric-card-icon">📈</span>
+                        </div>
+                        <div class="metric-card-value">4.8x</div>
+                        <div class="metric-card-change up">↑ 0.5x vs last month</div>
+                    </div>
+                </div>
+
+                <!-- Chart Card -->
+                <div class="chart-card">
+                    <div class="chart-card-header">
+                        <div>
+                            <h3 style="font-size:1.15rem; margin-bottom:4px;">Performance Trends</h3>
+                            <p style="font-size:0.875rem; color:var(--text-muted);">Organic Sessions (Blue) vs Lead Conversions (Cyan)</p>
+                        </div>
+                        <div style="display:flex; gap:12px; font-size:0.85rem; font-weight:600;">
+                            <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; background-color:var(--primary); border-radius:50%;"></span>Sessions</span>
+                            <span style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; background-color:var(--accent); border-radius:50%;"></span>Conversions</span>
+                        </div>
+                    </div>
+                    <!-- Chart rendering container -->
+                    <div class="chart-container" id="analytics-trend-chart">
+                        <!-- Custom SVG Chart is dynamically rendered here by dashboard.js -->
+                    </div>
+                </div>
+
+                <!-- Recent Activities and Pending items list -->
+                <div class="grid-2">
+                    <!-- Notifications Board -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Recent Campaign Operations</h3>
+                        <ul style="list-style:none; display:flex; flex-direction:column; gap:16px; font-size:0.9rem;">
+                            <li style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+                                <span>🚀 PPC: Launched Summer Sales Google Retargeting</span>
+                                <span style="color:var(--text-muted);">Today</span>
+                            </li>
+                            <li style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+                                <span>📂 Creatives: Uploaded Instagram video drafts</span>
+                                <span style="color:var(--text-muted);">Yesterday</span>
+                            </li>
+                            <li style="display:flex; justify-content:space-between;">
+                                <span>⚙️ SEO: Implemented structured schema configurations</span>
+                                <span style="color:var(--text-muted);">3 days ago</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Urgent Actions -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; display:flex; flex-direction:column; justify-content:space-between;">
+                        <div>
+                            <h3 style="font-size:1.15rem; margin-bottom:12px; color:var(--warning);">Pending Approvals</h3>
+                            <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">You have creative draft assets awaiting review before scheduling live ad sets.</p>
+                        </div>
+                        <a href="creatives.html" class="btn btn-primary btn-sm" style="align-self:flex-start;">Go to Approvals Center</a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Script Loads -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script>
+        // Set mobile toggle behavior in dashboard as well
+        document.querySelector('.dashboard-menu-toggle')?.addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

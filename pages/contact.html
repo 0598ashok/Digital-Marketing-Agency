@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ApexGrowth Agency</title>
+    <meta name="description" content="Reach out to our marketing team. Schedule a strategy review or request a campaign audit report.">
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body class="dark-mode">
+
+    <!-- Navigation Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                APEXGROWTH<span class="logo-dot">.</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="case-studies.html" class="nav-link">Case Studies</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme">
+                    <span class="theme-toggle-icon">☀️</span>
+                </button>
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction">
+                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                </button>
+                <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
+                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title Hero -->
+    <section class="hero" style="padding: 140px 0 60px;">
+        <div class="container" style="text-align: center;">
+            <span class="hero-tag">GET IN TOUCH</span>
+            <h1 style="font-size: 3rem; margin-bottom: 16px;">Let's Discuss Your Growth Targets</h1>
+            <p style="margin: 0 auto; max-width: 680px;">Request a free audit report, discuss partnership models, or schedule a strategy review call.</p>
+        </div>
+    </section>
+
+    <!-- Contact Content Grid -->
+    <section class="cases-section">
+        <div class="container grid-2">
+            
+            <!-- Contact details & map -->
+            <div>
+                <h2 style="font-size:2rem; margin-bottom:20px;">Agency Head Office</h2>
+                <p style="color:var(--text-muted); margin-bottom:30px;">ApexGrowth Agency Inc.<br>100 Innovation Way, Suite 400<br>Austin, TX 78701<br><br>📞 Phone: +1-512-555-0199<br>✉️ Email: strategy@apexgrowth.com</p>
+                
+                <!-- Simulated Google Map frame -->
+                <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); height:260px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); overflow:hidden; position:relative;">
+                    <span style="font-weight:600;">[ Google Map Pin - Austin, TX Headquarters ]</span>
+                    <!-- Beautiful vector map overlay representation -->
+                    <div style="position:absolute; width:100%; height:100%; opacity:0.1; background:radial-gradient(circle, var(--primary) 10%, transparent 11%), radial-gradient(circle, var(--accent) 10%, transparent 11%); background-size:20px 20px;"></div>
+                </div>
+            </div>
+
+            <!-- Form Validation block -->
+            <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:40px;">
+                <h3 style="font-size:1.5rem; margin-bottom:24px;">Send Direct Inquiry</h3>
+                <form id="contact-inquiry-form" onsubmit="event.preventDefault(); alert('Message submitted successfully! We will get back to you within 3 business hours.')" style="display:flex; flex-direction:column; gap:16px;">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Work Email</label>
+                        <input type="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message Content</label>
+                        <textarea class="form-input" rows="4" placeholder="How can our marketing specialists help you?" required style="resize:none;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top:10px;">Send Message</button>
+                    <button type="button" class="btn btn-secondary trigger-strategy-call">Book Call Inline</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container" style="text-align:center; font-size:0.875rem;">
+            <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL: Strategy Booking Wizard -->
+    <div class="modal-overlay" id="strategy-modal">
+        <div class="modal-content">
+            <button class="modal-close">✕</button>
+            <h3 style="margin-bottom: 12px; font-size:1.5rem;">Schedule Your Strategy Consultation</h3>
+            <p style="color:var(--text-muted); margin-bottom: 24px;">Pick a convenient date inside our simulated Calendly booking scheduler.</p>
+            <div style="background-color: var(--panel-hover); border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); text-align: center;">
+                <h4 style="margin-bottom:16px;">Select Date & Time</h4>
+                <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 20px; font-size: 0.85rem; font-weight:600;">
+                    <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+                    <div style="opacity:0.3;">14</div><div style="opacity:0.3;">15</div>
+                    <div style="background-color:var(--primary); color:#ffffff; border-radius:4px; cursor:pointer; padding:4px 0;">16</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">17</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">18</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">19</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">20</div>
+                </div>
+                <div style="display:flex; justify-content:center; gap:12px;">
+                    <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">09:00 AM</button>
+                    <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">01:30 PM</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

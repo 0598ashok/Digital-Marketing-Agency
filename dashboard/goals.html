@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals & KPIs | Client Portal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body class="dashboard-body dark-mode">
+
+    <div class="dashboard-wrapper">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                APEXGROWTH<span class="logo-dot">.</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a href="index.html">📊 Overview</a></li>
+                <li class="sidebar-item"><a href="campaigns.html">📈 Campaign Analytics</a></li>
+                <li class="sidebar-item"><a href="creatives.html">📂 Creative Approvals</a></li>
+                <li class="sidebar-item"><a href="reports.html">📄 Reports Center</a></li>
+                <li class="sidebar-item"><a href="invoices.html">💳 Invoices & Billing</a></li>
+                <li class="sidebar-item"><a href="messaging.html">💬 Direct Messaging</a></li>
+                <li class="sidebar-item active"><a href="goals.html">🎯 Goals & KPIs</a></li>
+                <li class="sidebar-item"><a href="settings.html">⚙️ Settings</a></li>
+                <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
+                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="sidebar-avatar">AG</div>
+                <div>
+                    <div style="font-weight:600; font-size:0.875rem;" class="profile-client-name">SaaSify Global</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted);">Premium Client</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Panel Content -->
+        <main class="main-content">
+            
+            <header class="dashboard-header">
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <div class="dashboard-header-title">
+                        <h1>Goals & KPIs</h1>
+                    </div>
+                </div>
+                <div class="dashboard-header-actions">
+                    <button class="control-btn theme-toggle-btn">
+                        <span class="theme-toggle-icon">☀️</span>
+                    </button>
+                    <button class="control-btn rtl-toggle-btn">
+                        <span class="rtl-toggle-text">LTR</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content-inner">
+                
+                <div style="margin-bottom:30px;">
+                    <p style="color:var(--text-muted);">Track active objectives and target thresholds. These milestones align directly with our growth retains contract goals.</p>
+                </div>
+
+                <!-- Goals checklist trackers -->
+                <div id="goals-tracking-list">
+                    <!-- JS injects goals checklists dynamically -->
+                </div>
+
+                <!-- Milestone timeline -->
+                <div style="margin-top:40px; background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                    <h3 style="font-size:1.15rem; margin-bottom:24px;">Campaign Roadmaps Timeline</h3>
+                    <div style="display:flex; flex-direction:column; gap:24px; border-inline-start:2px solid var(--border-color); padding-inline-start:24px; position:relative;">
+                        
+                        <div style="position:relative;">
+                            <span style="position:absolute; left:-31px; top:4px; width:12px; height:12px; border-radius:50%; background-color:var(--success); border:3px solid var(--panel-bg);"></span>
+                            <h4 style="font-size:1rem; margin-bottom:4px;">Phase 1: Keyword Infrastructure Overhaul</h4>
+                            <span style="font-size:0.8rem; color:var(--success); font-weight:600; display:block; margin-bottom:8px;">✓ COMPLETED (June 10, 2026)</span>
+                            <p style="color:var(--text-muted); font-size:0.9rem;">Cleaned technical indexation blocks, set metadata categories, and mapped 50 primary search keywords.</p>
+                        </div>
+                        
+                        <div style="position:relative;">
+                            <span style="position:absolute; left:-31px; top:4px; width:12px; height:12px; border-radius:50%; background-color:var(--primary); border:3px solid var(--panel-bg);"></span>
+                            <h4 style="font-size:1rem; margin-bottom:4px;">Phase 2: Ad Spend Scale & Retargeting Loops</h4>
+                            <span style="font-size:0.8rem; color:var(--primary); font-weight:600; display:block; margin-bottom:8px;">🚀 IN PROGRESS</span>
+                            <p style="color:var(--text-muted); font-size:0.9rem;">Deploying custom Meta lookalike networks and setting up conversion API attributions logs.</p>
+                        </div>
+
+                        <div style="position:relative;">
+                            <span style="position:absolute; left:-31px; top:4px; width:12px; height:12px; border-radius:50%; background-color:var(--border-color); border:3px solid var(--panel-bg);"></span>
+                            <h4 style="font-size:1rem; margin-bottom:4px;">Phase 3: Landing Page A/B Testing Integration</h4>
+                            <span style="font-size:0.8rem; color:var(--text-muted); display:block; margin-bottom:8px;">💤 SCHEDULED (July 15, 2026)</span>
+                            <p style="color:var(--text-muted); font-size:0.9rem;">Redesigning checkout templates and structuring split-run conversions assessments.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script>
+        document.querySelector('.dashboard-menu-toggle')?.addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

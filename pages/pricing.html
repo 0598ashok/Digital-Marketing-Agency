@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans & Packages | ApexGrowth Agency</title>
+    <meta name="description" content="View our growth packaging plans. Flexible month-over-month SEO, paid media, and conversion rate optimization campaigns.">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        .toggle-wrap {
+            display: inline-flex;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 6px;
+            border-radius: var(--radius-full);
+            margin-bottom: 40px;
+        }
+        .toggle-btn {
+            background: none;
+            border: none;
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+        }
+        .toggle-btn.active {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 60px;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .comparison-table th:first-child, .comparison-table td:first-child {
+            text-align: left;
+        }
+        [dir="rtl"] .comparison-table th:first-child, [dir="rtl"] .comparison-table td:first-child {
+            text-align: right;
+        }
+        .comparison-table th {
+            background-color: var(--panel-hover);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Navigation Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                APEXGROWTH<span class="logo-dot">.</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="case-studies.html" class="nav-link">Case Studies</a>
+                <a href="pricing.html" class="nav-link active">Pricing</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme">
+                    <span class="theme-toggle-icon">☀️</span>
+                </button>
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction">
+                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                </button>
+                <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
+                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title Hero -->
+    <section class="hero" style="padding: 140px 0 60px;">
+        <div class="container" style="text-align: center;">
+            <span class="hero-tag">PRICING PACKAGES</span>
+            <h1 style="font-size: 3rem; margin-bottom: 16px;">Transparent Growth Campaigns Investment</h1>
+            <p style="margin: 0 auto; max-width: 680px; margin-bottom: 30px;">Select the management scale matching your current growth phase. Update toggles below to view annual discount savings.</p>
+            
+            <!-- Toggle for Annual / Monthly Billing -->
+            <div class="toggle-wrap">
+                <button class="toggle-btn active" id="billing-monthly">Monthly Billing</button>
+                <button class="toggle-btn" id="billing-annual">Annual Billing (Save 20%)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Grid -->
+    <section class="cases-section">
+        <div class="container">
+            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                
+                <!-- Starter Plan -->
+                <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; display:flex; flex-direction:column; justify-content:space-between;">
+                    <div>
+                        <h3 style="font-size:1.35rem; margin-bottom:12px;">Starter Scale</h3>
+                        <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:20px;">Essential optimization systems for early local or single-channel domains.</p>
+                        <div style="font-size:2.5rem; font-weight:800; color:var(--primary); margin-bottom:20px;">
+                            $<span class="price-val" data-monthly="1500" data-annual="1200">1,500</span><span style="font-size:1rem; color:var(--text-muted); font-weight:500;">/mo</span>
+                        </div>
+                        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted); margin-bottom:30px;">
+                            <li>✓ Technical SEO Site Audits</li>
+                            <li>✓ Google Search PPC Basics</li>
+                            <li>✓ Monthly Report Portal Access</li>
+                            <li>✓ Core Conversion Mappings</li>
+                        </ul>
+                    </div>
+                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width:100%;">Get Started</a>
+                </div>
+
+                <!-- Growth Plan -->
+                <div style="background-color:var(--panel-bg); border:2px solid var(--primary); border-radius:var(--radius-lg); padding:30px; display:flex; flex-direction:column; justify-content:space-between; position:relative;">
+                    <span style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background-color:var(--primary); color:#ffffff; font-size:0.7rem; font-weight:700; padding:4px 10px; border-radius:var(--radius-full);">MOST POPULAR</span>
+                    <div>
+                        <h3 style="font-size:1.35rem; margin-bottom:12px;">Growth Campaign</h3>
+                        <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:20px;">Full-funnel execution targeting multichannel lead volumes and keywords.</p>
+                        <div style="font-size:2.5rem; font-weight:800; color:var(--primary); margin-bottom:20px;">
+                            $<span class="price-val" data-monthly="3000" data-annual="2400">3,000</span><span style="font-size:1rem; color:var(--text-muted); font-weight:500;">/mo</span>
+                        </div>
+                        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted); margin-bottom:30px;">
+                            <li>✓ All Starter Tier Features</li>
+                            <li>✓ Complete On-Page Schema Set</li>
+                            <li>✓ Google + Social PPC Integration</li>
+                            <li>✓ Creative Approval Dashboard</li>
+                            <li>✓ Bi-weekly Optimizations Sprints</li>
+                        </ul>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-sm" style="width:100%;">Select Growth</a>
+                </div>
+
+                <!-- Scale Plan -->
+                <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; display:flex; flex-direction:column; justify-content:space-between;">
+                    <div>
+                        <h3 style="font-size:1.35rem; margin-bottom:12px;">Scale Accelerator</h3>
+                        <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:20px;">For high-volume spenders requiring active design support and dedicated analyst review schedules.</p>
+                        <div style="font-size:2.5rem; font-weight:800; color:var(--primary); margin-bottom:20px;">
+                            $<span class="price-val" data-monthly="5500" data-annual="4400">5,500</span><span style="font-size:1rem; color:var(--text-muted); font-weight:500;">/mo</span>
+                        </div>
+                        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted); margin-bottom:30px;">
+                            <li>✓ Multi-regional SEO Campaigns</li>
+                            <li>✓ Advanced Video Ad Creatives</li>
+                            <li>✓ Funnel Conversion A/B Splits</li>
+                            <li>✓ Dedicated SEO Account Director</li>
+                            <li>✓ Slack Support Channel Connect</li>
+                        </ul>
+                    </div>
+                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width:100%;">Select Scale</a>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; display:flex; flex-direction:column; justify-content:space-between;">
+                    <div>
+                        <h3 style="font-size:1.35rem; margin-bottom:12px;">Enterprise Growth</h3>
+                        <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:20px;">Bespoke marketing architecture for enterprise-level catalog operations.</p>
+                        <div style="font-size:2.5rem; font-weight:800; color:var(--primary); margin-bottom:20px;">
+                            Custom Quote
+                        </div>
+                        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted); margin-bottom:30px;">
+                            <li>✓ Fully Custom Growth Roadmap</li>
+                            <li>✓ Unlimited Search Keywords</li>
+                            <li>✓ Omnipresent Ad Allocations</li>
+                            <li>✓ Account-Based B2B Mappings</li>
+                            <li>✓ In-person Strategy Syncs</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-secondary btn-sm trigger-strategy-call" style="width:100%;">Contact Strategy Director</button>
+                </div>
+
+            </div>
+
+            <!-- Detailed Comparison Table -->
+            <div style="overflow-x:auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Capabilities</th>
+                            <th>Starter</th>
+                            <th>Growth</th>
+                            <th>Scale</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Real-time Campaign Dashboard</td>
+                            <td>✓ (Read Only)</td>
+                            <td>✓ (Full Access)</td>
+                            <td>✓ (Full Access)</td>
+                            <td>✓ (Custom Modules)</td>
+                        </tr>
+                        <tr>
+                            <td>Target SEO Keywords</td>
+                            <td>Up to 15</td>
+                            <td>Up to 50</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Monthly Managed Ad Budget</td>
+                            <td>Under $10k</td>
+                            <td>Up to $30k</td>
+                            <td>Over $30k</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Ad Creative Approvals Center</td>
+                            <td>-</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>Direct Messenger Inbox</td>
+                            <td>Email Support</td>
+                            <td>In-portal Chat</td>
+                            <td>Dedicated Slack</td>
+                            <td>Dedicated Slack + Phone</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container" style="text-align:center; font-size:0.875rem;">
+            <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL: Strategy Booking Wizard -->
+    <div class="modal-overlay" id="strategy-modal">
+        <div class="modal-content">
+            <button class="modal-close">✕</button>
+            <h3 style="margin-bottom: 12px; font-size:1.5rem;">Schedule Your Enterprise Consultation</h3>
+            <p style="color:var(--text-muted); margin-bottom: 24px;">Pick a convenient date inside our simulated Calendly booking scheduler.</p>
+            <div style="background-color: var(--panel-hover); border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); text-align: center;">
+                <h4 style="margin-bottom:16px;">Select Date & Time</h4>
+                <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 20px; font-size: 0.85rem; font-weight:600;">
+                    <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+                    <div style="opacity:0.3;">14</div><div style="opacity:0.3;">15</div>
+                    <div style="background-color:var(--primary); color:#ffffff; border-radius:4px; cursor:pointer; padding:4px 0;">16</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">17</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">18</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">19</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">20</div>
+                </div>
+                <div style="display:flex; justify-content:center; gap:12px;">
+                    <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">09:30 AM</button>
+                    <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">04:30 PM</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnMonthly = document.getElementById('billing-monthly');
+            const btnAnnual = document.getElementById('billing-annual');
+            const priceVals = document.querySelectorAll('.price-val');
+
+            const setAnnual = () => {
+                btnMonthly.classList.remove('active');
+                btnAnnual.classList.add('active');
+                priceVals.forEach(val => {
+                    const price = parseInt(val.getAttribute('data-annual'));
+                    val.textContent = price.toLocaleString();
+                });
+            };
+
+            const setMonthly = () => {
+                btnAnnual.classList.remove('active');
+                btnMonthly.classList.add('active');
+                priceVals.forEach(val => {
+                    const price = parseInt(val.getAttribute('data-monthly'));
+                    val.textContent = price.toLocaleString();
+                });
+            };
+
+            btnMonthly.addEventListener('click', setMonthly);
+            btnAnnual.addEventListener('click', setAnnual);
+        });
+    </script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

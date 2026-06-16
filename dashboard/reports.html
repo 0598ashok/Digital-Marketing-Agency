@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports Center | Client Portal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body class="dashboard-body dark-mode">
+
+    <div class="dashboard-wrapper">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                APEXGROWTH<span class="logo-dot">.</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a href="index.html">📊 Overview</a></li>
+                <li class="sidebar-item"><a href="campaigns.html">📈 Campaign Analytics</a></li>
+                <li class="sidebar-item"><a href="creatives.html">📂 Creative Approvals</a></li>
+                <li class="sidebar-item active"><a href="reports.html">📄 Reports Center</a></li>
+                <li class="sidebar-item"><a href="invoices.html">💳 Invoices & Billing</a></li>
+                <li class="sidebar-item"><a href="messaging.html">💬 Direct Messaging</a></li>
+                <li class="sidebar-item"><a href="goals.html">🎯 Goals & KPIs</a></li>
+                <li class="sidebar-item"><a href="settings.html">⚙️ Settings</a></li>
+                <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
+                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="sidebar-avatar">AG</div>
+                <div>
+                    <div style="font-weight:600; font-size:0.875rem;" class="profile-client-name">SaaSify Global</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted);">Premium Client</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Panel Content -->
+        <main class="main-content">
+            
+            <header class="dashboard-header">
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <div class="dashboard-header-title">
+                        <h1>Reports Center</h1>
+                    </div>
+                </div>
+                <div class="dashboard-header-actions">
+                    <button class="control-btn theme-toggle-btn">
+                        <span class="theme-toggle-icon">☀️</span>
+                    </button>
+                    <button class="control-btn rtl-toggle-btn">
+                        <span class="rtl-toggle-text">LTR</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content-inner">
+                
+                <div style="margin-bottom:30px;">
+                    <p style="color:var(--text-muted);">Compile and export full performance summaries. Select from historical logs below.</p>
+                </div>
+
+                <div class="data-table-card">
+                    <div style="padding:24px 30px; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+                        <h3 style="font-size:1.1rem;">Performance Summaries</h3>
+                        <span style="font-size:0.8rem; color:var(--text-muted);">PDF & CSV Format Exports</span>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Report Title</th>
+                                <th>Billing Cycle</th>
+                                <th>Publish Date</th>
+                                <th>File Size</th>
+                                <th>Export Option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:600;">Q1 Performance Audit Summary</td>
+                                <td>Jan 01 - Mar 31, 2026</td>
+                                <td>2026-04-05</td>
+                                <td>4.2 MB</td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm simulate-export-btn" style="background-color:var(--primary);">Download PDF</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600;">May Traffic Attributions Report</td>
+                                <td>May 01 - May 31, 2026</td>
+                                <td>2026-06-01</td>
+                                <td>1.8 MB</td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm simulate-export-btn" style="background-color:var(--primary);">Download PDF</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600;">Full Keyword Rankings Spreadsheet</td>
+                                <td>Current Rankings Data</td>
+                                <td>2026-06-15</td>
+                                <td>820 KB</td>
+                                <td>
+                                    <button class="btn btn-secondary btn-sm simulate-export-btn">Download CSV</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script>
+        document.querySelector('.dashboard-menu-toggle')?.addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+
+        // Simulating the report generation animations
+        document.querySelectorAll('.simulate-export-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const originalText = btn.textContent;
+                btn.textContent = "Compiling file...";
+                btn.disabled = true;
+                setTimeout(() => {
+                    alert("Report successfully downloaded to your downloads folder!");
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

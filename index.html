@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexGrowth | Premium Performance Digital Marketing Agency</title>
+    <meta name="description" content="We scale high-growth brands with SEO, paid media, CRO, and email marketing. View our real-time campaign dashboard portal and get a free marketing audit.">
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Structured SEO Schema Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ApexGrowth",
+      "url": "https://apexgrowth-agency.com",
+      "logo": "https://apexgrowth-agency.com/assets/logo.png",
+      "sameAs": [
+        "https://www.facebook.com/apexgrowth",
+        "https://www.linkedin.com/company/apexgrowth",
+        "https://twitter.com/apexgrowth"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ApexGrowth Agency",
+      "image": "https://picsum.photos/id/20/800/600",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "100 Innovation Way, Suite 400",
+        "addressLocality": "Austin",
+        "addressRegion": "TX",
+        "postalCode": "78701",
+        "addressCountry": "US"
+      },
+      "telephone": "+1-512-555-0199"
+    }
+    </script>
+</head>
+<body class="dark-mode"> <!-- Pre-loaded dark-mode for premium look -->
+
+    <!-- Navigation Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                APEXGROWTH<span class="logo-dot">.</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="pages/services.html" class="nav-link">Services</a>
+                <a href="pages/case-studies.html" class="nav-link">Case Studies</a>
+                <a href="pages/pricing.html" class="nav-link">Pricing</a>
+                <a href="pages/resources.html" class="nav-link">Resources</a>
+                <a href="pages/about.html" class="nav-link">About</a>
+                <a href="pages/contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Theme Toggler -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
+                    <span class="theme-toggle-icon">☀️</span>
+                </button>
+                <!-- RTL Toggler -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
+                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                </button>
+                <a href="pages/login.html" class="btn btn-secondary btn-sm">Client Login</a>
+                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="hero-tag">📈 Transparent Performance Driven Agency</span>
+                <h1>We Scale Brands Through Measurable Growth.</h1>
+                <p>ApexGrowth combines cutting-edge data models, custom campaign execution, and a real-time portal to grow revenue with 100% transparency.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn btn-primary trigger-strategy-call">Book Strategy Call</a>
+                    <a href="pages/case-studies.html" class="btn btn-secondary">View Case Studies</a>
+                </div>
+            </div>
+            <div class="hero-preview">
+                <div style="background-color: var(--panel-bg); padding: 20px; border-bottom: 1px solid var(--border-color); display:flex; align-items:center; justify-content:space-between;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="width:12px; height:12px; background-color:var(--success); border-radius:50%;"></span>
+                        <span style="font-weight:600; font-size:0.875rem;">LIVE Portal Preview</span>
+                    </div>
+                    <span style="font-size:0.75rem; color:var(--text-muted);">Sync active 2s ago</span>
+                </div>
+                <div style="padding: 24px; display:flex; flex-direction:column; gap:16px;">
+                    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;">
+                        <div style="background-color:var(--bg-color); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+                            <span style="font-size:0.75rem; color:var(--text-muted); display:block; font-weight:600;">ROAS</span>
+                            <span style="font-size:1.25rem; font-weight:700; color:var(--success);">4.8x</span>
+                        </div>
+                        <div style="background-color:var(--bg-color); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+                            <span style="font-size:0.75rem; color:var(--text-muted); display:block; font-weight:600;">LEADS</span>
+                            <span style="font-size:1.25rem; font-weight:700;">+382</span>
+                        </div>
+                        <div style="background-color:var(--bg-color); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+                            <span style="font-size:0.75rem; color:var(--text-muted); display:block; font-weight:600;">REVENUE</span>
+                            <span style="font-size:1.25rem; font-weight:700; color:var(--accent);">$48,200</span>
+                        </div>
+                    </div>
+                    <!-- Micro SVG Graphic Chart -->
+                    <div style="height:120px; width:100%; position:relative;">
+                        <svg width="100%" height="100%" viewBox="0 0 300 100" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.4"/>
+                                    <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M0 90 Q75 40 150 70 T300 20 L300 100 L0 100 Z" fill="url(#glow)" />
+                            <path d="M0 90 Q75 40 150 70 T300 20" fill="none" stroke="var(--accent)" stroke-width="3" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Logos Section -->
+    <section class="logos-section">
+        <div class="container">
+            <div class="logo-slider">
+                <div class="logo-item">💼 SaaSify Global</div>
+                <div class="logo-item">⚙️ E-com Dynamics</div>
+                <div class="logo-item">🧪 Alpha Tech</div>
+                <div class="logo-item">🏬 Local Retail Corp</div>
+                <div class="logo-item">🏥 MedGroup</div>
+                <div class="logo-item">🏢 Venture Capital</div>
+                <!-- Duplicate for Loop -->
+                <div class="logo-item">💼 SaaSify Global</div>
+                <div class="logo-item">⚙️ E-com Dynamics</div>
+                <div class="logo-item">🧪 Alpha Tech</div>
+                <div class="logo-item">🏬 Local Retail Corp</div>
+                <div class="logo-item">🏥 MedGroup</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Capabilities</span>
+                <h2>Growth Systems Designed to Scale</h2>
+                <p>We build comprehensive growth operations to target, capture, convert, and nurture high-value customers.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- SEO Service Card -->
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Search Engine Optimization</h3>
+                    <p>Drive organic traffic, rank for high-intent queries, and structure site assets to convert leads.</p>
+                    <a href="pages/service-seo.html" class="service-link">Explore SEO &rarr;</a>
+                </div>
+                <!-- PPC Service Card -->
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Paid Advertising</h3>
+                    <p>Scale return on ad spend across Google, Meta, YouTube, and LinkedIn channels.</p>
+                    <a href="pages/service-ppc.html" class="service-link">Explore PPC &rarr;</a>
+                </div>
+                <!-- Social Media Card -->
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Social Media Marketing</h3>
+                    <p>Build viral communities and create content assets that engage and educate users.</p>
+                    <a href="pages/service-social.html" class="service-link">Explore Social &rarr;</a>
+                </div>
+                <!-- Content Marketing Card -->
+                <div class="service-card">
+                    <div class="service-icon">✍️</div>
+                    <h3>Content Marketing</h3>
+                    <p>Strategic copywriting, high-value lead magnets, and informative guides that convert prospects.</p>
+                    <a href="pages/service-content.html" class="service-link">Explore Content &rarr;</a>
+                </div>
+                <!-- Email Marketing Card -->
+                <div class="service-card">
+                    <div class="service-icon">✉️</div>
+                    <h3>Email Marketing</h3>
+                    <p>Automate user journeys, create segment flows, and write high-conversion newsletters.</p>
+                    <a href="pages/service-email.html" class="service-link">Explore Email &rarr;</a>
+                </div>
+                <!-- CRO Card -->
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Conversion Rate Optimization</h3>
+                    <p>Maximize landing page conversion ratios and run structured A/B split validation tests.</p>
+                    <a href="pages/service-cro.html" class="service-link">Explore CRO &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agency Results / Stats -->
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>$48M+</h3>
+                <p>Revenue Generated</p>
+            </div>
+            <div class="stat-item">
+                <h3>380%</h3>
+                <p>Average Organic Traffic Growth</p>
+            </div>
+            <div class="stat-item">
+                <h3>4.6x</h3>
+                <p>Average PPC ROAS</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Dashboard transparency</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Preview -->
+    <section class="cases-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Case Studies</span>
+                <h2>Proven Growth Operations</h2>
+                <p>Discover how we scaled industry-leading businesses with tactical execution.</p>
+            </div>
+            <div class="cases-grid">
+                <!-- Case 1 -->
+                <div class="case-card">
+                    <div class="case-img-wrap">
+                        <div class="case-img-placeholder">🚀</div>
+                        <span class="case-metric">+320% Revenue</span>
+                    </div>
+                    <div class="case-content">
+                        <span class="case-tag">SaaS Growth</span>
+                        <h3>Scaling SaaSify Global's Search Traffic</h3>
+                        <p>We revamped SaaSify's conversion funnels and integrated high-intent SEO topic hubs to capture key enterprise accounts.</p>
+                        <a href="pages/case-studies.html" style="color:var(--primary); font-weight:600;">Read Case Study &rarr;</a>
+                    </div>
+                </div>
+                <!-- Case 2 -->
+                <div class="case-card">
+                    <div class="case-img-wrap">
+                        <div class="case-img-placeholder">🛒</div>
+                        <span class="case-metric">4.5x Google Ads ROAS</span>
+                    </div>
+                    <div class="case-content">
+                        <span class="case-tag">E-Commerce PPC</span>
+                        <h3>Paid Ads Campaign for E-Com Dynamics</h3>
+                        <p>How our Google Search and Shopping campaign overhaul reduced acquisition costs by 40% while doubling sales volumes.</p>
+                        <a href="pages/case-studies.html" style="color:var(--primary); font-weight:600;">Read Case Study &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Interactive Preview Section -->
+    <section class="cases-section" style="background-color: var(--bg-color);">
+        <div class="container" style="text-align: center;">
+            <div class="section-header">
+                <span class="section-tag">Client Portal</span>
+                <h2>Track Your Campaigns in Real Time</h2>
+                <p>No more waiting for monthly PDF reports. Check lead counts, click metrics, invoices, and messaging inside our dashboard.</p>
+            </div>
+            
+            <!-- Dynamic Dashboard Frame Preview -->
+            <div style="background-color: var(--panel-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); overflow: hidden; max-width: 900px; margin: 0 auto; text-align: left;">
+                <div style="background-color: var(--panel-hover); padding: 16px 24px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 700; color:var(--text-color);">ApexGrowth Client Dashboard</span>
+                    <a href="pages/login.html" class="btn btn-primary btn-sm">Enter Dashboard Demo</a>
+                </div>
+                <div style="padding: 30px; display: grid; grid-template-columns: 200px 1fr; gap: 30px;">
+                    <!-- Demo Menu -->
+                    <div style="border-inline-end: 1px solid var(--border-color); padding-inline-end: 20px;">
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">
+                            <li style="color: var(--primary);">📊 Overview</li>
+                            <li>🔍 SEO Rankings</li>
+                            <li>🎯 Paid Ads</li>
+                            <li>📂 Creative Approvals</li>
+                            <li>💳 Invoices</li>
+                        </ul>
+                    </div>
+                    <!-- Demo Graph -->
+                    <div>
+                        <h4 style="margin-bottom: 16px;">Month-Over-Month Traffic Progress</h4>
+                        <div style="height: 180px; width: 100%; border: 1px dashed var(--border-color); border-radius: var(--radius-sm); padding: 12px; display: flex; align-items: flex-end; justify-content: space-between;">
+                            <div style="height: 40%; width: 12%; background-color: var(--primary); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; padding: 4px;">Jan</div>
+                            <div style="height: 55%; width: 12%; background-color: var(--primary); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; padding: 4px;">Feb</div>
+                            <div style="height: 70%; width: 12%; background-color: var(--primary); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; padding: 4px;">Mar</div>
+                            <div style="height: 60%; width: 12%; background-color: var(--primary); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; padding: 4px;">Apr</div>
+                            <div style="height: 85%; width: 12%; background-color: var(--primary); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; padding: 4px;">May</div>
+                            <div style="height: 98%; width: 12%; background-color: var(--accent); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; padding: 4px;">Jun</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing ROI Calculator -->
+    <section class="cases-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">ROI Estimation</span>
+                <h2>Calculate Your Potential Returns</h2>
+                <p>Adjust the inputs below to see your potential leads growth and ROAS targets.</p>
+            </div>
+            
+            <div class="calculator-card">
+                <div class="calculator-grid">
+                    <div class="calc-inputs">
+                        <div class="form-group">
+                            <label>Monthly Ad Spend: <span id="spend-val" class="range-val">$10,000</span></label>
+                            <input type="range" id="calc-spend" min="1000" max="50000" step="1000" value="10000">
+                        </div>
+                        <div class="form-group">
+                            <label>Target Conversion Rate: <span id="conv-val" class="range-val">2.5%</span></label>
+                            <input type="range" id="calc-conv" min="0.5" max="10.0" step="0.1" value="2.5">
+                        </div>
+                        <div class="form-group">
+                            <label>Cost Per Acquisition Lead: <span id="lead-val" class="range-val">$40</span></label>
+                            <input type="range" id="calc-lead" min="10" max="150" step="5" value="40">
+                        </div>
+                    </div>
+                    
+                    <div class="calc-results">
+                        <div class="result-item">
+                            <div class="num" id="result-leads">250</div>
+                            <label>Estimated Leads Generated</label>
+                        </div>
+                        <div class="result-item">
+                            <div class="num" id="result-revenue">$9,375</div>
+                            <label>Estimated Return Revenue</label>
+                        </div>
+                        <div class="result-item">
+                            <div class="num" id="result-roas">0.9x</div>
+                            <label>Projected ROAS</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audit Lead Trigger Card -->
+    <section class="cases-section" style="background-color: var(--panel-bg);">
+        <div class="container" style="text-align: center;">
+            <div style="max-width: 800px; margin: 0 auto; background: var(--hero-gradient); padding: 50px; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+                <span class="section-tag">Instant Growth Check</span>
+                <h3 style="font-size: 2rem; margin-bottom: 16px;">Request Your Free Performance Audit</h3>
+                <p style="margin-bottom: 30px;">Input your email and site address to receive immediate visual ratings on site speed, tag errors, and competitor rankings.</p>
+                <button class="btn btn-primary trigger-audit-tool">Start Free Assessment</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="cases-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Questions</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-header">
+                        How is ApexGrowth different from traditional agencies?
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-body">
+                        We offer absolute campaign transparency through our client dashboard portal, allowing you to log in 24/7 and see exact conversions, check-list statuses, and invoice tracking instantly.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-header">
+                        Do you require long-term binding contracts?
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-body">
+                        No, we believe in performance. We operate on flexible monthly terms or custom project phases, meaning we have to earn your business month-over-month.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        What integrations does the platform support?
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-body">
+                        Our backend structures sync data points directly from Google Analytics, Meta Ads Pixel, Stripe invoice channels, and Calendly event streams automatically.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="color:#ffffff;">APEXGROWTH<span class="logo-dot">.</span></a>
+                    <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and automation.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-link">FB</a>
+                        <a href="#" class="footer-social-link">LN</a>
+                        <a href="#" class="footer-social-link">TW</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/service-seo.html">SEO Optimization</a></li>
+                        <li><a href="pages/service-ppc.html">Paid Advertisements</a></li>
+                        <li><a href="pages/service-cro.html">Conversion Funnels</a></li>
+                        <li><a href="pages/service-email.html">Email Automation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/resources.html">Marketing Blog</a></li>
+                        <li><a href="pages/resources.html">Growth Guides</a></li>
+                        <li><a href="pages/resources.html">Free Checklists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/about.html">About Team</a></li>
+                        <li><a href="pages/case-studies.html">Case Studies</a></li>
+                        <li><a href="pages/pricing.html">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/contact.html">Contact Us</a></li>
+                        <li><a href="pages/login.html">Client Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: Strategy Booking Wizard -->
+    <div class="modal-overlay" id="strategy-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close Modal">✕</button>
+            <h3 style="margin-bottom: 12px; font-size:1.5rem;">Schedule Your 1:1 Strategy Session</h3>
+            <p style="color:var(--text-muted); margin-bottom: 24px;">Pick a convenient date inside our simulated Calendly booking scheduler.</p>
+            
+            <!-- Simulated Calendly Calendar Panel -->
+            <div style="background-color: var(--panel-hover); border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); text-align: center;">
+                <h4 style="margin-bottom:16px;">Select Date & Time</h4>
+                <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 20px; font-size: 0.85rem; font-weight:600;">
+                    <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+                    <div style="opacity:0.3;">14</div><div style="opacity:0.3;">15</div>
+                    <div style="background-color:var(--primary); color:#ffffff; border-radius:4px; cursor:pointer; padding:4px 0;">16</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">17</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">18</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">19</div>
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">20</div>
+                </div>
+                <div style="display:flex; justify-content:center; gap:12px;">
+                    <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">09:00 AM</button>
+                    <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">02:00 PM</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Audit Performance Tool Wizard -->
+    <div class="modal-overlay" id="audit-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close Modal">✕</button>
+            <div class="wizard-progress">
+                <div class="wizard-bar" id="audit-progress-bar"></div>
+            </div>
+            
+            <!-- Step 1: Input URL and Email -->
+            <div class="wizard-step active" id="audit-step-1">
+                <h3 style="margin-bottom: 12px;">Step 1: Domain Details</h3>
+                <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:24px;">
+                    <div class="form-group">
+                        <label for="audit-url">Website URL</label>
+                        <input type="text" id="audit-url" class="form-input" placeholder="e.g. yourbrand.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="audit-email">Work Email</label>
+                        <input type="email" id="audit-email" class="form-input" placeholder="e.g. you@yourbrand.com" required>
+                    </div>
+                </div>
+                <button class="btn btn-primary audit-next">Next Step &rarr;</button>
+            </div>
+
+            <!-- Step 2: Target Service Objective -->
+            <div class="wizard-step" id="audit-step-2">
+                <h3 style="margin-bottom: 12px;">Step 2: Business Goals</h3>
+                <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:24px;">
+                    <div class="form-group">
+                        <label for="audit-service">What is your primary focus area?</label>
+                        <select id="audit-service" class="form-input">
+                            <option value="SEO">Search Engine Optimization (SEO)</option>
+                            <option value="Paid Ads">Google & Social PPC Advertising</option>
+                            <option value="CRO">Conversion Optimization (CRO)</option>
+                            <option value="Email">Email Marketing Automation</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display:flex; gap:12px;">
+                    <button class="btn btn-secondary audit-prev">&larr; Back</button>
+                    <button class="btn btn-primary audit-next">Run Audit Now</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Analysis Results -->
+            <div class="wizard-step" id="audit-step-3">
+                <h3 style="margin-bottom: 12px; color:var(--success);">Analysis Complete!</h3>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:20px;" id="audit-results-container">
+                    <div id="audit-score-circle" style="width:120px; height:120px; border-radius:50%; border:6px solid var(--border-color); display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                        <!-- JS injects score -->
+                    </div>
+                    <div id="audit-recommendations" style="font-size:0.9rem;">
+                        <!-- JS injects custom notes -->
+                    </div>
+                </div>
+                <button class="btn btn-secondary" onclick="document.getElementById('audit-modal').classList.remove('active')" style="margin-top:24px; width:100%;">Close Audit Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
