@@ -17,20 +17,34 @@
             </a>
             
             <nav class="nav-menu" id="nav-menu">
-                <a href="../index.html" class="nav-link">Home</a>
+                <div class="nav-link nav-item-dropdown">
+                    <span class="nav-dropdown-toggle">Home</span>
+                    <div class="nav-dropdown-menu">
+                        <a href="../index.html" class="nav-dropdown-link">Home 1 (Portal)</a>
+                        <a href="../home-2.html" class="nav-dropdown-link">Home 2 (Creative)</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
                 <a href="services.html" class="nav-link">Services</a>
                 <a href="case-studies.html" class="nav-link">Case Studies</a>
-                <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="resources.html" class="nav-link">Resources</a>
-                <a href="about.html" class="nav-link">About</a>
+                <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link active">Contact</a>
+                <div class="nav-link nav-item-dropdown">
+                    <span class="nav-dropdown-toggle">Dashboard</span>
+                    <div class="nav-dropdown-menu">
+                        <a href="../dashboard/index.html" class="nav-dropdown-link">Client Portal</a>
+                        <a href="../dashboard/admin-index.html" class="nav-dropdown-link">Admin Console</a>
+                    </div>
+                </div>
             </nav>
 
             <div class="nav-actions">
-                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme">
+                <!-- Theme Toggler -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
                     <span class="theme-toggle-icon">☀️</span>
                 </button>
-                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction">
+                <!-- RTL Toggler -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
                     <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
                 </button>
                 <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
@@ -57,11 +71,9 @@
                 <h2 style="font-size:2rem; margin-bottom:20px;">Agency Head Office</h2>
                 <p style="color:var(--text-muted); margin-bottom:30px;">ApexGrowth Agency Inc.<br>100 Innovation Way, Suite 400<br>Austin, TX 78701<br><br>📞 Phone: +1-512-555-0199<br>✉️ Email: strategy@apexgrowth.com</p>
                 
-                <!-- Simulated Google Map frame -->
-                <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); height:260px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); overflow:hidden; position:relative;">
-                    <span style="font-weight:600;">[ Google Map Pin - Austin, TX Headquarters ]</span>
-                    <!-- Beautiful vector map overlay representation -->
-                    <div style="position:absolute; width:100%; height:100%; opacity:0.1; background:radial-gradient(circle, var(--primary) 10%, transparent 11%), radial-gradient(circle, var(--accent) 10%, transparent 11%); background-size:20px 20px;"></div>
+                <!-- Google Map frame -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.6272449551465!2d-97.743060784876!3d30.272920981797435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b508f7b3df6d%3A0xe10439da5bc6b75e!2sAustin%20City%20Hall!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
@@ -91,8 +103,57 @@
 
     <!-- Footer Section -->
     <footer class="site-footer">
-        <div class="container" style="text-align:center; font-size:0.875rem;">
-            <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color:#ffffff;">APEXGROWTH<span class="logo-dot">.</span></a>
+                    <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and automation.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-link">FB</a>
+                        <a href="#" class="footer-social-link">LN</a>
+                        <a href="#" class="footer-social-link">TW</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Home Pages</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home 1 (Portal)</a></li>
+                        <li><a href="../home-2.html">Home 2 (Creative)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="service-seo.html">SEO Optimization</a></li>
+                        <li><a href="service-ppc.html">Paid Advertisements</a></li>
+                        <li><a href="service-cro.html">Conversion Funnels</a></li>
+                        <li><a href="service-email.html">Email Automation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Team</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="blog.html">Marketing Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 

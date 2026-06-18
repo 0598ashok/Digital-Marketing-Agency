@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Settings | Admin Control</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body class="dashboard-body dark-mode admin-mode">
+
+    <div class="dashboard-wrapper">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                APEXADMIN<span class="logo-dot">.</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a href="admin-index.html">📊 Analytics Overview</a></li>
+                <li class="sidebar-item"><a href="admin-users.html">👥 User Management</a></li>
+                <li class="sidebar-item"><a href="admin-clients.html">💼 Client Profiles</a></li>
+                <li class="sidebar-item"><a href="admin-reports.html">📄 Site Audits</a></li>
+                <li class="sidebar-item"><a href="admin-invoices.html">💳 Billing Console</a></li>
+                <li class="sidebar-item active"><a href="admin-settings.html">⚙️ System Settings</a></li>
+                <li class="sidebar-item"><a href="admin-content.html">✍️ Content Manager</a></li>
+                <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
+                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="sidebar-avatar" style="background-color:rgba(147,51,234,0.15); color:#9333ea;">AD</div>
+                <div>
+                    <div style="font-weight:600; font-size:0.875rem;">Agency Admin</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted);">Super Control</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <div class="dashboard-header-title">
+                        <h1>System Settings</h1>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content-inner" style="max-width:800px;">
+                <div class="section-header" style="text-align:left; margin-bottom:40px; max-width:100%;">
+                    <h2 style="font-size:1.5rem;">Agency Integrations & API Connections</h2>
+                    <p style="font-size:0.95rem;">Configure external API credentials to allow automated tracking and dashboard sync capabilities.</p>
+                </div>
+
+                <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:40px; display:flex; flex-direction:column; gap:32px;">
+                    <!-- Integration 1 -->
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:20px;">
+                        <div>
+                            <h3 style="font-size:1.1rem; margin-bottom:4px;">Google Ads API</h3>
+                            <p style="color:var(--text-muted); font-size:0.875rem;">Fetch search impressions, cost, and CTR values automatically.</p>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="alert('Google Ads Integration refreshed!')">Sync Connections</button>
+                    </div>
+                    <!-- Integration 2 -->
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:20px;">
+                        <div>
+                            <h3 style="font-size:1.1rem; margin-bottom:4px;">Meta Conversions API</h3>
+                            <p style="color:var(--text-muted); font-size:0.875rem;">Push click parameters and server-side tracking validation logs.</p>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="alert('Meta Conversions API refreshed!')">Sync Connections</button>
+                    </div>
+                    <!-- Integration 3 -->
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <h3 style="font-size:1.1rem; margin-bottom:4px;">Slack Webhook Logs</h3>
+                            <p style="color:var(--text-muted); font-size:0.875rem;">Receive channel alerts when clients approve creatives or submit audit requests.</p>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="alert('Slack Webhook refreshed!')">Sync Connections</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/admin.js"></script>
+</body>
+</html>

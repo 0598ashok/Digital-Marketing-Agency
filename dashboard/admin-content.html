@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manager | Admin Control</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body class="dashboard-body dark-mode admin-mode">
+
+    <div class="dashboard-wrapper">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                APEXADMIN<span class="logo-dot">.</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a href="admin-index.html">📊 Analytics Overview</a></li>
+                <li class="sidebar-item"><a href="admin-users.html">👥 User Management</a></li>
+                <li class="sidebar-item"><a href="admin-clients.html">💼 Client Profiles</a></li>
+                <li class="sidebar-item"><a href="admin-reports.html">📄 Site Audits</a></li>
+                <li class="sidebar-item"><a href="admin-invoices.html">💳 Billing Console</a></li>
+                <li class="sidebar-item"><a href="admin-settings.html">⚙️ System Settings</a></li>
+                <li class="sidebar-item active"><a href="admin-content.html">✍️ Content Manager</a></li>
+                <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
+                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="sidebar-avatar" style="background-color:rgba(147,51,234,0.15); color:#9333ea;">AD</div>
+                <div>
+                    <div style="font-weight:600; font-size:0.875rem;">Agency Admin</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted);">Super Control</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <div class="dashboard-header-title">
+                        <h1>Content Manager</h1>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content-inner">
+                <div class="grid-2" style="grid-template-columns: 1.3fr 0.7fr; align-items: flex-start;">
+                    
+                    <!-- Table Card -->
+                    <div class="data-table-card">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Article Title</th>
+                                    <th>Category</th>
+                                    <th>Publish Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-blogs-table-body">
+                                <!-- JS injects blog rows -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Publish Blog Panel -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Publish Blog Article</h3>
+                        <form id="admin-add-blog-form" style="display:flex; flex-direction:column; gap:16px;">
+                            <div class="form-group">
+                                <label for="blog-title-input">Article Title</label>
+                                <input type="text" id="blog-title-input" class="form-input" placeholder="e.g. Scaling ad spend tips..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="blog-category-input">Blog Category</label>
+                                <select id="blog-category-input" class="form-input" style="background-color:var(--bg-color);">
+                                    <option value="Search Optimization">Search Optimization (SEO)</option>
+                                    <option value="Paid Media (PPC)">Paid Media (PPC)</option>
+                                    <option value="Conversion Funnels (CRO)">Conversion Funnels (CRO)</option>
+                                    <option value="Email Flows">Email Flows & Journeys</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm" style="margin-top:10px; width:100%;">Publish Post</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/admin.js"></script>
+</body>
+</html>

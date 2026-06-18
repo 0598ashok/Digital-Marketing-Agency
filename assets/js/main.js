@@ -90,6 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile Dropdowns click behavior
+    const dropdowns = document.querySelectorAll('.nav-item-dropdown');
+    dropdowns.forEach(dd => {
+        const toggle = dd.querySelector('.nav-dropdown-toggle');
+        if (toggle) {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dd.classList.toggle('active');
+                }
+            });
+        }
+    });
+
     // 5. FAQ Accordion
     const faqHeaders = document.querySelectorAll('.faq-header');
     faqHeaders.forEach(header => {

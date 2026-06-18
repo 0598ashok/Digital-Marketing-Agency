@@ -7,22 +7,46 @@
     <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body class="dark-mode">
+        <!-- Navigation Header -->
     <header class="site-header">
         <div class="container header-container">
-            <a href="../index.html" class="logo">APEXGROWTH<span class="logo-dot">.</span></a>
-            <nav class="nav-menu">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="services.html" class="nav-link active">Services</a>
-                <a href="case-studies.html" class="nav-link">Case Studies</a>
-                <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="resources.html" class="nav-link">Resources</a>
+            <a href="../index.html" class="logo">
+                APEXGROWTH<span class="logo-dot">.</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <div class="nav-link nav-item-dropdown">
+                    <span class="nav-dropdown-toggle">Home</span>
+                    <div class="nav-dropdown-menu">
+                        <a href="../index.html" class="nav-dropdown-link">Home 1 (Portal)</a>
+                        <a href="../home-2.html" class="nav-dropdown-link">Home 2 (Creative)</a>
+                    </div>
+                </div>
                 <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="case-studies.html" class="nav-link">Case Studies</a>
+                <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
+                <div class="nav-link nav-item-dropdown">
+                    <span class="nav-dropdown-toggle">Dashboard</span>
+                    <div class="nav-dropdown-menu">
+                        <a href="../dashboard/index.html" class="nav-dropdown-link">Client Portal</a>
+                        <a href="../dashboard/admin-index.html" class="nav-dropdown-link">Admin Console</a>
+                    </div>
+                </div>
             </nav>
+
             <div class="nav-actions">
-                <button class="control-btn theme-toggle-btn"><span class="theme-toggle-icon">☀️</span></button>
-                <button class="control-btn rtl-toggle-btn"><span class="rtl-toggle-text">LTR</span></button>
+                <!-- Theme Toggler -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
+                    <span class="theme-toggle-icon">☀️</span>
+                </button>
+                <!-- RTL Toggler -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
+                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                </button>
                 <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
+                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
             </div>
         </div>
     </header>
@@ -114,9 +138,59 @@
         </div>
     </section>
 
+        <!-- Footer Section -->
     <footer class="site-footer">
-        <div class="container" style="text-align:center; font-size:0.875rem;">
-            <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color:#ffffff;">APEXGROWTH<span class="logo-dot">.</span></a>
+                    <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and automation.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-link">FB</a>
+                        <a href="#" class="footer-social-link">LN</a>
+                        <a href="#" class="footer-social-link">TW</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Home Pages</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home 1 (Portal)</a></li>
+                        <li><a href="../home-2.html">Home 2 (Creative)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="service-seo.html">SEO Optimization</a></li>
+                        <li><a href="service-ppc.html">Paid Advertisements</a></li>
+                        <li><a href="service-cro.html">Conversion Funnels</a></li>
+                        <li><a href="service-email.html">Email Automation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Team</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="blog.html">Marketing Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="../assets/js/main.js"></script>
