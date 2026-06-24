@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoicing & Billing | Admin Control</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
+
 <body class="dashboard-body dark-mode admin-mode">
 
     <div class="dashboard-wrapper">
-        
+
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-brand">
-                APEXADMIN<span class="logo-dot">.</span>
-            </div>
+            <a href="../index.html" class="sidebar-brand" style="text-decoration:none; color:inherit;">APEXADMIN<span
+                    class="logo-dot">.</span></a>
             <ul class="sidebar-menu">
-                <li class="sidebar-item"><a href="admin-index.html">📊 Analytics Overview</a></li>
-                <li class="sidebar-item"><a href="admin-users.html">👥 User Management</a></li>
-                <li class="sidebar-item"><a href="admin-clients.html">💼 Client Profiles</a></li>
-                <li class="sidebar-item"><a href="admin-reports.html">📄 Site Audits</a></li>
-                <li class="sidebar-item active"><a href="admin-invoices.html">💳 Billing Console</a></li>
-                <li class="sidebar-item"><a href="admin-settings.html">⚙️ System Settings</a></li>
-                <li class="sidebar-item"><a href="admin-content.html">✍️ Content Manager</a></li>
+                <li class="sidebar-item"><a href="admin-index.html"><i class="ph ph-chart-bar"
+                            style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Analytics
+                        Overview</a></li>
+                <li class="sidebar-item"><a href="admin-users.html"><i class="ph ph-users"
+                            style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> User Management</a>
+                </li>
+                <li class="sidebar-item"><a href="admin-clients.html"><i class="ph ph-briefcase"
+                            style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Client Profiles</a>
+                </li>
+                <li class="sidebar-item"><a href="admin-reports.html"><i class="ph ph-magnifying-glass"
+                            style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Site Audits</a></li>
+                <li class="sidebar-item active"><a href="admin-invoices.html"><i class="ph ph-credit-card"
+                            style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Billing Console</a>
+                </li>
+                <li class="sidebar-item"><a href="admin-settings.html"><i class="ph ph-gear-six"
+                            style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> System Settings</a>
+                </li>
+                <li class="sidebar-item"><a href="admin-content.html"><i class="ph ph-pen-nib"
+                            style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Content Manager</a>
+                </li>
                 <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
-                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                    <a href="../index.html" style="color:var(--danger); font-weight:600;"><i class="ph ph-sign-out"
+                            style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Logout</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -42,57 +58,197 @@
             <!-- Header -->
             <header class="dashboard-header">
                 <div style="display:flex; align-items:center; gap:16px;">
-                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;"
+                        aria-label="Toggle Sidebar"><i class="ph ph-list" style="font-size:1.5rem;"></i></button>
                     <div class="dashboard-header-title">
-                        <h1>Invoicing & Billing Console</h1>
+                        <h1 style="margin:0; font-size:1.5rem; font-weight:700;">Invoicing & Billing Console</h1>
+                    </div>
+                </div>
+                <div class="dashboard-header-actions" style="display:flex; align-items:center; gap:12px;">
+                    <div class="header-search hidden-mobile" style="position:relative; margin-right:8px;">
+                        <i class="ph ph-magnifying-glass"
+                            style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:1.1rem;"></i>
+                        <input type="text" placeholder="Search admin console..."
+                            style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:8px 16px 8px 38px; color:var(--text-color); font-size:0.9rem; outline:none; width:240px; transition:all 0.2s;">
+                    </div>
+
+                    <button class="control-btn" title="Notifications"
+                        style="position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <i class="ph ph-bell" style="font-size:1.2rem;"></i>
+                        <span
+                            style="position:absolute; top:8px; right:10px; width:8px; height:8px; background:var(--danger); border-radius:50%; border:2px solid var(--panel-bg);"></span>
+                    </button>
+
+                    <button class="control-btn theme-toggle-btn" title="Toggle Theme"
+                        style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <span class="theme-toggle-icon"><i class="ph ph-sun" style="font-size:1.2rem;"></i></span>
+                    </button>
+
+                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL"
+                        style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; font-weight:600; font-size:0.8rem; transition:all 0.2s;">
+                        <span class="rtl-toggle-text">LTR</span>
+                    </button>
+
+                    <div class="header-profile"
+                        style="width:40px; height:40px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; cursor:pointer; margin-left:8px; border:2px solid var(--panel-bg); box-shadow:0 0 0 1px var(--border-color);">
+                        AD
                     </div>
                 </div>
             </header>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content-inner">
-                <div class="grid-2" style="grid-template-columns: 1.3fr 0.7fr; align-items: flex-start;">
-                    
-                    <!-- Table Card -->
-                    <div class="data-table-card">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Invoice ID</th>
-                                    <th>Description</th>
-                                    <th>Amount</th>
-                                    <th>Due Date</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-invoices-table-body">
-                                <!-- JS injects invoices -->
-                            </tbody>
-                        </table>
+                <div class="metrics-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 30px;">
+                    <div class="metric-card">
+                        <div class="metric-card-header">
+                            <span class="metric-card-title">Monthly Revenue</span>
+                            <span>💵</span>
+                        </div>
+                        <div class="metric-card-value">$24,500</div>
+                        <div class="metric-card-change up">↑ 12% vs last month</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card-header">
+                            <span class="metric-card-title">Pending Receivables</span>
+                            <span>⏳</span>
+                        </div>
+                        <div class="metric-card-value" style="color:var(--warning);">$8,200</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted);">4 outstanding invoices</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card-header">
+                            <span class="metric-card-title">Avg Collection Time</span>
+                            <span><i class="ph ph-clock" style="font-size:1.2rem;"></i></span>
+                        </div>
+                        <div class="metric-card-value">14 Days</div>
+                        <div class="metric-card-change up">↓ 2 days improvement</div>
+                    </div>
+                </div>
+
+                <div class="split-panel">
+
+                    <!-- Invoice Feed -->
+                    <div
+                        style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Recent Invoices</h3>
+                        <div class="timeline" id="admin-invoices-timeline">
+                            <!-- JS injects invoices -->
+                        </div>
                     </div>
 
                     <!-- Add Invoice Panel -->
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
-                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Issue Client Invoice</h3>
+                    <div class="finance-card" style="justify-content: start;height: fit-content;">
+                        <h3 style="font-size:1.15rem; margin-bottom:0;">Issue Client Invoice</h3>
                         <form id="admin-add-invoice-form" style="display:flex; flex-direction:column; gap:16px;">
                             <div class="form-group">
                                 <label for="invoice-desc">Invoice Description</label>
-                                <input type="text" id="invoice-desc" class="form-input" placeholder="e.g. Creative Production ad sets" required>
+                                <input type="text" id="invoice-desc" class="form-input"
+                                    placeholder="e.g. Creative Production ad sets" required>
                             </div>
                             <div class="form-group">
                                 <label for="invoice-amount">Billing Amount (USD)</label>
-                                <input type="number" id="invoice-amount" class="form-input" placeholder="e.g. 2500" required>
+                                <input type="number" id="invoice-amount" class="form-input" placeholder="e.g. 2500"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="invoice-due">Payment Due Date</label>
-                                <input type="date" id="invoice-due" class="form-input" required style="background-color:var(--bg-color);">
+                                <input type="date" id="invoice-due" class="form-input" required
+                                    style="background-color:var(--bg-color);">
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm" style="margin-top:10px; width:100%;">Issue Invoice</button>
+                            <button type="submit" class="btn btn-primary"
+                                style="margin-top:10px; width:100%; height:44px;">Issue Invoice</button>
                         </form>
                     </div>
 
                 </div>
+
+                <!-- Overdue Alerts & Revenue Pipeline -->
+                <div class="grid-2" style="margin-top:24px;">
+                    <div
+                        style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; display:flex; flex-direction:column; justify-content:space-between;">
+                        <div>
+                            <h3 style="font-size:1.15rem; margin-bottom:12px; color:var(--danger);">Overdue Accounts
+                                Alert</h3>
+                            <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">The following
+                                client accounts have past-due invoices exceeding the 14-day net terms grace period.</p>
+
+                            <ul
+                                style="list-style:none; display:flex; flex-direction:column; gap:12px; font-size:0.9rem;">
+                                <li
+                                    style="display:flex; justify-content:space-between; align-items:center; background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.2); padding:12px 16px; border-radius:var(--radius-md);">
+                                    <div>
+                                        <span style="font-weight:600; display:block; color:var(--text-color);">NovaTech
+                                            Solutions</span>
+                                        <span style="font-size:0.8rem; color:var(--danger);">21 Days Overdue</span>
+                                    </div>
+                                    <div style="text-align:right;">
+                                        <span
+                                            style="font-weight:700; display:block; color:var(--text-color);">$1,450</span>
+                                        <a href="messaging.html"
+                                            style="font-size:0.8rem; color:var(--primary); text-decoration:none;">Send
+                                            Reminder</a>
+                                    </div>
+                                </li>
+                                <li
+                                    style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-color); border:1px solid var(--border-color); padding:12px 16px; border-radius:var(--radius-md);">
+                                    <div>
+                                        <span style="font-weight:600; display:block; color:var(--text-color);">EcoBrand
+                                            Direct</span>
+                                        <span style="font-size:0.8rem; color:var(--warning);">3 Days Overdue</span>
+                                    </div>
+                                    <div style="text-align:right;">
+                                        <span
+                                            style="font-weight:700; display:block; color:var(--text-color);">$3,200</span>
+                                        <a href="messaging.html"
+                                            style="font-size:0.8rem; color:var(--primary); text-decoration:none;">Send
+                                            Reminder</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Q3 Revenue Pipeline</h3>
+                        <div style="display:flex; flex-direction:column; gap:16px;">
+                            <div>
+                                <div
+                                    style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:6px;">
+                                    <span style="font-weight:600;">Monthly Retainers</span>
+                                    <span style="color:var(--text-muted);">$18,000 / $20,000</span>
+                                </div>
+                                <div
+                                    style="width:100%; height:8px; background-color:var(--bg-color); border-radius:4px; overflow:hidden;">
+                                    <div style="width:90%; height:100%; background-color:var(--success);"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:6px;">
+                                    <span style="font-weight:600;">Ad Spend Commission (15%)</span>
+                                    <span style="color:var(--text-muted);">$4,200 / $5,000</span>
+                                </div>
+                                <div
+                                    style="width:100%; height:8px; background-color:var(--bg-color); border-radius:4px; overflow:hidden;">
+                                    <div style="width:84%; height:100%; background-color:var(--primary);"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:6px;">
+                                    <span style="font-weight:600;">One-Off Audits & Setup</span>
+                                    <span style="color:var(--text-muted);">$2,300 / $5,000</span>
+                                </div>
+                                <div
+                                    style="width:100%; height:8px; background-color:var(--bg-color); border-radius:4px; overflow:hidden;">
+                                    <div style="width:46%; height:100%; background-color:var(--accent);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
@@ -101,4 +257,5 @@
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/admin.js"></script>
 </body>
+
 </html>

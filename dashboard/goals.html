@@ -6,6 +6,7 @@
     <title>Goals & KPIs | Client Portal</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body class="dashboard-body dark-mode">
 
@@ -13,20 +14,18 @@
         
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-brand">
-                APEXGROWTH<span class="logo-dot">.</span>
-            </div>
+            <a href="../index.html" class="sidebar-brand" style="text-decoration:none; color:inherit;">APEXGROWTH<span class="logo-dot">.</span></a>
             <ul class="sidebar-menu">
-                <li class="sidebar-item"><a href="index.html">📊 Overview</a></li>
-                <li class="sidebar-item"><a href="campaigns.html">📈 Campaign Analytics</a></li>
-                <li class="sidebar-item"><a href="creatives.html">📂 Creative Approvals</a></li>
-                <li class="sidebar-item"><a href="reports.html">📄 Reports Center</a></li>
-                <li class="sidebar-item"><a href="invoices.html">💳 Invoices & Billing</a></li>
-                <li class="sidebar-item"><a href="messaging.html">💬 Direct Messaging</a></li>
-                <li class="sidebar-item active"><a href="goals.html">🎯 Goals & KPIs</a></li>
-                <li class="sidebar-item"><a href="settings.html">⚙️ Settings</a></li>
+                <li class="sidebar-item"><a href="index.html"><i class="ph ph-chart-bar" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Overview</a></li>
+                <li class="sidebar-item"><a href="campaigns.html"><i class="ph ph-trend-up" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Campaign Analytics</a></li>
+                <li class="sidebar-item"><a href="creatives.html"><i class="ph ph-folder-open" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Creative Approvals</a></li>
+                <li class="sidebar-item"><a href="reports.html"><i class="ph ph-file-text" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Reports Center</a></li>
+                <li class="sidebar-item"><a href="invoices.html"><i class="ph ph-credit-card" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Invoices & Billing</a></li>
+                <li class="sidebar-item"><a href="messaging.html"><i class="ph ph-chat-circle-dots" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Direct Messaging</a></li>
+                <li class="sidebar-item active"><a href="goals.html"><i class="ph ph-target" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Goals & KPIs</a></li>
+                <li class="sidebar-item"><a href="settings.html"><i class="ph ph-gear" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Settings</a></li>
                 <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
-                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                    <a href="../index.html" style="color:var(--danger); font-weight:600;"><i class="ph ph-sign-out" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Logout</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -43,18 +42,33 @@
             
             <header class="dashboard-header">
                 <div style="display:flex; align-items:center; gap:16px;">
-                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar"><i class="ph ph-list" style="font-size:1.5rem;"></i></button>
                     <div class="dashboard-header-title">
-                        <h1>Goals & KPIs</h1>
+                        <h1 style="margin:0; font-size:1.5rem; font-weight:700;">Goals & KPIs</h1>
                     </div>
                 </div>
-                <div class="dashboard-header-actions">
-                    <button class="control-btn theme-toggle-btn">
-                        <span class="theme-toggle-icon">☀️</span>
+                <div class="dashboard-header-actions" style="display:flex; align-items:center; gap:12px;">
+                    <div class="header-search hidden-mobile" style="position:relative; margin-right:8px;">
+                        <i class="ph ph-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:1.1rem;"></i>
+                        <input type="text" placeholder="Search dashboard..." style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:8px 16px 8px 38px; color:var(--text-color); font-size:0.9rem; outline:none; width:240px; transition:all 0.2s;">
+                    </div>
+                    
+                    <button class="control-btn" title="Notifications" style="position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <i class="ph ph-bell" style="font-size:1.2rem;"></i>
+                        <span style="position:absolute; top:8px; right:10px; width:8px; height:8px; background:var(--danger); border-radius:50%; border:2px solid var(--panel-bg);"></span>
                     </button>
-                    <button class="control-btn rtl-toggle-btn">
+
+                    <button class="control-btn theme-toggle-btn" title="Toggle Theme" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <span class="theme-toggle-icon"><i class="ph ph-sun" style="font-size:1.2rem;"></i></span>
+                    </button>
+                    
+                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; font-weight:600; font-size:0.8rem; transition:all 0.2s;">
                         <span class="rtl-toggle-text">LTR</span>
                     </button>
+                    
+                    <div class="header-profile" style="width:40px; height:40px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; cursor:pointer; margin-left:8px; border:2px solid var(--panel-bg); box-shadow:0 0 0 1px var(--border-color);">
+                        AG
+                    </div>
                 </div>
             </header>
 
@@ -69,32 +83,63 @@
                     <!-- JS injects goals checklists dynamically -->
                 </div>
 
-                <!-- Milestone timeline -->
-                <div style="margin-top:40px; background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
-                    <h3 style="font-size:1.15rem; margin-bottom:24px;">Campaign Roadmaps Timeline</h3>
-                    <div style="display:flex; flex-direction:column; gap:24px; border-inline-start:2px solid var(--border-color); padding-inline-start:24px; position:relative;">
-                        
-                        <div style="position:relative;">
-                            <span style="position:absolute; left:-31px; top:4px; width:12px; height:12px; border-radius:50%; background-color:var(--success); border:3px solid var(--panel-bg);"></span>
-                            <h4 style="font-size:1rem; margin-bottom:4px;">Phase 1: Keyword Infrastructure Overhaul</h4>
-                            <span style="font-size:0.8rem; color:var(--success); font-weight:600; display:block; margin-bottom:8px;">✓ COMPLETED (June 10, 2026)</span>
-                            <p style="color:var(--text-muted); font-size:0.9rem;">Cleaned technical indexation blocks, set metadata categories, and mapped 50 primary search keywords.</p>
-                        </div>
-                        
-                        <div style="position:relative;">
-                            <span style="position:absolute; left:-31px; top:4px; width:12px; height:12px; border-radius:50%; background-color:var(--primary); border:3px solid var(--panel-bg);"></span>
-                            <h4 style="font-size:1rem; margin-bottom:4px;">Phase 2: Ad Spend Scale & Retargeting Loops</h4>
-                            <span style="font-size:0.8rem; color:var(--primary); font-weight:600; display:block; margin-bottom:8px;">🚀 IN PROGRESS</span>
-                            <p style="color:var(--text-muted); font-size:0.9rem;">Deploying custom Meta lookalike networks and setting up conversion API attributions logs.</p>
-                        </div>
+                <!-- Timeline & KPI Widgets -->
+                <div class="grid-2" style="margin-top:24px;">
+                    <!-- Milestone timeline -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:24px;">Campaign Roadmaps Timeline</h3>
+                        <div style="display:flex; flex-direction:column; gap:24px; border-inline-start:2px solid var(--border-color); padding-inline-start:24px; position:relative;">
+                            
+                            <div style="position:relative;">
+                                <span style="position:absolute; left:-31px; top:4px; width:12px; height:12px; border-radius:50%; background-color:var(--success); border:3px solid var(--panel-bg);"></span>
+                                <h4 style="font-size:1rem; margin-bottom:4px;">Phase 1: Keyword Infrastructure Overhaul</h4>
+                                <span style="font-size:0.8rem; color:var(--success); font-weight:600; display:block; margin-bottom:8px;"><i class="ph ph-check"></i> COMPLETED (June 10, 2026)</span>
+                                <p style="color:var(--text-muted); font-size:0.9rem;">Cleaned technical indexation blocks, set metadata categories, and mapped 50 primary search keywords.</p>
+                            </div>
+                            
+                            <div style="position:relative;">
+                                <span style="position:absolute; left:-31px; top:4px; width:12px; height:12px; border-radius:50%; background-color:var(--primary); border:3px solid var(--panel-bg);"></span>
+                                <h4 style="font-size:1rem; margin-bottom:4px;">Phase 2: Ad Spend Scale & Retargeting Loops</h4>
+                                <span style="font-size:0.8rem; color:var(--primary); font-weight:600; display:block; margin-bottom:8px;"><i class="ph ph-rocket"></i> IN PROGRESS</span>
+                                <p style="color:var(--text-muted); font-size:0.9rem;">Deploying custom Meta lookalike networks and setting up conversion API attributions logs.</p>
+                            </div>
 
-                        <div style="position:relative;">
-                            <span style="position:absolute; left:-31px; top:4px; width:12px; height:12px; border-radius:50%; background-color:var(--border-color); border:3px solid var(--panel-bg);"></span>
-                            <h4 style="font-size:1rem; margin-bottom:4px;">Phase 3: Landing Page A/B Testing Integration</h4>
-                            <span style="font-size:0.8rem; color:var(--text-muted); display:block; margin-bottom:8px;">💤 SCHEDULED (July 15, 2026)</span>
-                            <p style="color:var(--text-muted); font-size:0.9rem;">Redesigning checkout templates and structuring split-run conversions assessments.</p>
-                        </div>
+                            <div style="position:relative;">
+                                <span style="position:absolute; left:-31px; top:4px; width:12px; height:12px; border-radius:50%; background-color:var(--border-color); border:3px solid var(--panel-bg);"></span>
+                                <h4 style="font-size:1rem; margin-bottom:4px;">Phase 3: Landing Page A/B Testing Integration</h4>
+                                <span style="font-size:0.8rem; color:var(--text-muted); display:block; margin-bottom:8px;"><i class="ph ph-moon"></i> SCHEDULED (July 15, 2026)</span>
+                                <p style="color:var(--text-muted); font-size:0.9rem;">Redesigning checkout templates and structuring split-run conversions assessments.</p>
+                            </div>
 
+                        </div>
+                    </div>
+
+                    <!-- KPI Health Check Widget -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px;">KPI Health Overview</h3>
+                        <div style="display:flex; flex-direction:column; gap:16px;">
+                            <div style="padding:16px; border:1px solid var(--border-color); border-radius:var(--radius-md); display:flex; align-items:center; gap:16px;">
+                                <div style="width:48px; height:48px; border-radius:50%; background:rgba(16,185,129,0.1); color:var(--success); display:flex; align-items:center; justify-content:center; font-size:1.5rem;"><i class="ph ph-trend-up"></i></div>
+                                <div>
+                                    <h4 style="font-size:1rem; margin-bottom:4px;">Customer Acquisition Cost</h4>
+                                    <p style="font-size:0.85rem; color:var(--text-muted);">Currently tracking 15% below target ceiling. Excellent efficiency.</p>
+                                </div>
+                            </div>
+                            <div style="padding:16px; border:1px solid var(--border-color); border-radius:var(--radius-md); display:flex; align-items:center; gap:16px;">
+                                <div style="width:48px; height:48px; border-radius:50%; background:rgba(239,68,68,0.1); color:var(--danger); display:flex; align-items:center; justify-content:center; font-size:1.5rem;"><i class="ph ph-trend-down"></i></div>
+                                <div>
+                                    <h4 style="font-size:1rem; margin-bottom:4px;">Organic Click-Through-Rate</h4>
+                                    <p style="font-size:0.85rem; color:var(--text-muted);">Dropped by 2.1% this week due to recent search engine algorithm update.</p>
+                                </div>
+                            </div>
+                            <div style="padding:16px; border:1px solid var(--border-color); border-radius:var(--radius-md); display:flex; align-items:center; gap:16px;">
+                                <div style="width:48px; height:48px; border-radius:50%; background:rgba(147,51,234,0.1); color:#9333ea; display:flex; align-items:center; justify-content:center; font-size:1.5rem;"><i class="ph ph-clock"></i></div>
+                                <div>
+                                    <h4 style="font-size:1rem; margin-bottom:4px;">Lead Conversion Time</h4>
+                                    <p style="font-size:0.85rem; color:var(--text-muted);">Average time to conversion is stable at 4.2 days.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

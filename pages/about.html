@@ -1,214 +1,1136 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Learn about ApexGrowth — a performance marketing agency built on precision, discretion, and traceable campaign analytics.">
     <title>About Us | ApexGrowth Agency</title>
-    <meta name="description" content="Learn more about ApexGrowth's team, mission, values, and client transparency record. Discover our awards, credentials, and culture.">
-    <link rel="stylesheet" href="../assets/css/main.css">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://apexgrowth.agency/pages/about.html">
+    <meta property="og:title" content="About Us | ApexGrowth Agency">
+    <meta property="og:description" content="We built an agency based on truth and dashboard transparency. Meet our growth partners.">
+    <meta property="og:image" content="../assets/images/creative-showcase.png">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* ══════════════════════════════════════
+           ABOUT PAGE — EDITORIAL LIGHT DESIGN
+        ══════════════════════════════════════ */
+        :root {
+            --gold: #06B6D4; /* ApexGrowth Cyan Accent */
+            --navy: #2563EB; /* ApexGrowth Blue */
+        }
+
+        [data-theme="dark"] {
+            --gold: #06B6D4;
+            --navy: #3B82F6; /* Lighter Blue */
+        }
+
+        /* ── Page Banner ── */
+        .ab-banner {
+            padding: 88px 0 40px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ab-banner::before {
+            content: 'ABOUT';
+            position: absolute;
+            bottom: -20px;
+            right: -10px;
+            font-family: var(--font-heading);
+            font-size: clamp(6rem, 15vw, 14rem);
+            font-weight: 900;
+            color: var(--border-color);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            opacity: 0.5;
+        }
+
+        .ab-banner-inner {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: flex-end;
+            gap: 40px;
+        }
+
+        .ab-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .ab-banner h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.0;
+            letter-spacing: -2px;
+            margin-bottom: 0;
+        }
+
+        .ab-banner h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .ab-banner-meta {
+            text-align: right;
+            min-width: 200px;
+        }
+
+        .ab-banner-meta p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 280px;
+            margin-left: auto;
+        }
+
+        /* ── Split Profile ── */
+        .ab-profile {
+            padding: 40px 0 96px;
+            background: var(--bg-primary);
+        }
+
+        .ab-profile-grid {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .ab-img-stack {
+            position: relative;
+        }
+
+        .ab-img-main {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ab-img-accent {
+            position: absolute;
+            top: -16px;
+            left: -16px;
+            right: 16px;
+            bottom: 16px;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .ab-badge {
+            position: absolute;
+            bottom: -24px;
+            right: -24px;
+            background: var(--navy);
+            color: #fff;
+            padding: 24px 28px;
+            border-radius: 8px;
+            z-index: 2;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ab-badge strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .ab-badge span {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.85;
+        }
+
+        .ab-profile-text h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .ab-profile-text p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .ab-profile-text p:last-of-type {
+            margin-bottom: 36px;
+        }
+
+        /* ── Numbers Strip ── */
+        .ab-numbers {
+            background: var(--text-primary);
+            padding: 0;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        .ab-numbers-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .ab-num-cell {
+            padding: 56px 32px;
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .ab-num-cell:last-child {
+            border-right: none;
+        }
+
+        .ab-num-cell strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .ab-num-cell span {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.55);
+            text-transform: uppercase;
+        }
+
+        /* ── Mission / Vision Bento ── */
+        .ab-mv {
+            padding: 96px 0;
+            background: var(--bg-secondary);
+        }
+
+        .ab-mv-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .ab-mv-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+        }
+
+        .ab-bento {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 16px;
+        }
+
+        .ab-bento-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px 36px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .ab-bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ab-bento-card.wide {
+            grid-column: span 2;
+        }
+
+        .ab-bento-card.tall {
+            grid-row: span 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .ab-bento-card.dark {
+            background: var(--text-primary);
+            border-color: transparent;
+            color: #ffffff;
+        }
+
+        .ab-bento-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(6, 182, 212, 0.12);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 24px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ab-bento-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .ab-bento-card.dark h3 {
+            color: #fff;
+        }
+
+        .ab-bento-card p {
+            font-size: 0.93rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .ab-bento-card.dark p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .ab-bento-quote {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 400;
+            font-style: italic;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 24px;
+        }
+
+        .ab-bento-quote-attr {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        /* ── Why Choose Us ── */
+        .ab-why {
+            padding: 96px 0;
+            background: var(--bg-primary);
+        }
+
+        .ab-why-grid {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 80px;
+            align-items: flex-start;
+        }
+
+        .ab-why-left h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .ab-why-left p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .ab-why-pillars {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .ab-pillar {
+            display: grid;
+            grid-template-columns: 64px 1fr;
+            gap: 24px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.2s;
+        }
+
+        .ab-pillar:first-child {
+            border-top: 1px solid var(--border-color);
+        }
+
+        .ab-pillar-num {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--border-color);
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .ab-pillar:hover .ab-pillar-num {
+            color: var(--gold);
+        }
+
+        .ab-pillar-body h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .ab-pillar-body p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ── Team ── */
+        .ab-team {
+            padding: 96px 0;
+            background: var(--bg-secondary);
+        }
+
+        .ab-team-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .ab-team-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+        }
+
+        .ab-team-header p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 12px auto 0;
+            line-height: 1.7;
+        }
+
+        .ab-team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .ab-team-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .ab-team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .ab-team-img {
+            width: 100%;
+            aspect-ratio: 3/3.5;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            filter: saturate(0.85);
+            transition: filter 0.4s;
+        }
+
+        .ab-team-card:hover .ab-team-img {
+            filter: saturate(1);
+        }
+
+        .ab-team-info {
+            padding: 24px 24px 28px;
+        }
+
+        .ab-team-role {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .ab-team-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .ab-team-info p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ── Accolades Strip ── */
+        .ab-awards {
+            padding: 72px 0;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ab-awards-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .ab-award-cell {
+            text-align: center;
+            padding: 32px 24px;
+            border-right: 1px solid var(--border-color);
+            transition: background 0.3s;
+        }
+
+        .ab-award-cell:last-child {
+            border-right: none;
+        }
+
+        .ab-award-cell:hover {
+            background: var(--bg-secondary);
+        }
+
+        .ab-award-cell i {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .ab-award-cell h4 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .ab-award-cell p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ── CTA ── */
+        .ab-cta {
+            padding: 96px 0;
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+
+        .ab-cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .ab-cta p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto 36px;
+            line-height: 1.75;
+        }
+
+        .ab-cta-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ── Footer ── */
+        .ab-footer {
+            background: var(--text-primary);
+            padding: 72px 0 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .ab-footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 56px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .ab-footer-brand h2 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .ab-footer-brand p {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.8;
+        }
+
+        .ab-footer-col h4 {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .ab-footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ab-footer-col ul li a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .ab-footer-col ul li a:hover {
+            color: var(--gold);
+        }
+
+        .ab-footer-bottom {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .ab-footer-bottom p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .ab-footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .ab-footer-bottom-links a {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .ab-footer-bottom-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .ab-profile-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 56px;
+            }
+
+            .ab-why-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .ab-bento {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .ab-bento-card.wide {
+                grid-column: span 2;
+            }
+
+            .ab-bento-card.tall {
+                grid-row: auto;
+            }
+
+            .ab-footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+
+            .ab-numbers-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ab-num-cell {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            }
+
+            .ab-num-cell:nth-child(3),
+            .ab-num-cell:nth-child(4) {
+                border-bottom: none;
+            }
+
+            .ab-num-cell:nth-child(odd) {
+                border-right: 1px solid rgba(255, 255, 255, 0.07);
+            }
+
+            .ab-num-cell:nth-child(even) {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ab-banner {
+                padding: 64px 0 48px;
+            }
+
+            .ab-banner-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .ab-banner-meta {
+                text-align: left;
+            }
+
+            .ab-banner-meta p {
+                margin-left: 0;
+            }
+
+            .ab-profile-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .ab-img-accent {
+                top: -8px;
+                left: -8px;
+                right: 8px;
+                bottom: 8px;
+            }
+
+            .ab-badge {
+                position: static;
+                margin-top: 20px;
+                display: inline-block;
+            }
+
+            .ab-bento {
+                grid-template-columns: 1fr;
+            }
+
+            .ab-bento-card.wide {
+                grid-column: span 1;
+            }
+
+            .ab-team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ab-awards-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ab-award-cell {
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .ab-award-cell:nth-child(3),
+            .ab-award-cell:nth-child(4) {
+                border-bottom: none;
+            }
+
+            .ab-award-cell:nth-child(odd) {
+                border-right: 1px solid var(--border-color);
+            }
+
+            .ab-award-cell:nth-child(even) {
+                border-right: none;
+            }
+        }
+    </style>
 </head>
-<body class="dark-mode">
 
-    <!-- Navigation Header -->
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="../index.html" class="logo">
-                APEXGROWTH<span class="logo-dot">.</span>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="mainNav" role="navigation" aria-label="Main Navigation">
+        <div class="container">
+            <!-- Brand -->
+            <a aria-label="ApexGrowth Home" class="nav-brand" href="../index.html" id="navBrand">
+                <span class="nav-brand-wordmark">APEXGROWTH<span>.</span></span>
             </a>
-            
-            <nav class="nav-menu" id="nav-menu">
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Home</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../index.html" class="nav-dropdown-link">Home 1 (Portal)</a>
-                        <a href="../home-2.html" class="nav-dropdown-link">Home 2 (Creative)</a>
+
+            <!-- Primary Nav Links -->
+            <ul class="nav-links" id="navLinks" role="list">
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="homeDropdown">
+                        Home <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="homeDropdown">
+                        <li role="none"><a href="../index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 - Minimal</a></li>
+                        <li role="none"><a href="../home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item active">
+                    <a href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="case-studies.html">Case Studies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="dashDropdown">
+                        Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dashDropdown">
+                        <li role="none"><a href="../dashboard/index.html" role="menuitem"><i class="fas fa-user-circle"></i> Client Portal</a></li>
+                        <li role="none"><a href="../dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-mobile-controls">
+                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction">
+                        <span class="dir-text">RTL</span>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="nav-controls">
+                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <div class="nav-sep" aria-hidden="true"></div>
+                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction">
+                    <span class="dir-text">RTL</span>
+                </button>
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+    <main>
+        <!-- 1. BANNER -->
+        <section class="ab-banner">
+            <div class="container">
+                <div class="ab-banner-inner" data-aos="fade-up">
+                    <div>
+                        <p class="ab-eyebrow">Our Story</p>
+                        <h1>We Built an Agency<br>Based on <em>Truth.</em></h1>
+                    </div>
+                    <div class="ab-banner-meta">
+                        <p>ApexGrowth was founded to eliminate agency opacity. We believe clients deserve real-time campaign performance tracking and absolute clarity, not delayed summaries.</p>
                     </div>
                 </div>
-                <a href="about.html" class="nav-link active">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="case-studies.html" class="nav-link">Case Studies</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Dashboard</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../dashboard/index.html" class="nav-dropdown-link">Client Portal</a>
-                        <a href="../dashboard/admin-index.html" class="nav-dropdown-link">Admin Console</a>
+            </div>
+        </section>
+
+        <!-- 2. SPLIT PROFILE -->
+        <section class="ab-profile">
+            <div class="container">
+                <div class="ab-profile-grid">
+                    <div class="ab-img-stack" data-aos="fade-right">
+                        <div class="ab-img-accent"></div>
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="ApexGrowth Office Room" class="ab-img-main">
+                        <div class="ab-badge">
+                            <strong>10+</strong>
+                            <span>Years of Growth</span>
+                        </div>
+                    </div>
+                    <div class="ab-profile-text" data-aos="fade-left">
+                        <h2>Transparent Strategy. Tangible Revenue.</h2>
+                        <p>ApexGrowth began with a team of performance marketing specialists who realized that traditional agencies spend too much time crafting reports rather than executing campaigns. We designed our custom portal dashboard from the ground up to automate this sync, providing our clients with 24/7 campaign tracking metrics.</p>
+                        <p>We integrate specialized developers, search engine architects, and ad buyers to construct acquisition funnels. Every dollar spent is traceable, allowing for profitable budget scaling.</p>
                     </div>
                 </div>
-            </nav>
-
-            <div class="nav-actions">
-                <!-- Theme Toggler -->
-                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
-                    <span class="theme-toggle-icon">☀️</span>
-                </button>
-                <!-- RTL Toggler -->
-                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
-                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
-                </button>
-                <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
-                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
             </div>
-        </div>
-    </header>
+        </section>
 
-    <!-- Page Title Hero -->
-    <section class="hero" style="padding: 140px 0 60px;">
-        <div class="container" style="text-align: center;">
-            <span class="hero-tag">OUR STORY</span>
-            <h1 style="font-size: 3rem; margin-bottom: 16px;">We Built an Agency Based on Truth.</h1>
-            <p style="margin: 0 auto; max-width: 680px;">ApexGrowth was founded to eliminate agency opacity. We believe clients deserve real-time campaign performance tracking and clear metrics, not monthly summaries.</p>
-        </div>
-    </section>
-
-    <!-- Agency Story & Vision -->
-    <section class="cases-section">
-        <div class="container grid-2" style="align-items: center;">
-            <div>
-                <h2 style="font-size: 2rem; margin-bottom: 20px;">Transparent Strategy. Tangible Revenue.</h2>
-                <p style="color:var(--text-muted); margin-bottom: 20px;">ApexGrowth began in 2018 with a team of three media specialists. Today, we manage over $12M in annual ad spend for digital and SaaS brands, consistently focusing on data integrity and real business outcomes.</p>
-                <p style="color:var(--text-muted);">We integrate specialized developers, analysts, and content designers to construct growth funnels that deliver measurable ROI.</p>
+        <!-- 3. NUMBERS CELL STRIP -->
+        <section class="ab-numbers">
+            <div class="ab-numbers-row">
+                <div class="ab-num-cell" data-aos="zoom-in">
+                    <strong class="p1-counter" data-target="380" data-suffix="%">0%</strong>
+                    <span>Traffic Growth</span>
+                </div>
+                <div class="ab-num-cell" data-aos="zoom-in" data-aos-delay="80">
+                    <strong class="p1-counter" data-target="4" data-suffix=".6x">0.0x</strong>
+                    <span>Average ROAS</span>
+                </div>
+                <div class="ab-num-cell" data-aos="zoom-in" data-aos-delay="160">
+                    <strong class="p1-counter" data-target="48" data-suffix="M+">$0M+</strong>
+                    <span>Revenue Scaled</span>
+                </div>
+                <div class="ab-num-cell" data-aos="zoom-in" data-aos-delay="240">
+                    <strong class="p1-counter" data-target="100" data-suffix="%">0%</strong>
+                    <span>Dashboard Sync</span>
+                </div>
             </div>
-            <div style="background: var(--hero-gradient); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:40px; text-align:center;">
-                <h3 style="margin-bottom:12px;">Our Mission & Vision</h3>
-                <blockquote style="font-style: italic; font-size:1.1rem; color:var(--text-color); margin-bottom:20px;">"To empower growth-stage businesses through transparent data models, ensuring every dollar spent yields traceable conversion value."</blockquote>
-                <p style="font-size:0.875rem; font-weight:600; color:var(--primary);">– ApexGrowth Leadership Core</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Why Choose Us & Culture -->
-    <section class="cases-section" style="background-color: var(--bg-color);">
+        <!-- 4. MISSION/VISION BENTO -->
+        <section class="ab-mv">
+            <div class="container">
+                <div class="ab-mv-header" data-aos="fade-up">
+                    <span class="ab-eyebrow" style="text-align: center;">Our Standards</span>
+                    <h2>How We Prioritize Performance</h2>
+                </div>
+                
+                <div class="ab-bento" data-aos="fade-up">
+                    <div class="ab-bento-card tall dark">
+                        <div class="ab-bento-quote">"To empower growth-stage businesses through transparent data models, ensuring every dollar spent yields traceable conversion value."</div>
+                        <div class="ab-bento-quote-attr">– ApexGrowth Leadership Core</div>
+                    </div>
+                    <div class="ab-bento-card">
+                        <div class="ab-bento-icon"><i class="fas fa-eye"></i></div>
+                        <h3>Complete Transparency</h3>
+                        <p>Log in to inspect key leads, ROI metrics, spent rates, approvals, and invoicing logs. No secrets, no gatekeeping.</p>
+                    </div>
+                    <div class="ab-bento-card">
+                        <div class="ab-bento-icon"><i class="fas fa-flask"></i></div>
+                        <h3>Continuous Testing</h3>
+                        <p>We design and deploy monthly A/B experiments across headings, creatives, search terms, and user landing configurations.</p>
+                    </div>
+                    <div class="ab-bento-card wide">
+                        <div class="ab-bento-icon" style="margin-left: 0;"><i class="fas fa-medal"></i></div>
+                        <h3>Enterprise Execution Standards</h3>
+                        <p>All campaigns are structured by certified specialists with direct platform experience, ensuring robust configurations. We sync details directly into active channels to prevent lead capture leaks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. WHY CHOOSE US -->
+        <section class="ab-why">
+            <div class="container">
+                <div class="ab-why-grid">
+                    <div class="ab-why-left" data-aos="fade-right">
+                        <span class="ab-eyebrow">Our Pillars</span>
+                        <h2>Verified Platforms &amp; Partnerships</h2>
+                        <p>Our agency holds active partner credentials across the world's leading advertising and marketing networks, ensuring we follow platform optimization directives.</p>
+                        <a href="contact.html" class="btn btn-primary">Book Consultation</a>
+                    </div>
+                    
+                    <div class="ab-why-pillars" data-aos="fade-left">
+                        <div class="ab-pillar">
+                            <div class="ab-pillar-num">01</div>
+                            <div class="ab-pillar-body">
+                                <h4>Google Premier Partner</h4>
+                                <p>Recognized in the top 3% of agencies for managing budget margins and meeting search performance targets.</p>
+                            </div>
+                        </div>
+                        <div class="ab-pillar">
+                            <div class="ab-pillar-num">02</div>
+                            <div class="ab-pillar-body">
+                                <h4>Meta Business Partner</h4>
+                                <p>Certified in advanced social advertising, custom pixel integrations, and catalog media structures.</p>
+                            </div>
+                        </div>
+                        <div class="ab-pillar">
+                            <div class="ab-pillar-num">03</div>
+                            <div class="ab-pillar-body">
+                                <h4>HubSpot Gold Agency</h4>
+                                <p>Specialized in landing page automation workflows, customer relationship data, and email segments.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. TEAM -->
+        <section class="ab-team" id="team">
+            <div class="container">
+                <div class="ab-team-header" data-aos="fade-up">
+                    <span class="ab-eyebrow">Leadership</span>
+                    <h2>Meet Our Strategists</h2>
+                    <p>A group of performance marketing partners dedicated to building high-value acquisition funnels.</p>
+                </div>
+                
+                <div class="ab-team-grid">
+                    <div class="ab-team-card" data-aos="fade-up">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=460&q=80" alt="Ashok Mishra" class="ab-team-img">
+                        <div class="ab-team-info">
+                            <span class="ab-team-role">Founder & Growth Lead</span>
+                            <h3>Ashok Mishra</h3>
+                            <p>Ashok has 10+ years scaling e-commerce brands and setting marketing performance standards.</p>
+                        </div>
+                    </div>
+                    <div class="ab-team-card" data-aos="fade-up" data-aos-delay="80">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=460&q=80" alt="Sarah Chen" class="ab-team-img">
+                        <div class="ab-team-info">
+                            <span class="ab-team-role">Head of Search Performance</span>
+                            <h3>Sarah Chen</h3>
+                            <p>Specializing in organic search architectures and high-growth technical SEO content schemas.</p>
+                        </div>
+                    </div>
+                    <div class="ab-team-card" data-aos="fade-up" data-aos-delay="160">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&h=460&q=80" alt="Marcus Kincaid" class="ab-team-img">
+                        <div class="ab-team-info">
+                            <span class="ab-team-role">Director of Paid Media</span>
+                            <h3>Marcus Kincaid</h3>
+                            <p>Marcus specializes in paid ads, conversion testing, and customer acquisition campaigns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. ACCOLADES -->
+        <section class="ab-awards">
+            <div class="container">
+                <div class="ab-awards-row">
+                    <div class="ab-award-cell" data-aos="fade-up">
+                        <i class="fas fa-trophy"></i>
+                        <h4>Horizon Awards</h4>
+                        <p>Best Global Agency (2024)</p>
+                    </div>
+                    <div class="ab-award-cell" data-aos="fade-up" data-aos-delay="80">
+                        <i class="fas fa-medal"></i>
+                        <h4>US Agency Awards</h4>
+                        <p>Best Enterprise SEO (2025)</p>
+                    </div>
+                    <div class="ab-award-cell" data-aos="fade-up" data-aos-delay="160">
+                        <i class="fas fa-crown"></i>
+                        <h4>Webby Awards</h4>
+                        <p>Best Client Portal UI (2026)</p>
+                    </div>
+                    <div class="ab-award-cell" data-aos="fade-up" data-aos-delay="240">
+                        <i class="fas fa-handshake"></i>
+                        <h4>Stripe Certified</h4>
+                        <p>Billing Automation Partner</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CTA -->
+        <section class="ab-cta">
+            <div class="container" data-aos="fade-up">
+                <h2>Scale with absolute clarity.</h2>
+                <p>Join over 40+ brands tracking real-time acquisition rates. Request a detailed performance audit with our growth team.</p>
+                <div class="ab-cta-btns">
+                    <a href="contact.html" class="btn btn-primary" style="padding:16px 40px; font-size:1rem;">Schedule Growth Audit</a>
+                    <a href="services.html" class="btn btn-outline" style="padding:16px 40px; font-size:1rem;">Explore Capabilities</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="ab-footer">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Culture & Standards</h2>
-                <p>How we work, align campaigns, and prioritize customer experience.</p>
-            </div>
-            
-            <div class="grid-3">
-                <div class="service-card">
-                    <h3 style="font-size: 1.25rem; margin-bottom:12px;">📊 Complete Transparency</h3>
-                    <p style="font-size: 0.95rem; color:var(--text-muted);">Log in to check leads, ROI, spent rates, approvals, and invoicing logs anytime.</p>
-                </div>
-                <div class="service-card">
-                    <h3 style="font-size: 1.25rem; margin-bottom:12px;">🚀 Continuous Testing</h3>
-                    <p style="font-size: 0.95rem; color:var(--text-muted);">We test headlines, ad segments, keywords, and funnel steps for optimization validation.</p>
-                </div>
-                <div class="service-card">
-                    <h3 style="font-size: 1.25rem; margin-bottom:12px;">🏆 Expert Delivery</h3>
-                    <p style="font-size: 0.95rem; color:var(--text-muted);">Our specialists hold premium certifications across major digital ad platforms.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leadership Team -->
-    <section class="cases-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">LEADERS</span>
-                <h2>Meet the Team</h2>
-            </div>
-            
-            <div class="grid-3">
-                <!-- Member 1 -->
-                <div style="background-color: var(--panel-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; text-align: center; padding: 30px;">
-                    <div style="width: 100px; height: 100px; border-radius: 50%; background-color: var(--primary-glow); color:var(--primary); font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">AM</div>
-                    <h3 style="font-size:1.2rem; margin-bottom: 4px;">Ashok Mishra</h3>
-                    <p style="color:var(--primary); font-size:0.875rem; font-weight:600; margin-bottom: 12px;">Founder & Growth Strategist</p>
-                    <p style="color:var(--text-muted); font-size:0.9rem;">Ashok has 10+ years scaling e-commerce brands and setting marketing performance standards.</p>
-                </div>
-                <!-- Member 2 -->
-                <div style="background-color: var(--panel-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; text-align: center; padding: 30px;">
-                    <div style="width: 100px; height: 100px; border-radius: 50%; background-color: var(--accent-glow); color:var(--accent); font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">SC</div>
-                    <h3 style="font-size:1.2rem; margin-bottom: 4px;">Sarah Chen</h3>
-                    <p style="color:var(--primary); font-size:0.875rem; font-weight:600; margin-bottom: 12px;">Head of Search Performance</p>
-                    <p style="color:var(--text-muted); font-size:0.9rem;">Specializing in organic search architectures and high-growth technical SEO content schemas.</p>
-                </div>
-                <!-- Member 3 -->
-                <div style="background-color: var(--panel-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; text-align: center; padding: 30px;">
-                    <div style="width: 100px; height: 100px; border-radius: 50%; background-color: var(--primary-glow); color:var(--primary); font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">MK</div>
-                    <h3 style="font-size:1.2rem; margin-bottom: 4px;">Marcus Kincaid</h3>
-                    <p style="color:var(--primary); font-size:0.875rem; font-weight:600; margin-bottom: 12px;">Director of Paid Media</p>
-                    <p style="color:var(--text-muted); font-size:0.9rem;">Marcus specializes in paid ads, conversion testing, and customer acquisition campaigns.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications & Awards -->
-    <section class="cases-section" style="background-color: var(--bg-color);">
-        <div class="container grid-2">
-            <div>
-                <h3 style="font-size:1.75rem; margin-bottom:20px;">Certifications & Partnerships</h3>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-weight: 600;">
-                    <li>✓ Google Premier Partner</li>
-                    <li>✓ Meta Business Partner</li>
-                    <li>✓ HubSpot Gold Provider</li>
-                    <li>✓ Stripe Verified Partner</li>
-                </ul>
-            </div>
-            <div>
-                <h3 style="font-size:1.75rem; margin-bottom:20px;">Awards & Recognition</h3>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-weight: 600;">
-                    <li>🏆 Horizon Interactive Awards - Best Marketing Agency (2024)</li>
-                    <li>🏆 US Agency Awards - Best SEO Campaign Winner (2025)</li>
-                    <li>🏆 Webby Awards Nominee - Best Client Service Portal (2026)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="../index.html" class="logo" style="color:#ffffff;">APEXGROWTH<span class="logo-dot">.</span></a>
+            <div class="ab-footer-grid">
+                <div class="ab-footer-brand">
+                    <h2>APEXGROWTH.</h2>
                     <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and automation.</p>
-                    <div class="footer-socials">
-                        <a href="#" class="footer-social-link">FB</a>
-                        <a href="#" class="footer-social-link">LN</a>
-                        <a href="#" class="footer-social-link">TW</a>
+                    <div class="p1-socials" style="margin-top: 16px;">
+                        <a href="#" class="p1-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="p1-social" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="p1-social" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="p1-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div>
-                    <h4 class="footer-title">Home Pages</h4>
-                    <ul class="footer-links">
-                        <li><a href="../index.html">Home 1 (Portal)</a></li>
-                        <li><a href="../home-2.html">Home 2 (Creative)</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer-title">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="service-seo.html">SEO Optimization</a></li>
-                        <li><a href="service-ppc.html">Paid Advertisements</a></li>
-                        <li><a href="service-cro.html">Conversion Funnels</a></li>
-                        <li><a href="service-email.html">Email Automation</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer-title">Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Team</a></li>
+                <div class="ab-footer-col">
+                    <h4>Agency</h4>
+                    <ul>
+                        <li><a href="about.html">Our Philosophy</a></li>
+                        <li><a href="services.html">Capabilities</a></li>
                         <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="ab-footer-col">
+                    <h4>Portal</h4>
+                    <ul>
+                        <li><a href="login.html">Client Login</a></li>
+                        <li><a href="../dashboard/index.html">My Dashboard</a></li>
+                        <li><a href="../dashboard/admin-index.html">Admin Console</a></li>
                         <li><a href="pricing.html">Pricing Plans</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="footer-title">Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="blog.html">Marketing Blog</a></li>
+                <div class="ab-footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">100 Innovation Way, Suite 400</a></li>
+                        <li><a href="#">Austin, TX 78701</a></li>
+                        <li><a href="tel:+15125550199">+1 (512) 555-0199</a></li>
+                        <li><a href="mailto:contact@apexgrowth-agency.com">contact@apexgrowth-agency.com</a></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
-                <div class="footer-bottom-links">
+            <div class="ab-footer-bottom">
+                <p>&copy; 2026 ApexGrowth Agency. All Rights Reserved.</p>
+                <div class="ab-footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                 </div>
@@ -216,7 +1138,9 @@
         </div>
     </footer>
 
-    <!-- JS Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script>AOS.init({ duration: 700, once: true, offset: 50 });</script>
 </body>
+
 </html>

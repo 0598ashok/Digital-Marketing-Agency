@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | ApexGrowth Agency</title>
     <meta name="description" content="Reach out to our marketing team. Schedule a strategy review or request a campaign audit report.">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body class="dark-mode">
@@ -54,48 +55,91 @@
     </header>
 
     <!-- Page Title Hero -->
-    <section class="hero" style="padding: 140px 0 60px;">
-        <div class="container" style="text-align: center;">
-            <span class="hero-tag">GET IN TOUCH</span>
-            <h1 style="font-size: 3rem; margin-bottom: 16px;">Let's Discuss Your Growth Targets</h1>
-            <p style="margin: 0 auto; max-width: 680px;">Request a free audit report, discuss partnership models, or schedule a strategy review call.</p>
+    <section class="hero" style="padding: 180px 0 120px; position: relative; overflow: hidden;">
+        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:80vw; height:80vw; max-width:800px; max-height:800px; background:radial-gradient(circle, var(--primary-glow) 0%, transparent 70%); z-index:0; border-radius:50%; pointer-events:none;"></div>
+        <div class="container" style="text-align: center; position: relative; z-index: 1;">
+            <span class="hero-tag" style="background: var(--brand-gradient); color: #ffffff; border: none; padding: 6px 16px;">GET IN TOUCH</span>
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px;">Let's Discuss Your Growth Targets</h1>
+            <p style="margin: 0 auto; max-width: 680px; font-size: 1.1rem; color: var(--text-muted);">Request a free audit report, discuss partnership models, or schedule a comprehensive strategy review call with our marketing specialists.</p>
         </div>
     </section>
 
-    <!-- Contact Content Grid -->
-    <section class="cases-section">
-        <div class="container grid-2">
+    <!-- Contact Content Hub -->
+    <section class="cases-section" style="padding-top: 0; position: relative;">
+        <div class="container">
             
-            <!-- Contact details & map -->
-            <div>
-                <h2 style="font-size:2rem; margin-bottom:20px;">Agency Head Office</h2>
-                <p style="color:var(--text-muted); margin-bottom:30px;">ApexGrowth Agency Inc.<br>100 Innovation Way, Suite 400<br>Austin, TX 78701<br><br>📞 Phone: +1-512-555-0199<br>✉️ Email: strategy@apexgrowth.com</p>
+            <!-- 3-Column Floating Contact Cards -->
+            <div class="contact-cards-grid">
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <i class="ph ph-headset"></i>
+                    </div>
+                    <h3 style="font-size:1.2rem; margin-bottom:12px;">Sales & Partnerships</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">Speak with our growth experts about pricing and custom campaign models.</p>
+                    <a href="tel:+15125550199" style="color:var(--primary); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                        <i class="ph ph-phone"></i> +1 (512) 555-0199
+                    </a>
+                </div>
                 
-                <!-- Google Map frame -->
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.6272449551465!2d-97.743060784876!3d30.272920981797435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b508f7b3df6d%3A0xe10439da5bc6b75e!2sAustin%20City%20Hall!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <i class="ph ph-envelope-open"></i>
+                    </div>
+                    <h3 style="font-size:1.2rem; margin-bottom:12px;">Support & Operations</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">Current clients can reach out here for technical assistance and reporting.</p>
+                    <a href="mailto:strategy@apexgrowth.com" style="color:var(--primary); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                        <i class="ph ph-paper-plane-tilt"></i> strategy@apexgrowth.com
+                    </a>
+                </div>
+                
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <i class="ph ph-map-pin"></i>
+                    </div>
+                    <h3 style="font-size:1.2rem; margin-bottom:12px;">Global Headquarters</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">ApexGrowth Agency Inc.<br>100 Innovation Way, Suite 400<br>Austin, TX 78701</p>
+                    <a href="#map" style="color:var(--primary); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                        <i class="ph ph-navigation-arrow"></i> Get Directions
+                    </a>
                 </div>
             </div>
 
-            <!-- Form Validation block -->
-            <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:40px;">
-                <h3 style="font-size:1.5rem; margin-bottom:24px;">Send Direct Inquiry</h3>
-                <form id="contact-inquiry-form" onsubmit="event.preventDefault(); alert('Message submitted successfully! We will get back to you within 3 business hours.')" style="display:flex; flex-direction:column; gap:16px;">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Your Work Email</label>
-                        <input type="email" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Message Content</label>
-                        <textarea class="form-input" rows="4" placeholder="How can our marketing specialists help you?" required style="resize:none;"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="margin-top:10px;">Send Message</button>
-                    <button type="button" class="btn btn-secondary trigger-strategy-call">Book Call Inline</button>
-                </form>
+            <!-- Sleek Split-Panel (Form + Map) -->
+            <div class="contact-split" id="map">
+                
+                <!-- Premium Form Panel -->
+                <div class="contact-split-form">
+                    <h2 style="font-size:2rem; margin-bottom:8px; font-weight:700;">Send Direct Inquiry</h2>
+                    <p style="color:var(--text-muted); margin-bottom:32px;">Fill out the form below and we'll get back to you within 3 business hours.</p>
+                    
+                    <form id="contact-inquiry-form" onsubmit="event.preventDefault(); alert('Message submitted successfully! We will get back to you within 3 business hours.')" style="display:flex; flex-direction:column; gap:20px;">
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;" class="form-grid-mobile">
+                            <div class="form-group" style="margin:0;">
+                                <label style="font-weight:600; font-size:0.9rem; margin-bottom:8px; display:block;">Your Name</label>
+                                <input type="text" class="form-input premium-input" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group" style="margin:0;">
+                                <label style="font-weight:600; font-size:0.9rem; margin-bottom:8px; display:block;">Work Email</label>
+                                <input type="email" class="form-input premium-input" placeholder="john@company.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin:0;">
+                            <label style="font-weight:600; font-size:0.9rem; margin-bottom:8px; display:block;">Message Content</label>
+                            <textarea class="form-input premium-input" rows="5" placeholder="How can our marketing specialists help you scale?" required style="resize:none; padding:16px;"></textarea>
+                        </div>
+                        
+                        <div style="display:flex; gap:16px; margin-top:12px; flex-wrap:wrap;">
+                            <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center; padding:14px; font-size:1rem;">Send Message</button>
+                            <button type="button" class="btn btn-secondary trigger-strategy-call" style="flex:1; justify-content:center; padding:14px; font-size:1rem; border:1px solid var(--border-color);">Book Call Inline</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Seamless Embedded Map -->
+                <div class="contact-split-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.6272449551465!2d-97.743060784876!3d30.272920981797435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b508f7b3df6d%3A0xe10439da5bc6b75e!2sAustin%20City%20Hall!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
             </div>
 
         </div>

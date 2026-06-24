@@ -6,6 +6,7 @@
     <title>Admin Dashboard | ApexGrowth Agency</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body class="dashboard-body dark-mode admin-mode">
 
@@ -13,19 +14,17 @@
         
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-brand">
-                APEXADMIN<span class="logo-dot">.</span>
-            </div>
+            <a href="../index.html" class="sidebar-brand" style="text-decoration:none; color:inherit;">APEXADMIN<span class="logo-dot">.</span></a>
             <ul class="sidebar-menu">
-                <li class="sidebar-item active"><a href="admin-index.html">📊 Analytics Overview</a></li>
-                <li class="sidebar-item"><a href="admin-users.html">👥 User Management</a></li>
-                <li class="sidebar-item"><a href="admin-clients.html">💼 Client Profiles</a></li>
-                <li class="sidebar-item"><a href="admin-reports.html">📄 Site Audits</a></li>
-                <li class="sidebar-item"><a href="admin-invoices.html">💳 Billing Console</a></li>
-                <li class="sidebar-item"><a href="admin-settings.html">⚙️ System Settings</a></li>
-                <li class="sidebar-item"><a href="admin-content.html">✍️ Content Manager</a></li>
+                <li class="sidebar-item active"><a href="admin-index.html"><i class="ph ph-chart-bar" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Analytics Overview</a></li>
+                <li class="sidebar-item"><a href="admin-users.html"><i class="ph ph-users" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> User Management</a></li>
+                <li class="sidebar-item"><a href="admin-clients.html"><i class="ph ph-briefcase" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Client Profiles</a></li>
+                <li class="sidebar-item"><a href="admin-reports.html"><i class="ph ph-magnifying-glass" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Site Audits</a></li>
+                <li class="sidebar-item"><a href="admin-invoices.html"><i class="ph ph-credit-card" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Billing Console</a></li>
+                <li class="sidebar-item"><a href="admin-settings.html"><i class="ph ph-gear-six" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> System Settings</a></li>
+                <li class="sidebar-item"><a href="admin-content.html"><i class="ph ph-pen-nib" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Content Manager</a></li>
                 <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
-                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                    <a href="../index.html" style="color:var(--danger); font-weight:600;"><i class="ph ph-sign-out" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Logout</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -42,21 +41,32 @@
             <!-- Header -->
             <header class="dashboard-header">
                 <div style="display:flex; align-items:center; gap:16px;">
-                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar"><i class="ph ph-list" style="font-size:1.5rem;"></i></button>
                     <div class="dashboard-header-title">
-                        <h1>Admin Overview</h1>
+                        <h1 style="margin:0; font-size:1.5rem; font-weight:700;">Admin Overview</h1>
                     </div>
                 </div>
-                <div class="dashboard-header-actions">
-                    <button class="control-btn theme-toggle-btn" title="Toggle Theme">
-                        <span class="theme-toggle-icon">☀️</span>
+                <div class="dashboard-header-actions" style="display:flex; align-items:center; gap:12px;">
+                    <div class="header-search hidden-mobile" style="position:relative; margin-right:8px;">
+                        <i class="ph ph-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:1.1rem;"></i>
+                        <input type="text" placeholder="Search admin console..." style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:8px 16px 8px 38px; color:var(--text-color); font-size:0.9rem; outline:none; width:240px; transition:all 0.2s;">
+                    </div>
+                    
+                    <button class="control-btn" title="Notifications" style="position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <i class="ph ph-bell" style="font-size:1.2rem;"></i>
+                        <span style="position:absolute; top:8px; right:10px; width:8px; height:8px; background:var(--danger); border-radius:50%; border:2px solid var(--panel-bg);"></span>
                     </button>
-                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL">
+
+                    <button class="control-btn theme-toggle-btn" title="Toggle Theme" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <span class="theme-toggle-icon"><i class="ph ph-sun" style="font-size:1.2rem;"></i></span>
+                    </button>
+                    
+                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; font-weight:600; font-size:0.8rem; transition:all 0.2s;">
                         <span class="rtl-toggle-text">LTR</span>
                     </button>
-                    <div style="display:flex; align-items:center; gap:10px;">
-                        <span style="width:8px; height:8px; background-color:var(--success); border-radius:50%;"></span>
-                        <span style="font-size:0.8rem; font-weight:600; color:var(--text-muted);">Global Sync</span>
+                    
+                    <div class="header-profile" style="width:40px; height:40px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; cursor:pointer; margin-left:8px; border:2px solid var(--panel-bg); box-shadow:0 0 0 1px var(--border-color);">
+                        AD
                     </div>
                 </div>
             </header>
@@ -76,7 +86,7 @@
                     <div class="metric-card">
                         <div class="metric-card-header">
                             <span class="metric-card-title">Active Spend Managed</span>
-                            <span class="metric-card-icon" style="background-color:rgba(147,51,234,0.15); color:#9333ea;">📈</span>
+                            <span class="metric-card-icon" style="background-color:rgba(147,51,234,0.15); color:#9333ea;"><i class="ph ph-trend-up"></i></span>
                         </div>
                         <div class="metric-card-value">$75,500</div>
                         <div class="metric-card-change up">↑ 14% vs last month</div>
@@ -112,31 +122,56 @@
                     </div>
                 </div>
 
-                <!-- Recent operations & alerts -->
-                <div class="grid-2">
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
-                        <h3 style="font-size:1.15rem; margin-bottom:20px;">System Status & Tasks</h3>
-                        <ul style="list-style:none; display:flex; flex-direction:column; gap:16px; font-size:0.9rem;">
-                            <li style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
-                                <span>🌐 Google Ads API Integration Status</span>
-                                <span class="status-badge paid" style="background-color:rgba(16,185,129,0.15); color:var(--success);">ONLINE</span>
-                            </li>
-                            <li style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
-                                <span>👍 Meta Conversions API Webhook Connection</span>
-                                <span class="status-badge paid" style="background-color:rgba(16,185,129,0.15); color:var(--success);">CONNECTED</span>
-                            </li>
-                            <li style="display:flex; justify-content:space-between;">
-                                <span>🚀 Client Creative Approvals Activity</span>
-                                <span style="color:var(--text-muted);">1 pending approval review</span>
-                            </li>
+                <!-- Command Center Feed & Actions -->
+                <div class="command-center-grid" style="display:grid; grid-template-columns: 2fr 1fr; gap:24px; margin-top:24px;">
+                    <!-- Terminal Feed -->
+                    <div style="background-color:#0d0e15; border:1px solid #1e2030; border-radius:var(--radius-lg); padding:24px; position:relative; overflow:hidden;">
+                        <div style="position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--primary), #3b82f6);"></div>
+                        <h3 style="font-size:1rem; margin-bottom:20px; font-family:monospace; color:#8b949e; display:flex; justify-content:space-between; align-items:center;">
+                            <span>>_ LIVE_SYSTEM_LOGS</span>
+                            <span style="display:flex; gap:6px;">
+                                <span style="width:8px; height:8px; border-radius:50%; background-color:#ef4444;"></span>
+                                <span style="width:8px; height:8px; border-radius:50%; background-color:#f59e0b;"></span>
+                                <span style="width:8px; height:8px; border-radius:50%; background-color:#10b981;"></span>
+                            </span>
+                        </h3>
+                        <ul style="list-style:none; display:flex; flex-direction:column; gap:12px; font-family:monospace; font-size:0.85rem; color:#a3b3cc;">
+                            <li><span style="color:#10b981;">[SUCCESS]</span> Google Ads API synced... <span style="opacity:0.5;">0ms</span></li>
+                            <li><span style="color:#10b981;">[SUCCESS]</span> Meta Conversions API connected... <span style="opacity:0.5;">12ms</span></li>
+                            <li><span style="color:#3b82f6;">[INFO]</span> 3 new client creative approvals pending...</li>
+                            <li><span style="color:#f59e0b;">[WARN]</span> High latency detected on API endpoint /v1/reports...</li>
+                            <li><span style="color:#10b981;">[SUCCESS]</span> Automated billing run completed for 12 accounts.</li>
+                            <li style="color:#3b82f6;">_</li>
                         </ul>
                     </div>
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; display:flex; flex-direction:column; justify-content:space-between;">
-                        <div>
-                            <h3 style="font-size:1.15rem; margin-bottom:12px;">Onboarding Checklists</h3>
-                            <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Alpha Tech has submitted their discovery form assets. Review their targeting parameters inside the Client Profiles portal.</p>
-                        </div>
-                        <a href="admin-clients.html" class="btn btn-primary btn-sm" style="align-self:flex-start;">Onboarding Hub &rarr;</a>
+
+                    <!-- Quick Actions Command -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:24px; display:flex; flex-direction:column; gap:16px;">
+                        <h3 style="font-size:1rem; color:var(--text-color); margin-bottom:8px;">Command Modules</h3>
+                        
+                        <a href="admin-clients.html" class="command-module" style="display:flex; align-items:center; gap:12px; padding:12px; border-radius:var(--radius-md); background:var(--bg-color); border:1px solid var(--border-color); text-decoration:none; color:var(--text-color); transition:all 0.2s;">
+                            <div style="width:36px; height:36px; border-radius:8px; background:rgba(147,51,234,0.1); color:#9333ea; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">💼</div>
+                            <div>
+                                <div style="font-weight:600; font-size:0.9rem;">Onboarding Hub</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">1 Pending Review</div>
+                            </div>
+                        </a>
+
+                        <a href="admin-reports.html" class="command-module" style="display:flex; align-items:center; gap:12px; padding:12px; border-radius:var(--radius-md); background:var(--bg-color); border:1px solid var(--border-color); text-decoration:none; color:var(--text-color); transition:all 0.2s;">
+                            <div style="width:36px; height:36px; border-radius:8px; background:rgba(16,185,129,0.1); color:var(--success); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">📊</div>
+                            <div>
+                                <div style="font-weight:600; font-size:0.9rem;">Trigger Audits</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">2 Audits Required</div>
+                            </div>
+                        </a>
+
+                        <a href="admin-content.html" class="command-module" style="display:flex; align-items:center; gap:12px; padding:12px; border-radius:var(--radius-md); background:var(--bg-color); border:1px solid var(--border-color); text-decoration:none; color:var(--text-color); transition:all 0.2s;">
+                            <div style="width:36px; height:36px; border-radius:8px; background:rgba(59,130,246,0.1); color:#3b82f6; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">✍️</div>
+                            <div>
+                                <div style="font-weight:600; font-size:0.9rem;">Deploy Content</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">Pipeline active</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1,425 +1,2286 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ApexGrowth | Premium Creative Campaigns & Performance Marketing</title>
-    <meta name="description" content="Scale your brand visibility with multi-channel creative campaign execution. Explore our campaign roadmap and get pricing details.">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <meta name="description"
+        content="ApexGrowth — premium data-driven performance digital marketing agency scaling brands with 100% dashboard transparency.">
+    <title>ApexGrowth | Power. Performance. Progress | Premium Marketing Agency</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://apexgrowth.agency/pages/home-2.html">
+    <meta property="og:title" content="ApexGrowth | Premium Performance Marketing">
+    <meta property="og:description" content="We scale high-growth brands with SEO, paid media, CRO, and email marketing. View our real-time campaign dashboard portal.">
+    <meta property="og:image" content="assets/images/creative-showcase.png">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Structured SEO Schema Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ApexGrowth",
-      "url": "https://apexgrowth-agency.com",
-      "logo": "https://apexgrowth-agency.com/assets/logo.png"
-    }
-    </script>
+    <style>
+        /* ══════════════════════════════════════════════════
+           HOME 2 — BOLD DARK CINEMATIC (High-Contrast Customizations)
+        ══════════════════════════════════════════════════ */
+
+        /* ── 1. HERO: Full-bleed, bottom-anchored, LARGE type ── */
+        .p2-hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+
+        @media (max-width: 992px) {
+            .p2-hero {
+                height: auto;
+                min-height: 100vh;
+            }
+        }
+
+        .p2-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.06);
+            transition: transform 9s ease;
+            z-index: 0;
+        }
+
+        .p2-hero-bg.ken-burns {
+            transform: scale(1);
+        }
+
+        .p2-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                    #000 0%,
+                    rgba(15, 23, 42, 0.85) 35%,
+                    rgba(15, 23, 42, 0.4) 70%,
+                    rgba(15, 23, 42, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .p2-hero-noise {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .p2-hero .container {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .p2-hero-content {
+            position: relative;
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .p2-hero .container {
+                display: block;
+            }
+            .p2-hero-content {
+                position: static;
+                padding-top: 120px;
+                padding-bottom: 80px;
+            }
+        }
+
+        .p2-hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(6, 182, 212, 0.35);
+            padding: 8px 20px;
+            border-radius: 100px;
+            margin-bottom: 16px; /* Optimized tag margin */
+            backdrop-filter: blur(8px);
+        }
+
+        .p2-hero-tag span {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+        }
+
+        .p2-hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.3rem, 5vw, 4.2rem); /* Optimized title font size */
+            font-weight: 900;
+            color: #fff;
+            line-height: 0.95;
+            letter-spacing: -2px;
+            margin-bottom: 20px; /* Optimized title margin */
+        }
+
+        .p2-hero-title .outline {
+            -webkit-text-stroke: 2px var(--accent-gold);
+            color: transparent;
+        }
+
+        .p2-hero-bottom {
+            display: block;
+        }
+
+        .p2-hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .p2-hero-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            max-width: 440px;
+        }
+
+        .p2-hero-cta {
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .p2-hero-cta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        .p2-hero-cta-main {
+            padding: 16px 36px;
+            background: var(--accent-gold);
+            color: #000;
+            border-radius: 6px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: transform 0.2s, filter 0.2s;
+            white-space: nowrap;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .p2-hero-cta-main:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .p2-hero-cta-ghost {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s;
+            text-align: center;
+        }
+
+        .p2-hero-cta-ghost:hover {
+            color: var(--accent-gold);
+        }
+
+        .p2-hero-stats {
+            display: flex;
+            flex-direction: row;
+            gap: 32px;
+            justify-content: flex-start;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 992px) {
+            .p2-hero-stats {
+                gap: 24px;
+            }
+        }
+
+        .p2-hero-stat-item {
+            text-align: left;
+        }
+
+        .p2-hero-stat-item strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .p2-hero-stat-item span {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.45);
+            text-transform: uppercase;
+        }
+
+        /* ── CSS Hero Entrance Animations ── */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-animate {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.25s; }
+        .delay-3 { animation-delay: 0.4s; }
+        .delay-4 { animation-delay: 0.55s; }
+
+        /* Ticker at bottom of hero */
+        .p2-ticker-bar {
+            background: var(--accent-gold);
+            padding: 14px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            z-index: 5;
+        }
+
+        .p2-ticker-inner {
+            display: inline-flex;
+            gap: 48px;
+            animation: ticker 25s linear infinite;
+        }
+
+        .p2-ticker-inner span {
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .p2-ticker-inner i {
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 0.5rem;
+            vertical-align: middle;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ── 2. TRUSTED: Dark glass bar ── */
+        .p2-trusted {
+            padding: 56px 0;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .p2-trusted::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+        }
+
+        .p2-trusted-label {
+            text-align: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        .p2-trusted-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+        }
+
+        .p2-trust-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 24px 16px;
+            border-right: 1px solid var(--border-color);
+            transition: background 0.3s;
+        }
+
+        .p2-trust-card:last-child {
+            border-right: none;
+        }
+
+        .p2-trust-card:hover {
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        .p2-trust-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: var(--accent-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+        }
+
+        .p2-trust-card p {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* ── 3. FEATURES: Containerized alternating rows with gap ── */
+        .p2-services {
+            background: var(--bg-primary);
+            padding-bottom: 96px;
+        }
+
+        .p2-services-header {
+            padding: 96px 0 56px;
+            text-align: center;
+        }
+
+        .p2-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .p2-services-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+        }
+
+        .p2-services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 80px; /* Clean gap between rows */
+        }
+
+        .p2-service-row {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .p2-service-row.reverse {
+            grid-template-columns: 0.85fr 1.15fr;
+        }
+
+        .p2-service-img-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            aspect-ratio: 16/10;
+            transition: border-color 0.4s, box-shadow 0.4s;
+        }
+
+        .p2-service-row:hover .p2-service-img-wrapper {
+            border-color: rgba(6, 182, 212, 0.3);
+            box-shadow: 0 25px 50px rgba(6, 182, 212, 0.15);
+        }
+
+        .p2-service-img {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .p2-service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s;
+            filter: brightness(0.65) saturate(0.6);
+            display: block;
+        }
+
+        .p2-service-row:hover .p2-service-img img {
+            transform: scale(1.05);
+            filter: brightness(0.85) saturate(0.9);
+        }
+
+        .p2-service-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .p2-service-num-big {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.05);
+            line-height: 1;
+            margin-bottom: -16px;
+            transition: -webkit-text-stroke 0.4s, color 0.4s;
+        }
+
+        .p2-service-row:hover .p2-service-num-big {
+            -webkit-text-stroke: 1.5px transparent;
+            color: rgba(6, 182, 212, 0.1);
+        }
+
+        .p2-service-text h3 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .p2-service-text p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 24px;
+        }
+
+        .p2-service-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .p2-service-btn i {
+            font-size: 0.8rem;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .p2-service-btn:hover {
+            color: #fff;
+        }
+
+        .p2-service-btn:hover i {
+            transform: translateX(6px);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .p2-services-list {
+                gap: 56px;
+            }
+            .p2-service-row, .p2-service-row.reverse {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            /* Stack image on top for all elements on mobile */
+            .p2-service-row.reverse .p2-service-img-wrapper {
+                order: -1;
+            }
+            .p2-service-text {
+                padding: 0 8px;
+            }
+        }
+
+        /* ── 4. ABOUT: Dark overlay style ── */
+        .p2-about {
+            position: relative;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .p2-about-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.18) saturate(0.3);
+        }
+
+        .p2-about-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.75) 100%);
+        }
+
+        .p2-about-inner {
+            position: relative;
+            z-index: 2;
+            padding: 96px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .p2-about-nums {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .p2-about-num-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 32px 24px;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .p2-about-num-card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            background: rgba(6, 182, 212, 0.06);
+        }
+
+        .p2-about-num-card strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .p2-about-num-card span {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.45);
+            text-transform: uppercase;
+        }
+
+        .p2-about-content h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+
+        .p2-about-content h2 em {
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        .p2-about-content p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.85;
+            margin-bottom: 36px;
+        }
+
+        .p2-about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .p2-about-feature {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .p2-about-feature i {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* ── 5. PHILOSOPHY: Core Values ── */
+        .p2-phil {
+            padding: 96px 0;
+            background: var(--bg-primary);
+        }
+
+        .p2-phil-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .p2-phil-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.15;
+        }
+
+        .p2-phil-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .p2-phil-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 48px 32px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .p2-phil-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow);
+        }
+
+        .p2-phil-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 24px;
+            transition: transform 0.3s;
+        }
+
+        .p2-phil-card:hover .p2-phil-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .p2-phil-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .p2-phil-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ── INTERACTIVE MOCKUP PORTAL & ROI DESIGN ── */
+        .p2-dashboard-section {
+            padding: 96px 0;
+            background: var(--bg-secondary);
+        }
+
+        .dashboard-frame {
+            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 48px;
+        }
+
+        .dashboard-topbar {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dashboard-main-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 400px;
+        }
+
+        .dashboard-sidebar-menu {
+            border-right: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.01);
+            padding: 24px 12px;
+        }
+
+        .dashboard-sidebar-menu ul {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dashboard-sidebar-menu li {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dashboard-sidebar-menu li.active,
+        .dashboard-sidebar-menu li:hover {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--accent-gold);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .dashboard-content-panel {
+            padding: 32px;
+            background: var(--bg-primary);
+        }
+
+        .dashboard-tab-content {
+            display: none;
+        }
+
+        .dashboard-tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .calculator-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-top: 48px;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+        }
+
+        .calc-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .calc-inputs input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: var(--border-color);
+            outline: none;
+            border-radius: 100px;
+            accent-color: var(--accent-gold);
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .calc-results {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 32px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-item .num {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .result-item label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ── PROCESS TIMELINE ── */
+        .process-section {
+            padding: 96px 0;
+            background: var(--bg-primary);
+        }
+
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+            position: relative;
+        }
+
+        .process-step {
+            position: relative;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: var(--transition);
+        }
+
+        .process-step:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-gold);
+        }
+
+        .process-step-indicator {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .process-content-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .process-content-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ── CASE STUDIES ── */
+        .cases-section {
+            padding: 96px 0;
+            background: var(--bg-primary);
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 56px;
+        }
+
+        .case-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-primary);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .case-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .case-img-wrap {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .case-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .case-card:hover .case-img-wrap img {
+            transform: scale(1.04);
+        }
+
+        .case-metric {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            background: var(--accent-gold);
+            color: #000;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .case-content {
+            padding: 32px;
+        }
+
+        .case-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .case-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .case-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        /* ── TESTIMONIALS: Single large spotlight ── */
+        .p2-testi {
+            padding: 0;
+            background: var(--bg-secondary);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+        }
+
+        .p2-testi-image {
+            overflow: hidden;
+        }
+
+        .p2-testi-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            filter: brightness(0.6) saturate(0.7);
+            display: block;
+        }
+
+        .p2-testi-content {
+            padding: 80px 64px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .p2-testi-content::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: 40px;
+            font-family: var(--font-heading);
+            font-size: 20rem;
+            font-weight: 900;
+            color: rgba(6, 182, 212, 0.05);
+            line-height: 1;
+        }
+
+        .p2-testi-stars-big {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 32px;
+        }
+
+        .p2-testi-stars-big i {
+            color: var(--accent-gold);
+            font-size: 1rem;
+        }
+
+        .p2-testi-quote-big {
+            font-family: var(--font-heading);
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 400;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .p2-testi-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .p2-testi-meta h4 {
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .p2-testi-meta p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .p2-testi-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .p2-testi-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: background 0.3s, width 0.3s;
+        }
+
+        .p2-testi-dot.active {
+            background: var(--accent-gold);
+            width: 24px;
+            border-radius: 10px;
+        }
+
+        /* ── 7. GALLERY: Asymmetric masonry grid ── */
+        .p2-gallery {
+            padding: 96px 0;
+            background: var(--bg-primary);
+        }
+
+        .p2-gallery-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .p2-gallery-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+        }
+
+        .p2-gallery-masonry {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 200px 200px 200px;
+            gap: 12px;
+        }
+
+        .p2-gal-item {
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .p2-gal-item:nth-child(1) { grid-column: 1 / 6; grid-row: 1 / 3; }
+        .p2-gal-item:nth-child(2) { grid-column: 6 / 9; grid-row: 1 / 2; }
+        .p2-gal-item:nth-child(3) { grid-column: 9 / 13; grid-row: 1 / 2; }
+        .p2-gal-item:nth-child(4) { grid-column: 6 / 10; grid-row: 2 / 4; }
+        .p2-gal-item:nth-child(5) { grid-column: 10 / 13; grid-row: 2 / 3; }
+        .p2-gal-item:nth-child(6) { grid-column: 1 / 6; grid-row: 3 / 4; }
+        .p2-gal-item:nth-child(7) { grid-column: 10 / 13; grid-row: 3 / 4; }
+
+        .p2-gal-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.55s ease, filter 0.4s;
+            filter: brightness(0.8) saturate(0.7);
+            display: block;
+        }
+
+        .p2-gal-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1) saturate(1);
+        }
+
+        /* ── 8. CTA: Diagonal-cut gradient section ── */
+        .p2-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #082F49 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .p2-cta::before {
+            content: 'APEX.';
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-heading);
+            font-size: 14rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.025);
+            letter-spacing: 20px;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .p2-cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .p2-cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.0;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .p2-cta h2 em {
+            -webkit-text-stroke: 1px var(--accent-gold);
+            color: transparent;
+            font-style: normal;
+        }
+
+        .p2-cta p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.55);
+            max-width: 480px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .p2-cta-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .p2-cta-btn-gold {
+            padding: 18px 48px;
+            background: var(--accent-gold);
+            color: #000;
+            border-radius: 6px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: transform 0.2s, filter 0.2s;
+            display: inline-block;
+        }
+
+        .p2-cta-btn-gold:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .p2-cta-btn-ghost {
+            padding: 18px 48px;
+            background: transparent;
+            color: #fff;
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: border-color 0.2s, background 0.2s;
+            display: inline-block;
+        }
+
+        .p2-cta-btn-ghost:hover {
+            border-color: var(--accent-gold);
+            background: rgba(6, 182, 212, 0.08);
+        }
+
+        /* ── 9. PRICING SNAPSHOT ── */
+        .p2-pricing {
+            padding: 96px 0;
+            background: var(--bg-secondary);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .pricing-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-gold);
+            color: #000;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .pricing-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 32px;
+        }
+
+        .pricing-price span {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .pricing-features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .pricing-features li {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        /* ── FAQ ── */
+        .faq-section {
+            padding: 96px 0;
+            background: var(--bg-primary);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 56px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-header {
+            padding: 24px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-icon {
+            font-size: 0.75rem;
+            transition: transform 0.3s;
+            color: var(--text-muted);
+        }
+
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out;
+            padding: 0 32px;
+        }
+
+        .faq-item.active {
+            border-color: var(--accent-gold);
+        }
+
+        .faq-item.active .faq-header {
+            color: var(--accent-gold);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: var(--accent-gold);
+        }
+
+        .faq-item.active .faq-body {
+            padding-bottom: 24px;
+        }
+
+        .faq-body p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ── AUDIT CTA CARD ── */
+        .audit-section {
+            padding: 96px 0;
+            background: var(--bg-secondary);
+        }
+
+        .audit-cta-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 64px 48px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audit-cta-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 100% 100%, rgba(6, 182, 212, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .audit-cta-box h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-top: 12px;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .audit-cta-box p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 580px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        /* ── 9. FOOTER ── */
+        .p2-footer {
+            background: #090D16;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 80px 0 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .p2-footer-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 56px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .p2-footer-brand h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+        }
+
+        .p2-footer-brand p {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.45);
+            line-height: 1.8;
+            max-width: 270px;
+            margin-bottom: 28px;
+        }
+
+        .p2-socials {
+            display: flex;
+            gap: 10px;
+        }
+
+        .p2-social {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: border-color 0.3s, color 0.3s, background 0.3s;
+        }
+
+        .p2-social:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: rgba(6, 182, 212, 0.08);
+        }
+
+        .p2-footer-col h4 {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .p2-footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .p2-footer-col ul li a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .p2-footer-col ul li a:hover {
+            color: var(--accent-gold);
+        }
+
+        .p2-footer-bottom {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .p2-footer-bottom p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .p2-footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .p2-footer-bottom-links a {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.25);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .p2-footer-bottom-links a:hover {
+            color: var(--accent-gold);
+        }
+    </style>
 </head>
-<body class="dark-mode">
 
-    <!-- Navigation Header -->
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                APEXGROWTH<span class="logo-dot">.</span>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="mainNav" role="navigation" aria-label="Main Navigation">
+        <div class="container">
+            <!-- Brand -->
+            <a aria-label="ApexGrowth Home" class="nav-brand" href="index.html" id="navBrand">
+                <span class="nav-brand-wordmark">APEXGROWTH<span>.</span></span>
             </a>
-            
-            <nav class="nav-menu" id="nav-menu">
-                <div class="nav-link nav-item-dropdown active">
-                    <span class="nav-dropdown-toggle">Home</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="index.html" class="nav-dropdown-link">Home 1 (Portal)</a>
-                        <a href="home-2.html" class="nav-dropdown-link active">Home 2 (Creative)</a>
-                    </div>
-                </div>
-                <a href="pages/about.html" class="nav-link">About</a>
-                <a href="pages/services.html" class="nav-link">Services</a>
-                <a href="pages/case-studies.html" class="nav-link">Case Studies</a>
-                <a href="pages/blog.html" class="nav-link">Blog</a>
-                <a href="pages/contact.html" class="nav-link">Contact</a>
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Dashboard</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="dashboard/index.html" class="nav-dropdown-link">Client Portal</a>
-                        <a href="dashboard/admin-index.html" class="nav-dropdown-link">Admin Console</a>
-                    </div>
-                </div>
-            </nav>
 
-            <div class="nav-actions">
-                <!-- Theme Toggler -->
-                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
-                    <span class="theme-toggle-icon">☀️</span>
+            <!-- Primary Nav Links -->
+            <ul class="nav-links" id="navLinks" role="list">
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="homeDropdown">
+                        Home <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="homeDropdown">
+                        <li role="none"><a href="index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 - Minimal</a></li>
+                        <li role="none"><a href="home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/case-studies.html">Case Studies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/blog.html">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/contact.html">Contact</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="dashDropdown">
+                        Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dashDropdown">
+                        <li role="none"><a href="dashboard/index.html" role="menuitem"><i class="fas fa-user-circle"></i> Client Portal</a></li>
+                        <li role="none"><a href="dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-mobile-controls">
+                    <a class="nav-btn-login" href="pages/login.html" id="mobileLoginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction">
+                        <span class="dir-text">RTL</span>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="nav-controls">
+                <a class="nav-btn-login" href="pages/login.html" id="desktopLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <div class="nav-sep" aria-hidden="true"></div>
+                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
                 </button>
-                <!-- RTL Toggler -->
-                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
-                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction">
+                    <span class="dir-text">RTL</span>
                 </button>
-                <a href="pages/login.html" class="btn btn-secondary btn-sm">Client Login</a>
-                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
             </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-grid" style="grid-template-columns: 1.2fr 0.8fr;">
-            <div class="hero-content">
-                <div class="hero-tag">
-                    <span>⚡</span> Creative Growth Partnerships
-                </div>
-                <h1>We Design Digital Campaigns That <span class="text-gradient">Win Attention.</span></h1>
-                <p>We build scalable customer acquisition campaigns. Combining top-tier video creatives, ad design, and analytical targeting parameters, we connect you with buyers.</p>
-                <div class="hero-btns">
-                    <a href="#" class="btn btn-primary trigger-strategy-call">Request Campaign Proposal</a>
-                    <a href="pages/services.html" class="btn btn-secondary">Explore Capabilities</a>
-                </div>
-            </div>
-            <div class="hero-preview" style="background-color: var(--panel-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; text-align: center; box-shadow: var(--shadow-lg);">
-                <div style="font-size:0.8rem; color:var(--primary); font-weight:700; text-transform:uppercase; margin-bottom:8px; letter-spacing:1px;">Featured Campaign Metric</div>
-                <h3 style="font-size:2.4rem; font-weight:800; margin-bottom:12px; color:var(--accent);">+142%</h3>
-                <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Average conversion rate increase across active social media campaign accounts.</p>
-                <div style="background-color:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:16px; font-size:0.85rem; text-align:left; display:flex; flex-direction:column; gap:8px;">
-                    <div style="display:flex; justify-content:space-between;"><span>Impressions:</span><strong>1.4M+</strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span>Average CTR:</span><strong>4.26%</strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span>Cost per Click:</span><strong>$0.48</strong></div>
-                </div>
-            </div>
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </section>
+    </nav>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
-    <!-- Client Logos Section -->
-    <section class="logos-section">
-        <div class="container">
-            <div class="logo-slider">
-                <div class="logo-item">SaaSify Global</div>
-                <div class="logo-item">E-com Dynamics</div>
-                <div class="logo-item">Alpha Tech</div>
-                <div class="logo-item">Local Retail Corp</div>
-                <div class="logo-item">MedGroup</div>
-                <div class="logo-item">Venture Capital</div>
-                <!-- Duplicate for seamless scroll -->
-                <div class="logo-item">SaaSify Global</div>
-                <div class="logo-item">E-com Dynamics</div>
-                <div class="logo-item">Alpha Tech</div>
-                <div class="logo-item">Local Retail Corp</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Campaign Visual Showcase Grid -->
-    <section class="cases-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Visuals Showcase</span>
-                <h2>Smarter Digital Assets</h2>
-                <p>We blend creative graphics with analytical testing layers to guarantee campaign scaling.</p>
-            </div>
-            
-            <div class="grid-2">
-                <!-- Card 1 -->
-                <div class="case-card">
-                    <div class="case-img-wrap" style="height:350px;">
-                        <img src="assets/images/creative-showcase.png" alt="Creative Campaigns" class="case-img">
-                        <span class="case-metric">Creative Ad Sets</span>
+    <main class="hero-no-pad">
+        <!-- 1. HERO -->
+        <section class="p2-hero" id="hero">
+            <div class="p2-hero-bg"></div>
+            <div class="p2-hero-overlay"></div>
+            <div class="p2-hero-noise"></div>
+            <div class="container">
+                <div class="p2-hero-content">
+                    <div class="p2-hero-tag hero-animate delay-1">
+                        <span>⚡</span> Creative Growth Partnerships
                     </div>
-                    <div class="case-content">
-                        <span class="case-tag">ADVERTISING DESIGN</span>
-                        <h3>Custom High-Clicking Display & Video Creatives</h3>
-                        <p>Our team of UI designers constructs customized responsive banners and video ad assets tailored to increase platform click-through metrics.</p>
-                        <a href="pages/services.html" class="service-link">View Creative Guidelines &rarr;</a>
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="case-card">
-                    <div class="case-img-wrap" style="height:350px;">
-                        <img src="assets/images/strategy-roadmap.png" alt="Strategy Roadmaps" class="case-img">
-                        <span class="case-metric">Growth Roadmap</span>
-                    </div>
-                    <div class="case-content">
-                        <span class="case-tag">CAMPAIGN EXECUTION</span>
-                        <h3>Structured Ad Account Scaling Strategies</h3>
-                        <p>We design custom campaign roadmaps detailing account configurations, target segments, keyword maps, and funnel test sprints.</p>
-                        <a href="pages/services.html" class="service-link">View Scaling Framework &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Onboarding Process Timeline Section -->
-    <section class="process-section" style="background-color:var(--bg-color);">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Our Process</span>
-                <h2>Campaign Deployment Lifecycle</h2>
-                <p>A step-by-step onboarding structure designed to take client accounts from audit to revenue scaling.</p>
-            </div>
-            
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
-                
-                <!-- Step 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-badge">1</div>
-                    <div class="timeline-card">
-                        <h3>Onboarding & Discovery</h3>
-                        <p>Detailed competitor analysis, technical account auditing, target persona mapping, and establishing tracking pixels.</p>
-                    </div>
-                </div>
-                
-                <!-- Step 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-badge">2</div>
-                    <div class="timeline-card">
-                        <h3>Creative Production</h3>
-                        <p>Designing custom ad templates, drafting responsive search text options, recording video hooks, and landing page wireframing.</p>
-                    </div>
-                </div>
-                
-                <!-- Step 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-badge">3</div>
-                    <div class="timeline-card">
-                        <h3>Sprints & Testing</h3>
-                        <p>Launching segmented campaigns, implementing schema tags, and triggering multi-variate landing page headline split tests.</p>
-                    </div>
-                </div>
-                
-                <!-- Step 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-badge">4</div>
-                    <div class="timeline-card">
-                        <h3>Dashboard Scaling</h3>
-                        <p>Reallocating budgets to high-ROAS segments and synchronizing performance indicators directly to your client dashboard console.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Overview list -->
-    <section class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Capabilities</span>
-                <h2>Multi-Channel Optimization</h2>
-            </div>
-            
-            <div class="grid-3">
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>SEO Optimization</h3>
-                    <p>Drive organic traffic, structure sites to conversion pathways, and target intent-driven keywords.</p>
-                    <a href="pages/service-seo.html" class="service-link">Explore SEO &rarr;</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
-                    <h3>Paid Advertising</h3>
-                    <p>Scale Google Search, Meta Display, and LinkedIn lead campaigns with high conversion returns.</p>
-                    <a href="pages/service-ppc.html" class="service-link">Explore Paid Ads &rarr;</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📱</div>
-                    <h3>Social Campaigns</h3>
-                    <p>Construct brand awareness content and manage target customer community pages.</p>
-                    <a href="pages/service-social.html" class="service-link">Explore Social &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section" style="background-color: var(--bg-color);">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Client Success</span>
-                <h2>CMO & Growth Reviews</h2>
-            </div>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div>
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"ApexGrowth restructured our Meta ad sets and doubled click conversion ratios. Their content designers are highly specialized!"</p>
-                    </div>
-                    <div class="testimonial-user">
-                        <div class="testimonial-avatar">MV</div>
-                        <div class="testimonial-info">
-                            <h4>Marcus Vance</h4>
-                            <p>VP of Growth, E-Com Dynamics</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div>
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"The weekly sprint updates and ad asset dashboard are excellent. Complete campaign transparency."</p>
-                    </div>
-                    <div class="testimonial-user">
-                        <div class="testimonial-avatar">ER</div>
-                        <div class="testimonial-info">
-                            <h4>Elena Rostova</h4>
-                            <p>Director of Marketing, SaaSify Global</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div>
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Highly consultative, performance-oriented team. They successfully scaled our ad budgets profitably."</p>
-                    </div>
-                    <div class="testimonial-user">
-                        <div class="testimonial-avatar">JK</div>
-                        <div class="testimonial-info">
-                            <h4>Julian K.</h4>
-                            <p>CEO, Venture Capital Inc</p>
+                    <h1 class="p2-hero-title hero-animate delay-2">We Design Campaigns That <br><span class="outline">Win Attention.</span></h1>
+                    
+                    <div class="p2-hero-bottom hero-animate delay-3">
+                        <div class="p2-hero-left">
+                            <p class="p2-hero-desc">We build scalable customer acquisition campaigns. Combining top-tier video creatives, ad design, and analytical parameters, we connect you with buyers.</p>
+                            <div class="p2-hero-cta">
+                                <a class="p2-hero-cta-main trigger-strategy-call" href="#">Request Proposal</a>
+                                <a class="p2-hero-cta-ghost" href="pages/services.html">Explore Capabilities</a>
+                            </div>
+                            <div class="p2-hero-stats">
+                                <div class="p2-hero-stat-item">
+                                    <strong>$48M+</strong>
+                                    <span>Revenue Scaled</span>
+                                </div>
+                                <div class="p2-hero-stat-item">
+                                    <strong>4.6x</strong>
+                                    <span>Average ROAS</span>
+                                </div>
+                                <div class="p2-hero-stat-item">
+                                    <strong>+380%</strong>
+                                    <span>Traffic Spike</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Pricing SNAPSHOT Section -->
-    <section class="pricing-snapshot-section">
+        <!-- Ticker bar at the bottom of hero -->
+        <div class="p2-ticker-bar">
+            <div class="p2-ticker-inner">
+                <span>Search Engine Optimization</span> <i class="fas fa-bolt"></i>
+                <span>Paid Advertising</span> <i class="fas fa-bolt"></i>
+                <span>Social Media Marketing</span> <i class="fas fa-bolt"></i>
+                <span>Content Marketing</span> <i class="fas fa-bolt"></i>
+                <span>Email Marketing</span> <i class="fas fa-bolt"></i>
+                <span>Conversion Rate Optimization</span> <i class="fas fa-bolt"></i>
+                <!-- Duplicate for seamless scroll loop -->
+                <span>Search Engine Optimization</span> <i class="fas fa-bolt"></i>
+                <span>Paid Advertising</span> <i class="fas fa-bolt"></i>
+                <span>Social Media Marketing</span> <i class="fas fa-bolt"></i>
+                <span>Content Marketing</span> <i class="fas fa-bolt"></i>
+                <span>Email Marketing</span> <i class="fas fa-bolt"></i>
+                <span>Conversion Rate Optimization</span> <i class="fas fa-bolt"></i>
+            </div>
+        </div>
+
+        <!-- 2. TRUSTED: Glass Cards -->
+        <section class="p2-trusted" id="trusted">
+            <div class="container">
+                <p class="p2-trusted-label" data-aos="fade-up">Trusted By Industry Disruptors</p>
+                <div class="p2-trusted-row" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p2-trust-card">
+                        <div class="p2-trust-icon"><i class="fas fa-chart-line"></i></div>
+                        <p>SaaSify Global</p>
+                    </div>
+                    <div class="p2-trust-card">
+                        <div class="p2-trust-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <p>E-com Dynamics</p>
+                    </div>
+                    <div class="p2-trust-card">
+                        <div class="p2-trust-icon"><i class="fas fa-microchip"></i></div>
+                        <p>Alpha Tech</p>
+                    </div>
+                    <div class="p2-trust-card">
+                        <div class="p2-trust-icon"><i class="fas fa-store"></i></div>
+                        <p>Local Retail Corp</p>
+                    </div>
+                    <div class="p2-trust-card">
+                        <div class="p2-trust-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+                        <p>Venture Capital</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SERVICES: Containerized Rows -->
+        <section class="p2-services" id="services">
+            <div class="container">
+                <div class="p2-services-header" data-aos="fade-up">
+                    <span class="p2-eyebrow">Capabilities</span>
+                    <h2>Growth Systems Designed to Scale</h2>
+                </div>
+                
+                <div class="p2-services-list">
+                    <!-- Row 1: Image Left, Text Right -->
+                    <div class="p2-service-row" data-aos="fade-up">
+                        <div class="p2-service-img-wrapper">
+                            <div class="p2-service-img">
+                                <img src="assets/images/case-seo.png" alt="Search Engine Optimization">
+                            </div>
+                        </div>
+                        <div class="p2-service-text">
+                            <div class="p2-service-num-big">01</div>
+                            <h3>Search Engine Optimization</h3>
+                            <p>Revamp site structures, rank for commercial intent keywords, and build organic hubs that capture and convert qualified visitors.</p>
+                            <a href="pages/service-seo.html" class="p2-service-btn">Explore SEO <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 2: Text Left, Image Right -->
+                    <div class="p2-service-row reverse" data-aos="fade-up">
+                        <div class="p2-service-text">
+                            <div class="p2-service-num-big">02</div>
+                            <h3>Paid Advertisements</h3>
+                            <p>Target custom audiences across search and social ad sets. Lower CPA indexes while expanding budgets on profitable ad copy variants.</p>
+                            <a href="pages/service-ppc.html" class="p2-service-btn">Explore PPC <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="p2-service-img-wrapper">
+                            <div class="p2-service-img">
+                                <img src="assets/images/case-ppc.png" alt="Paid Advertising">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Image Left, Text Right -->
+                    <div class="p2-service-row" data-aos="fade-up">
+                        <div class="p2-service-img-wrapper">
+                            <div class="p2-service-img">
+                                <img src="assets/images/creative-showcase.png" alt="Social & Content Marketing">
+                            </div>
+                        </div>
+                        <div class="p2-service-text">
+                            <div class="p2-service-num-big">03</div>
+                            <h3>Creative Campaigns</h3>
+                            <p>Design responsive high-converting image templates, script engaging visual videos, and launch A/B split-tested landing assets.</p>
+                            <a href="pages/services.html" class="p2-service-btn">Explore Creative <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ABOUT: Dark Grid Overlay -->
+        <section class="p2-about" id="about">
+            <div class="p2-about-bg"></div>
+            <div class="p2-about-overlay"></div>
+            <div class="container">
+                <div class="p2-about-inner">
+                    <div class="p2-about-nums" data-aos="fade-right">
+                        <div class="p2-about-num-card">
+                            <strong>380%</strong>
+                            <span>Organic Growth</span>
+                        </div>
+                        <div class="p2-about-num-card">
+                            <strong>4.6x</strong>
+                            <span>Average ROAS</span>
+                        </div>
+                        <div class="p2-about-num-card">
+                            <strong>$48M+</strong>
+                            <span>Client Revenue</span>
+                        </div>
+                        <div class="p2-about-num-card">
+                            <strong>100%</strong>
+                            <span>Dashboard Sync</span>
+                        </div>
+                    </div>
+                    <div class="p2-about-content" data-aos="fade-left">
+                        <span class="p2-eyebrow">Who We Are</span>
+                        <h2>Built on <em>Uncompromising</em> Standards.</h2>
+                        <p>We are a performance-based growth marketing consultancy that refuses to hide metrics behind complicated files. Our clients access all active keyword ranks, media campaign margins, and billing updates via their portal dashboard 24/7.</p>
+                        <div class="p2-about-features">
+                            <div class="p2-about-feature"><i class="fas fa-check"></i> 100% Transparent dashboard portal sync</div>
+                            <div class="p2-about-feature"><i class="fas fa-check"></i> Multi-channel execution profiles (Google, Meta, LinkedIn)</div>
+                            <div class="p2-about-feature"><i class="fas fa-check"></i> In-house asset design and video hooks production</div>
+                        </div>
+                        <a href="pages/about.html" class="p2-cta-btn-gold">Our Philosophy</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PHILOSOPHY / CORE VALUES -->
+        <section class="p2-phil" id="philosophy">
+            <div class="container">
+                <div class="p2-phil-header" data-aos="fade-up">
+                    <span class="p2-eyebrow">Core Beliefs</span>
+                    <h2>Our Growth Philosophy</h2>
+                </div>
+                <div class="p2-phil-grid">
+                    <div class="p2-phil-card" data-aos="fade-up">
+                        <div class="p2-phil-icon"><i class="fas fa-database"></i></div>
+                        <h3>Data-First Decisions</h3>
+                        <p>We test structural landing variations and rely on attribution indexes rather than creative speculation to optimize copy results.</p>
+                    </div>
+                    <div class="p2-phil-card" data-aos="fade-up" data-aos-delay="80">
+                        <div class="p2-phil-icon"><i class="fas fa-eye"></i></div>
+                        <h3>100% Transparency</h3>
+                        <p>Check search keyword ranks, active design pipelines, media buyers comments, and billing lists instantly within your client portal console.</p>
+                    </div>
+                    <div class="p2-phil-card" data-aos="fade-up" data-aos-delay="160">
+                        <div class="p2-phil-icon"><i class="fas fa-vial"></i></div>
+                        <h3>Continuous Sprints</h3>
+                        <p>We launch weekly split variations on search targets and social display parameters to constantly isolate higher converting targets.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. REAL-TIME ANALYTICS PREVIEW -->
+        <section class="p2-dashboard-section" id="dashboard-preview">
+            <div class="container">
+                <div class="p2-services-header" data-aos="fade-up" style="padding-top: 0;">
+                    <span class="p2-eyebrow">Real-Time Data</span>
+                    <h2 style="font-size: clamp(2rem, 4vw, 3rem);">Live Campaign Performance</h2>
+                </div>
+                
+                <div class="dashboard-frame" data-aos="fade-up">
+                    <div class="dashboard-topbar">
+                        <span style="font-weight: 800; font-size: 1.05rem;">ApexGrowth Client Dashboard</span>
+                        <a href="pages/login.html" class="btn btn-gold btn-sm" style="padding: 6px 14px; font-size: 0.75rem; color: #000;">Enter Dashboard Demo</a>
+                    </div>
+                    <div class="dashboard-main-layout">
+                        <!-- Demo Menu -->
+                        <div class="dashboard-sidebar-menu">
+                            <ul>
+                                <li class="active" data-db-tab="db-tab-overview"><i class="fas fa-chart-pie"></i> Overview</li>
+                                <li data-db-tab="db-tab-seo"><i class="fas fa-search"></i> SEO Rankings</li>
+                                <li data-db-tab="db-tab-ads"><i class="fas fa-bullseye"></i> Paid Ads</li>
+                                <li data-db-tab="db-tab-creative"><i class="fas fa-folder-open"></i> Creative Approvals</li>
+                                <li data-db-tab="db-tab-invoices"><i class="fas fa-credit-card"></i> Invoices</li>
+                            </ul>
+                        </div>
+                        <!-- Demo Content Panel -->
+                        <div class="dashboard-content-panel">
+                            <!-- Overview Tab -->
+                            <div class="dashboard-tab-content active" id="db-tab-overview">
+                                <h4 style="font-weight:700; margin-bottom: 16px;">Month-Over-Month Traffic Progress</h4>
+                                <div style="height: 200px; width: 100%; border: 1px dashed var(--border-color); border-radius: 8px; padding: 24px; display: flex; align-items: flex-end; justify-content: space-between; background-color: var(--bg-secondary);">
+                                    <div style="height: 40%; width: 12%; background-color: var(--accent-primary); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px;">Jan</div>
+                                    <div style="height: 55%; width: 12%; background-color: var(--accent-primary); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px;">Feb</div>
+                                    <div style="height: 70%; width: 12%; background-color: var(--accent-primary); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px;">Mar</div>
+                                    <div style="height: 60%; width: 12%; background-color: var(--accent-primary); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px;">Apr</div>
+                                    <div style="height: 85%; width: 12%; background-color: var(--accent-primary); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px;">May</div>
+                                    <div style="height: 98%; width: 12%; background-color: var(--accent-gold); border-radius: 4px; text-align: center; color: white; font-size: 0.75rem; font-weight: 700; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; box-shadow: 0 0 12px var(--accent-glow);">Jun</div>
+                                </div>
+                            </div>
+                            
+                            <!-- SEO Rankings Tab -->
+                            <div class="dashboard-tab-content" id="db-tab-seo">
+                                <h4 style="font-weight:700; margin-bottom: 16px;">Top Performing Keywords</h4>
+                                <div style="display:flex; flex-direction:column; gap:12px; background-color:var(--bg-secondary); padding: 18px; border: 1px dashed var(--border-color); border-radius: 8px;">
+                                    <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border-color); padding-bottom:6px; font-weight:700; font-size:0.85rem;">
+                                        <span>Keyword</span>
+                                        <span>Rank</span>
+                                        <span>Traffic</span>
+                                    </div>
+                                    <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+                                        <span>digital marketing agency</span>
+                                        <span style="color:var(--success); font-weight:700;">#3 (↑1)</span>
+                                        <span>12.4K/mo</span>
+                                    </div>
+                                    <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+                                        <span>performance media conversion</span>
+                                        <span style="color:var(--success); font-weight:700;">#1 (↑2)</span>
+                                        <span>4.1K/mo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Paid Ads Tab -->
+                            <div class="dashboard-tab-content" id="db-tab-ads">
+                                <h4 style="font-weight:700; margin-bottom: 16px;">Active Campaign ROAS</h4>
+                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; background-color:var(--bg-secondary); padding:18px; border: 1px dashed var(--border-color); border-radius: 8px;">
+                                    <div style="background-color:var(--bg-primary); padding:14px; border-radius:6px; border:1px solid var(--border-color); text-align:center;">
+                                        <span style="font-size:0.75rem; color:var(--text-muted); display:block; font-weight:700; margin-bottom:4px;">Google Ads</span>
+                                        <span style="font-size:1.3rem; font-weight:800; color:var(--accent-gold);">4.8x ROAS</span>
+                                    </div>
+                                    <div style="background-color:var(--bg-primary); padding:14px; border-radius:6px; border:1px solid var(--border-color); text-align:center;">
+                                        <span style="font-size:0.75rem; color:var(--text-muted); display:block; font-weight:700; margin-bottom:4px;">Meta Ads</span>
+                                        <span style="font-size:1.3rem; font-weight:800; color:var(--accent-primary);">4.2x ROAS</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Creative Approvals Tab -->
+                            <div class="dashboard-tab-content" id="db-tab-creative">
+                                <h4 style="font-weight:700; margin-bottom: 16px;">Creative Review Queue</h4>
+                                <div style="display:flex; flex-direction:column; gap:12px; background-color:var(--bg-secondary); padding: 18px; border: 1px dashed var(--border-color); border-radius: 8px;">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+                                        <span>Google_Banner_A.png</span>
+                                        <span style="color:var(--success); font-weight:700; background-color:rgba(16,185,129,0.15); padding:4px 10px; border-radius:4px;">Approved</span>
+                                    </div>
+                                    <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+                                        <span>Meta_Video_Hook.mp4</span>
+                                        <span style="color:var(--warning); font-weight:700; background-color:rgba(245,158,11,0.15); padding:4px 10px; border-radius:4px;">Pending Review</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Invoices Tab -->
+                            <div class="dashboard-tab-content" id="db-tab-invoices">
+                                <h4 style="font-weight:700; margin-bottom: 16px;">Billing & Payments</h4>
+                                <div style="display:flex; flex-direction:column; gap:12px; background-color:var(--bg-secondary); padding: 18px; border: 1px dashed var(--border-color); border-radius: 8px;">
+                                    <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+                                        <span>INV-2026-006 (June)</span>
+                                        <span style="font-weight:700;">$3,000.00</span>
+                                        <span style="color:var(--success); font-weight:700;">Paid ✓</span>
+                                    </div>
+                                    <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+                                        <span>INV-2026-005 (May)</span>
+                                        <span style="font-weight:700;">$3,000.00</span>
+                                        <span style="color:var(--success); font-weight:700;">Paid ✓</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. ROI CALCULATOR -->
+        <section class="p2-dashboard-section" id="roi-calculator" style="background-color: var(--bg-primary);">
+            <div class="container">
+                <div class="p2-services-header" data-aos="fade-up" style="padding-top:0;">
+                    <span class="p2-eyebrow">ROI Forecasting</span>
+                    <h2 style="font-size: clamp(2rem, 4vw, 3rem);">Returns Estimations</h2>
+                </div>
+                
+                <div class="calculator-card" data-aos="fade-up" style="background-color: var(--bg-secondary);">
+                    <div class="calculator-grid">
+                        <div class="calc-inputs">
+                            <div class="form-group">
+                                <label>Monthly Ad Spend: <span id="spend-val" style="float: right; color: var(--accent-gold); font-weight: 700;">$10,000</span></label>
+                                <input type="range" id="calc-spend" min="1000" max="50000" step="1000" value="10000">
+                            </div>
+                            <div class="form-group">
+                                <label>Target Conversion Rate: <span id="conv-val" style="float: right; color: var(--accent-gold); font-weight: 700;">2.5%</span></label>
+                                <input type="range" id="calc-conv" min="0.5" max="10.0" step="0.1" value="2.5">
+                            </div>
+                            <div class="form-group">
+                                <label>Cost Per Acquisition Lead: <span id="lead-val" style="float: right; color: var(--accent-gold); font-weight: 700;">$40</span></label>
+                                <input type="range" id="calc-lead" min="10" max="150" step="5" value="40">
+                            </div>
+                        </div>
+                        
+                        <div class="calc-results" style="background-color: var(--bg-primary);">
+                            <div class="result-item">
+                                <div class="num" id="result-leads">250</div>
+                                <label>Estimated Leads</label>
+                            </div>
+                            <div class="result-item">
+                                <div class="num" id="result-revenue" style="color: var(--accent-gold);">$9,375</div>
+                                <label>Estimated Return</label>
+                            </div>
+                            <div class="result-item">
+                                <div class="num" id="result-roas">0.9x</div>
+                                <label>Projected ROAS</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. TESTIMONIALS: Asymmetric Spotlight -->
+        <section class="p2-testi" id="testimonials">
+            <div class="p2-testi-image" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Marcus Vance testimonial">
+            </div>
+            <div class="p2-testi-content" data-aos="fade-left">
+                <div class="p2-testi-stars-big">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="p2-testi-quote-big">"ApexGrowth restructured our Meta ad sets and doubled click conversion ratios. Their creative designers are highly consultative and performance-focused!"</p>
+                <div class="p2-testi-meta">
+                    <div>
+                        <h4>Marcus Vance</h4>
+                        <p>VP of Growth, E-Com Dynamics</p>
+                    </div>
+                </div>
+                <div class="p2-testi-dots">
+                    <button class="p2-testi-dot active" aria-label="Slide 1"></button>
+                    <button class="p2-testi-dot" aria-label="Slide 2"></button>
+                    <button class="p2-testi-dot" aria-label="Slide 3"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. PRICING SNAPSHOT -->
+        <section class="p2-pricing" id="pricing">
+            <div class="container">
+                <div class="p2-phil-header" data-aos="fade-up" style="margin-bottom: 0;">
+                    <span class="p2-eyebrow">Investment</span>
+                    <h2>Tailored Campaign Pricing</h2>
+                </div>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card" data-aos="fade-up">
+                        <div>
+                            <h3>Starter Scale</h3>
+                            <p>Essential optimization systems for early local or single-channel domains.</p>
+                            <div class="pricing-price">$1,500<span>/mo</span></div>
+                            <ul class="pricing-features">
+                                <li>Technical SEO Site Audits</li>
+                                <li>Google Search PPC Basics</li>
+                                <li>Monthly Report Portal Access</li>
+                                <li>Core Conversion Mappings</li>
+                            </ul>
+                        </div>
+                        <a href="pages/pricing.html" class="btn btn-outline" style="width:100%; margin-top:20px;">Get Started</a>
+                    </div>
+                    
+                    <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="80">
+                        <span class="pricing-badge">Most Popular</span>
+                        <div>
+                            <h3>Growth Campaign</h3>
+                            <p>Full-funnel execution targeting multichannel lead volumes and keywords.</p>
+                            <div class="pricing-price">$3,000<span>/mo</span></div>
+                            <ul class="pricing-features">
+                                <li>All Starter Tier Features</li>
+                                <li>Complete On-Page Schema Set</li>
+                                <li>Google + Social PPC Integration</li>
+                                <li>Creative Approval Dashboard</li>
+                                <li>Bi-weekly Optimization Sprints</li>
+                            </ul>
+                        </div>
+                        <a href="pages/pricing.html" class="btn btn-primary" style="width:100%; margin-top:20px; color: #fff;">Select Growth Plan</a>
+                    </div>
+                    
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="160">
+                        <div>
+                            <h3>Scale Accelerator</h3>
+                            <p>For high-volume spenders requiring active design support and analyst reviews.</p>
+                            <div class="pricing-price">$5,500<span>/mo</span></div>
+                            <ul class="pricing-features">
+                                <li>Multi-regional SEO Campaigns</li>
+                                <li>Advanced Video Ad Creatives</li>
+                                <li>Funnel Conversion A/B Splits</li>
+                                <li>Dedicated Account Director</li>
+                                <li>Slack Support Channel Connect</li>
+                            </ul>
+                        </div>
+                        <a href="pages/pricing.html" class="btn btn-outline" style="width:100%; margin-top:20px;">Select Scale Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. FAQ SECTION -->
+        <section class="faq-section" id="faq" style="background-color: var(--bg-primary);">
+            <div class="container">
+                <div class="p2-phil-header" data-aos="fade-up" style="margin-bottom: 0;">
+                    <span class="p2-eyebrow">FAQ</span>
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                
+                <div class="faq-grid" data-aos="fade-up">
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            How is ApexGrowth different from traditional agencies?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-body">
+                            <p>We offer absolute campaign transparency through our client dashboard portal, allowing you to log in 24/7 and see exact conversions, check-list statuses, and invoice tracking instantly.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            Do you require long-term binding contracts?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-body">
+                            <p>No, we believe in performance. We operate on flexible monthly terms or custom project phases, meaning we have to earn your business month-over-month.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            What integrations does the platform support?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-body">
+                            <p>Our backend structures sync data points directly from Google Analytics, Meta Ads Pixel, Stripe invoice channels, and Calendly event streams automatically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. GALLERY: Asymmetric Masonry -->
+        <section class="p2-gallery" id="gallery">
+            <div class="container">
+                <div class="p2-gallery-header" data-aos="fade-up">
+                    <span class="p2-eyebrow">Showcase</span>
+                    <h2>Inside ApexGrowth</h2>
+                </div>
+                <div class="p2-gallery-masonry" data-aos="fade-up">
+                    <div class="p2-gal-item">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Strategy Boardroom">
+                    </div>
+                    <div class="p2-gal-item">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Creative Sprint Session">
+                    </div>
+                    <div class="p2-gal-item">
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80" alt="Conference Lounge">
+                    </div>
+                    <div class="p2-gal-item">
+                        <img src="assets/images/case-seo.png" alt="SEO Analysis Audit Desk">
+                    </div>
+                    <div class="p2-gal-item">
+                        <img src="assets/images/case-ppc.png" alt="PPC Media Command center">
+                    </div>
+                    <div class="p2-gal-item">
+                        <img src="assets/images/creative-showcase.png" alt="Landing Page Layout Wireframe">
+                    </div>
+                    <div class="p2-gal-item">
+                        <img src="assets/images/strategy-roadmap.png" alt="Strategic Scaling Target Session">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. AUDIT LEAD TRIGGER CARD / CTA -->
+        <section class="audit-section" id="audit">
+            <div class="container">
+                <div class="audit-cta-box" data-aos="fade-up">
+                    <span class="p2-eyebrow">Instant Growth Check</span>
+                    <h3>Request Your Free Performance Audit</h3>
+                    <p>Input your email and site address to receive immediate visual ratings on site speed, tracking errors, and competitor keyword ranks.</p>
+                    <button class="btn btn-primary trigger-audit-tool" style="background-color: var(--accent-gold); color: #000; font-weight:700;">Start Free Assessment</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CTA: Diagonal Cut Background -->
+        <section class="p2-cta" id="cta">
+            <div class="container p2-cta-inner" data-aos="fade-up">
+                <h2>Scale Your Brand <em>Now.</em></h2>
+                <p>Your most critical marketing campaigns deserve performance-driven strategy and total visibility. Start your confidential consultation today.</p>
+                <div class="p2-cta-btns">
+                    <a class="p2-cta-btn-gold trigger-strategy-call" href="#">Book Strategy Call</a>
+                    <a class="p2-cta-btn-ghost" href="pages/login.html">Client Portal</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 9. FOOTER -->
+    <footer class="p2-footer">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Campaign Budgets</span>
-                <h2>Tailored Pricing Structures</h2>
-            </div>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div>
-                        <h3>Starter Scale</h3>
-                        <p>Essential optimization systems for early local or single-channel domains.</p>
-                        <div class="pricing-price">$1,500<span>/mo</span></div>
-                        <ul class="pricing-features">
-                            <li>Technical SEO Site Audits</li>
-                            <li>Google Search PPC Basics</li>
-                            <li>Monthly Report Portal Access</li>
-                            <li>Core Conversion Mappings</li>
-                        </ul>
-                    </div>
-                    <a href="pages/pricing.html" class="btn btn-secondary btn-sm" style="width:100%; margin-top:20px;">Get Started</a>
-                </div>
-                <div class="pricing-card featured">
-                    <span class="pricing-badge">Most Popular</span>
-                    <div>
-                        <h3>Growth Campaign</h3>
-                        <p>Full-funnel execution targeting multichannel lead volumes and keywords.</p>
-                        <div class="pricing-price">$3,000<span>/mo</span></div>
-                        <ul class="pricing-features">
-                            <li>All Starter Tier Features</li>
-                            <li>Complete On-Page Schema Set</li>
-                            <li>Google + Social PPC Integration</li>
-                            <li>Creative Approval Dashboard</li>
-                            <li>Bi-weekly Optimization Sprints</li>
-                        </ul>
-                    </div>
-                    <a href="pages/pricing.html" class="btn btn-primary btn-sm" style="width:100%; margin-top:20px;">Select Growth Plan</a>
-                </div>
-                <div class="pricing-card">
-                    <div>
-                        <h3>Scale Accelerator</h3>
-                        <p>For high-volume spenders requiring active design support and analyst reviews.</p>
-                        <div class="pricing-price">$5,500<span>/mo</span></div>
-                        <ul class="pricing-features">
-                            <li>Multi-regional SEO Campaigns</li>
-                            <li>Advanced Video Ad Creatives</li>
-                            <li>Funnel Conversion A/B Splits</li>
-                            <li>Dedicated Account Director</li>
-                            <li>Slack Support Channel Connect</li>
-                        </ul>
-                    </div>
-                    <a href="pages/pricing.html" class="btn btn-secondary btn-sm" style="width:100%; margin-top:20px;">Select Scale Plan</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Inline Inquiry Contact CTA -->
-    <section class="audit-section" style="background-color: var(--bg-color);">
-        <div class="container grid-2" style="align-items: center;">
-            <div>
-                <span class="section-tag">Direct Inquiry</span>
-                <h2 style="font-size:2.2rem; margin-bottom:16px;">Ready to Scale? Discuss Strategy with our Growth Experts</h2>
-                <p style="color:var(--text-muted); margin-bottom:24px;">Ask questions regarding custom integrations, creative designs, budget timelines, and scheduling calls.</p>
-                <button class="btn btn-primary trigger-strategy-call">Book 1:1 strategy session</button>
-            </div>
-            <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:40px;">
-                <form onsubmit="event.preventDefault(); alert('Proposal inquiry sent! We will review and reply with options in 3 hours.')" style="display:flex; flex-direction:column; gap:16px;">
-                    <div class="form-group">
-                        <label>Contact Name</label>
-                        <input type="text" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Business Email</label>
-                        <input type="email" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Describe Target Goal</label>
-                        <textarea class="form-input" rows="3" placeholder="e.g. Double leads, rank on keyword x..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-sm" style="width:100%;">Send Proposal Request</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="index.html" class="logo" style="color:#ffffff;">APEXGROWTH<span class="logo-dot">.</span></a>
+            <div class="p2-footer-grid">
+                <div class="p2-footer-brand">
+                    <h2>APEXGROWTH.</h2>
                     <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and automation.</p>
-                    <div class="footer-socials">
-                        <a href="#" class="footer-social-link">FB</a>
-                        <a href="#" class="footer-social-link">LN</a>
-                        <a href="#" class="footer-social-link">TW</a>
+                    <div class="p2-socials">
+                        <a href="#" class="p2-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="p2-social" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="p2-social" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="p2-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div>
-                    <h4 class="footer-title">Home Pages</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home 1 (Portal)</a></li>
-                        <li><a href="home-2.html">Home 2 (Creative)</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer-title">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="pages/service-seo.html">SEO Optimization</a></li>
-                        <li><a href="pages/service-ppc.html">Paid Advertisements</a></li>
-                        <li><a href="pages/service-cro.html">Conversion Funnels</a></li>
-                        <li><a href="pages/service-email.html">Email Automation</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="footer-title">Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="pages/about.html">About Team</a></li>
+                <div class="p2-footer-col">
+                    <h4>Agency</h4>
+                    <ul>
+                        <li><a href="pages/about.html">Our Philosophy</a></li>
+                        <li><a href="pages/services.html">Capabilities</a></li>
                         <li><a href="pages/case-studies.html">Case Studies</a></li>
+                        <li><a href="pages/contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="p2-footer-col">
+                    <h4>Portal</h4>
+                    <ul>
+                        <li><a href="pages/login.html">Client Login</a></li>
+                        <li><a href="dashboard/index.html">My Dashboard</a></li>
+                        <li><a href="dashboard/admin-index.html">Admin Console</a></li>
                         <li><a href="pages/pricing.html">Pricing Plans</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="footer-title">Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="pages/contact.html">Contact Us</a></li>
-                        <li><a href="pages/blog.html">Marketing Blog</a></li>
+                <div class="p2-footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">100 Innovation Way, Suite 400</a></li>
+                        <li><a href="#">Austin, TX 78701</a></li>
+                        <li><a href="tel:+15125550199">+1 (512) 555-0199</a></li>
+                        <li><a href="mailto:contact@apexgrowth-agency.com">contact@apexgrowth-agency.com</a></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
-                <div class="footer-bottom-links">
+            <div class="p2-footer-bottom">
+                <p>&copy; 2026 ApexGrowth Agency. All Rights Reserved.</p>
+                <div class="p2-footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                 </div>
@@ -434,16 +2295,16 @@
             <h3 style="margin-bottom: 16px; font-size:1.6rem; font-weight:800;">Schedule Your 1:1 Strategy Session</h3>
             <p style="color:var(--text-muted); margin-bottom: 24px; font-size:0.95rem;">Pick a convenient date inside our simulated Calendly booking scheduler.</p>
             
-            <div style="background-color: var(--panel-hover); border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); text-align: center;">
+            <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 24px; border-radius: 8px; text-align: center;">
                 <h4 style="margin-bottom:18px; font-weight:700;">Select Date & Time</h4>
                 <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 20px; font-size: 0.85rem; font-weight:700;">
                     <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
                     <div style="opacity:0.3;">14</div><div style="opacity:0.3;">15</div>
-                    <div style="background-color:var(--primary); color:#ffffff; border-radius:4px; cursor:pointer; padding:6px 0;">16</div>
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">17</div>
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">18</div>
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">19</div>
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">20</div>
+                    <div style="background-color:var(--accent-primary); color:#ffffff; border-radius:4px; cursor:pointer; padding:6px 0;">16</div>
+                    <div style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">17</div>
+                    <div style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">18</div>
+                    <div style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">19</div>
+                    <div style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">20</div>
                 </div>
                 <div style="display:flex; justify-content:center; gap:12px;">
                     <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">09:00 AM</button>
@@ -453,7 +2314,85 @@
         </div>
     </div>
 
-    <!-- JS Scripts -->
+    <!-- MODAL: Free Marketing Audit Tool (WIZARD STEPPER) -->
+    <div class="modal-overlay" id="audit-modal">
+        <div class="modal-content" style="max-width: 600px; border-top: 4px solid var(--accent-primary);">
+            <button class="modal-close" aria-label="Close Modal">✕</button>
+            <h3 style="margin-bottom: 8px; font-size: 1.6rem; font-weight: 800;">Free Marketing Audit Assessment</h3>
+            <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.9rem;">Receive an instant scorecard of your domain speed, tag health, and rankings.</p>
+            
+            <!-- Wizard Progress Bar -->
+            <div style="height: 4px; width: 100%; background: var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 30px;">
+                <div id="audit-progress-bar" style="height: 100%; width: 0%; background: var(--accent-primary); transition: width 0.35s ease;"></div>
+            </div>
+
+            <!-- STEP 1: Basic Site Info -->
+            <div class="wizard-step active" id="audit-step-1">
+                <div class="form-group">
+                    <label for="audit-email">Business Email</label>
+                    <input type="email" id="audit-email" class="form-input" placeholder="you@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="audit-url">Website URL</label>
+                    <input type="url" id="audit-url" class="form-input" placeholder="https://example.com" required>
+                </div>
+                <div style="display: flex; justify-content: flex-end; margin-top: 24px;">
+                    <button class="btn btn-primary audit-next" style="padding: 10px 24px;">Continue &rarr;</button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Target Focus -->
+            <div class="wizard-step" id="audit-step-2" style="display: none;">
+                <div class="form-group">
+                    <label for="audit-service">Primary Growth Target Channel</label>
+                    <select id="audit-service" class="form-input" style="height: 48px;">
+                        <option value="SEO">Search Engine Optimization (Organic Traffic)</option>
+                        <option value="PPC">Paid Ads (Google / Meta ROAS)</option>
+                        <option value="CRO">Conversion Funnels (A/B testing)</option>
+                        <option value="Email">Email Marketing & Nurture flows</option>
+                    </select>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+                    <button class="btn btn-outline audit-prev" style="padding: 10px 24px;">Back</button>
+                    <button class="btn btn-primary audit-next" style="padding: 10px 24px;">Analyze Website &rarr;</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Results Scorecard -->
+            <div class="wizard-step" id="audit-step-3" style="display: none;">
+                <div style="text-align: center; margin-bottom: 24px;">
+                    <div id="audit-score-circle" style="width: 140px; height: 140px; border-radius: 50%; border: 8px solid var(--border-light); margin: 0 auto 16px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <!-- Calculated dynamically -->
+                    </div>
+                </div>
+                <div id="audit-recommendations" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px;">
+                    <!-- Appended dynamically -->
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <button class="btn btn-primary modal-close" style="padding: 12px 32px;">Close Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        AOS.init({ duration: 700, once: true, offset: 50 });
+        
+        // Tab display controller inside wizard (Step override show/hide)
+        const wizardSteps = document.querySelectorAll('.wizard-step');
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(m => {
+                if (m.attributeName === 'class') {
+                    wizardSteps.forEach(step => {
+                        step.style.display = step.classList.contains('active') ? 'block' : 'none';
+                    });
+                }
+            });
+        });
+        wizardSteps.forEach(step => observer.observe(step, { attributes: true }));
+    </script>
 </body>
+
 </html>

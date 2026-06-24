@@ -1,209 +1,956 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Discover our growth capabilities. From technical SEO and PPC to conversion funnel design and email automation, we build scalable revenue generators.">
     <title>Services | ApexGrowth Agency</title>
-    <meta name="description" content="Discover our growth capabilities. From technical SEO and PPC to conversion funnel design and email automation, we build scalable revenue generators.">
-    <link rel="stylesheet" href="../assets/css/main.css">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://apexgrowth.agency/pages/services.html">
+    <meta property="og:title" content="Services | ApexGrowth Agency">
+    <meta property="og:description" content="Discover our growth capabilities. Technical SEO, Paid Media, Social and Email automation funnels designed for scalable revenue.">
+    <meta property="og:image" content="../assets/images/creative-showcase.png">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* ══════════════════════════════════════
+           SERVICES PAGE — BOLD EDITORIAL DARK
+           ══════════════════════════════════════ */
+        :root {
+            --gold: #06B6D4; /* ApexGrowth Cyan Accent */
+            --navy: #0F172A; /* ApexGrowth Slate Navy */
+            --blue: #2563EB; /* ApexGrowth Blue */
+        }
+
+        [data-theme="dark"] {
+            --gold: #22D3EE; /* Brighter Cyan */
+            --navy: #020617; /* Very Dark Slate */
+            --blue: #3B82F6; /* Lighter Blue */
+        }
+
+        /* ── Page Banner ── */
+        .sv-banner {
+            padding: 88px 0 0;
+            background: var(--navy);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sv-banner::after {
+            content: '';
+            display: block;
+            height: 4px;
+            background: linear-gradient(to right, var(--gold), transparent);
+        }
+
+        .sv-banner-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: flex-end;
+            padding-bottom: 72px;
+        }
+
+        .sv-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .sv-banner h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 5.5rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 0.95;
+            letter-spacing: -3px;
+            margin-bottom: 0;
+        }
+
+        .sv-banner-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.85;
+            max-width: 420px;
+            align-self: flex-end;
+        }
+
+        .sv-banner-stats {
+            display: flex;
+            gap: 40px;
+            padding: 32px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 0;
+        }
+
+        .sv-banner-stat strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .sv-banner-stat span {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.35);
+            text-transform: uppercase;
+        }
+
+        /* ── Service Card Grid ── */
+        .sv-grid-section {
+            padding: 96px 0;
+            background: var(--bg-primary);
+        }
+
+        .sv-section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .sv-section-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+        }
+
+        .sv-section-header p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 12px auto 0;
+            line-height: 1.75;
+        }
+
+        .sv-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .sv-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px 32px;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .sv-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .sv-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .sv-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 28px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .sv-card:hover .sv-card-icon {
+            background: rgba(6, 182, 212, 0.18);
+            border-color: rgba(6, 182, 212, 0.4);
+        }
+
+        .sv-card-num {
+            position: absolute;
+            top: 28px;
+            right: 28px;
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--border-color);
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .sv-card:hover .sv-card-num {
+            color: rgba(6, 182, 212, 0.15);
+        }
+
+        .sv-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .sv-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 24px;
+        }
+
+        .sv-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--blue);
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: gap 0.2s, color 0.2s;
+        }
+
+        .sv-card-link i {
+            font-size: 0.8rem;
+        }
+
+        .sv-card-link:hover {
+            gap: 14px;
+            color: var(--gold);
+        }
+
+        /* ── Featured Full-Bleed Row ── */
+        .sv-feature {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .sv-feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 480px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sv-feature-row:last-child {
+            border-bottom: none;
+        }
+
+        .sv-feature-img {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sv-feature-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease, filter 0.4s;
+        }
+
+        .sv-feature-row:hover .sv-feature-img img {
+            transform: scale(1.03);
+        }
+
+        .sv-feature-text {
+            padding: 72px 64px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--bg-primary);
+        }
+
+        .sv-feature-row.rev .sv-feature-img {
+            order: 2;
+        }
+
+        .sv-feature-row.rev .sv-feature-text {
+            order: 1;
+        }
+
+        .sv-feature-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .sv-feature-text h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .sv-feature-text p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 28px;
+            max-width: 440px;
+        }
+
+        .sv-feature-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--blue);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .sv-feature-btn::after {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: var(--blue);
+            transition: width 0.3s, background-color 0.3s;
+        }
+
+        .sv-feature-btn:hover {
+            color: var(--gold);
+        }
+
+        .sv-feature-btn:hover::after {
+            width: 56px;
+            background: var(--gold);
+        }
+
+        /* ── Process Section ── */
+        .sv-process {
+            padding: 96px 0;
+            background: var(--navy);
+            color: #fff;
+        }
+
+        .sv-process-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .sv-process-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .sv-process-header p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.45);
+            max-width: 480px;
+            margin: 12px auto 0;
+            line-height: 1.75;
+        }
+
+        .sv-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .sv-steps::before {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .sv-step {
+            text-align: center;
+            padding: 0 24px;
+            position: relative;
+        }
+
+        .sv-step-num {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin: 0 auto 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sv-step h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .sv-step p {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.7;
+        }
+
+        /* ── CTA ── */
+        .sv-cta {
+            padding: 96px 0;
+            background: var(--bg-primary);
+            text-align: center;
+        }
+
+        .sv-cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .sv-cta p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto 36px;
+            line-height: 1.75;
+        }
+
+        .sv-cta-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ── Footer ── */
+        .sv-footer {
+            background: var(--navy);
+            padding: 72px 0 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .sv-footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 56px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .sv-footer-brand h2 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .sv-footer-brand p {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.8;
+        }
+
+        .sv-footer-col h4 {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .sv-footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sv-footer-col ul li a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sv-footer-col ul li a:hover {
+            color: var(--gold);
+        }
+
+        .sv-footer-bottom {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .sv-footer-bottom p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .sv-footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .sv-footer-bottom-links a {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sv-footer-bottom-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .sv-banner-top {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .sv-banner-desc {
+                max-width: 100%;
+            }
+
+            .sv-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .sv-feature-row {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .sv-feature-row.rev .sv-feature-img {
+                order: 0;
+            }
+
+            .sv-feature-row.rev .sv-feature-text {
+                order: 0;
+            }
+
+            .sv-feature-img {
+                aspect-ratio: 16/9;
+            }
+
+            .sv-feature-text {
+                padding: 48px 40px;
+            }
+
+            .sv-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 48px;
+            }
+
+            .sv-steps::before {
+                display: none;
+            }
+
+            .sv-footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sv-banner {
+                padding: 64px 0 0;
+            }
+
+            .sv-banner-stats {
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+
+            .sv-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .sv-feature-text {
+                padding: 40px 24px;
+            }
+
+            .sv-steps {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .sv-footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .sv-footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .sv-cta-btns {
+                flex-direction: column;
+                align-items: stretch;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sv-banner h1 {
+                font-size: clamp(2rem, 8vw, 2.8rem);
+                letter-spacing: -1px;
+            }
+
+            .sv-card {
+                padding: 28px 24px;
+            }
+        }
+    </style>
+
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
 </head>
-<body class="dark-mode">
 
-    <!-- Navigation Header -->
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="../index.html" class="logo">
-                APEXGROWTH<span class="logo-dot">.</span>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="mainNav" role="navigation" aria-label="Main Navigation">
+        <div class="container">
+            <!-- Brand -->
+            <a aria-label="ApexGrowth Home" class="nav-brand" href="../index.html" id="navBrand">
+                <span class="nav-brand-wordmark">APEXGROWTH<span>.</span></span>
             </a>
-            
-            <nav class="nav-menu" id="nav-menu">
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Home</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../index.html" class="nav-dropdown-link">Home 1 (Portal)</a>
-                        <a href="../home-2.html" class="nav-dropdown-link">Home 2 (Creative)</a>
-                    </div>
-                </div>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link active">Services</a>
-                <a href="case-studies.html" class="nav-link">Case Studies</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Dashboard</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../dashboard/index.html" class="nav-dropdown-link">Client Portal</a>
-                        <a href="../dashboard/admin-index.html" class="nav-dropdown-link">Admin Console</a>
-                    </div>
-                </div>
-            </nav>
 
-            <div class="nav-actions">
-                <!-- Theme Toggler -->
-                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
-                    <span class="theme-toggle-icon">☀️</span>
+            <!-- Primary Nav Links -->
+            <ul class="nav-links" id="navLinks" role="list">
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="homeDropdown">
+                        Home <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="homeDropdown">
+                        <li role="none"><a href="../index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 - Minimal</a></li>
+                        <li role="none"><a href="../home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html">About</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="case-studies.html">Case Studies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="dashDropdown">
+                        Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dashDropdown">
+                        <li role="none"><a href="../dashboard/index.html" role="menuitem"><i class="fas fa-user-circle"></i> Client Portal</a></li>
+                        <li role="none"><a href="../dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-mobile-controls">
+                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction">
+                        <span class="dir-text">RTL</span>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="nav-controls">
+                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <div class="nav-sep" aria-hidden="true"></div>
+                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
                 </button>
-                <!-- RTL Toggler -->
-                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
-                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction">
+                    <span class="dir-text">RTL</span>
                 </button>
-                <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
-                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
             </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </header>
+    </nav>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
-    <!-- Services Header Hero -->
-    <section class="hero" style="padding: 140px 0 60px;">
-        <div class="container" style="text-align: center;">
-            <span class="hero-tag">OUR SERVICES</span>
-            <h1 style="font-size: 3rem; margin-bottom: 16px;">Core Channels to Grow Your Business</h1>
-            <p style="margin: 0 auto; max-width: 680px;">We specialize in executing multichannel conversion models. Select a service category to discover process structures and project deliverables.</p>
-        </div>
-    </section>
-
-    <!-- Services Detailed Grid Section -->
-    <section class="cases-section">
-        <div class="container">
-            <div class="services-grid" style="grid-template-columns: repeat(2, 1fr); gap: 40px;">
-                
-                <!-- SEO -->
-                <div class="service-card" style="padding: 50px;">
-                    <div class="service-icon" style="font-size: 2rem; width: 70px; height: 70px;">🔍</div>
-                    <h2 style="font-size:1.75rem; margin-bottom: 16px;">Search Engine Optimization</h2>
-                    <p style="margin-bottom: 24px; color:var(--text-muted);">Increase search visibility with structured technical site setups, intent keyword models, and quality backlinks.</p>
-                    <ul style="margin-bottom: 30px; display:flex; flex-direction:column; gap:10px; list-style: none; font-weight: 500;">
-                        <li>⚙️ Technical audits & crawlers configurations</li>
-                        <li>📍 Local SEO & Google Business Profile setups</li>
-                        <li>🛒 E-commerce catalog structured schemas</li>
-                        <li>📑 Contextual keyword & competitor gap maps</li>
-                    </ul>
-                    <a href="service-seo.html" class="btn btn-primary btn-sm">View SEO Offerings &rarr;</a>
-                </div>
-
-                <!-- PPC -->
-                <div class="service-card" style="padding: 50px;">
-                    <div class="service-icon" style="font-size: 2rem; width: 70px; height: 70px;">🎯</div>
-                    <h2 style="font-size:1.75rem; margin-bottom: 16px;">Paid Advertisements</h2>
-                    <p style="margin-bottom: 24px; color:var(--text-muted);">Scale search, display, and social acquisition funnels with clean tracking configurations and targeting maps.</p>
-                    <ul style="margin-bottom: 30px; display:flex; flex-direction:column; gap:10px; list-style: none; font-weight: 500;">
-                        <li>💬 Google Search ads and responsive assets</li>
-                        <li>👍 Meta Ads (Facebook & Instagram campaigns)</li>
-                        <li>💼 B2B LinkedIn sponsored content streams</li>
-                        <li>📹 High-impact YouTube video ads</li>
-                    </ul>
-                    <a href="service-ppc.html" class="btn btn-primary btn-sm">View Paid Ads &rarr;</a>
-                </div>
-
-                <!-- Social Media -->
-                <div class="service-card" style="padding: 50px;">
-                    <div class="service-icon" style="font-size: 2rem; width: 70px; height: 70px;">📱</div>
-                    <h2 style="font-size:1.75rem; margin-bottom: 16px;">Social Media Marketing</h2>
-                    <p style="margin-bottom: 24px; color:var(--text-muted);">Build active community followings and manage your brand's digital presence across platforms.</p>
-                    <ul style="margin-bottom: 30px; display:flex; flex-direction:column; gap:10px; list-style: none; font-weight: 500;">
-                        <li>🎨 Creative content planning & graphics design</li>
-                        <li>💬 Group community moderations & customer interactions</li>
-                        <li>🤝 Influencer campaigns & joint activations</li>
-                        <li>📊 Account audit analytics & performance sheets</li>
-                    </ul>
-                    <a href="service-social.html" class="btn btn-primary btn-sm">View Social Media &rarr;</a>
-                </div>
-
-                <!-- Content Marketing -->
-                <div class="service-card" style="padding: 50px;">
-                    <div class="service-icon" style="font-size: 2rem; width: 70px; height: 70px;">✍️</div>
-                    <h2 style="font-size:1.75rem; margin-bottom: 16px;">Content Marketing</h2>
-                    <p style="margin-bottom: 24px; color:var(--text-muted);">Establish domain authority with copywriting, educational guides, and download resources.</p>
-                    <ul style="margin-bottom: 30px; display:flex; flex-direction:column; gap:10px; list-style: none; font-weight: 500;">
-                        <li>📑 Long-form blogging structures and keyword hubs</li>
-                        <li>📖 Ebooks, whitepapers & leads magnet assets</li>
-                        <li>📰 Press releases & brand copywriting</li>
-                        <li>🎙️ Podcast planning & audio scripting</li>
-                    </ul>
-                    <a href="service-content.html" class="btn btn-primary btn-sm">View Content Strategy &rarr;</a>
-                </div>
-
-                <!-- Email Marketing -->
-                <div class="service-card" style="padding: 50px;">
-                    <div class="service-icon" style="font-size: 2rem; width: 70px; height: 70px;">✉️</div>
-                    <h2 style="font-size:1.75rem; margin-bottom: 16px;">Email Marketing</h2>
-                    <p style="margin-bottom: 24px; color:var(--text-muted);">Nurture users and automate sales loops with workflows, lists segmentation, and newsletters.</p>
-                    <ul style="margin-bottom: 30px; display:flex; flex-direction:column; gap:10px; list-style: none; font-weight: 500;">
-                        <li>🤖 Automation drip sequences & onboarding loops</li>
-                        <li>👥 Client segmentation filters & hygiene checks</li>
-                        <li>📰 Premium newsletters copy and designs</li>
-                        <li>📊 Open rate, CTR & conversion metric sheets</li>
-                    </ul>
-                    <a href="service-email.html" class="btn btn-primary btn-sm">View Email Systems &rarr;</a>
-                </div>
-
-                <!-- CRO -->
-                <div class="service-card" style="padding: 50px;">
-                    <div class="service-icon" style="font-size: 2rem; width: 70px; height: 70px;">⚡</div>
-                    <h2 style="font-size:1.75rem; margin-bottom: 16px;">Conversion Rate Optimization</h2>
-                    <p style="margin-bottom: 24px; color:var(--text-muted);">Improve landing page actions and optimize conversion ratios with web interface changes.</p>
-                    <ul style="margin-bottom: 30px; display:flex; flex-direction:column; gap:10px; list-style: none; font-weight: 500;">
-                        <li>🎨 Visual landing pages design and structuring</li>
-                        <li>📊 Heatmap logs and click-rate recordings</li>
-                        <li>🧪 Structured A/B split-run experiments</li>
-                        <li>🚪 Funnel bounce-point optimization mappings</li>
-                    </ul>
-                    <a href="service-cro.html" class="btn btn-primary btn-sm">View CRO Offerings &rarr;</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="../index.html" class="logo" style="color:#ffffff;">APEXGROWTH<span class="logo-dot">.</span></a>
-                    <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and automation.</p>
-                    <div class="footer-socials">
-                        <a href="#" class="footer-social-link">FB</a>
-                        <a href="#" class="footer-social-link">LN</a>
-                        <a href="#" class="footer-social-link">TW</a>
+    <main>
+        <!-- 1. BANNER -->
+        <section class="sv-banner">
+            <div class="container">
+                <div class="sv-banner-top" data-aos="fade-up">
+                    <div>
+                        <p class="sv-eyebrow">Capabilities</p>
+                        <h1>Smarter<br>Channels.<br>Scalable Revenue.</h1>
+                    </div>
+                    <div class="sv-banner-desc">
+                        <p>We construct data-driven growth pipelines using technical expertise and realistic performance marketing strategies.</p>
+                        <div class="sv-banner-stats">
+                            <div class="sv-banner-stat"><strong>6</strong><span>Services</span></div>
+                            <div class="sv-banner-stat"><strong>40+</strong><span>Clients</span></div>
+                            <div class="sv-banner-stat"><strong>$48M+</strong><span>Revenue</span></div>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <h4 class="footer-title">Home Pages</h4>
-                    <ul class="footer-links">
-                        <li><a href="../index.html">Home 1 (Portal)</a></li>
-                        <li><a href="../home-2.html">Home 2 (Creative)</a></li>
-                    </ul>
+            </div>
+        </section>
+
+        <!-- 2. SERVICE CARDS GRID -->
+        <section class="sv-grid-section">
+            <div class="container">
+                <div class="sv-section-header" data-aos="fade-up">
+                    <p class="sv-eyebrow" style="text-align:center;">What We Do</p>
+                    <h2>Our Core Practice Areas</h2>
+                    <p>A suite of high-performance B2B channels built to capture enterprise search space and accelerate user conversion.</p>
                 </div>
-                <div>
-                    <h4 class="footer-title">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="service-seo.html">SEO Optimization</a></li>
-                        <li><a href="service-ppc.html">Paid Advertisements</a></li>
-                        <li><a href="service-cro.html">Conversion Funnels</a></li>
-                        <li><a href="service-email.html">Email Automation</a></li>
-                    </ul>
+                <div class="sv-cards">
+                    <div class="sv-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="sv-card-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+                        <span class="sv-card-num">01</span>
+                        <h3>Search Engine Optimization</h3>
+                        <p>Maximize search presence and capture intent-driven traffic with technical site setups, search intent keyword maps, and authority-building campaigns.</p>
+                        <a class="sv-card-link" href="service-seo.html">Explore SEO Strategy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="sv-card" data-aos="fade-up" data-aos-delay="60">
+                        <div class="sv-card-icon"><i class="fas fa-chart-line"></i></div>
+                        <span class="sv-card-num">02</span>
+                        <h3>Paid Advertisements (PPC)</h3>
+                        <p>Scale search, display, and social acquisition funnels. We configure precise tracking systems and build algorithmic bidding strategies.</p>
+                        <a class="sv-card-link" href="service-ppc.html">Explore Paid Media <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="sv-card" data-aos="fade-up" data-aos-delay="120">
+                        <div class="sv-card-icon"><i class="fas fa-share-nodes"></i></div>
+                        <span class="sv-card-num">03</span>
+                        <h3>Social Media Marketing</h3>
+                        <p>Drive engagement, build audience communities, and amplify brand recognition through structured creative concepts and performance distribution.</p>
+                        <a class="sv-card-link" href="service-social.html">Explore Social Strategy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="sv-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="sv-card-icon"><i class="fas fa-pen-nib"></i></div>
+                        <span class="sv-card-num">04</span>
+                        <h3>Content Marketing</h3>
+                        <p>Build brand authority and capture pipeline growth. We deliver long-form industry research, downloadable case guides, and copy assets.</p>
+                        <a class="sv-card-link" href="service-content.html">Explore Content Strategy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="sv-card" data-aos="fade-up" data-aos-delay="60">
+                        <div class="sv-card-icon"><i class="fas fa-envelope-open-text"></i></div>
+                        <span class="sv-card-num">05</span>
+                        <h3>Email Automation</h3>
+                        <p>Nurture users and automate sales pipelines using behavioral triggers, custom drip sequences, and highly segmented user journeys.</p>
+                        <a class="sv-card-link" href="service-email.html">Explore Email Strategy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="sv-card" data-aos="fade-up" data-aos-delay="120">
+                        <div class="sv-card-icon"><i class="fas fa-filter"></i></div>
+                        <span class="sv-card-num">06</span>
+                        <h3>Conversion Optimization (CRO)</h3>
+                        <p>Double landing page conversion rates. We use heatmap logging, A/B testing, and user behavioral analysis to optimize customer funnels.</p>
+                        <a class="sv-card-link" href="service-cro.html">Explore CRO Offerings <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="footer-title">Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Team</a></li>
+            </div>
+        </section>
+
+        <!-- 3. FEATURED SERVICES (ALTERNATING) -->
+        <section class="sv-feature">
+            <div class="sv-feature-row" data-aos="fade-up">
+                <div class="sv-feature-img">
+                    <img src="../assets/images/case-seo.png" alt="Search Engine Optimization">
+                </div>
+                <div class="sv-feature-text">
+                    <p class="sv-feature-tag"><i class="fas fa-circle" style="font-size:0.4rem;"></i> Flagship Service</p>
+                    <h2>Search Engine Optimization &amp;<br>Organic Dominance</h2>
+                    <p>Our search practice is built to drive high-intent, compounding traffic. We focus on technical site health, programmatic scale, and custom search intent maps to turn search visibility into a predictable revenue stream.</p>
+                    <a class="sv-feature-btn" href="service-seo.html">Explore Service</a>
+                </div>
+            </div>
+            <div class="sv-feature-row rev" data-aos="fade-up">
+                <div class="sv-feature-img">
+                    <img src="../assets/images/case-ppc.png" alt="Paid Advertisements">
+                </div>
+                <div class="sv-feature-text">
+                    <p class="sv-feature-tag"><i class="fas fa-circle" style="font-size:0.4rem;"></i> Paid Acquisition</p>
+                    <h2>Paid Advertising &amp;<br>Conversion Attribution</h2>
+                    <p>Scale search, display, and social acquisition funnels with custom-tailored campaign structures. We combine creative testing with algorithmic bidding and cohort analysis to maximize attributable return on ad spend.</p>
+                    <a class="sv-feature-btn" href="service-ppc.html">Explore Service</a>
+                </div>
+            </div>
+            <div class="sv-feature-row" data-aos="fade-up">
+                <div class="sv-feature-img">
+                    <img src="../assets/images/creative-showcase.png" alt="Social Media Marketing">
+                </div>
+                <div class="sv-feature-text">
+                    <p class="sv-feature-tag"><i class="fas fa-circle" style="font-size:0.4rem;"></i> Creative Strategy</p>
+                    <h2>Social Campaigns &amp;<br>Creative Scaling</h2>
+                    <p>Capture audience attention where they spend their time. We produce conversion-focused video and graphic assets, coordinate targeted influencer partnerships, and execute distribution designed to build brand equity.</p>
+                    <a class="sv-feature-btn" href="service-social.html">Explore Service</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PROCESS -->
+        <section class="sv-process">
+            <div class="container">
+                <div class="sv-process-header" data-aos="fade-up">
+                    <p class="sv-eyebrow" style="text-align:center; color:var(--gold);">How We Scale</p>
+                    <h2>Our Engagement Process</h2>
+                    <p>Four structured phases designed to take your campaign from first intake to predictable scale.</p>
+                </div>
+                <div class="sv-steps">
+                    <div class="sv-step" data-aos="fade-up" data-aos-delay="0">
+                        <div class="sv-step-num">01</div>
+                        <h4>Intake &amp; Audit</h4>
+                        <p>We analyze historical channel performance, execute tech audits, and map out immediate optimization wins.</p>
+                    </div>
+                    <div class="sv-step" data-aos="fade-up" data-aos-delay="80">
+                        <div class="sv-step-num">02</div>
+                        <h4>Strategy Mapping</h4>
+                        <p>We construct detailed conversion funnels, keyword targeting maps, and multi-channel marketing campaigns.</p>
+                    </div>
+                    <div class="sv-step" data-aos="fade-up" data-aos-delay="160">
+                        <div class="sv-step-num">03</div>
+                        <h4>Sprint Execution</h4>
+                        <p>We build out custom campaign pages, deploy tracking architecture, and initiate rapid scaling ad sprints.</p>
+                    </div>
+                    <div class="sv-step" data-aos="fade-up" data-aos-delay="240">
+                        <div class="sv-step-num">04</div>
+                        <h4>Sync &amp; Scaling</h4>
+                        <p>We review live dashboard reports, perform systematic A/B split testing, and reallocate budget to high-ROI channels.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CTA -->
+        <section class="sv-cta">
+            <div class="container" data-aos="fade-up">
+                <p class="sv-eyebrow" style="text-align:center;">Begin Your Sprint</p>
+                <h2>Ready to build your growth funnel?</h2>
+                <p>Partner with a metrics-driven consultancy ready to scale your channels. Schedule a custom consultation with our strategic coordinators.</p>
+                <div class="sv-cta-btns">
+                    <a class="btn-primary" href="contact.html" style="padding:16px 40px; font-size:1rem;">Schedule a Growth Audit</a>
+                    <a class="btn-outline" href="about.html" style="padding:16px 40px; font-size:1rem;">About the Agency</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="sv-footer">
+        <div class="container">
+            <div class="sv-footer-grid">
+                <div class="sv-footer-brand">
+                    <h2>APEXGROWTH.</h2>
+                    <p>Transparent, metrics-driven digital marketing agency scaling brands across search, social, and lifecycle automation.</p>
+                </div>
+                <div class="sv-footer-col">
+                    <h4>Agency</h4>
+                    <ul>
+                        <li><a href="about.html">Our Philosophy</a></li>
+                        <li><a href="services.html">Capabilities</a></li>
                         <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="sv-footer-col">
+                    <h4>Portal</h4>
+                    <ul>
+                        <li><a href="login.html">Client Login</a></li>
+                        <li><a href="../dashboard/index.html">My Dashboard</a></li>
+                        <li><a href="../dashboard/admin-index.html">Admin Console</a></li>
                         <li><a href="pricing.html">Pricing Plans</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="footer-title">Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="blog.html">Marketing Blog</a></li>
+                <div class="sv-footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">100 Innovation Way, Suite 400</a></li>
+                        <li><a href="#">Austin, TX 78701</a></li>
+                        <li><a href="tel:+15125550199">+1 (512) 555-0199</a></li>
+                        <li><a href="mailto:contact@apexgrowth-agency.com">contact@apexgrowth-agency.com</a></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
-                <div class="footer-bottom-links">
+            <div class="sv-footer-bottom">
+                <p>&copy; 2026 ApexGrowth Agency. All Rights Reserved.</p>
+                <div class="sv-footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                 </div>
@@ -211,7 +958,9 @@
         </div>
     </footer>
 
-    <!-- JS Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script>AOS.init({ duration: 700, once: true, offset: 50 });</script>
 </body>
+
 </html>

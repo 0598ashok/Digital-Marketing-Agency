@@ -6,6 +6,7 @@
     <title>System Settings | Admin Control</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body class="dashboard-body dark-mode admin-mode">
 
@@ -13,19 +14,17 @@
         
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-brand">
-                APEXADMIN<span class="logo-dot">.</span>
-            </div>
+            <a href="../index.html" class="sidebar-brand" style="text-decoration:none; color:inherit;">APEXADMIN<span class="logo-dot">.</span></a>
             <ul class="sidebar-menu">
-                <li class="sidebar-item"><a href="admin-index.html">📊 Analytics Overview</a></li>
-                <li class="sidebar-item"><a href="admin-users.html">👥 User Management</a></li>
-                <li class="sidebar-item"><a href="admin-clients.html">💼 Client Profiles</a></li>
-                <li class="sidebar-item"><a href="admin-reports.html">📄 Site Audits</a></li>
-                <li class="sidebar-item"><a href="admin-invoices.html">💳 Billing Console</a></li>
-                <li class="sidebar-item active"><a href="admin-settings.html">⚙️ System Settings</a></li>
-                <li class="sidebar-item"><a href="admin-content.html">✍️ Content Manager</a></li>
+                <li class="sidebar-item"><a href="admin-index.html"><i class="ph ph-chart-bar" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Analytics Overview</a></li>
+                <li class="sidebar-item"><a href="admin-users.html"><i class="ph ph-users" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> User Management</a></li>
+                <li class="sidebar-item"><a href="admin-clients.html"><i class="ph ph-briefcase" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Client Profiles</a></li>
+                <li class="sidebar-item"><a href="admin-reports.html"><i class="ph ph-magnifying-glass" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Site Audits</a></li>
+                <li class="sidebar-item"><a href="admin-invoices.html"><i class="ph ph-credit-card" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Billing Console</a></li>
+                <li class="sidebar-item active"><a href="admin-settings.html"><i class="ph ph-gear-six" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> System Settings</a></li>
+                <li class="sidebar-item"><a href="admin-content.html"><i class="ph ph-pen-nib" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Content Manager</a></li>
                 <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
-                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                    <a href="../index.html" style="color:var(--danger); font-weight:600;"><i class="ph ph-sign-out" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Logout</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -42,44 +41,164 @@
             <!-- Header -->
             <header class="dashboard-header">
                 <div style="display:flex; align-items:center; gap:16px;">
-                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar"><i class="ph ph-list" style="font-size:1.5rem;"></i></button>
                     <div class="dashboard-header-title">
-                        <h1>System Settings</h1>
+                        <h1 style="margin:0; font-size:1.5rem; font-weight:700;">System Settings</h1>
+                    </div>
+                </div>
+                <div class="dashboard-header-actions" style="display:flex; align-items:center; gap:12px;">
+                    <div class="header-search hidden-mobile" style="position:relative; margin-right:8px;">
+                        <i class="ph ph-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:1.1rem;"></i>
+                        <input type="text" placeholder="Search admin console..." style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:8px 16px 8px 38px; color:var(--text-color); font-size:0.9rem; outline:none; width:240px; transition:all 0.2s;">
+                    </div>
+                    
+                    <button class="control-btn" title="Notifications" style="position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <i class="ph ph-bell" style="font-size:1.2rem;"></i>
+                        <span style="position:absolute; top:8px; right:10px; width:8px; height:8px; background:var(--danger); border-radius:50%; border:2px solid var(--panel-bg);"></span>
+                    </button>
+
+                    <button class="control-btn theme-toggle-btn" title="Toggle Theme" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <span class="theme-toggle-icon"><i class="ph ph-sun" style="font-size:1.2rem;"></i></span>
+                    </button>
+                    
+                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; font-weight:600; font-size:0.8rem; transition:all 0.2s;">
+                        <span class="rtl-toggle-text">LTR</span>
+                    </button>
+                    
+                    <div class="header-profile" style="width:40px; height:40px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; cursor:pointer; margin-left:8px; border:2px solid var(--panel-bg); box-shadow:0 0 0 1px var(--border-color);">
+                        AD
                     </div>
                 </div>
             </header>
 
             <!-- Dashboard Content -->
-            <div class="dashboard-content-inner" style="max-width:800px;">
-                <div class="section-header" style="text-align:left; margin-bottom:40px; max-width:100%;">
-                    <h2 style="font-size:1.5rem;">Agency Integrations & API Connections</h2>
-                    <p style="font-size:0.95rem;">Configure external API credentials to allow automated tracking and dashboard sync capabilities.</p>
+            <div class="dashboard-content-inner">
+                <!-- Top Row: Integrations & Security -->
+                <div class="grid-2">
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; display:flex; flex-direction:column;">
+                        <h3 style="font-size:1.15rem; margin-bottom:8px;"><i class="ph ph-plugs-connected" style="margin-right:8px; vertical-align:middle; color:var(--primary);"></i>Agency Integrations & APIs</h3>
+                        <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:24px;">Configure external API credentials for automated tracking.</p>
+                        
+                        <div style="display:flex; flex-direction:column; gap:20px; flex:1;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:16px;">
+                                <div>
+                                    <h4 style="font-size:1rem; margin-bottom:4px;">Google Ads API</h4>
+                                    <p style="color:var(--text-muted); font-size:0.8rem;">Fetch search impressions, cost, and CTR automatically.</p>
+                                </div>
+                                <span class="status-badge paid" style="font-size:0.7rem;">Connected</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:16px;">
+                                <div>
+                                    <h4 style="font-size:1rem; margin-bottom:4px;">Meta Conversions API</h4>
+                                    <p style="color:var(--text-muted); font-size:0.8rem;">Push click parameters and server-side tracking.</p>
+                                </div>
+                                <span class="status-badge paid" style="font-size:0.7rem;">Connected</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <div>
+                                    <h4 style="font-size:1rem; margin-bottom:4px;">Salesforce CRM</h4>
+                                    <p style="color:var(--text-muted); font-size:0.8rem;">Sync client profile statuses and pipeline data.</p>
+                                </div>
+                                <span class="status-badge" style="font-size:0.7rem; background-color:var(--bg-color); color:var(--text-color);">Disconnected</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" style="margin-top:20px; width:100%;">Manage Integrations</button>
+                    </div>
+
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; display:flex; flex-direction:column;">
+                        <h3 style="font-size:1.15rem; margin-bottom:8px;"><i class="ph ph-shield-check" style="margin-right:8px; vertical-align:middle; color:var(--success);"></i>Security & Authentication</h3>
+                        <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:24px;">Manage global security policies for the agency and clients.</p>
+                        
+                        <div style="display:flex; flex-direction:column; gap:20px; flex:1;">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <div>
+                                    <h4 style="font-size:1rem; margin-bottom:4px;">Two-Factor Authentication (2FA)</h4>
+                                    <p style="color:var(--text-muted); font-size:0.8rem;">Require 2FA for all internal agency staff.</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <div>
+                                    <h4 style="font-size:1rem; margin-bottom:4px;">Client SSO Enforced</h4>
+                                    <p style="color:var(--text-muted); font-size:0.8rem;">Force clients to log in via Google Workspace / Azure.</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="form-group" style="margin-top:auto;">
+                                <label for="session-timeout">Global Session Timeout</label>
+                                <select id="session-timeout" class="form-input" style="background-color:var(--bg-color);">
+                                    <option>1 Hour</option>
+                                    <option>4 Hours</option>
+                                    <option selected>12 Hours</option>
+                                    <option>Never (Not Recommended)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:40px; display:flex; flex-direction:column; gap:32px;">
-                    <!-- Integration 1 -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:20px;">
-                        <div>
-                            <h3 style="font-size:1.1rem; margin-bottom:4px;">Google Ads API</h3>
-                            <p style="color:var(--text-muted); font-size:0.875rem;">Fetch search impressions, cost, and CTR values automatically.</p>
+                <!-- Bottom Row: Notifications, Branding & Maintenance -->
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; margin-top:24px;">
+                    <!-- Panel 1: Notifications -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:24px;">
+                        <h3 style="font-size:1.1rem; margin-bottom:16px;"><i class="ph ph-bell-ringing" style="margin-right:8px; vertical-align:middle; color:var(--warning);"></i>System Notifications</h3>
+                        <div style="display:flex; flex-direction:column; gap:16px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-size:0.9rem;">Slack Webhook Alerts</span>
+                                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-size:0.9rem;">Email Digest (Daily)</span>
+                                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-size:0.9rem;">Failed Payment Alerts</span>
+                                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                            </div>
                         </div>
-                        <button class="btn btn-primary btn-sm" onclick="alert('Google Ads Integration refreshed!')">Sync Connections</button>
                     </div>
-                    <!-- Integration 2 -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:20px;">
-                        <div>
-                            <h3 style="font-size:1.1rem; margin-bottom:4px;">Meta Conversions API</h3>
-                            <p style="color:var(--text-muted); font-size:0.875rem;">Push click parameters and server-side tracking validation logs.</p>
+
+                    <!-- Panel 2: Branding -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:24px;">
+                        <h3 style="font-size:1.1rem; margin-bottom:16px;"><i class="ph ph-paint-brush" style="margin-right:8px; vertical-align:middle; color:var(--accent);"></i>White-Labeling</h3>
+                        <div style="display:flex; flex-direction:column; gap:16px;">
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label style="font-size:0.8rem;">Custom Domain</label>
+                                <input type="text" class="form-input" value="portal.apexgrowth.com" style="background-color:var(--bg-color); padding:8px;">
+                            </div>
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label style="font-size:0.8rem;">Primary Brand Color</label>
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <div style="width:32px; height:32px; border-radius:4px; background:var(--primary); border:1px solid var(--border-color);"></div>
+                                    <input type="text" class="form-input" value="#3b82f6" style="background-color:var(--bg-color); padding:8px; flex:1;">
+                                </div>
+                            </div>
                         </div>
-                        <button class="btn btn-primary btn-sm" onclick="alert('Meta Conversions API refreshed!')">Sync Connections</button>
                     </div>
-                    <!-- Integration 3 -->
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
+
+                    <!-- Panel 3: Maintenance -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:24px; display:flex; flex-direction:column; justify-content:space-between;">
                         <div>
-                            <h3 style="font-size:1.1rem; margin-bottom:4px;">Slack Webhook Logs</h3>
-                            <p style="color:var(--text-muted); font-size:0.875rem;">Receive channel alerts when clients approve creatives or submit audit requests.</p>
+                            <h3 style="font-size:1.1rem; margin-bottom:8px;"><i class="ph ph-database" style="margin-right:8px; vertical-align:middle; color:var(--text-muted);"></i>Data & Maintenance</h3>
+                            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;">System storage and retention policies.</p>
+                            <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:8px;">
+                                <span>Storage Used (64GB / 100GB)</span>
+                                <span>64%</span>
+                            </div>
+                            <div style="height:6px; background-color:var(--bg-color); border-radius:3px; overflow:hidden;">
+                                <div style="width:64%; height:100%; background-color:var(--primary);"></div>
+                            </div>
                         </div>
-                        <button class="btn btn-primary btn-sm" onclick="alert('Slack Webhook refreshed!')">Sync Connections</button>
+                        <div style="display:flex; gap:12px; margin-top:20px;">
+                            <button class="btn btn-secondary btn-sm" style="flex:1;">Clear Cache</button>
+                            <button class="btn btn-secondary btn-sm" style="flex:1;">Backup DB</button>
+                        </div>
                     </div>
                 </div>
             </div>

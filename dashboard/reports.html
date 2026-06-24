@@ -6,6 +6,7 @@
     <title>Reports Center | Client Portal</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body class="dashboard-body dark-mode">
 
@@ -13,20 +14,18 @@
         
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-brand">
-                APEXGROWTH<span class="logo-dot">.</span>
-            </div>
+            <a href="../index.html" class="sidebar-brand" style="text-decoration:none; color:inherit;">APEXGROWTH<span class="logo-dot">.</span></a>
             <ul class="sidebar-menu">
-                <li class="sidebar-item"><a href="index.html">📊 Overview</a></li>
-                <li class="sidebar-item"><a href="campaigns.html">📈 Campaign Analytics</a></li>
-                <li class="sidebar-item"><a href="creatives.html">📂 Creative Approvals</a></li>
-                <li class="sidebar-item active"><a href="reports.html">📄 Reports Center</a></li>
-                <li class="sidebar-item"><a href="invoices.html">💳 Invoices & Billing</a></li>
-                <li class="sidebar-item"><a href="messaging.html">💬 Direct Messaging</a></li>
-                <li class="sidebar-item"><a href="goals.html">🎯 Goals & KPIs</a></li>
-                <li class="sidebar-item"><a href="settings.html">⚙️ Settings</a></li>
+                <li class="sidebar-item"><a href="index.html"><i class="ph ph-chart-bar" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Overview</a></li>
+                <li class="sidebar-item"><a href="campaigns.html"><i class="ph ph-trend-up" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Campaign Analytics</a></li>
+                <li class="sidebar-item"><a href="creatives.html"><i class="ph ph-folder-open" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Creative Approvals</a></li>
+                <li class="sidebar-item active"><a href="reports.html"><i class="ph ph-file-text" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Reports Center</a></li>
+                <li class="sidebar-item"><a href="invoices.html"><i class="ph ph-credit-card" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Invoices & Billing</a></li>
+                <li class="sidebar-item"><a href="messaging.html"><i class="ph ph-chat-circle-dots" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Direct Messaging</a></li>
+                <li class="sidebar-item"><a href="goals.html"><i class="ph ph-target" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Goals & KPIs</a></li>
+                <li class="sidebar-item"><a href="settings.html"><i class="ph ph-gear" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Settings</a></li>
                 <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
-                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                    <a href="../index.html" style="color:var(--danger); font-weight:600;"><i class="ph ph-sign-out" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Logout</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -43,18 +42,33 @@
             
             <header class="dashboard-header">
                 <div style="display:flex; align-items:center; gap:16px;">
-                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar"><i class="ph ph-list" style="font-size:1.5rem;"></i></button>
                     <div class="dashboard-header-title">
-                        <h1>Reports Center</h1>
+                        <h1 style="margin:0; font-size:1.5rem; font-weight:700;">Reports Center</h1>
                     </div>
                 </div>
-                <div class="dashboard-header-actions">
-                    <button class="control-btn theme-toggle-btn">
-                        <span class="theme-toggle-icon">☀️</span>
+                <div class="dashboard-header-actions" style="display:flex; align-items:center; gap:12px;">
+                    <div class="header-search hidden-mobile" style="position:relative; margin-right:8px;">
+                        <i class="ph ph-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:1.1rem;"></i>
+                        <input type="text" placeholder="Search dashboard..." style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:8px 16px 8px 38px; color:var(--text-color); font-size:0.9rem; outline:none; width:240px; transition:all 0.2s;">
+                    </div>
+                    
+                    <button class="control-btn" title="Notifications" style="position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <i class="ph ph-bell" style="font-size:1.2rem;"></i>
+                        <span style="position:absolute; top:8px; right:10px; width:8px; height:8px; background:var(--danger); border-radius:50%; border:2px solid var(--panel-bg);"></span>
                     </button>
-                    <button class="control-btn rtl-toggle-btn">
+
+                    <button class="control-btn theme-toggle-btn" title="Toggle Theme" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <span class="theme-toggle-icon"><i class="ph ph-sun" style="font-size:1.2rem;"></i></span>
+                    </button>
+                    
+                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; font-weight:600; font-size:0.8rem; transition:all 0.2s;">
                         <span class="rtl-toggle-text">LTR</span>
                     </button>
+                    
+                    <div class="header-profile" style="width:40px; height:40px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; cursor:pointer; margin-left:8px; border:2px solid var(--panel-bg); box-shadow:0 0 0 1px var(--border-color);">
+                        AG
+                    </div>
                 </div>
             </header>
 
@@ -64,51 +78,83 @@
                     <p style="color:var(--text-muted);">Compile and export full performance summaries. Select from historical logs below.</p>
                 </div>
 
-                <div class="data-table-card">
-                    <div style="padding:24px 30px; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
-                        <h3 style="font-size:1.1rem;">Performance Summaries</h3>
-                        <span style="font-size:0.8rem; color:var(--text-muted);">PDF & CSV Format Exports</span>
+                <!-- Layout Container -->
+                <div class="grid-2" style="align-items:flex-start;">
+                    
+                    <!-- Reports Timeline Feed -->
+                    <div class="timeline" style="margin-bottom:20px;">
+                        <div class="timeline-item">
+                            <div class="timeline-icon">📄</div>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <div>
+                                    <h3 style="font-size:1.1rem; margin-bottom:4px;">Full Keyword Rankings Spreadsheet</h3>
+                                    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Current Rankings Data • 820 KB</p>
+                                </div>
+                                <span style="font-size:0.85rem; color:var(--text-muted);">2026-06-15</span>
+                            </div>
+                            <button class="btn btn-secondary btn-sm simulate-export-btn">Download CSV</button>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i class="ph ph-trend-up"></i></div>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <div>
+                                    <h3 style="font-size:1.1rem; margin-bottom:4px;">May Traffic Attributions Report</h3>
+                                    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">May 01 - May 31, 2026 • 1.8 MB</p>
+                                </div>
+                                <span style="font-size:0.85rem; color:var(--text-muted);">2026-06-01</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm simulate-export-btn">Download PDF</button>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon">📊</div>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <div>
+                                    <h3 style="font-size:1.1rem; margin-bottom:4px;">Q1 Performance Audit Summary</h3>
+                                    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Jan 01 - Mar 31, 2026 • 4.2 MB</p>
+                                </div>
+                                <span style="font-size:0.85rem; color:var(--text-muted);">2026-04-05</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm simulate-export-btn">Download PDF</button>
+                        </div>
                     </div>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Report Title</th>
-                                <th>Billing Cycle</th>
-                                <th>Publish Date</th>
-                                <th>File Size</th>
-                                <th>Export Option</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="font-weight:600;">Q1 Performance Audit Summary</td>
-                                <td>Jan 01 - Mar 31, 2026</td>
-                                <td>2026-04-05</td>
-                                <td>4.2 MB</td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm simulate-export-btn" style="background-color:var(--primary);">Download PDF</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="font-weight:600;">May Traffic Attributions Report</td>
-                                <td>May 01 - May 31, 2026</td>
-                                <td>2026-06-01</td>
-                                <td>1.8 MB</td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm simulate-export-btn" style="background-color:var(--primary);">Download PDF</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="font-weight:600;">Full Keyword Rankings Spreadsheet</td>
-                                <td>Current Rankings Data</td>
-                                <td>2026-06-15</td>
-                                <td>820 KB</td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm simulate-export-btn">Download CSV</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                    <!-- Generate Report Widget -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; position:sticky; top:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Generate Custom Report</h3>
+                        <form style="display:flex; flex-direction:column; gap:16px;" onsubmit="event.preventDefault(); document.querySelector('.simulate-export-btn').click();">
+                            <div class="form-group">
+                                <label>Report Type</label>
+                                <select class="form-input" style="background-color:var(--bg-color);">
+                                    <option>Comprehensive Campaign Performance</option>
+                                    <option>Ad Spend & Budget Utilization</option>
+                                    <option>Organic SEO Rankings & Traffic</option>
+                                    <option>Creative Asset Performance</option>
+                                </select>
+                            </div>
+                            <div class="grid-2" style="gap:16px;">
+                                <div class="form-group">
+                                    <label>Start Date</label>
+                                    <input type="date" class="form-input" value="2026-06-01">
+                                </div>
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <input type="date" class="form-input" value="2026-06-21">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Export Format</label>
+                                <select class="form-input" style="background-color:var(--bg-color);">
+                                    <option>PDF Document (.pdf)</option>
+                                    <option>Raw Spreadsheet (.csv)</option>
+                                    <option>Presentation Deck (.pptx)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="margin-top:12px;">Generate & Download</button>
+                        </form>
+                    </div>
+
                 </div>
 
             </div>

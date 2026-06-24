@@ -3,14 +3,61 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Mobile Sidebar Toggle
+    // 1. Mobile Sidebar Toggle with Overlay & Close Button
     const sidebar = document.querySelector('.sidebar');
-    const headerToggle = document.querySelector('.dashboard-menu-toggle');
+    let overlay = document.querySelector('.sidebar-overlay');
+    
+    // Inject overlay if it doesn't exist
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        document.body.appendChild(overlay);
+    }
 
-    if (headerToggle && sidebar) {
-        headerToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
+    // Inject close button into sidebar if it doesn't exist
+    if (sidebar && !sidebar.querySelector('.sidebar-close-btn')) {
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'sidebar-close-btn';
+        closeBtn.innerHTML = '<i class="ph ph-x"></i>';
+        sidebar.appendChild(closeBtn);
+    }
+
+    document.body.addEventListener('click', (e) => {
+        // Open Sidebar
+        if (e.target.closest('.dashboard-menu-toggle')) {
+            if (sidebar) sidebar.classList.add('active');
+            if (overlay) overlay.classList.add('active');
+        }
+        // Close Sidebar
+        if (e.target.closest('.sidebar-close-btn') || e.target.classList.contains('sidebar-overlay')) {
+            if (sidebar) sidebar.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        }
+    });
+
+    // Move header actions to sidebar on mobile screens
+    const headerActionsContainer = document.querySelector('.dashboard-header-actions');
+    const sidebarMenu = document.querySelector('.sidebar-menu');
+    if (headerActionsContainer && sidebarMenu) {
+        let mobileActionsRow = document.createElement('li');
+        mobileActionsRow.className = 'mobile-actions-row';
+        const logoutLi = sidebarMenu.lastElementChild;
+        sidebarMenu.insertBefore(mobileActionsRow, logoutLi);
+
+        const relocateActions = () => {
+            const isMobile = window.innerWidth <= 768;
+            Array.from(headerActionsContainer.children).forEach(el => {
+                if (!el.classList.contains('header-search')) {
+                    if (isMobile) {
+                        mobileActionsRow.appendChild(el);
+                    } else {
+                        headerActionsContainer.appendChild(el);
+                    }
+                }
+            });
+        };
+        window.addEventListener('resize', relocateActions);
+        relocateActions();
     }
 
     // 2. Global State Persistence System
@@ -51,6 +98,60 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "https://picsum.photos/id/60/600/300",
             status: "approved",
             comments: ["Looks great!", "Matches our tone perfectly."]
+        },
+        {
+            id: 4,
+            title: "B2B Outreach Carousel - LinkedIn",
+            type: "Carousel Images",
+            size: "1080x1080",
+            image: "https://picsum.photos/id/48/600/300",
+            status: "pending",
+            comments: ["Change the 3rd slide's call to action."]
+        },
+        {
+            id: 5,
+            title: "Product Launch Teaser - YouTube",
+            type: "Bumper Ad",
+            size: "16:9 Landscape",
+            image: "https://picsum.photos/id/20/600/300",
+            status: "pending",
+            comments: []
+        },
+        {
+            id: 6,
+            title: "Holiday Discount - Display Network",
+            type: "HTML5 Banner",
+            size: "300x250",
+            image: "https://picsum.photos/id/42/600/300",
+            status: "approved",
+            comments: []
+        },
+        {
+            id: 7,
+            title: "Webinar Registration - Twitter/X",
+            type: "Static Image",
+            size: "1200x675",
+            image: "https://picsum.photos/id/36/600/300",
+            status: "pending",
+            comments: ["Needs more urgency in the headline."]
+        },
+        {
+            id: 8,
+            title: "Client Testimonial - TikTok",
+            type: "Short Form Video",
+            size: "9:16 Portrait",
+            image: "https://picsum.photos/id/64/600/300",
+            status: "approved",
+            comments: []
+        },
+        {
+            id: 9,
+            title: "App Install Campaign - Pinterest",
+            type: "Standard Pin",
+            size: "1000x1500",
+            image: "https://picsum.photos/id/11/600/300",
+            status: "pending",
+            comments: []
         }
     ];
 
@@ -73,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // Read stored variables or set defaults
-    let creatives = loadState('agency_creatives', defaultCreatives);
+    let creatives = loadState('agency_creatives_v2', defaultCreatives);
     let invoices = loadState('agency_invoices', defaultInvoices);
     let messages = loadState('agency_messages', defaultMessages);
     let goals = loadState('agency_goals', defaultGoals);
@@ -220,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <button class="btn btn-primary btn-sm approve-creative-btn" data-id="${c.id}" style="background-color:var(--success);">Approve</button>
                             <button class="btn btn-secondary btn-sm reject-creative-btn" data-id="${c.id}" style="color:var(--danger); border-color:var(--danger);">Request Changes</button>
                         </div>
-                    ` : `<div style="text-align:center; font-size:0.875rem; font-weight:600; color:var(--success);">✓ Resolved</div>`}
+                    ` : `<div style="text-align:center; font-size:0.875rem; font-weight:600; color:var(--success);"><i class="ph ph-check"></i> Resolved</div>`}
                 </div>
             </div>
         `).join('');
@@ -233,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (creative) {
                     creative.status = 'approved';
                     creative.comments.push("Approved by client.");
-                    saveState('agency_creatives', creatives);
+                    saveState('agency_creatives_v2', creatives);
                     renderCreativesBoard();
                 }
             });
@@ -248,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (creative) {
                         creative.status = 'rejected';
                         creative.comments.push(comment);
-                        saveState('agency_creatives', creatives);
+                        saveState('agency_creatives_v2', creatives);
                         renderCreativesBoard();
                     }
                 }
@@ -260,22 +361,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Invoice Management & Stripe Payment Portal Simulator
     const renderInvoices = () => {
-        const tableBody = document.getElementById('invoices-table-body');
+        const tableBody = document.getElementById('invoices-feed-body') || document.getElementById('invoices-table-body');
         if (!tableBody) return;
 
         tableBody.innerHTML = invoices.map(inv => `
-            <tr>
-                <td style="font-weight:600;">${inv.id}</td>
-                <td>${inv.description}</td>
-                <td style="font-weight:700;">$${inv.amount.toLocaleString()}</td>
-                <td>${inv.due}</td>
-                <td><span class="status-badge ${inv.status}">${inv.status.toUpperCase()}</span></td>
-                <td>
+            <div class="timeline-item" style="border-left: 4px solid ${inv.status === 'paid' ? 'var(--success)' : 'var(--warning)'}; border-radius: var(--radius-md);">
+                <div class="timeline-icon" style="background-color: ${inv.status === 'paid' ? 'var(--success)' : 'var(--warning)'}; border:none; box-shadow:none;">${inv.status === 'paid' ? '<i class="ph ph-check"></i>' : '<i class="ph ph-warning"></i>'}</div>
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                        <h3 style="font-size:1.1rem; margin-bottom:4px;">${inv.description}</h3>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Invoice ID: ${inv.id} • Due: ${inv.due}</p>
+                    </div>
+                    <span style="font-size:1.25rem; font-weight:800; color:var(--text-color);">$${inv.amount.toLocaleString()}</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+                    <span class="status-badge ${inv.status}">${inv.status.toUpperCase()}</span>
                     ${inv.status === 'pending' ? `
-                        <button class="btn btn-primary btn-sm pay-invoice-btn" data-id="${inv.id}">Pay Now</button>
-                    ` : `<button class="btn btn-secondary btn-sm" disabled>Receipt</button>`}
-                </td>
-            </tr>
+                        <button class="btn btn-primary btn-sm pay-invoice-btn" data-id="${inv.id}">Pay Securely</button>
+                    ` : `<button class="btn btn-secondary btn-sm" disabled>Download Receipt</button>`}
+                </div>
+            </div>
         `).join('');
 
         tableBody.querySelectorAll('.pay-invoice-btn').forEach(btn => {
@@ -385,14 +490,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         list.innerHTML = goals.map(g => {
             const pct = Math.min((g.current / g.target) * 100, 100).toFixed(0);
+            const radius = 40;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (pct / 100) * circumference;
+
             return `
-                <div style="background-color:var(--panel-bg); border: 1px solid var(--border-color); border-radius:var(--radius-md); padding: 24px; margin-bottom: 20px;">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-weight:600;">
-                        <span>${g.title}</span>
-                        <span style="color:var(--primary);">${g.current} / ${g.target} ${g.unit} (${pct}%)</span>
+                <div class="kanban-card" style="display:flex; align-items:center; gap:30px; margin-bottom:20px; border-radius:var(--radius-lg);">
+                    <div style="position:relative; width:100px; height:100px;">
+                        <svg width="100" height="100" style="transform: rotate(-90deg);">
+                            <circle cx="50" cy="50" r="${radius}" fill="none" stroke="var(--bg-color)" stroke-width="8"></circle>
+                            <circle cx="50" cy="50" r="${radius}" fill="none" stroke="var(--primary)" stroke-width="8" stroke-dasharray="${circumference}" stroke-dashoffset="${offset}" stroke-linecap="round" style="transition: stroke-dashoffset 1.5s ease-out;"></circle>
+                        </svg>
+                        <div style="position:absolute; top:0; left:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.2rem;">${pct}%</div>
                     </div>
-                    <div style="height:8px; background-color:var(--bg-color); border-radius:var(--radius-full); overflow:hidden;">
-                        <div style="height:100%; width:${pct}%; background-color:var(--success); transition: width 1s ease-out;"></div>
+                    <div style="flex-grow:1;">
+                        <h3 style="font-size:1.2rem; margin-bottom:8px;">${g.title}</h3>
+                        <div style="color:var(--text-muted); font-size:0.95rem;">Current Progress: <strong style="color:var(--text-color);">${g.current.toLocaleString()}</strong> / Target: ${g.target.toLocaleString()} ${g.unit}</div>
                     </div>
                 </div>
             `;

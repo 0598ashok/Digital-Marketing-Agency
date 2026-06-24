@@ -6,6 +6,7 @@
     <title>User Management | Admin Control</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body class="dashboard-body dark-mode admin-mode">
 
@@ -13,19 +14,17 @@
         
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-brand">
-                APEXADMIN<span class="logo-dot">.</span>
-            </div>
+            <a href="../index.html" class="sidebar-brand" style="text-decoration:none; color:inherit;">APEXADMIN<span class="logo-dot">.</span></a>
             <ul class="sidebar-menu">
-                <li class="sidebar-item"><a href="admin-index.html">📊 Analytics Overview</a></li>
-                <li class="sidebar-item active"><a href="admin-users.html">👥 User Management</a></li>
-                <li class="sidebar-item"><a href="admin-clients.html">💼 Client Profiles</a></li>
-                <li class="sidebar-item"><a href="admin-reports.html">📄 Site Audits</a></li>
-                <li class="sidebar-item"><a href="admin-invoices.html">💳 Billing Console</a></li>
-                <li class="sidebar-item"><a href="admin-settings.html">⚙️ System Settings</a></li>
-                <li class="sidebar-item"><a href="admin-content.html">✍️ Content Manager</a></li>
+                <li class="sidebar-item"><a href="admin-index.html"><i class="ph ph-chart-bar" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Analytics Overview</a></li>
+                <li class="sidebar-item active"><a href="admin-users.html"><i class="ph ph-users" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> User Management</a></li>
+                <li class="sidebar-item"><a href="admin-clients.html"><i class="ph ph-briefcase" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Client Profiles</a></li>
+                <li class="sidebar-item"><a href="admin-reports.html"><i class="ph ph-magnifying-glass" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Site Audits</a></li>
+                <li class="sidebar-item"><a href="admin-invoices.html"><i class="ph ph-credit-card" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Billing Console</a></li>
+                <li class="sidebar-item"><a href="admin-settings.html"><i class="ph ph-gear-six" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> System Settings</a></li>
+                <li class="sidebar-item"><a href="admin-content.html"><i class="ph ph-pen-nib" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Content Manager</a></li>
                 <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
-                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                    <a href="../index.html" style="color:var(--danger); font-weight:600;"><i class="ph ph-sign-out" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Logout</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -42,63 +41,116 @@
             <!-- Header -->
             <header class="dashboard-header">
                 <div style="display:flex; align-items:center; gap:16px;">
-                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar"><i class="ph ph-list" style="font-size:1.5rem;"></i></button>
                     <div class="dashboard-header-title">
-                        <h1>User Management</h1>
+                        <h1 style="margin:0; font-size:1.5rem; font-weight:700;">User Management</h1>
+                    </div>
+                </div>
+                <div class="dashboard-header-actions" style="display:flex; align-items:center; gap:12px;">
+                    <div class="header-search hidden-mobile" style="position:relative; margin-right:8px;">
+                        <i class="ph ph-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:1.1rem;"></i>
+                        <input type="text" placeholder="Search admin console..." style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:8px 16px 8px 38px; color:var(--text-color); font-size:0.9rem; outline:none; width:240px; transition:all 0.2s;">
+                    </div>
+                    
+                    <button class="control-btn" title="Notifications" style="position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <i class="ph ph-bell" style="font-size:1.2rem;"></i>
+                        <span style="position:absolute; top:8px; right:10px; width:8px; height:8px; background:var(--danger); border-radius:50%; border:2px solid var(--panel-bg);"></span>
+                    </button>
+
+                    <button class="control-btn theme-toggle-btn" title="Toggle Theme" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <span class="theme-toggle-icon"><i class="ph ph-sun" style="font-size:1.2rem;"></i></span>
+                    </button>
+                    
+                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; font-weight:600; font-size:0.8rem; transition:all 0.2s;">
+                        <span class="rtl-toggle-text">LTR</span>
+                    </button>
+                    
+                    <div class="header-profile" style="width:40px; height:40px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; cursor:pointer; margin-left:8px; border:2px solid var(--panel-bg); box-shadow:0 0 0 1px var(--border-color);">
+                        AD
                     </div>
                 </div>
             </header>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content-inner">
-                <div class="grid-2" style="grid-template-columns: 1.3fr 0.7fr; align-items: flex-start;">
+                <div style="display:flex; flex-direction:column;">
                     
-                    <!-- Table Card -->
-                    <div class="data-table-card">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Company</th>
-                                    <th>Role</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-users-table-body">
-                                <!-- JS injects user rows -->
-                            </tbody>
-                        </table>
-                    </div>
-
                     <!-- Add User Form -->
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; margin-bottom: 30px;">
                         <h3 style="font-size:1.15rem; margin-bottom:20px;">Create Client Account</h3>
-                        <form id="admin-add-user-form" style="display:flex; flex-direction:column; gap:16px;">
-                            <div class="form-group">
+                        <form id="admin-add-user-form" style="display:flex; flex-wrap:wrap; gap:16px; align-items: flex-end;">
+                            <div class="form-group" style="flex:1; min-width:200px;">
                                 <label for="user-fullname">Full Name</label>
                                 <input type="text" id="user-fullname" class="form-input" placeholder="e.g. John Doe" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="flex:1; min-width:200px;">
                                 <label for="user-emailaddr">Email Address</label>
                                 <input type="email" id="user-emailaddr" class="form-input" placeholder="e.g. john@domain.com" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="flex:1; min-width:200px;">
                                 <label for="user-companyname">Company/Brand Name</label>
                                 <input type="text" id="user-companyname" class="form-input" placeholder="e.g. Acme Corp" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="flex:1; min-width:150px;">
                                 <label for="user-role">Assigned Role</label>
                                 <select id="user-role" class="form-input" style="background-color:var(--bg-color);">
-                                    <option value="Viewer">Viewer (Read-Only Portal)</option>
-                                    <option value="Manager">Manager (Edit Approvals)</option>
-                                    <option value="Owner">Owner (Billing Access)</option>
+                                    <option value="Viewer">Viewer</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Owner">Owner</option>
+                                    <option value="Super Admin">Super Admin</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm" style="margin-top:10px; width:100%;">Create Account</button>
+                            <button type="submit" class="btn btn-primary" style="margin-bottom:12px; height:42px; padding:0 24px;">Create Account</button>
                         </form>
+                    </div>
+
+                    <!-- Profile Cards Grid -->
+                    <div class="creatives-grid" id="admin-users-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+                        <!-- JS injects profile cards here -->
+                    </div>
+
+                    <!-- System Access Logs -->
+                    <div style="margin-top:40px; background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                            <h3 style="font-size:1.15rem;">Recent System Access Logs</h3>
+                            <button class="btn btn-secondary btn-sm">Export Logs</button>
+                        </div>
+                        <div style="overflow-x:auto;">
+                            <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+                                <thead>
+                                    <tr style="border-bottom:1px solid var(--border-color); color:var(--text-muted);">
+                                        <th style="padding:12px 16px; font-weight:600;">Timestamp</th>
+                                        <th style="padding:12px 16px; font-weight:600;">User Email</th>
+                                        <th style="padding:12px 16px; font-weight:600;">IP Address</th>
+                                        <th style="padding:12px 16px; font-weight:600;">Action</th>
+                                        <th style="padding:12px 16px; font-weight:600;">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom:1px solid var(--border-color);">
+                                        <td style="padding:12px 16px;">Today, 10:42 AM</td>
+                                        <td style="padding:12px 16px; font-weight:600;">partner@saasify.global</td>
+                                        <td style="padding:12px 16px; color:var(--text-muted);">192.168.1.105</td>
+                                        <td style="padding:12px 16px;">Logged in (Client Portal)</td>
+                                        <td style="padding:12px 16px;"><span class="status-badge paid">Success</span></td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid var(--border-color);">
+                                        <td style="padding:12px 16px;">Yesterday, 14:15 PM</td>
+                                        <td style="padding:12px 16px; font-weight:600;">j.smith@agency.com</td>
+                                        <td style="padding:12px 16px; color:var(--text-muted);">10.0.0.42</td>
+                                        <td style="padding:12px 16px;">Downloaded Invoice INV-002</td>
+                                        <td style="padding:12px 16px;"><span class="status-badge paid">Success</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:12px 16px;">June 18, 09:05 AM</td>
+                                        <td style="padding:12px 16px; font-weight:600;">unknown@malicious.com</td>
+                                        <td style="padding:12px 16px; color:var(--text-muted);">45.22.11.9</td>
+                                        <td style="padding:12px 16px;">Failed Login Attempt (Admin)</td>
+                                        <td style="padding:12px 16px;"><span class="status-badge pending" style="background:rgba(239,68,68,0.1); color:var(--danger);">Blocked</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                 </div>

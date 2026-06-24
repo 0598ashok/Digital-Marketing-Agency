@@ -6,6 +6,7 @@
     <title>Client Profiles | Admin Control</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body class="dashboard-body dark-mode admin-mode">
 
@@ -13,19 +14,17 @@
         
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-brand">
-                APEXADMIN<span class="logo-dot">.</span>
-            </div>
+            <a href="../index.html" class="sidebar-brand" style="text-decoration:none; color:inherit;">APEXADMIN<span class="logo-dot">.</span></a>
             <ul class="sidebar-menu">
-                <li class="sidebar-item"><a href="admin-index.html">📊 Analytics Overview</a></li>
-                <li class="sidebar-item"><a href="admin-users.html">👥 User Management</a></li>
-                <li class="sidebar-item active"><a href="admin-clients.html">💼 Client Profiles</a></li>
-                <li class="sidebar-item"><a href="admin-reports.html">📄 Site Audits</a></li>
-                <li class="sidebar-item"><a href="admin-invoices.html">💳 Billing Console</a></li>
-                <li class="sidebar-item"><a href="admin-settings.html">⚙️ System Settings</a></li>
-                <li class="sidebar-item"><a href="admin-content.html">✍️ Content Manager</a></li>
+                <li class="sidebar-item"><a href="admin-index.html"><i class="ph ph-chart-bar" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Analytics Overview</a></li>
+                <li class="sidebar-item"><a href="admin-users.html"><i class="ph ph-users" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> User Management</a></li>
+                <li class="sidebar-item active"><a href="admin-clients.html"><i class="ph ph-briefcase" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Client Profiles</a></li>
+                <li class="sidebar-item"><a href="admin-reports.html"><i class="ph ph-magnifying-glass" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Site Audits</a></li>
+                <li class="sidebar-item"><a href="admin-invoices.html"><i class="ph ph-credit-card" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Billing Console</a></li>
+                <li class="sidebar-item"><a href="admin-settings.html"><i class="ph ph-gear-six" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> System Settings</a></li>
+                <li class="sidebar-item"><a href="admin-content.html"><i class="ph ph-pen-nib" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Content Manager</a></li>
                 <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
-                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                    <a href="../index.html" style="color:var(--danger); font-weight:600;"><i class="ph ph-sign-out" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Logout</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -42,22 +41,148 @@
             <!-- Header -->
             <header class="dashboard-header">
                 <div style="display:flex; align-items:center; gap:16px;">
-                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar"><i class="ph ph-list" style="font-size:1.5rem;"></i></button>
                     <div class="dashboard-header-title">
-                        <h1>Client Profiles</h1>
+                        <h1 style="margin:0; font-size:1.5rem; font-weight:700;">Client Profiles</h1>
+                    </div>
+                </div>
+                <div class="dashboard-header-actions" style="display:flex; align-items:center; gap:12px;">
+                    <div class="header-search hidden-mobile" style="position:relative; margin-right:8px;">
+                        <i class="ph ph-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:1.1rem;"></i>
+                        <input type="text" placeholder="Search admin console..." style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:8px 16px 8px 38px; color:var(--text-color); font-size:0.9rem; outline:none; width:240px; transition:all 0.2s;">
+                    </div>
+                    
+                    <button class="control-btn" title="Notifications" style="position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <i class="ph ph-bell" style="font-size:1.2rem;"></i>
+                        <span style="position:absolute; top:8px; right:10px; width:8px; height:8px; background:var(--danger); border-radius:50%; border:2px solid var(--panel-bg);"></span>
+                    </button>
+
+                    <button class="control-btn theme-toggle-btn" title="Toggle Theme" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <span class="theme-toggle-icon"><i class="ph ph-sun" style="font-size:1.2rem;"></i></span>
+                    </button>
+                    
+                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; font-weight:600; font-size:0.8rem; transition:all 0.2s;">
+                        <span class="rtl-toggle-text">LTR</span>
+                    </button>
+                    
+                    <div class="header-profile" style="width:40px; height:40px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; cursor:pointer; margin-left:8px; border:2px solid var(--panel-bg); box-shadow:0 0 0 1px var(--border-color);">
+                        AD
                     </div>
                 </div>
             </header>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content-inner">
-                <div class="section-header" style="text-align:left; margin-bottom:40px; max-width:100%;">
-                    <h2 style="font-size:1.5rem;">Active Marketing Accounts</h2>
-                    <p style="font-size:0.95rem;">Monitor ad spend run-rates, adjust assigned account budgets, and control onboarding indicators.</p>
+                <!-- Top Row: Metrics Grid -->
+                <div class="metrics-grid" style="margin-bottom:24px;">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Active Clients</h3>
+                            <span><i class="ph ph-users" style="font-size:1.2rem; color:var(--primary);"></i></span>
+                        </div>
+                        <div class="metric-value">42</div>
+                        <div class="metric-trend positive"><i class="ph ph-trend-up"></i> +3 this month</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Avg Retainer</h3>
+                            <span><i class="ph ph-currency-dollar" style="font-size:1.2rem; color:var(--success);"></i></span>
+                        </div>
+                        <div class="metric-value">$8,450</div>
+                        <div class="metric-trend positive"><i class="ph ph-trend-up"></i> +12% from Q2</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Churn Risk</h3>
+                            <span><i class="ph ph-warning" style="font-size:1.2rem; color:var(--danger);"></i></span>
+                        </div>
+                        <div class="metric-value">3</div>
+                        <div class="metric-trend negative"><i class="ph ph-trend-up"></i> Attention Needed</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>In Onboarding</h3>
+                            <span><i class="ph ph-rocket" style="font-size:1.2rem; color:var(--accent);"></i></span>
+                        </div>
+                        <div class="metric-value">5</div>
+                        <div class="metric-trend positive"><i class="ph ph-check"></i> On schedule</div>
+                    </div>
                 </div>
 
-                <div class="creatives-grid" id="admin-clients-grid">
+                <div class="section-header" style="text-align:left; margin-bottom:20px;">
+                    <h2 style="font-size:1.25rem;">Active Marketing Accounts</h2>
+                </div>
+
+                <!-- Middle Section: Client Cards -->
+                <div class="creatives-grid" id="admin-clients-grid" style="margin-bottom:30px;">
                     <!-- JS injects client cards -->
+                </div>
+
+                <!-- Bottom Section: Split Panel for Risk and Activity -->
+                <div class="split-panel">
+                    <div class="panel-left" style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px; display:flex; align-items:center; gap:8px;"><i class="ph ph-warning-circle" style="color:var(--danger);"></i> At-Risk Accounts</h3>
+                        <ul style="list-style:none; display:flex; flex-direction:column; gap:16px; font-size:0.9rem;">
+                            <li style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <div class="profile-avatar" style="width:36px; height:36px; font-size:0.8rem; margin:0; background:rgba(239,68,68,0.1); color:var(--danger);">TL</div>
+                                    <span><strong>TechLogistics Inc.</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">ROAS dropped below 1.5x</span></span>
+                                </div>
+                                <button class="btn btn-secondary btn-sm" style="border-color:var(--danger); color:var(--danger);">Review</button>
+                            </li>
+                            <li style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <div class="profile-avatar" style="width:36px; height:36px; font-size:0.8rem; margin:0; background:rgba(239,68,68,0.1); color:var(--danger);">GB</div>
+                                    <span><strong>GreenBowl Foods</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">Unresponsive to Q3 planning emails</span></span>
+                                </div>
+                                <button class="btn btn-secondary btn-sm" style="border-color:var(--danger); color:var(--danger);">Review</button>
+                            </li>
+                            <li style="display:flex; justify-content:space-between;">
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <div class="profile-avatar" style="width:36px; height:36px; font-size:0.8rem; margin:0; background:rgba(239,68,68,0.1); color:var(--danger);">AP</div>
+                                    <span><strong>Alpha Properties</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">Invoice 14 days overdue</span></span>
+                                </div>
+                                <button class="btn btn-secondary btn-sm" style="border-color:var(--danger); color:var(--danger);">Review</button>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="panel-right" style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px; display:flex; align-items:center; gap:8px;"><i class="ph ph-clock-counter-clockwise" style="color:var(--primary);"></i> Recent Client Activity</h3>
+                        <div class="timeline" id="admin-client-activity-feed">
+                            <!-- Static activity for mockup -->
+                            <div class="timeline-item" style="border-left: 4px solid var(--success); border-radius: var(--radius-md);">
+                                <div class="timeline-icon" style="background-color: var(--success); border:none; box-shadow:none;"><i class="ph ph-check"></i></div>
+                                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                    <div>
+                                        <h3 style="font-size:1rem; margin-bottom:4px;">ApexGrowth Onboarding</h3>
+                                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Client completed Stripe billing setup.</p>
+                                    </div>
+                                    <span style="font-size:0.75rem; color:var(--text-muted);">2h ago</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item" style="border-left: 4px solid var(--primary); border-radius: var(--radius-md);">
+                                <div class="timeline-icon" style="background-color: var(--primary); border:none; box-shadow:none;"><i class="ph ph-folder-open"></i></div>
+                                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                    <div>
+                                        <h3 style="font-size:1rem; margin-bottom:4px;">NovaBrands Creative</h3>
+                                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Client approved "Summer Sale" assets.</p>
+                                    </div>
+                                    <span style="font-size:0.75rem; color:var(--text-muted);">4h ago</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item" style="border-left: 4px solid var(--warning); border-radius: var(--radius-md);">
+                                <div class="timeline-icon" style="background-color: var(--warning); border:none; box-shadow:none;"><i class="ph ph-warning"></i></div>
+                                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                    <div>
+                                        <h3 style="font-size:1rem; margin-bottom:4px;">Zenith Corp Audits</h3>
+                                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Client requested new Technical SEO audit.</p>
+                                    </div>
+                                    <span style="font-size:0.75rem; color:var(--text-muted);">1d ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

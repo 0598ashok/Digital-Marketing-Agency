@@ -6,6 +6,7 @@
     <title>Content Manager | Admin Control</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body class="dashboard-body dark-mode admin-mode">
 
@@ -13,19 +14,17 @@
         
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-brand">
-                APEXADMIN<span class="logo-dot">.</span>
-            </div>
+            <a href="../index.html" class="sidebar-brand" style="text-decoration:none; color:inherit;">APEXADMIN<span class="logo-dot">.</span></a>
             <ul class="sidebar-menu">
-                <li class="sidebar-item"><a href="admin-index.html">📊 Analytics Overview</a></li>
-                <li class="sidebar-item"><a href="admin-users.html">👥 User Management</a></li>
-                <li class="sidebar-item"><a href="admin-clients.html">💼 Client Profiles</a></li>
-                <li class="sidebar-item"><a href="admin-reports.html">📄 Site Audits</a></li>
-                <li class="sidebar-item"><a href="admin-invoices.html">💳 Billing Console</a></li>
-                <li class="sidebar-item"><a href="admin-settings.html">⚙️ System Settings</a></li>
-                <li class="sidebar-item active"><a href="admin-content.html">✍️ Content Manager</a></li>
+                <li class="sidebar-item"><a href="admin-index.html"><i class="ph ph-chart-bar" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Analytics Overview</a></li>
+                <li class="sidebar-item"><a href="admin-users.html"><i class="ph ph-users" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> User Management</a></li>
+                <li class="sidebar-item"><a href="admin-clients.html"><i class="ph ph-briefcase" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Client Profiles</a></li>
+                <li class="sidebar-item"><a href="admin-reports.html"><i class="ph ph-magnifying-glass" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Site Audits</a></li>
+                <li class="sidebar-item"><a href="admin-invoices.html"><i class="ph ph-credit-card" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Billing Console</a></li>
+                <li class="sidebar-item"><a href="admin-settings.html"><i class="ph ph-gear-six" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> System Settings</a></li>
+                <li class="sidebar-item active"><a href="admin-content.html"><i class="ph ph-pen-nib" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Content Manager</a></li>
                 <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
-                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                    <a href="../index.html" style="color:var(--danger); font-weight:600;"><i class="ph ph-sign-out" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Logout</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -42,58 +41,187 @@
             <!-- Header -->
             <header class="dashboard-header">
                 <div style="display:flex; align-items:center; gap:16px;">
-                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar"><i class="ph ph-list" style="font-size:1.5rem;"></i></button>
                     <div class="dashboard-header-title">
-                        <h1>Content Manager</h1>
+                        <h1 style="margin:0; font-size:1.5rem; font-weight:700;">Content Manager</h1>
+                    </div>
+                </div>
+                <div class="dashboard-header-actions" style="display:flex; align-items:center; gap:12px;">
+                    <div class="header-search hidden-mobile" style="position:relative; margin-right:8px;">
+                        <i class="ph ph-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:1.1rem;"></i>
+                        <input type="text" placeholder="Search admin console..." style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:8px 16px 8px 38px; color:var(--text-color); font-size:0.9rem; outline:none; width:240px; transition:all 0.2s;">
+                    </div>
+                    
+                    <button class="control-btn" title="Notifications" style="position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <i class="ph ph-bell" style="font-size:1.2rem;"></i>
+                        <span style="position:absolute; top:8px; right:10px; width:8px; height:8px; background:var(--danger); border-radius:50%; border:2px solid var(--panel-bg);"></span>
+                    </button>
+
+                    <button class="control-btn theme-toggle-btn" title="Toggle Theme" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <span class="theme-toggle-icon"><i class="ph ph-sun" style="font-size:1.2rem;"></i></span>
+                    </button>
+                    
+                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; font-weight:600; font-size:0.8rem; transition:all 0.2s;">
+                        <span class="rtl-toggle-text">LTR</span>
+                    </button>
+                    
+                    <div class="header-profile" style="width:40px; height:40px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; cursor:pointer; margin-left:8px; border:2px solid var(--panel-bg); box-shadow:0 0 0 1px var(--border-color);">
+                        AD
                     </div>
                 </div>
             </header>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content-inner">
-                <div class="grid-2" style="grid-template-columns: 1.3fr 0.7fr; align-items: flex-start;">
-                    
-                    <!-- Table Card -->
-                    <div class="data-table-card">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Article Title</th>
-                                    <th>Category</th>
-                                    <th>Publish Date</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-blogs-table-body">
-                                <!-- JS injects blog rows -->
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Publish Blog Panel -->
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
-                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Publish Blog Article</h3>
-                        <form id="admin-add-blog-form" style="display:flex; flex-direction:column; gap:16px;">
-                            <div class="form-group">
-                                <label for="blog-title-input">Article Title</label>
-                                <input type="text" id="blog-title-input" class="form-input" placeholder="e.g. Scaling ad spend tips..." required>
-                            </div>
-                            <div class="form-group">
-                                <label for="blog-category-input">Blog Category</label>
-                                <select id="blog-category-input" class="form-input" style="background-color:var(--bg-color);">
-                                    <option value="Search Optimization">Search Optimization (SEO)</option>
-                                    <option value="Paid Media (PPC)">Paid Media (PPC)</option>
-                                    <option value="Conversion Funnels (CRO)">Conversion Funnels (CRO)</option>
-                                    <option value="Email Flows">Email Flows & Journeys</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-sm" style="margin-top:10px; width:100%;">Publish Post</button>
-                        </form>
-                    </div>
-
+                <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; margin-bottom:30px;">
+                    <h3 style="font-size:1.15rem; margin-bottom:20px;">Publish Blog Article</h3>
+                    <form id="admin-add-blog-form" style="display:flex; flex-wrap:wrap; gap:16px; align-items: flex-end;">
+                        <div class="form-group" style="flex:2; min-width:300px;">
+                            <label for="blog-title-input">Article Title</label>
+                            <input type="text" id="blog-title-input" class="form-input" placeholder="e.g. Scaling ad spend tips..." required>
+                        </div>
+                        <div class="form-group" style="flex:1; min-width:200px;">
+                            <label for="blog-category-input">Blog Category</label>
+                            <select id="blog-category-input" class="form-input" style="background-color:var(--bg-color);">
+                                <option value="Search Optimization">Search Optimization (SEO)</option>
+                                <option value="Paid Media (PPC)">Paid Media (PPC)</option>
+                                <option value="Conversion Funnels (CRO)">Conversion Funnels (CRO)</option>
+                                <option value="Email Flows">Email Flows & Journeys</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="margin-bottom:12px; height:42px; padding:0 24px;">Publish Post</button>
+                    </form>
                 </div>
+
+                <div class="kanban-board" id="admin-blogs-kanban">
+                    <!-- Column 1: Drafts -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header">
+                            <span>Idea / Draft</span>
+                            <span class="status-badge pending">2</span>
+                        </div>
+                        <div class="kanban-column-body" id="blogs-draft">
+                            <div class="kanban-card" draggable="true">
+                                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                                    <span class="status-badge" style="background-color:rgba(147,51,234,0.1); color:#9333ea;">SEO</span>
+                                    <span style="color:var(--text-muted); font-size:0.8rem;">Dec 12</span>
+                                </div>
+                                <h4 style="font-size:0.95rem; margin-bottom:8px;">Core Web Vitals 2026 Checklist</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Outline the upcoming changes to LCP metrics and how to prepare.</p>
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <div class="profile-avatar" style="width:24px; height:24px; font-size:0.6rem; margin:0;">AD</div>
+                                    <span style="font-size:0.75rem; color:var(--text-muted);">Assigned to Admin</span>
+                                </div>
+                            </div>
+                            
+                            <div class="kanban-card" draggable="true">
+                                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                                    <span class="status-badge" style="background-color:rgba(59,130,246,0.1); color:var(--primary);">PPC</span>
+                                    <span style="color:var(--text-muted); font-size:0.8rem;">Dec 15</span>
+                                </div>
+                                <h4 style="font-size:0.95rem; margin-bottom:8px;">Google Ads Bidding Strategies</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Drafting ideas for value-based bidding optimization.</p>
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <div class="profile-avatar" style="width:24px; height:24px; font-size:0.6rem; margin:0;">JS</div>
+                                    <span style="font-size:0.75rem; color:var(--text-muted);">Assigned to John S.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Review -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header">
+                            <span>In Review</span>
+                            <span class="status-badge pending" style="background-color:rgba(59,130,246,0.15); color:var(--primary);">1</span>
+                        </div>
+                        <div class="kanban-column-body" id="blogs-review">
+                            <div class="kanban-card" draggable="true">
+                                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                                    <span class="status-badge" style="background-color:rgba(239,68,68,0.1); color:var(--danger);">CRO</span>
+                                    <span style="color:var(--text-muted); font-size:0.8rem;">Dec 08</span>
+                                </div>
+                                <h4 style="font-size:0.95rem; margin-bottom:8px;">10 Split Testing Pitfalls</h4>
+                                <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Pending client approval on the final draft before scheduling.</p>
+                                <div style="display:flex; align-items:center; justify-content:space-between;">
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div class="profile-avatar" style="width:24px; height:24px; font-size:0.6rem; margin:0; background:var(--accent);">MR</div>
+                                    </div>
+                                    <span class="status-badge pending" style="background-color:rgba(59,130,246,0.15); color:var(--primary); font-size:0.7rem;">Needs Review</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Published -->
+                    <div class="kanban-column" style="border:1px solid rgba(16, 185, 129, 0.3);">
+                        <div class="kanban-column-header" style="border-bottom-color: rgba(16, 185, 129, 0.3);">
+                            <span style="color:var(--success);">Published Content</span>
+                            <span class="status-badge paid" style="background-color:rgba(16,185,129,0.15); color:var(--success);">Live</span>
+                        </div>
+                        <div class="kanban-column-body" id="admin-blogs-table-body">
+                            <!-- JS injects published blog cards -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy Insights & Performance -->
+                <div class="grid-2" style="margin-top:24px;">
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Top Performing Content</h3>
+                        <ul style="list-style:none; display:flex; flex-direction:column; gap:16px; font-size:0.9rem;">
+                            <li style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <div style="width:32px; height:32px; background:var(--primary); border-radius:4px; display:flex; align-items:center; justify-content:center;">1</div>
+                                    <span><strong>Q3 eCommerce Scaling Strategies</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">Paid Media (PPC)</span></span>
+                                </div>
+                                <div style="text-align:right;">
+                                    <div>12,500 Views</div>
+                                    <span class="status-badge paid" style="font-size:0.7rem; padding:2px 6px;">Top Rank</span>
+                                </div>
+                            </li>
+                            <li style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <div style="width:32px; height:32px; background:var(--accent); border-radius:4px; display:flex; align-items:center; justify-content:center;">2</div>
+                                    <span><strong>The Ultimate Guide to Tech SEO</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">Search Optimization</span></span>
+                                </div>
+                                <div style="text-align:right;">
+                                    <div>8,200 Views</div>
+                                    <span class="status-badge pending" style="font-size:0.7rem; padding:2px 6px;">Rising</span>
+                                </div>
+                            </li>
+                            <li style="display:flex; justify-content:space-between;">
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <div style="width:32px; height:32px; background:var(--bg-color); border:1px solid var(--border-color); border-radius:4px; display:flex; align-items:center; justify-content:center;">3</div>
+                                    <span><strong>Cart Abandonment Email Flows</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">Email Flows & Journeys</span></span>
+                                </div>
+                                <div style="text-align:right;">
+                                    <div>5,400 Views</div>
+                                    <span class="status-badge" style="font-size:0.7rem; padding:2px 6px; background:var(--bg-color); color:var(--text-color);">Stable</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; display:flex; flex-direction:column; justify-content:space-between;">
+                        <div>
+                            <h3 style="font-size:1.15rem; margin-bottom:12px;">Content Strategy Insights</h3>
+                            <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">AI-driven recommendations based on recent audience engagement and search velocity.</p>
+                            
+                            <div style="background:var(--bg-color); border:1px solid var(--border-color); padding:16px; border-radius:var(--radius-md); margin-bottom:16px; border-left:4px solid var(--primary);">
+                                <h4 style="font-size:0.95rem; margin-bottom:4px;">High Intent: "AI Marketing Automation"</h4>
+                                <p style="font-size:0.85rem; color:var(--text-muted);">Search volume for this cluster grew by 240% this week. Recommend prioritizing a draft on this topic.</p>
+                            </div>
+                            
+                            <div style="background:var(--bg-color); border:1px solid var(--border-color); padding:16px; border-radius:var(--radius-md); border-left:4px solid var(--warning);">
+                                <h4 style="font-size:0.95rem; margin-bottom:4px;">Content Gap: B2B Lead Gen</h4>
+                                <p style="font-size:0.85rem; color:var(--text-muted);">We have not published any case studies on B2B campaigns in the last 45 days. Competitors are gaining ground.</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" style="align-self:flex-start; margin-top:20px;">Generate AI Drafts</button>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>

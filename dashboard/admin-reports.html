@@ -6,6 +6,7 @@
     <title>Marketing Audits Hub | Admin Control</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body class="dashboard-body dark-mode admin-mode">
 
@@ -13,19 +14,17 @@
         
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-brand">
-                APEXADMIN<span class="logo-dot">.</span>
-            </div>
+            <a href="../index.html" class="sidebar-brand" style="text-decoration:none; color:inherit;">APEXADMIN<span class="logo-dot">.</span></a>
             <ul class="sidebar-menu">
-                <li class="sidebar-item"><a href="admin-index.html">📊 Analytics Overview</a></li>
-                <li class="sidebar-item"><a href="admin-users.html">👥 User Management</a></li>
-                <li class="sidebar-item"><a href="admin-clients.html">💼 Client Profiles</a></li>
-                <li class="sidebar-item active"><a href="admin-reports.html">📄 Site Audits</a></li>
-                <li class="sidebar-item"><a href="admin-invoices.html">💳 Billing Console</a></li>
-                <li class="sidebar-item"><a href="admin-settings.html">⚙️ System Settings</a></li>
-                <li class="sidebar-item"><a href="admin-content.html">✍️ Content Manager</a></li>
+                <li class="sidebar-item"><a href="admin-index.html"><i class="ph ph-chart-bar" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Analytics Overview</a></li>
+                <li class="sidebar-item"><a href="admin-users.html"><i class="ph ph-users" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> User Management</a></li>
+                <li class="sidebar-item"><a href="admin-clients.html"><i class="ph ph-briefcase" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Client Profiles</a></li>
+                <li class="sidebar-item active"><a href="admin-reports.html"><i class="ph ph-magnifying-glass" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Site Audits</a></li>
+                <li class="sidebar-item"><a href="admin-invoices.html"><i class="ph ph-credit-card" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Billing Console</a></li>
+                <li class="sidebar-item"><a href="admin-settings.html"><i class="ph ph-gear-six" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> System Settings</a></li>
+                <li class="sidebar-item"><a href="admin-content.html"><i class="ph ph-pen-nib" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Content Manager</a></li>
                 <li style="margin-top:auto; border-top:1px solid var(--border-color); padding-top:20px;">
-                    <a href="../index.html" style="color:var(--text-muted);">← Return to Website</a>
+                    <a href="../index.html" style="color:var(--danger); font-weight:600;"><i class="ph ph-sign-out" style="margin-right:8px; font-size:1.1rem; vertical-align:middle;"></i> Logout</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -42,9 +41,32 @@
             <!-- Header -->
             <header class="dashboard-header">
                 <div style="display:flex; align-items:center; gap:16px;">
-                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar">☰</button>
+                    <button class="dashboard-menu-toggle mobile-toggle" style="display:none;" aria-label="Toggle Sidebar"><i class="ph ph-list" style="font-size:1.5rem;"></i></button>
                     <div class="dashboard-header-title">
-                        <h1>Marketing Audits Hub</h1>
+                        <h1 style="margin:0; font-size:1.5rem; font-weight:700;">Marketing Audits Hub</h1>
+                    </div>
+                </div>
+                <div class="dashboard-header-actions" style="display:flex; align-items:center; gap:12px;">
+                    <div class="header-search hidden-mobile" style="position:relative; margin-right:8px;">
+                        <i class="ph ph-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:1.1rem;"></i>
+                        <input type="text" placeholder="Search admin console..." style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:8px 16px 8px 38px; color:var(--text-color); font-size:0.9rem; outline:none; width:240px; transition:all 0.2s;">
+                    </div>
+                    
+                    <button class="control-btn" title="Notifications" style="position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <i class="ph ph-bell" style="font-size:1.2rem;"></i>
+                        <span style="position:absolute; top:8px; right:10px; width:8px; height:8px; background:var(--danger); border-radius:50%; border:2px solid var(--panel-bg);"></span>
+                    </button>
+
+                    <button class="control-btn theme-toggle-btn" title="Toggle Theme" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
+                        <span class="theme-toggle-icon"><i class="ph ph-sun" style="font-size:1.2rem;"></i></span>
+                    </button>
+                    
+                    <button class="control-btn rtl-toggle-btn" title="Toggle RTL" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; font-weight:600; font-size:0.8rem; transition:all 0.2s;">
+                        <span class="rtl-toggle-text">LTR</span>
+                    </button>
+                    
+                    <div class="header-profile" style="width:40px; height:40px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; cursor:pointer; margin-left:8px; border:2px solid var(--panel-bg); box-shadow:0 0 0 1px var(--border-color);">
+                        AD
                     </div>
                 </div>
             </header>
@@ -56,23 +78,43 @@
                     <p style="font-size:0.95rem;">Review domains and email leads captured via website forms. Trigger automated reports generation.</p>
                 </div>
 
-                <div class="data-table-card">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Website Domain</th>
-                                <th>Lead Email</th>
-                                <th>Focus Category</th>
-                                <th>Calculated Rating</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="admin-audits-table-body">
-                            <!-- JS injects audit requests -->
-                        </tbody>
-                    </table>
+                <div class="grid-2" style="align-items:flex-start;">
+                    <!-- Timeline Feed -->
+                    <div class="timeline" id="admin-audits-timeline" style="margin-bottom:20px;">
+                        <!-- JS injects audit requests here -->
+                    </div>
+
+                    <!-- Audit Management Widget -->
+                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; position:sticky; top:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Audit Pipeline Overview</h3>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:24px; text-align:center;">
+                            <div style="flex:1; border-right:1px solid var(--border-color); padding-right:16px;">
+                                <span style="font-size:2rem; font-weight:800; color:var(--text-color); display:block; line-height:1;">4</span>
+                                <span style="font-size:0.8rem; color:var(--text-muted);">In Queue</span>
+                            </div>
+                            <div style="flex:1; padding-left:16px;">
+                                <span style="font-size:2rem; font-weight:800; color:var(--success); display:block; line-height:1;">12</span>
+                                <span style="font-size:0.8rem; color:var(--text-muted);">Completed</span>
+                            </div>
+                        </div>
+
+                        <h3 style="font-size:1rem; margin-bottom:16px; border-top:1px solid var(--border-color); padding-top:24px;">Trigger Manual Audit</h3>
+                        <form style="display:flex; flex-direction:column; gap:16px;" onsubmit="event.preventDefault(); alert('Audit scanner triggered successfully.');">
+                            <div class="form-group">
+                                <label style="font-size:0.85rem;">Target Domain / URL</label>
+                                <input type="url" class="form-input" placeholder="e.g. https://clientdomain.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label style="font-size:0.85rem;">Audit Type</label>
+                                <select class="form-input" style="background-color:var(--bg-color);">
+                                    <option>Full Technical SEO Sweep</option>
+                                    <option>Performance & Core Web Vitals</option>
+                                    <option>Content & Keyword Gap Analysis</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="margin-top:8px;">Run Scanner Instance</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </main>

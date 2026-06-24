@@ -1,35 +1,36 @@
 /* ==========================================================================
-   GLOBAL SCRIPTS: LIGHT/DARK MODE, RTL, ACCORDIONS, CALCS, AND WIZARDS
+   GLOBAL SCRIPTS: LIGHT/DARK MODE, RTL, ACCORDIONS, CALCS, AND MODALS
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme Management (Light/Dark Mode)
+    // 1. Theme Management (Light/Dark Mode via data-theme on html)
     const initTheme = () => {
-        const currentTheme = localStorage.getItem('theme') || 'dark'; // Default to dark for premium SaaS feel
-        if (currentTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-        } else {
-            document.body.classList.remove('dark-mode');
-        }
+        const storedTheme = localStorage.getItem('theme');
+        // If theme-2.html is active, default to dark. Otherwise, default to light
+        const defaultTheme = window.location.pathname.includes('home-2.html') ? 'dark' : 'light';
+        const currentTheme = storedTheme || defaultTheme;
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
         updateThemeToggleIcons();
     };
 
     const toggleTheme = () => {
-        if (document.body.classList.contains('dark-mode')) {
-            document.body.classList.remove('dark-mode');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark');
-        }
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
         updateThemeToggleIcons();
     };
 
     const updateThemeToggleIcons = () => {
-        const toggles = document.querySelectorAll('.theme-toggle-icon');
-        const isDark = document.body.classList.contains('dark-mode');
+        const toggles = document.querySelectorAll('.theme-switch i');
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         toggles.forEach(icon => {
-            icon.textContent = isDark ? '☀️' : '🌙';
+            if (currentTheme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
         });
     };
 
@@ -49,19 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateRTLToggleLabels = () => {
-        const labels = document.querySelectorAll('.rtl-toggle-text');
+        const labels = document.querySelectorAll('.dir-switch .dir-text');
         const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
         labels.forEach(label => {
-            label.textContent = currentDir === 'ltr' ? 'LTR' : 'RTL';
+            label.textContent = currentDir === 'ltr' ? 'RTL' : 'LTR';
         });
     };
 
     // Attach Theme and RTL Toggles
-    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+    document.querySelectorAll('.theme-switch').forEach(btn => {
         btn.addEventListener('click', toggleTheme);
     });
 
-    document.querySelectorAll('.rtl-toggle-btn').forEach(btn => {
+    document.querySelectorAll('.dir-switch').forEach(btn => {
         btn.addEventListener('click', toggleRTL);
     });
 
@@ -69,39 +70,54 @@ document.addEventListener('DOMContentLoaded', () => {
     initRTL();
 
     // 3. Header Scroll Effect
-    const header = document.querySelector('.site-header');
-    if (header) {
+    const navbar = document.getElementById('mainNav');
+    if (navbar) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                header.classList.add('scrolled');
+                navbar.classList.add('scrolled');
             } else {
-                header.classList.remove('scrolled');
+                navbar.classList.remove('scrolled');
             }
         });
     }
 
     // 4. Mobile Menu Toggle
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const navOverlay = document.getElementById('navOverlay');
+
+    if (hamburger && navLinks) {
+        const toggleMenu = () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            if (navOverlay) navOverlay.classList.toggle('visible');
+        };
+
+        hamburger.addEventListener('click', toggleMenu);
+        if (navOverlay) {
+            navOverlay.addEventListener('click', toggleMenu);
+        }
+
+        // Close mobile drawer on clicking anchor links
+        navLinks.querySelectorAll('a:not(.nav-link)').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('open')) {
+                    toggleMenu();
+                }
+            });
         });
     }
 
-    // Mobile Dropdowns click behavior
-    const dropdowns = document.querySelectorAll('.nav-item-dropdown');
-    dropdowns.forEach(dd => {
-        const toggle = dd.querySelector('.nav-dropdown-toggle');
-        if (toggle) {
-            toggle.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    dd.classList.toggle('active');
-                }
-            });
-        }
+    // Mobile Dropdowns accordion toggle behavior
+    const dropdownToggles = document.querySelectorAll('.nav-item.has-dropdown > .nav-link');
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                const parent = toggle.parentElement;
+                parent.classList.toggle('open');
+            }
+        });
     });
 
     // 5. FAQ Accordion
@@ -112,13 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const body = item.querySelector('.faq-body');
             const isActive = item.classList.contains('active');
 
-            // Close all
+            // Close all other accordion items
             document.querySelectorAll('.faq-item').forEach(i => {
                 i.classList.remove('active');
-                i.querySelector('.faq-body').style.maxHeight = null;
+                const b = i.querySelector('.faq-body');
+                if (b) b.style.maxHeight = null;
             });
 
-            if (!isActive) {
+            if (!isActive && body) {
                 item.classList.add('active');
                 body.style.maxHeight = body.scrollHeight + 'px';
             }
@@ -137,30 +154,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const conv = parseFloat(convSlider.value);
         const targetLeadVal = parseInt(leadSlider.value);
 
-        // Update labels
-        document.getElementById('spend-val').textContent = '$' + spend.toLocaleString();
-        document.getElementById('conv-val').textContent = conv + '%';
-        document.getElementById('lead-val').textContent = '$' + targetLeadVal;
+        // Update display text values
+        const spendValText = document.getElementById('spend-val');
+        const convValText = document.getElementById('conv-val');
+        const leadValText = document.getElementById('lead-val');
 
-        // Perform calculations
-        // Average Customer Value assumed $1500, average lead rate calculation
+        if (spendValText) spendValText.textContent = '$' + spend.toLocaleString();
+        if (convValText) convValText.textContent = conv.toFixed(1) + '%';
+        if (leadValText) leadValText.textContent = '$' + targetLeadVal;
+
+        // Perform returns calculations
         const totalLeads = Math.round(spend / targetLeadVal);
-        const revenue = Math.round(totalLeads * (conv / 100) * 1500);
-        const roas = spend > 0 ? (revenue / spend).toFixed(1) : 0;
+        const revenue = Math.round(totalLeads * (conv / 100) * 1500); // Assumes $1,500 Customer Value
+        const roas = spend > 0 ? (revenue / spend).toFixed(1) : '0.0';
 
-        document.getElementById('result-leads').textContent = totalLeads.toLocaleString();
-        document.getElementById('result-revenue').textContent = '$' + revenue.toLocaleString();
-        document.getElementById('result-roas').textContent = roas + 'x';
+        const leadsEl = document.getElementById('result-leads');
+        const revEl = document.getElementById('result-revenue');
+        const roasEl = document.getElementById('result-roas');
+
+        if (leadsEl) leadsEl.textContent = totalLeads.toLocaleString();
+        if (revEl) revEl.textContent = '$' + revenue.toLocaleString();
+        if (roasEl) roasEl.textContent = roas + 'x';
     };
 
     if (spendSlider) {
         spendSlider.addEventListener('input', updateROICalculator);
-        convSlider.addEventListener('input', updateROICalculator);
-        leadSlider.addEventListener('input', updateROICalculator);
-        updateROICalculator(); // Initial run
+        if (convSlider) convSlider.addEventListener('input', updateROICalculator);
+        if (leadSlider) leadSlider.addEventListener('input', updateROICalculator);
+        updateROICalculator(); // Init values on load
     }
 
-    // 7. Modals Manager (Audit, Strategy Booking Wizard)
+    // 7. Modals Manager (Audit tool, Strategy Booking)
     const modalOverlays = document.querySelectorAll('.modal-overlay');
     const closeButtons = document.querySelectorAll('.modal-close');
 
@@ -178,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Strategy Call Modal Trigger
+    // Strategy Modal Trigger
     const strategyBtns = document.querySelectorAll('.trigger-strategy-call');
     const strategyModal = document.getElementById('strategy-modal');
     strategyBtns.forEach(btn => {
@@ -188,107 +212,182 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Audit Tool Wizard Modal Trigger & Stepper
-    const auditBtns = document.querySelectorAll('.trigger-audit-tool');
-    const auditModal = document.getElementById('audit-modal');
-    auditBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (auditModal) {
-                resetAuditWizard();
-                auditModal.classList.add('active');
-            }
+    // 8. Client Mockup Dashboard Interactive Switcher
+    const dbMenuItems = document.querySelectorAll('.dashboard-sidebar-menu li');
+    const dbTabContents = document.querySelectorAll('.dashboard-tab-content');
+
+    if (dbMenuItems.length > 0) {
+        dbMenuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active classes
+                dbMenuItems.forEach(mi => mi.classList.remove('active'));
+                dbTabContents.forEach(tc => tc.classList.remove('active'));
+
+                // Add active to current click item
+                item.classList.add('active');
+                
+                // Toggle active on correct tab pane
+                const targetId = item.getAttribute('data-db-tab');
+                const targetTab = document.getElementById(targetId);
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                }
+            });
         });
+    }
+
+    // 9. Intersection Observer Stat Counter Animations
+    const statObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            const el = e.target;
+            const targetVal = parseInt(el.getAttribute('data-target') || '0');
+            const suffix = el.getAttribute('data-suffix') || '';
+            const isPercent = el.textContent.includes('%');
+            
+            let currentVal = 0;
+            const steps = 60;
+            const increment = Math.ceil(targetVal / steps);
+            
+            const counterInterval = setInterval(() => {
+                currentVal = Math.min(currentVal + increment, targetVal);
+                el.textContent = currentVal + suffix;
+                if (currentVal >= targetVal) {
+                    clearInterval(counterInterval);
+                }
+            }, 25);
+            
+            statObserver.unobserve(el);
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.p1-counter, .p2-counter').forEach(counter => {
+        statObserver.observe(counter);
     });
 
-    // Audit Wizard Stepper logic
-    let auditStep = 1;
-    const nextStepBtns = document.querySelectorAll('.audit-next');
-    const prevStepBtns = document.querySelectorAll('.audit-prev');
-    const auditSteps = document.querySelectorAll('.wizard-step');
-    const auditProgress = document.getElementById('audit-progress-bar');
+    // 10. Home 1 Hero - Interactive Mouse Cursor Glow
+    const heroSection = document.getElementById('hero');
+    const cursorGlow = document.getElementById('heroCursorGlow');
 
-    const updateAuditWizard = () => {
-        auditSteps.forEach((step, idx) => {
-            if (idx === (auditStep - 1)) {
-                step.classList.add('active');
-            } else {
-                step.classList.remove('active');
-            }
+    if (heroSection && cursorGlow) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            cursorGlow.style.left = `${x}px`;
+            cursorGlow.style.top = `${y}px`;
+            cursorGlow.style.opacity = '1';
         });
 
-        if (auditProgress) {
-            const percent = ((auditStep - 1) / (auditSteps.length - 1)) * 100;
-            auditProgress.style.width = percent + '%';
+        heroSection.addEventListener('mouseleave', () => {
+            cursorGlow.style.opacity = '0';
+        });
+    }
+
+    // 11. Home 1 Hero Mockup Dashboard Interactivity (Tabs & Hover Tooltips)
+    const mockupBars = document.querySelectorAll('.p1-hero-mockup .chart-bar, .p1-hero-mockup .chart-bar-active');
+    const mockupRevenueVal = document.getElementById('mockup-revenue-val');
+    const mockupChartTooltip = document.getElementById('mockupChartTooltip');
+    const mockupTabBtns = document.querySelectorAll('.p1-hero-mockup .mockup-tab-btn');
+    const mockupPanes = document.querySelectorAll('.p1-hero-mockup .mockup-pane');
+
+    const updateTooltip = (bar) => {
+        if (!mockupChartTooltip || !mockupRevenueVal) return;
+        const rev = bar.getAttribute('data-rev');
+        const month = bar.getAttribute('data-month');
+        
+        // Update tooltip text
+        mockupChartTooltip.textContent = `${month}: ${rev}`;
+        
+        // Calculate position
+        const barRect = bar.getBoundingClientRect();
+        const containerRect = bar.parentElement.getBoundingClientRect();
+        
+        // Calculate center relative to container
+        const leftOffset = (barRect.left - containerRect.left) + (barRect.width / 2);
+        const topOffset = (barRect.top - containerRect.top);
+        
+        mockupChartTooltip.style.left = `${leftOffset}px`;
+        mockupChartTooltip.style.top = `${topOffset}px`;
+        mockupChartTooltip.classList.add('active');
+        
+        // Dynamically update revenue header text with a fade transition
+        if (mockupRevenueVal.textContent !== rev) {
+            mockupRevenueVal.style.opacity = '0.3';
+            setTimeout(() => {
+                mockupRevenueVal.textContent = rev;
+                mockupRevenueVal.style.opacity = '1';
+            }, 100);
         }
     };
 
-    const resetAuditWizard = () => {
-        auditStep = 1;
-        updateAuditWizard();
+    const resetActiveStates = () => {
+        mockupBars.forEach(b => {
+            b.className = 'chart-bar';
+        });
     };
 
-    nextStepBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (auditStep < auditSteps.length) {
-                // Form validation simple check
-                if (auditStep === 1) {
-                    const emailInput = document.getElementById('audit-email');
-                    const urlInput = document.getElementById('audit-url');
-                    if (emailInput && !emailInput.value.includes('@')) {
-                        alert('Please enter a valid email address.');
-                        return;
-                    }
-                    if (urlInput && urlInput.value.trim() === '') {
-                        alert('Please enter your website URL.');
-                        return;
+    if (mockupBars.length > 0 && mockupRevenueVal && mockupChartTooltip) {
+        // Attach chart hover listeners
+        mockupBars.forEach(bar => {
+            bar.addEventListener('mouseenter', () => {
+                resetActiveStates();
+                bar.className = 'chart-bar-active';
+                updateTooltip(bar);
+            });
+        });
+
+        // Set default tooltip positioning for May (the last/active one)
+        const activeBar = document.querySelector('.p1-hero-mockup .chart-bar-active');
+        if (activeBar) {
+            // Wait slightly for layout to settle on DOM load
+            setTimeout(() => {
+                updateTooltip(activeBar);
+            }, 300);
+        }
+
+        // Hide tooltip on mouse leave of the chart wrap, restoring May as active
+        const chartWrap = document.querySelector('.p1-hero-mockup .mockup-chart-wrap');
+        if (chartWrap) {
+            chartWrap.addEventListener('mouseleave', () => {
+                resetActiveStates();
+                const defaultActive = document.querySelector('.p1-hero-mockup [data-month="May"]');
+                if (defaultActive) {
+                    defaultActive.className = 'chart-bar-active';
+                    updateTooltip(defaultActive);
+                }
+            });
+        }
+    }
+
+    if (mockupTabBtns.length > 0) {
+        mockupTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Deactivate all buttons & panes
+                mockupTabBtns.forEach(b => b.classList.remove('active'));
+                mockupPanes.forEach(p => p.classList.remove('active'));
+                
+                // Activate current button
+                btn.classList.add('active');
+                
+                // Activate targeted pane
+                const targetId = btn.getAttribute('data-mockup-tab');
+                const targetPane = document.getElementById(targetId);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                }
+                
+                // If switching to Overview, make sure tooltip positions correctly
+                if (targetId === 'mockup-pane-overview') {
+                    const activeBar = document.querySelector('.p1-hero-mockup .chart-bar-active');
+                    if (activeBar) {
+                        setTimeout(() => {
+                            updateTooltip(activeBar);
+                        }, 50);
                     }
                 }
-                auditStep++;
-                updateAuditWizard();
-                if (auditStep === 3) {
-                    // Generate dynamic result score
-                    generateAuditResults();
-                }
-            }
+            });
         });
-    });
-
-    prevStepBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (auditStep > 1) {
-                auditStep--;
-                updateAuditWizard();
-            }
-        });
-    });
-
-    const generateAuditResults = () => {
-        const url = document.getElementById('audit-url')?.value || 'yourwebsite.com';
-        const service = document.getElementById('audit-service')?.value || 'SEO';
-        
-        // Generate random but professional looking scores
-        const score = Math.floor(Math.random() * 20) + 65; // 65-85 score
-        
-        const scoreCircle = document.getElementById('audit-score-circle');
-        const recommendText = document.getElementById('audit-recommendations');
-        
-        if (scoreCircle) {
-            scoreCircle.innerHTML = `
-                <div style="font-size: 3rem; font-weight:800; color:var(--primary);">${score}/100</div>
-                <div style="font-size:0.875rem; color:var(--text-muted);">Marketing Score</div>
-            `;
-        }
-        
-        if (recommendText) {
-            recommendText.innerHTML = `
-                <h4>Key Recommendations for ${url}:</h4>
-                <ul style="padding-inline-start: 20px; margin-top: 10px; text-align: left; display: flex; flex-direction:column; gap: 8px;">
-                    <li>🏷️ Fix 12 missing meta tags and schema structured markup for better search visibility.</li>
-                    <li>⚡ Compress visual assets to solve Web Vitals LCP latency issues.</li>
-                    <li>🎯 Set up conversion funnel tracking for your targeted <strong>${service}</strong> campaigns.</li>
-                </ul>
-            `;
-        }
-    };
+    }
 });

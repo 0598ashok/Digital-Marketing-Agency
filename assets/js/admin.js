@@ -3,13 +3,61 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Sidebar menu toggle in admin
-    const sidebar = document.getElementById('sidebar');
-    const toggle = document.querySelector('.dashboard-menu-toggle');
-    if (toggle && sidebar) {
-        toggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
+    // 1. Sidebar menu toggle in admin with Overlay & Close Button
+    const sidebar = document.querySelector('.sidebar');
+    let overlay = document.querySelector('.sidebar-overlay');
+    
+    // Inject overlay if it doesn't exist
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        document.body.appendChild(overlay);
+    }
+
+    // Inject close button into sidebar if it doesn't exist
+    if (sidebar && !sidebar.querySelector('.sidebar-close-btn')) {
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'sidebar-close-btn';
+        closeBtn.innerHTML = '<i class="ph ph-x"></i>';
+        sidebar.appendChild(closeBtn);
+    }
+
+    document.body.addEventListener('click', (e) => {
+        // Open Sidebar
+        if (e.target.closest('.dashboard-menu-toggle')) {
+            if (sidebar) sidebar.classList.add('active');
+            if (overlay) overlay.classList.add('active');
+        }
+        // Close Sidebar
+        if (e.target.closest('.sidebar-close-btn') || e.target.classList.contains('sidebar-overlay')) {
+            if (sidebar) sidebar.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        }
+    });
+
+    // Move header actions to sidebar on mobile screens
+    const headerActionsContainer = document.querySelector('.dashboard-header-actions');
+    const sidebarMenu = document.querySelector('.sidebar-menu');
+    if (headerActionsContainer && sidebarMenu) {
+        let mobileActionsRow = document.createElement('li');
+        mobileActionsRow.className = 'mobile-actions-row';
+        const logoutLi = sidebarMenu.lastElementChild;
+        sidebarMenu.insertBefore(mobileActionsRow, logoutLi);
+
+        const relocateActions = () => {
+            const isMobile = window.innerWidth <= 768;
+            Array.from(headerActionsContainer.children).forEach(el => {
+                if (!el.classList.contains('header-search')) {
+                    if (isMobile) {
+                        mobileActionsRow.appendChild(el);
+                    } else {
+                        headerActionsContainer.appendChild(el);
+                    }
+                }
+            });
+        };
+        window.addEventListener('resize', relocateActions);
+        relocateActions();
     }
 
     // 2. Global State Persistence System
@@ -39,7 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 101, name: "Marcus Vance", email: "marcus@ecomdynamics.com", company: "E-Com Dynamics", role: "Manager", status: "active" },
         { id: 102, name: "Elena Rostova", email: "elena@saasifyglobal.com", company: "SaaSify Global", role: "Owner", status: "active" },
         { id: 103, name: "Julian K.", email: "julian@vcpartners.com", company: "Venture Capital Inc", role: "Manager", status: "active" },
-        { id: 104, name: "Admin Lead", email: "admin@apexgrowth.com", company: "ApexGrowth Staff", role: "Super Admin", status: "active" }
+        { id: 104, name: "Admin Lead", email: "admin@apexgrowth.com", company: "ApexGrowth Staff", role: "Super Admin", status: "active" },
+        { id: 105, name: "Chloe Smith", email: "chloe@innovatestudios.com", company: "Innovate Studios", role: "Manager", status: "pending" }
     ];
 
     const defaultClients = [
@@ -65,24 +114,43 @@ document.addEventListener('DOMContentLoaded', () => {
     // MODULE 1: USER MANAGEMENT
     // ==========================================
     const renderUsersTable = () => {
-        const tableBody = document.getElementById('admin-users-table-body');
-        if (!tableBody) return;
+        const grid = document.getElementById('admin-users-grid') || document.getElementById('admin-users-table-body');
+        if (!grid) return;
 
-        tableBody.innerHTML = users.map(u => `
-            <tr id="user-row-${u.id}">
-                <td style="font-weight:600;">${u.id}</td>
-                <td><strong>${u.name}</strong></td>
-                <td>${u.email}</td>
-                <td>${u.company}</td>
-                <td><span class="status-badge paid" style="background-color:rgba(147,51,234,0.1); color:#9333ea;">${u.role}</span></td>
-                <td><span class="status-badge ${u.status === 'active' ? 'paid' : 'overdue'}">${u.status.toUpperCase()}</span></td>
-                <td>
-                    <button class="btn btn-secondary btn-sm delete-user-btn" data-id="${u.id}" style="padding: 6px 12px; border-color:var(--danger); color:var(--danger);">Delete</button>
-                </td>
-            </tr>
-        `).join('');
+        if (grid.tagName.toLowerCase() === 'tbody') {
+            grid.innerHTML = users.map(u => `
+                <tr id="user-row-${u.id}">
+                    <td style="font-weight:600;">${u.id}</td>
+                    <td><strong>${u.name}</strong></td>
+                    <td>${u.email}</td>
+                    <td>${u.company}</td>
+                    <td><span class="status-badge paid" style="background-color:rgba(147,51,234,0.1); color:#9333ea;">${u.role}</span></td>
+                    <td><span class="status-badge ${u.status === 'active' ? 'paid' : 'overdue'}">${u.status.toUpperCase()}</span></td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm delete-user-btn" data-id="${u.id}" style="padding: 6px 12px; border-color:var(--danger); color:var(--danger);">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        } else {
+            grid.innerHTML = users.map(u => `
+                <div class="kanban-card" style="display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; overflow:hidden; padding-top:10px;" id="user-card-${u.id}">
+                    <div style="width:100%; height:60px; background: linear-gradient(135deg, rgba(147,51,234,0.1) 0%, rgba(59,130,246,0.1) 100%); position:absolute; top:0; left:0; z-index:0;"></div>
+                    <div class="profile-avatar" style="width:64px; height:64px; font-size:1.5rem; margin-top:10px; z-index:1; border:4px solid var(--panel-bg);">${u.name.substring(0, 2).toUpperCase()}</div>
+                    <h3 style="font-size:1.1rem; margin-top:10px; margin-bottom:4px; z-index:1;">${u.name}</h3>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px; z-index:1;">${u.company}</p>
+                    <div style="display:flex; gap:8px; margin-bottom:20px; z-index:1;">
+                        <span class="status-badge" style="background-color:rgba(147,51,234,0.1); color:#9333ea;">${u.role}</span>
+                        <span class="status-badge ${u.status === 'active' ? 'paid' : 'overdue'}">${u.status.toUpperCase()}</span>
+                    </div>
+                    <div style="width:100%; border-top:1px solid var(--border-color); padding-top:16px; display:flex; justify-content:space-between; align-items:center; z-index:1;">
+                        <span style="font-size:0.8rem; color:var(--text-muted);"><a href="mailto:${u.email}" style="color:var(--text-muted); text-decoration:none;">${u.email}</a></span>
+                        <button class="btn btn-secondary btn-sm delete-user-btn" data-id="${u.id}" style="padding: 4px 8px; border-color:var(--danger); color:var(--danger); font-size:0.75rem;">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-        tableBody.querySelectorAll('.delete-user-btn').forEach(btn => {
+        grid.querySelectorAll('.delete-user-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const id = parseInt(btn.getAttribute('data-id'));
                 if (confirm(`Are you sure you want to delete user ID ${id}?`)) {
@@ -186,26 +254,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // MODULE 3: AUDITS & LEADS WIZARDS
     // ==========================================
     const renderAuditsTable = () => {
-        const tableBody = document.getElementById('admin-audits-table-body');
-        if (!tableBody) return;
+        const feed = document.getElementById('admin-audits-timeline') || document.getElementById('admin-audits-table-body');
+        if (!feed) return;
 
-        tableBody.innerHTML = audits.map(a => `
-            <tr>
-                <td style="font-weight:600;">${a.id}</td>
-                <td><strong>${a.domain}</strong></td>
-                <td>${a.email}</td>
-                <td>${a.service}</td>
-                <td><strong style="color:var(--primary);">${a.score > 0 ? a.score + '/100' : 'PENDING'}</strong></td>
-                <td><span class="status-badge ${a.status === 'completed' ? 'paid' : 'pending'}">${a.status.toUpperCase()}</span></td>
-                <td>
-                    ${a.status === 'pending' ? `
-                        <button class="btn btn-primary btn-sm run-audit-calc" data-id="${a.id}">Run Audit Analysis</button>
-                    ` : `<span style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">Report Sent</span>`}
-                </td>
-            </tr>
-        `).join('');
+        if (feed.tagName.toLowerCase() === 'tbody') {
+            feed.innerHTML = audits.map(a => `
+                <tr>
+                    <td style="font-weight:600;">${a.id}</td>
+                    <td><strong>${a.domain}</strong></td>
+                    <td>${a.email}</td>
+                    <td>${a.service}</td>
+                    <td><strong style="color:var(--primary);">${a.score > 0 ? a.score + '/100' : 'PENDING'}</strong></td>
+                    <td><span class="status-badge ${a.status === 'completed' ? 'paid' : 'pending'}">${a.status.toUpperCase()}</span></td>
+                    <td>
+                        ${a.status === 'pending' ? `
+                            <button class="btn btn-primary btn-sm run-audit-calc" data-id="${a.id}">Run Audit Analysis</button>
+                        ` : `<span style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">Report Sent</span>`}
+                    </td>
+                </tr>
+            `).join('');
+        } else {
+            feed.innerHTML = audits.map(a => `
+                <div class="timeline-item" style="border-left: 4px solid ${a.status === 'completed' ? 'var(--primary)' : 'var(--warning)'}; border-radius: var(--radius-md);">
+                    <div class="timeline-icon" style="background-color: ${a.status === 'completed' ? 'var(--primary)' : 'var(--warning)'}; border:none; box-shadow:none;">${a.status === 'completed' ? '<i class="ph ph-chart-bar"></i>' : '<i class="ph ph-clock"></i>'}</div>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div>
+                            <h3 style="font-size:1.1rem; margin-bottom:4px;">${a.domain}</h3>
+                            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Contact: <a href="mailto:${a.email}" style="color:var(--text-color); text-decoration:none;">${a.email}</a> • Service: ${a.service}</p>
+                        </div>
+                        <div style="text-align:right;">
+                            <span class="status-badge ${a.status === 'completed' ? 'paid' : 'pending'}" style="margin-bottom:6px;">${a.status.toUpperCase()}</span>
+                            <div style="font-size:1.25rem; font-weight:800; color:var(--primary);">${a.score > 0 ? a.score + '<span style="font-size:0.8rem; color:var(--text-muted);">/100</span>' : 'TBD'}</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:flex-end; align-items:center; margin-top:10px;">
+                        ${a.status === 'pending' ? `
+                            <button class="btn btn-primary btn-sm run-audit-calc" data-id="${a.id}">Run Audit Analysis</button>
+                        ` : `<span style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">Report Sent</span>`}
+                    </div>
+                </div>
+            `).join('');
+        }
 
-        tableBody.querySelectorAll('.run-audit-calc').forEach(btn => {
+        feed.querySelectorAll('.run-audit-calc').forEach(btn => {
             btn.addEventListener('click', () => {
                 const id = parseInt(btn.getAttribute('data-id'));
                 const audit = audits.find(item => item.id === id);
@@ -226,23 +317,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // MODULE 4: INVOICES & BILLING CONSOLE
     // ==========================================
     const renderInvoicesTable = () => {
-        const tableBody = document.getElementById('admin-invoices-table-body');
-        if (!tableBody) return;
+        const feed = document.getElementById('admin-invoices-timeline') || document.getElementById('admin-invoices-table-body');
+        if (!feed) return;
 
-        tableBody.innerHTML = invoices.map(inv => `
-            <tr>
-                <td style="font-weight:600;">${inv.id}</td>
-                <td>${inv.description}</td>
-                <td style="font-weight:700;">$${inv.amount.toLocaleString()}</td>
-                <td>${inv.due}</td>
-                <td><span class="status-badge ${inv.status}">${inv.status.toUpperCase()}</span></td>
-                <td>
-                    <button class="btn btn-secondary btn-sm toggle-payment-btn" data-id="${inv.id}">Toggle Status</button>
-                </td>
-            </tr>
-        `).join('');
+        if (feed.tagName.toLowerCase() === 'tbody') {
+            feed.innerHTML = invoices.map(inv => `
+                <tr>
+                    <td style="font-weight:600;">${inv.id}</td>
+                    <td>${inv.description}</td>
+                    <td style="font-weight:700;">$${inv.amount.toLocaleString()}</td>
+                    <td>${inv.due}</td>
+                    <td><span class="status-badge ${inv.status}">${inv.status.toUpperCase()}</span></td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm toggle-payment-btn" data-id="${inv.id}">Toggle Status</button>
+                    </td>
+                </tr>
+            `).join('');
+        } else {
+            feed.innerHTML = invoices.map(inv => `
+                <div class="timeline-item" style="border-left: 4px solid ${inv.status === 'paid' ? 'var(--success)' : 'var(--warning)'}; border-radius: var(--radius-md);">
+                    <div class="timeline-icon" style="background-color: ${inv.status === 'paid' ? 'var(--success)' : 'var(--warning)'}; border:none; box-shadow:none;">${inv.status === 'paid' ? '<i class="ph ph-check"></i>' : '<i class="ph ph-warning"></i>'}</div>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div>
+                            <h3 style="font-size:1.1rem; margin-bottom:4px;">${inv.description}</h3>
+                            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Invoice ID: ${inv.id} • Due: ${inv.due}</p>
+                        </div>
+                        <span style="font-size:1.25rem; font-weight:800; color:var(--text-color);">$${inv.amount.toLocaleString()}</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+                        <span class="status-badge ${inv.status}">${inv.status.toUpperCase()}</span>
+                        <button class="btn btn-secondary btn-sm toggle-payment-btn" data-id="${inv.id}">Toggle Status</button>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-        tableBody.querySelectorAll('.toggle-payment-btn').forEach(btn => {
+        feed.querySelectorAll('.toggle-payment-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const id = btn.getAttribute('data-id');
                 const inv = invoices.find(i => i.id === id);
@@ -289,18 +399,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const tableBody = document.getElementById('admin-blogs-table-body');
         if (!tableBody) return;
 
-        tableBody.innerHTML = blogs.map(b => `
-            <tr>
-                <td style="font-weight:600;">${b.id}</td>
-                <td><strong>${b.title}</strong></td>
-                <td>${b.category}</td>
-                <td>${b.date}</td>
-                <td><span class="status-badge paid" style="background-color:rgba(16,185,129,0.15); color:var(--success);">${b.status.toUpperCase()}</span></td>
-                <td>
-                    <button class="btn btn-secondary btn-sm delete-blog-btn" data-id="${b.id}">Delete</button>
-                </td>
-            </tr>
-        `).join('');
+        if (tableBody.tagName.toLowerCase() === 'tbody') {
+            tableBody.innerHTML = blogs.map(b => `
+                <tr>
+                    <td style="font-weight:600;">${b.id}</td>
+                    <td><strong>${b.title}</strong></td>
+                    <td>${b.category}</td>
+                    <td>${b.date}</td>
+                    <td><span class="status-badge paid" style="background-color:rgba(16,185,129,0.15); color:var(--success);">${b.status.toUpperCase()}</span></td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm delete-blog-btn" data-id="${b.id}">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        } else {
+            tableBody.innerHTML = blogs.map(b => `
+                <div class="kanban-card" id="blog-${b.id}">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                        <span class="status-badge" style="background-color:rgba(147,51,234,0.1); color:#9333ea; font-size:0.75rem;">${b.category}</span>
+                        <span style="font-size:0.75rem; color:var(--text-muted);">${b.date}</span>
+                    </div>
+                    <h3 style="font-size:1.05rem; margin-bottom:16px;">${b.title}</h3>
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-color); padding-top:12px;">
+                        <span class="status-badge paid" style="background-color:rgba(16,185,129,0.1); color:var(--success);">LIVE</span>
+                        <button class="btn btn-secondary btn-sm delete-blog-btn" data-id="${b.id}" style="padding: 4px 8px; border-color:var(--danger); color:var(--danger); font-size:0.75rem;">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
 
         tableBody.querySelectorAll('.delete-blog-btn').forEach(btn => {
             btn.addEventListener('click', () => {
