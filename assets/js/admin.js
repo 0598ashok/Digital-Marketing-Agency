@@ -35,30 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Move header actions to sidebar on mobile screens
-    const headerActionsContainer = document.querySelector('.dashboard-header-actions');
-    const sidebarMenu = document.querySelector('.sidebar-menu');
-    if (headerActionsContainer && sidebarMenu) {
-        let mobileActionsRow = document.createElement('li');
-        mobileActionsRow.className = 'mobile-actions-row';
-        const logoutLi = sidebarMenu.lastElementChild;
-        sidebarMenu.insertBefore(mobileActionsRow, logoutLi);
 
-        const relocateActions = () => {
-            const isMobile = window.innerWidth <= 768;
-            Array.from(headerActionsContainer.children).forEach(el => {
-                if (!el.classList.contains('header-search')) {
-                    if (isMobile) {
-                        mobileActionsRow.appendChild(el);
-                    } else {
-                        headerActionsContainer.appendChild(el);
-                    }
-                }
-            });
-        };
-        window.addEventListener('resize', relocateActions);
-        relocateActions();
-    }
 
     // 2. Global State Persistence System
     const loadState = (key, defaultVal) => {

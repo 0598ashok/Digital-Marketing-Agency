@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,60 +7,146 @@
     <meta name="description" content="Reach out to our marketing team. Schedule a strategy review or request a campaign audit report.">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* â”€â”€ Contact Page Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        @media (max-width: 768px) {
+            /* Hero title */
+            .contact-hero-title {
+                font-size: 2.2rem !important;
+                letter-spacing: -0.5px !important;
+            }
+            .contact-hero-desc {
+                font-size: 1rem !important;
+            }
+            /* Contact cards: reduce padding */
+            .contact-info-card {
+                padding: 28px 20px !important;
+            }
+            /* Form submit button row */
+            .contact-form-btn-row {
+                flex-direction: column !important;
+            }
+            .contact-form-btn-row .btn {
+                width: 100% !important;
+                flex: unset !important;
+            }
+        }
+        @media (max-width: 576px) {
+            /* Hero section padding */
+            .contact-hero-section {
+                padding: 120px 0 80px !important;
+            }
+            .contact-hero-title {
+                font-size: 1.9rem !important;
+            }
+            /* Map height reduction on small phones */
+            .contact-split-map {
+                min-height: 250px !important;
+            }
+            /* Contact cards layout */
+            .contact-cards-grid {
+                gap: 16px !important;
+            }
+            /* Form panel padding */
+            .contact-split-form {
+                padding: 28px 18px !important;
+            }
+        }
+    </style>
 </head>
 <body class="dark-mode">
 
     <!-- Navigation Header -->
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="../index.html" class="logo">
-                APEXGROWTH<span class="logo-dot">.</span>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="mainNav" role="navigation" aria-label="Main Navigation">
+        <div class="container">
+            <!-- Brand -->
+            <a aria-label="ApexGrowth Home" class="nav-brand" href="../index.html" id="navBrand">
+                <span class="nav-brand-wordmark">APEXGROWTH<span>.</span></span>
             </a>
-            
-            <nav class="nav-menu" id="nav-menu">
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Home</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../index.html" class="nav-dropdown-link">Home 1 (Portal)</a>
-                        <a href="../home-2.html" class="nav-dropdown-link">Home 2 (Creative)</a>
-                    </div>
-                </div>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="case-studies.html" class="nav-link">Case Studies</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="contact.html" class="nav-link active">Contact</a>
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Dashboard</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../dashboard/index.html" class="nav-dropdown-link">Client Portal</a>
-                        <a href="../dashboard/admin-index.html" class="nav-dropdown-link">Admin Console</a>
-                    </div>
-                </div>
-            </nav>
 
-            <div class="nav-actions">
-                <!-- Theme Toggler -->
-                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
-                    <span class="theme-toggle-icon">☀️</span>
+            <!-- Primary Nav Links -->
+            <ul class="nav-links" id="navLinks" role="list">
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="homeDropdown">
+                        Home <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="homeDropdown">
+                        <li role="none"><a href="../index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 - Minimal</a></li>
+                        <li role="none"><a href="../home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="case-studies.html">Case Studies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="dashDropdown">
+                        Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dashDropdown">
+                        <li role="none"><a href="../dashboard/index.html" role="menuitem"><i class="fas fa-user-circle"></i> Client Portal</a></li>
+                        <li role="none"><a href="../dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-mobile-controls">
+                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction">
+                        <span class="dir-text">RTL</span>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="nav-controls">
+                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <div class="nav-sep" aria-hidden="true"></div>
+                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
                 </button>
-                <!-- RTL Toggler -->
-                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
-                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction">
+                    <span class="dir-text">RTL</span>
                 </button>
-                <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
-                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
             </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </header>
+    </nav>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <!-- Page Title Hero -->
-    <section class="hero" style="padding: 180px 0 120px; position: relative; overflow: hidden;">
+    <section class="hero contact-hero-section" style="padding: 180px 0 120px; position: relative; overflow: hidden;">
         <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:80vw; height:80vw; max-width:800px; max-height:800px; background:radial-gradient(circle, var(--primary-glow) 0%, transparent 70%); z-index:0; border-radius:50%; pointer-events:none;"></div>
         <div class="container" style="text-align: center; position: relative; z-index: 1;">
             <span class="hero-tag" style="background: var(--brand-gradient); color: #ffffff; border: none; padding: 6px 16px;">GET IN TOUCH</span>
-            <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px;">Let's Discuss Your Growth Targets</h1>
-            <p style="margin: 0 auto; max-width: 680px; font-size: 1.1rem; color: var(--text-muted);">Request a free audit report, discuss partnership models, or schedule a comprehensive strategy review call with our marketing specialists.</p>
+            <h1 class="contact-hero-title" style="font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px;">Let's Discuss Your Growth Targets</h1>
+            <p class="contact-hero-desc" style="margin: 0 auto; max-width: 680px; font-size: 1.1rem; color: var(--text-muted);">Request a free audit report, discuss partnership models, or schedule a comprehensive strategy review call with our marketing specialists.</p>
         </div>
     </section>
 
@@ -128,7 +214,7 @@
                             <textarea class="form-input premium-input" rows="5" placeholder="How can our marketing specialists help you scale?" required style="resize:none; padding:16px;"></textarea>
                         </div>
                         
-                        <div style="display:flex; gap:16px; margin-top:12px; flex-wrap:wrap;">
+                        <div class="contact-form-btn-row" style="display:flex; gap:16px; margin-top:12px; flex-wrap:wrap;">
                             <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center; padding:14px; font-size:1rem;">Send Message</button>
                             <button type="button" class="btn btn-secondary trigger-strategy-call" style="flex:1; justify-content:center; padding:14px; font-size:1rem; border:1px solid var(--border-color);">Book Call Inline</button>
                         </div>
@@ -204,7 +290,7 @@
     <!-- MODAL: Strategy Booking Wizard -->
     <div class="modal-overlay" id="strategy-modal">
         <div class="modal-content">
-            <button class="modal-close">✕</button>
+            <button class="modal-close">âœ•</button>
             <h3 style="margin-bottom: 12px; font-size:1.5rem;">Schedule Your Strategy Consultation</h3>
             <p style="color:var(--text-muted); margin-bottom: 24px;">Pick a convenient date inside our simulated Calendly booking scheduler.</p>
             <div style="background-color: var(--panel-hover); border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); text-align: center;">
@@ -226,6 +312,11 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 700, once: true, offset: 60 });
+    </script>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
+

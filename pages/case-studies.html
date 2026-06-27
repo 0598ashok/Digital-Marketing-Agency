@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Success Case Studies | ApexGrowth Agency</title>
     <meta name="description" content="Read details of how we scaled client revenues, improved traffic positions, and generated hundreds of sales leads.">
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         .filter-btn {
             background: none;
@@ -21,59 +24,139 @@
             color: #ffffff;
             border-color: var(--primary);
         }
+
+        /* â”€â”€ Case Studies Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        @media (max-width: 900px) {
+            .portfolio-item-card {
+                grid-template-columns: 1fr !important;
+                padding: 30px !important;
+                gap: 24px !important;
+            }
+        }
+        @media (max-width: 768px) {
+            /* Hero */
+            .cases-hero-title {
+                font-size: 2.2rem !important;
+            }
+            /* Filter row */
+            .cases-filter-row {
+                gap: 8px !important;
+                margin-bottom: 36px !important;
+            }
+            .filter-btn {
+                padding: 7px 14px;
+                font-size: 0.88rem;
+            }
+            /* Cards list gap */
+            #cases-portfolio-container {
+                gap: 36px !important;
+            }
+            /* Portfolio cards */
+            .portfolio-item-card {
+                padding: 24px !important;
+            }
+            .portfolio-item-card h2 {
+                font-size: 1.5rem !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .portfolio-item-card {
+                padding: 18px !important;
+            }
+            .portfolio-item-card h2 {
+                font-size: 1.3rem !important;
+            }
+        }
     </style>
 </head>
 <body class="dark-mode">
 
     <!-- Navigation Header -->
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="../index.html" class="logo">
-                APEXGROWTH<span class="logo-dot">.</span>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="mainNav" role="navigation" aria-label="Main Navigation">
+        <div class="container">
+            <!-- Brand -->
+            <a aria-label="ApexGrowth Home" class="nav-brand" href="../index.html" id="navBrand">
+                <span class="nav-brand-wordmark">APEXGROWTH<span>.</span></span>
             </a>
-            
-            <nav class="nav-menu" id="nav-menu">
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Home</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../index.html" class="nav-dropdown-link">Home 1 (Portal)</a>
-                        <a href="../home-2.html" class="nav-dropdown-link">Home 2 (Creative)</a>
-                    </div>
-                </div>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="case-studies.html" class="nav-link active">Case Studies</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Dashboard</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../dashboard/index.html" class="nav-dropdown-link">Client Portal</a>
-                        <a href="../dashboard/admin-index.html" class="nav-dropdown-link">Admin Console</a>
-                    </div>
-                </div>
-            </nav>
 
-            <div class="nav-actions">
-                <!-- Theme Toggler -->
-                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
-                    <span class="theme-toggle-icon">☀️</span>
+            <!-- Primary Nav Links -->
+            <ul class="nav-links" id="navLinks" role="list">
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="homeDropdown">
+                        Home <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="homeDropdown">
+                        <li role="none"><a href="../index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 - Minimal</a></li>
+                        <li role="none"><a href="../home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="case-studies.html">Case Studies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="dashDropdown">
+                        Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dashDropdown">
+                        <li role="none"><a href="../dashboard/index.html" role="menuitem"><i class="fas fa-user-circle"></i> Client Portal</a></li>
+                        <li role="none"><a href="../dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-mobile-controls">
+                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction">
+                        <span class="dir-text">RTL</span>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="nav-controls">
+                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <div class="nav-sep" aria-hidden="true"></div>
+                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
                 </button>
-                <!-- RTL Toggler -->
-                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
-                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction">
+                    <span class="dir-text">RTL</span>
                 </button>
-                <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
-                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
             </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </header>
+    </nav>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <!-- Page Title Hero -->
     <section class="hero" style="padding: 140px 0 60px;">
         <div class="container" style="text-align: center;">
             <span class="hero-tag">CASE PORTFOLIO</span>
-            <h1 style="font-size: 3rem; margin-bottom: 16px;">Measurable Client Success Records</h1>
+            <h1 class="cases-hero-title" style="font-size: 3rem; margin-bottom: 16px;">Measurable Client Success Records</h1>
             <p style="margin: 0 auto; max-width: 680px;">We track client results with data, not guessing. Explore how we scale traffic, leads, and ROAS parameters across diverse industries.</p>
         </div>
     </section>
@@ -83,7 +166,7 @@
         <div class="container">
             
             <!-- Filters -->
-            <div style="display:flex; justify-content:center; gap:12px; margin-bottom:50px; flex-wrap:wrap;">
+            <div class="cases-filter-row" style="display:flex; justify-content:center; gap:12px; margin-bottom:50px; flex-wrap:wrap;">
                 <button class="filter-btn active" data-filter="all">All Channels</button>
                 <button class="filter-btn" data-filter="seo">SEO Optimization</button>
                 <button class="filter-btn" data-filter="ppc">Paid Media</button>
@@ -107,7 +190,7 @@
                         
                         <blockquote style="font-style:italic; border-inline-start:4px solid var(--primary); padding-inline-start:16px; margin:20px 0; color:var(--text-color);">
                             "ApexGrowth completely transformed our organic pipeline. The dashboard gave us constant sight of keyword progression monthly."
-                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">– CEO, SaaSify Global</span>
+                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">â€“ CEO, SaaSify Global</span>
                         </blockquote>
                     </div>
                     
@@ -142,7 +225,7 @@
                         
                         <blockquote style="font-style:italic; border-inline-start:4px solid var(--primary); padding-inline-start:16px; margin:20px 0; color:var(--text-color);">
                             "The creative approval panel allowed us to request adjustments on copy frames seamlessly, saving days of back-and-forth emails."
-                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">– Head of Growth, E-Com Dynamics</span>
+                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">â€“ Head of Growth, E-Com Dynamics</span>
                         </blockquote>
                     </div>
                     
@@ -177,7 +260,7 @@
                         
                         <blockquote style="font-style:italic; border-inline-start:4px solid var(--primary); padding-inline-start:16px; margin:20px 0; color:var(--text-color);">
                             "Our booking rates jumped immediately. Removing form fields and simplifying mobile layout did the trick."
-                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">– Clinic Director, MedGroup</span>
+                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">â€“ Clinic Director, MedGroup</span>
                         </blockquote>
                     </div>
                     
@@ -285,6 +368,11 @@
             });
         });
     </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 700, once: true, offset: 60 });
+    </script>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
+

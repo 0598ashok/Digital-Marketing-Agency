@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing Plans & Packages | ApexGrowth Agency</title>
     <meta name="description" content="View our growth packaging plans. Flexible month-over-month SEO, paid media, and conversion rate optimization campaigns.">
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         .toggle-wrap {
             display: inline-flex;
@@ -54,48 +57,85 @@
 <body class="dark-mode">
 
     <!-- Navigation Header -->
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="../index.html" class="logo">
-                APEXGROWTH<span class="logo-dot">.</span>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="mainNav" role="navigation" aria-label="Main Navigation">
+        <div class="container">
+            <!-- Brand -->
+            <a aria-label="ApexGrowth Home" class="nav-brand" href="../index.html" id="navBrand">
+                <span class="nav-brand-wordmark">APEXGROWTH<span>.</span></span>
             </a>
-            
-            <nav class="nav-menu" id="nav-menu">
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Home</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../index.html" class="nav-dropdown-link">Home 1 (Portal)</a>
-                        <a href="../home-2.html" class="nav-dropdown-link">Home 2 (Creative)</a>
-                    </div>
-                </div>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="case-studies.html" class="nav-link">Case Studies</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Dashboard</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../dashboard/index.html" class="nav-dropdown-link">Client Portal</a>
-                        <a href="../dashboard/admin-index.html" class="nav-dropdown-link">Admin Console</a>
-                    </div>
-                </div>
-            </nav>
 
-            <div class="nav-actions">
-                <!-- Theme Toggler -->
-                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
-                    <span class="theme-toggle-icon">☀️</span>
+            <!-- Primary Nav Links -->
+            <ul class="nav-links" id="navLinks" role="list">
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="homeDropdown">
+                        Home <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="homeDropdown">
+                        <li role="none"><a href="../index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 - Minimal</a></li>
+                        <li role="none"><a href="../home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="case-studies.html">Case Studies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="dashDropdown">
+                        Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dashDropdown">
+                        <li role="none"><a href="../dashboard/index.html" role="menuitem"><i class="fas fa-user-circle"></i> Client Portal</a></li>
+                        <li role="none"><a href="../dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-mobile-controls">
+                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction">
+                        <span class="dir-text">RTL</span>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="nav-controls">
+                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <div class="nav-sep" aria-hidden="true"></div>
+                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
                 </button>
-                <!-- RTL Toggler -->
-                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
-                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction">
+                    <span class="dir-text">RTL</span>
                 </button>
-                <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
-                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
             </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </header>
+    </nav>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <!-- Page Title Hero -->
     <section class="hero" style="padding: 140px 0 60px;">
@@ -126,10 +166,10 @@
                             $<span class="price-val" data-monthly="1500" data-annual="1200">1,500</span><span style="font-size:1rem; color:var(--text-muted); font-weight:500;">/mo</span>
                         </div>
                         <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted); margin-bottom:30px;">
-                            <li>✓ Technical SEO Site Audits</li>
-                            <li>✓ Google Search PPC Basics</li>
-                            <li>✓ Monthly Report Portal Access</li>
-                            <li>✓ Core Conversion Mappings</li>
+                            <li>âœ“ Technical SEO Site Audits</li>
+                            <li>âœ“ Google Search PPC Basics</li>
+                            <li>âœ“ Monthly Report Portal Access</li>
+                            <li>âœ“ Core Conversion Mappings</li>
                         </ul>
                     </div>
                     <a href="contact.html" class="btn btn-secondary btn-sm" style="width:100%;">Get Started</a>
@@ -145,11 +185,11 @@
                             $<span class="price-val" data-monthly="3000" data-annual="2400">3,000</span><span style="font-size:1rem; color:var(--text-muted); font-weight:500;">/mo</span>
                         </div>
                         <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted); margin-bottom:30px;">
-                            <li>✓ All Starter Tier Features</li>
-                            <li>✓ Complete On-Page Schema Set</li>
-                            <li>✓ Google + Social PPC Integration</li>
-                            <li>✓ Creative Approval Dashboard</li>
-                            <li>✓ Bi-weekly Optimizations Sprints</li>
+                            <li>âœ“ All Starter Tier Features</li>
+                            <li>âœ“ Complete On-Page Schema Set</li>
+                            <li>âœ“ Google + Social PPC Integration</li>
+                            <li>âœ“ Creative Approval Dashboard</li>
+                            <li>âœ“ Bi-weekly Optimizations Sprints</li>
                         </ul>
                     </div>
                     <a href="contact.html" class="btn btn-primary btn-sm" style="width:100%;">Select Growth</a>
@@ -164,11 +204,11 @@
                             $<span class="price-val" data-monthly="5500" data-annual="4400">5,500</span><span style="font-size:1rem; color:var(--text-muted); font-weight:500;">/mo</span>
                         </div>
                         <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted); margin-bottom:30px;">
-                            <li>✓ Multi-regional SEO Campaigns</li>
-                            <li>✓ Advanced Video Ad Creatives</li>
-                            <li>✓ Funnel Conversion A/B Splits</li>
-                            <li>✓ Dedicated SEO Account Director</li>
-                            <li>✓ Slack Support Channel Connect</li>
+                            <li>âœ“ Multi-regional SEO Campaigns</li>
+                            <li>âœ“ Advanced Video Ad Creatives</li>
+                            <li>âœ“ Funnel Conversion A/B Splits</li>
+                            <li>âœ“ Dedicated SEO Account Director</li>
+                            <li>âœ“ Slack Support Channel Connect</li>
                         </ul>
                     </div>
                     <a href="contact.html" class="btn btn-secondary btn-sm" style="width:100%;">Select Scale</a>
@@ -183,11 +223,11 @@
                             Custom Quote
                         </div>
                         <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted); margin-bottom:30px;">
-                            <li>✓ Fully Custom Growth Roadmap</li>
-                            <li>✓ Unlimited Search Keywords</li>
-                            <li>✓ Omnipresent Ad Allocations</li>
-                            <li>✓ Account-Based B2B Mappings</li>
-                            <li>✓ In-person Strategy Syncs</li>
+                            <li>âœ“ Fully Custom Growth Roadmap</li>
+                            <li>âœ“ Unlimited Search Keywords</li>
+                            <li>âœ“ Omnipresent Ad Allocations</li>
+                            <li>âœ“ Account-Based B2B Mappings</li>
+                            <li>âœ“ In-person Strategy Syncs</li>
                         </ul>
                     </div>
                     <button class="btn btn-secondary btn-sm trigger-strategy-call" style="width:100%;">Contact Strategy Director</button>
@@ -210,10 +250,10 @@
                     <tbody>
                         <tr>
                             <td>Real-time Campaign Dashboard</td>
-                            <td>✓ (Read Only)</td>
-                            <td>✓ (Full Access)</td>
-                            <td>✓ (Full Access)</td>
-                            <td>✓ (Custom Modules)</td>
+                            <td>âœ“ (Read Only)</td>
+                            <td>âœ“ (Full Access)</td>
+                            <td>âœ“ (Full Access)</td>
+                            <td>âœ“ (Custom Modules)</td>
                         </tr>
                         <tr>
                             <td>Target SEO Keywords</td>
@@ -232,9 +272,9 @@
                         <tr>
                             <td>Ad Creative Approvals Center</td>
                             <td>-</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                            <td>✓</td>
+                            <td>âœ“</td>
+                            <td>âœ“</td>
+                            <td>âœ“</td>
                         </tr>
                         <tr>
                             <td>Direct Messenger Inbox</td>
@@ -309,7 +349,7 @@
     <!-- MODAL: Strategy Booking Wizard -->
     <div class="modal-overlay" id="strategy-modal">
         <div class="modal-content">
-            <button class="modal-close">✕</button>
+            <button class="modal-close">âœ•</button>
             <h3 style="margin-bottom: 12px; font-size:1.5rem;">Schedule Your Enterprise Consultation</h3>
             <p style="color:var(--text-muted); margin-bottom: 24px;">Pick a convenient date inside our simulated Calendly booking scheduler.</p>
             <div style="background-color: var(--panel-hover); border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); text-align: center;">
@@ -360,6 +400,11 @@
             btnAnnual.addEventListener('click', setAnnual);
         });
     </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 700, once: true, offset: 60 });
+    </script>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
+

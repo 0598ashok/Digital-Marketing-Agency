@@ -8,26 +8,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const headerActions = document.querySelector('.dashboard-header-actions');
         const sidebar = document.getElementById('sidebar');
         if (headerActions && sidebar) {
-            // Check if already created (safety check)
-            if (sidebar.querySelector('.sidebar-mobile-actions')) return;
-
-            const mobileActions = document.createElement('div');
-            mobileActions.className = 'sidebar-mobile-actions';
-            
-            // Clone buttons (Notification, Theme, RTL, Profile)
-            const btns = headerActions.querySelectorAll('.control-btn, .header-profile');
-            btns.forEach(btn => {
-                const clone = btn.cloneNode(true);
-                mobileActions.appendChild(clone);
-            });
-            
-            // Insert right after sidebar brand
-            const brand = sidebar.querySelector('.sidebar-brand');
-            if (brand) {
-                brand.parentNode.insertBefore(mobileActions, brand.nextSibling);
-            } else {
-                sidebar.insertBefore(mobileActions, sidebar.firstChild);
+            let mobileActions = sidebar.querySelector('.sidebar-mobile-actions');
+            if (!mobileActions) {
+                mobileActions = document.createElement('div');
+                mobileActions.className = 'sidebar-mobile-actions';
+                const brand = sidebar.querySelector('.sidebar-brand');
+                if (brand) {
+                    brand.parentNode.insertBefore(mobileActions, brand.nextSibling);
+                } else {
+                    sidebar.insertBefore(mobileActions, sidebar.firstChild);
+                }
             }
+
+            const relocateActions = () => {
+                const isMobile = window.innerWidth <= 992;
+                Array.from(headerActions.children).forEach(el => {
+                    if (!el.classList.contains('header-search')) {
+                        if (isMobile) {
+                            mobileActions.appendChild(el);
+                        } else {
+                            headerActions.appendChild(el);
+                        }
+                    }
+                });
+            };
+            window.addEventListener('resize', relocateActions);
+            relocateActions();
         }
     };
     setupMobileSidebarActions();

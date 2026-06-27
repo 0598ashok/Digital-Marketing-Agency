@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,52 +7,151 @@
     <meta name="description" content="Stay up to date with digital marketing strategy updates, analytics optimization guides, and conversion rate checklists.">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* â”€â”€ Blog Page Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        @media (max-width: 768px) {
+            /* Hero section padding reduction */
+            .premium-blog-hero {
+                padding: 120px 0 80px !important;
+                margin-bottom: 40px !important;
+            }
+            /* Search bar full width on mobile */
+            .premium-blog-hero-search {
+                max-width: 100% !important;
+                margin: 0 16px !important;
+            }
+            /* Featured post */
+            .corp-featured-content h2 {
+                font-size: 1.5rem !important;
+            }
+            /* Filters wrap and smaller tap targets */
+            .corp-filters {
+                gap: 8px !important;
+                margin-bottom: 36px !important;
+            }
+            .corp-filter-btn {
+                padding: 7px 14px !important;
+                font-size: 0.88rem !important;
+            }
+            /* List cards stack */
+            .corp-list-img-wrap {
+                height: 180px !important;
+            }
+            /* Section title smaller */
+            .corp-section-title {
+                font-size: 1.5rem !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .premium-blog-hero {
+                padding: 100px 0 70px !important;
+            }
+            .premium-blog-hero h1 {
+                font-size: 2rem !important;
+            }
+            .premium-blog-hero p {
+                font-size: 1rem !important;
+            }
+            .corp-featured-content {
+                padding: 20px !important;
+            }
+            .corp-featured-content h2 {
+                font-size: 1.3rem !important;
+            }
+            .corp-list-content {
+                padding: 20px !important;
+            }
+            .corp-list-content h3 {
+                font-size: 1.2rem !important;
+            }
+        }
+    </style>
 </head>
 <body class="dark-mode">
 
     <!-- Navigation Header -->
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="../index.html" class="logo">
-                APEXGROWTH<span class="logo-dot">.</span>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="mainNav" role="navigation" aria-label="Main Navigation">
+        <div class="container">
+            <!-- Brand -->
+            <a aria-label="ApexGrowth Home" class="nav-brand" href="../index.html" id="navBrand">
+                <span class="nav-brand-wordmark">APEXGROWTH<span>.</span></span>
             </a>
-            
-            <nav class="nav-menu" id="nav-menu">
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Home</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../index.html" class="nav-dropdown-link">Home 1 (Portal)</a>
-                        <a href="../home-2.html" class="nav-dropdown-link">Home 2 (Creative)</a>
-                    </div>
-                </div>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="case-studies.html" class="nav-link">Case Studies</a>
-                <a href="blog.html" class="nav-link active">Blog</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Dashboard</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../dashboard/index.html" class="nav-dropdown-link">Client Portal</a>
-                        <a href="../dashboard/admin-index.html" class="nav-dropdown-link">Admin Console</a>
-                    </div>
-                </div>
-            </nav>
 
-            <div class="nav-actions">
-                <!-- Theme Toggler -->
-                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
-                    <span class="theme-toggle-icon">☀️</span>
+            <!-- Primary Nav Links -->
+            <ul class="nav-links" id="navLinks" role="list">
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="homeDropdown">
+                        Home <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="homeDropdown">
+                        <li role="none"><a href="../index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 - Minimal</a></li>
+                        <li role="none"><a href="../home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="case-studies.html">Case Studies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="dashDropdown">
+                        Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dashDropdown">
+                        <li role="none"><a href="../dashboard/index.html" role="menuitem"><i class="fas fa-user-circle"></i> Client Portal</a></li>
+                        <li role="none"><a href="../dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-mobile-controls">
+                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction">
+                        <span class="dir-text">RTL</span>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="nav-controls">
+                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <div class="nav-sep" aria-hidden="true"></div>
+                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
                 </button>
-                <!-- RTL Toggler -->
-                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
-                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction">
+                    <span class="dir-text">RTL</span>
                 </button>
-                <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
-                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
             </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </header>
+    </nav>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <!-- Premium Full-Width Hero -->
     <section class="premium-blog-hero">
@@ -93,7 +192,7 @@
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Author" class="corp-author-img">
                         <div class="corp-author-info">
                             <span class="corp-author-name">David Chen</span>
-                            <span class="corp-author-date">June 15, 2026 • 8 Min Read</span>
+                            <span class="corp-author-date">June 15, 2026 â€¢ 8 Min Read</span>
                         </div>
                     </div>
                 </div>
@@ -186,7 +285,7 @@
                         <span class="corp-tag" style="margin-bottom:0;">B2B Strategy</span>
                         <h3>How to Generate B2B Leads Using LinkedIn Ads</h3>
                         <p>Learn the exact targeting parameters and ad creative formulas we use to generate high-intent enterprise leads for SaaS clients.</p>
-                        <div class="corp-author-date" style="margin-top:auto;">June 22, 2026 • 6 Min Read</div>
+                        <div class="corp-author-date" style="margin-top:auto;">June 22, 2026 â€¢ 6 Min Read</div>
                     </div>
                 </article>
             </a>
@@ -201,7 +300,7 @@
                         <span class="corp-tag" style="margin-bottom:0;">Analytics</span>
                         <h3>Setting Up Server-Side Tracking for Meta Pixel</h3>
                         <p>Overcome iOS14 restrictions and ad blockers by implementing a robust server-side tracking architecture using Google Tag Manager.</p>
-                        <div class="corp-author-date" style="margin-top:auto;">June 18, 2026 • 10 Min Read</div>
+                        <div class="corp-author-date" style="margin-top:auto;">June 18, 2026 â€¢ 10 Min Read</div>
                     </div>
                 </article>
             </a>
@@ -216,7 +315,7 @@
                         <span class="corp-tag" style="margin-bottom:0;">Content Marketing</span>
                         <h3>The Content Repurposing Framework for 2026</h3>
                         <p>Turn a single core pillar post into 30+ pieces of micro-content for LinkedIn, X, and newsletters efficiently.</p>
-                        <div class="corp-author-date" style="margin-top:auto;">June 14, 2026 • 5 Min Read</div>
+                        <div class="corp-author-date" style="margin-top:auto;">June 14, 2026 â€¢ 5 Min Read</div>
                     </div>
                 </article>
             </a>
@@ -281,6 +380,11 @@
     </footer>
 
     <!-- JS Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 700, once: true, offset: 60 });
+    </script>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
+

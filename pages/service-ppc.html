@@ -1,58 +1,98 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PPC Paid Advertising Services | ApexGrowth Agency</title>
     <meta name="description" content="Scale paid traffic channels with our custom PPC campaigns across Google, Meta, and LinkedIn. Discover our pricing models and process workflows.">
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="dark-mode">
 
         <!-- Navigation Header -->
         <!-- Navigation Header -->
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="../index.html" class="logo">
-                APEXGROWTH<span class="logo-dot">.</span>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="mainNav" role="navigation" aria-label="Main Navigation">
+        <div class="container">
+            <!-- Brand -->
+            <a aria-label="ApexGrowth Home" class="nav-brand" href="../index.html" id="navBrand">
+                <span class="nav-brand-wordmark">APEXGROWTH<span>.</span></span>
             </a>
-            
-            <nav class="nav-menu" id="nav-menu">
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Home</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../index.html" class="nav-dropdown-link">Home 1 (Portal)</a>
-                        <a href="../home-2.html" class="nav-dropdown-link">Home 2 (Creative)</a>
-                    </div>
-                </div>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="case-studies.html" class="nav-link">Case Studies</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <div class="nav-link nav-item-dropdown">
-                    <span class="nav-dropdown-toggle">Dashboard</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="../dashboard/index.html" class="nav-dropdown-link">Client Portal</a>
-                        <a href="../dashboard/admin-index.html" class="nav-dropdown-link">Admin Console</a>
-                    </div>
-                </div>
-            </nav>
 
-            <div class="nav-actions">
-                <!-- Theme Toggler -->
-                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
-                    <span class="theme-toggle-icon">☀️</span>
+            <!-- Primary Nav Links -->
+            <ul class="nav-links" id="navLinks" role="list">
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="homeDropdown">
+                        Home <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="homeDropdown">
+                        <li role="none"><a href="../index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 - Minimal</a></li>
+                        <li role="none"><a href="../home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="case-studies.html">Case Studies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="dashDropdown">
+                        Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dashDropdown">
+                        <li role="none"><a href="../dashboard/index.html" role="menuitem"><i class="fas fa-user-circle"></i> Client Portal</a></li>
+                        <li role="none"><a href="../dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-mobile-controls">
+                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction">
+                        <span class="dir-text">RTL</span>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="nav-controls">
+                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <div class="nav-sep" aria-hidden="true"></div>
+                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
                 </button>
-                <!-- RTL Toggler -->
-                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction" title="Toggle LTR/RTL">
-                    <span class="rtl-toggle-text" style="font-size:0.75rem; font-weight:700;">LTR</span>
+                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction">
+                    <span class="dir-text">RTL</span>
                 </button>
-                <a href="login.html" class="btn btn-secondary btn-sm">Client Login</a>
-                <button class="mobile-toggle" aria-label="Toggle Mobile Menu">☰</button>
             </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </header>
+    </nav>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <!-- Hero -->
     <section class="hero" style="padding: 140px 0 60px;">
@@ -89,19 +129,19 @@
             </div>
             <div class="grid-4">
                 <div class="service-card" style="padding:24px;">
-                    <h3>💬 Google Ads</h3>
+                    <h3>ðŸ’¬ Google Ads</h3>
                     <p style="color:var(--text-muted); font-size:0.9rem; margin-top:10px;">High-intent search query targeting and Performance Max setup to capture active purchasers.</p>
                 </div>
                 <div class="service-card" style="padding:24px;">
-                    <h3>👍 Meta Ads</h3>
+                    <h3>ðŸ‘ Meta Ads</h3>
                     <p style="color:var(--text-muted); font-size:0.9rem; margin-top:10px;">Stunning visual ads and demographic testing layouts across Facebook and Instagram.</p>
                 </div>
                 <div class="service-card" style="padding:24px;">
-                    <h3>💼 LinkedIn Ads</h3>
+                    <h3>ðŸ’¼ LinkedIn Ads</h3>
                     <p style="color:var(--text-muted); font-size:0.9rem; margin-top:10px;">B2B Account-Based Marketing strategies targeting key corporate decision makers.</p>
                 </div>
                 <div class="service-card" style="padding:24px;">
-                    <h3>📹 YouTube Ads</h3>
+                    <h3>ðŸ“¹ YouTube Ads</h3>
                     <p style="color:var(--text-muted); font-size:0.9rem; margin-top:10px;">Creative visual scripting and target overlay placements to optimize retargeting conversions.</p>
                 </div>
             </div>
@@ -144,10 +184,10 @@
                     <div style="font-size:2.5rem; font-weight:800; color:var(--primary); margin-bottom:20px;">$1,500<span style="font-size:1rem; color:var(--text-muted);">/mo</span></div>
                     <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">*For monthly ad spend under $10,000</p>
                     <ul style="list-style:none; padding:0; margin-bottom:30px; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted);">
-                        <li>✓ 1 Active Platform Focus</li>
-                        <li>✓ Standard Conversions Tracking</li>
-                        <li>✓ Monthly Optimization Scans</li>
-                        <li>✓ Dashboard Campaign Portal</li>
+                        <li>âœ“ 1 Active Platform Focus</li>
+                        <li>âœ“ Standard Conversions Tracking</li>
+                        <li>âœ“ Monthly Optimization Scans</li>
+                        <li>âœ“ Dashboard Campaign Portal</li>
                     </ul>
                     <a href="pricing.html" class="btn btn-secondary btn-sm" style="width:100%;">Select Plan</a>
                 </div>
@@ -157,11 +197,11 @@
                     <div style="font-size:2.5rem; font-weight:800; color:var(--primary); margin-bottom:20px;">$3,000<span style="font-size:1rem; color:var(--text-muted);">/mo</span></div>
                     <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">*For monthly ad spend up to $30,000</p>
                     <ul style="list-style:none; padding:0; margin-bottom:30px; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted);">
-                        <li>✓ Up to 3 Active Platforms</li>
-                        <li>✓ Offline Conversions Syncing</li>
-                        <li>✓ Graphic Ad Asset Creation</li>
-                        <li>✓ Creative Approval Access</li>
-                        <li>✓ Weekly Bid Optimizations</li>
+                        <li>âœ“ Up to 3 Active Platforms</li>
+                        <li>âœ“ Offline Conversions Syncing</li>
+                        <li>âœ“ Graphic Ad Asset Creation</li>
+                        <li>âœ“ Creative Approval Access</li>
+                        <li>âœ“ Weekly Bid Optimizations</li>
                     </ul>
                     <a href="pricing.html" class="btn btn-primary btn-sm" style="width:100%;">Select Plan</a>
                 </div>
@@ -170,11 +210,11 @@
                     <div style="font-size:2.5rem; font-weight:800; color:var(--primary); margin-bottom:20px;">$5,500<span style="font-size:1rem; color:var(--text-muted);">/mo</span></div>
                     <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">*For monthly ad spend over $30,000</p>
                     <ul style="list-style:none; padding:0; margin-bottom:30px; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:var(--text-muted);">
-                        <li>✓ Multichannel Omnipresent Setup</li>
-                        <li>✓ Video & Rich Display Ads Production</li>
-                        <li>✓ Custom Competitor Attack Models</li>
-                        <li>✓ Direct Account Manager Slack Sync</li>
-                        <li>✓ Dedicated Analyst Reviews</li>
+                        <li>âœ“ Multichannel Omnipresent Setup</li>
+                        <li>âœ“ Video & Rich Display Ads Production</li>
+                        <li>âœ“ Custom Competitor Attack Models</li>
+                        <li>âœ“ Direct Account Manager Slack Sync</li>
+                        <li>âœ“ Dedicated Analyst Reviews</li>
                     </ul>
                     <a href="pricing.html" class="btn btn-secondary btn-sm" style="width:100%;">Select Plan</a>
                 </div>
@@ -192,7 +232,7 @@
                 <div class="faq-item">
                     <div class="faq-header">
                         Are ad spends included in your monthly fees?
-                        <span class="faq-icon">▼</span>
+                        <span class="faq-icon">â–¼</span>
                     </div>
                     <div class="faq-body">
                         No, monthly management fees cover campaign planning, asset production, code configurations, and bid management. Clients pay ad networks directly for media budget spent.
@@ -201,7 +241,7 @@
                 <div class="faq-item">
                     <div class="faq-header">
                         What is your process for approving creative assets?
-                        <span class="faq-icon">▼</span>
+                        <span class="faq-icon">â–¼</span>
                     </div>
                     <div class="faq-body">
                         We post all creatives inside the dashboard Approval Center. You can review drafts, request adjustments, or click "Approve" with one click before campaigns go live.
@@ -293,7 +333,7 @@
     <!-- MODAL: Strategy Booking Wizard -->
     <div class="modal-overlay" id="strategy-modal">
         <div class="modal-content">
-            <button class="modal-close">✕</button>
+            <button class="modal-close">âœ•</button>
             <h3 style="margin-bottom: 12px; font-size:1.5rem;">Schedule Your PPC Consult</h3>
             <p style="color:var(--text-muted); margin-bottom: 24px;">Pick a convenient date inside our simulated Calendly booking scheduler.</p>
             <div style="background-color: var(--panel-hover); border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); text-align: center;">
@@ -316,6 +356,11 @@
     </div>
 
     <!-- JS Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 700, once: true, offset: 60 });
+    </script>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
+

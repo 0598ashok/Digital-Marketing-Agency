@@ -35,30 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Move header actions to sidebar on mobile screens
-    const headerActionsContainer = document.querySelector('.dashboard-header-actions');
-    const sidebarMenu = document.querySelector('.sidebar-menu');
-    if (headerActionsContainer && sidebarMenu) {
-        let mobileActionsRow = document.createElement('li');
-        mobileActionsRow.className = 'mobile-actions-row';
-        const logoutLi = sidebarMenu.lastElementChild;
-        sidebarMenu.insertBefore(mobileActionsRow, logoutLi);
 
-        const relocateActions = () => {
-            const isMobile = window.innerWidth <= 768;
-            Array.from(headerActionsContainer.children).forEach(el => {
-                if (!el.classList.contains('header-search')) {
-                    if (isMobile) {
-                        mobileActionsRow.appendChild(el);
-                    } else {
-                        headerActionsContainer.appendChild(el);
-                    }
-                }
-            });
-        };
-        window.addEventListener('resize', relocateActions);
-        relocateActions();
-    }
 
     // 2. Global State Persistence System
     const loadState = (key, defaultVal) => {
@@ -495,8 +472,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const offset = circumference - (pct / 100) * circumference;
 
             return `
-                <div class="kanban-card" style="display:flex; align-items:center; gap:30px; margin-bottom:20px; border-radius:var(--radius-lg);">
-                    <div style="position:relative; width:100px; height:100px;">
+                <div class="goal-progress-card">
+                    <div style="position:relative; width:100px; height:100px; flex-shrink:0;">
                         <svg width="100" height="100" style="transform: rotate(-90deg);">
                             <circle cx="50" cy="50" r="${radius}" fill="none" stroke="var(--bg-color)" stroke-width="8"></circle>
                             <circle cx="50" cy="50" r="${radius}" fill="none" stroke="var(--primary)" stroke-width="8" stroke-dasharray="${circumference}" stroke-dashoffset="${offset}" stroke-linecap="round" style="transition: stroke-dashoffset 1.5s ease-out;"></circle>
