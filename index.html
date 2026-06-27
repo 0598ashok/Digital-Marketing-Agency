@@ -12,7 +12,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://apexgrowth.agency/pages/index.html">
     <meta property="og:title" content="ApexGrowth | Bespoke Performance Marketing">
-    <meta property="og:description" content="We scale high-growth brands with SEO, paid media, CRO, and email marketing. View our real-time campaign dashboard portal.">
+    <meta property="og:description"
+        content="We scale high-growth brands with SEO, paid media, CRO, and email marketing. View our real-time campaign dashboard portal.">
     <meta property="og:image" content="assets/images/creative-showcase.png">
 
     <!-- Structured SEO Schema Data -->
@@ -52,7 +53,7 @@
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <style>
         /* ══════════════════════════════════════════════════
            HOME 1 — CLEAN MINIMAL EDITORIAL (Light Theme Customizations)
@@ -109,11 +110,13 @@
             opacity: 0.2;
             transition: opacity var(--transition);
         }
+
         .hero-glow-1 {
             background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 80%);
             top: -15%;
             left: -10%;
         }
+
         .hero-glow-2 {
             background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, transparent 80%);
             bottom: 0%;
@@ -164,6 +167,7 @@
             box-shadow: var(--shadow-sm);
             transition: all var(--transition);
         }
+
         [data-theme="dark"] .p1-hero-tag {
             border-color: rgba(6, 182, 212, 0.35);
             color: var(--accent-gold);
@@ -180,9 +184,17 @@
             box-shadow: 0 0 8px var(--accent-gold);
             animation: tagPulse 1.5s infinite alternate;
         }
+
         @keyframes tagPulse {
-            from { transform: scale(0.9); opacity: 0.6; }
-            to { transform: scale(1.2); opacity: 1; }
+            from {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+
+            to {
+                transform: scale(1.2);
+                opacity: 1;
+            }
         }
 
         .p1-hero-title {
@@ -224,6 +236,7 @@
         .p1-hero-cta .btn-primary {
             transition: transform 0.25s, box-shadow 0.25s, filter 0.25s;
         }
+
         .p1-hero-cta .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 24px -3px rgba(37, 99, 235, 0.4);
@@ -257,7 +270,8 @@
             border: 1px solid var(--border-color);
             border-radius: 16px;
             box-shadow: var(--shadow);
-            overflow: visible; /* Absolute floating cards need overflow visible */
+            overflow: visible;
+            /* Absolute floating cards need overflow visible */
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s, border-color var(--transition), background-color var(--transition);
             max-width: 680px;
             margin: 48px auto 0;
@@ -287,20 +301,31 @@
             animation: floatingAnimation 4s ease-in-out infinite;
             transition: background var(--transition), border-color var(--transition);
         }
+
         .floating-card.card-left {
             bottom: 24px;
             inset-inline-start: -64px;
             animation-delay: 0.5s;
         }
+
         .floating-card.card-right {
             top: 40px;
             inset-inline-end: -64px;
             animation-delay: 2s;
         }
+
         @keyframes floatingAnimation {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
+
         .f-card-icon {
             width: 32px;
             height: 32px;
@@ -312,15 +337,18 @@
             justify-content: center;
             font-size: 0.85rem;
         }
+
         .floating-card.card-right .f-card-icon {
             background: rgba(6, 182, 212, 0.15);
             color: #06b6d4;
         }
+
         .f-card-info {
             display: flex;
             flex-direction: column;
             gap: 2px;
         }
+
         .f-card-info label {
             font-size: 0.58rem;
             font-weight: 700;
@@ -328,6 +356,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .f-card-info strong {
             font-size: 0.95rem;
             font-weight: 800;
@@ -343,6 +372,7 @@
             justify-content: space-between;
             gap: 16px;
         }
+
         [data-theme="dark"] .mockup-header {
             background: rgba(255, 255, 255, 0.03);
         }
@@ -359,9 +389,17 @@
             display: inline-block;
         }
 
-        .mockup-dots .dot.red { background: #EF4444; }
-        .mockup-dots .dot.yellow { background: #F59E0B; }
-        .mockup-dots .dot.green { background: #10B981; }
+        .mockup-dots .dot.red {
+            background: #EF4444;
+        }
+
+        .mockup-dots .dot.yellow {
+            background: #F59E0B;
+        }
+
+        .mockup-dots .dot.green {
+            background: #10B981;
+        }
 
         .mockup-tabs {
             display: flex;
@@ -371,6 +409,7 @@
             padding: 3px;
             border: 1px solid var(--border-color);
         }
+
         [data-theme="dark"] .mockup-tabs {
             background: rgba(255, 255, 255, 0.04);
         }
@@ -388,9 +427,11 @@
             transition: all 0.25s;
             cursor: pointer;
         }
+
         .mockup-tab-btn:hover {
             color: var(--text-primary);
         }
+
         .mockup-tab-btn.active {
             background: var(--bg-primary);
             color: var(--text-primary);
@@ -408,12 +449,21 @@
             display: none;
             animation: paneFadeIn 0.4s ease forwards;
         }
+
         .mockup-pane.active {
             display: block;
         }
+
         @keyframes paneFadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .mockup-stats-grid {
@@ -511,7 +561,8 @@
             position: relative;
         }
 
-        .chart-bar, .chart-bar-active {
+        .chart-bar,
+        .chart-bar-active {
             flex: 1;
             margin: 0 6px;
             border-radius: 6px 6px 0 0;
@@ -541,7 +592,8 @@
             transform: scaleY(1.03);
         }
 
-        .chart-bar span, .chart-bar-active span {
+        .chart-bar span,
+        .chart-bar-active span {
             font-size: 0.65rem;
             font-weight: 700;
             color: var(--text-muted);
@@ -573,7 +625,7 @@
             transform: translate(-50%, -8px) scale(0.9);
             transition: left 0.25s cubic-bezier(0.16, 1, 0.3, 1), top 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s, transform 0.15s;
         }
-        
+
         .mockup-chart-tooltip.active {
             opacity: 1;
             transform: translate(-50%, -8px) scale(1);
@@ -598,6 +650,7 @@
             flex-direction: column;
             gap: 10px;
         }
+
         .mockup-list-item {
             display: flex;
             justify-content: space-between;
@@ -610,12 +663,15 @@
             color: var(--text-primary);
             transition: border-color 0.25s;
         }
+
         .mockup-list-item:hover {
             border-color: var(--accent-primary);
         }
+
         .mockup-list-item span {
             font-weight: 600;
         }
+
         .mockup-list-item .trend {
             font-weight: 700;
             color: #10b981;
@@ -631,6 +687,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 14px;
         }
+
         .mockup-ad-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -639,9 +696,11 @@
             text-align: center;
             transition: border-color 0.25s;
         }
+
         .mockup-ad-card:hover {
             border-color: rgba(37, 99, 235, 0.25);
         }
+
         .mockup-ad-card label {
             font-size: 0.62rem;
             color: var(--text-muted);
@@ -651,6 +710,7 @@
             font-weight: 700;
             letter-spacing: 0.5px;
         }
+
         .mockup-ad-card strong {
             font-size: 1.3rem;
             font-weight: 800;
@@ -658,6 +718,7 @@
             display: block;
             margin-bottom: 4px;
         }
+
         .mockup-ad-card span {
             font-size: 0.65rem;
             color: #10b981;
@@ -691,8 +752,17 @@
         }
 
         @keyframes scrollPulse {
-            0%, 100% { opacity: 0.4; transform: scaleY(1); }
-            50% { opacity: 1; transform: scaleY(1.15); }
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scaleY(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scaleY(1.15);
+            }
         }
 
         /* RTL SPECIFIC ALIGNMENTS OVERRIDE */
@@ -700,14 +770,17 @@
             text-align: center !important;
             align-items: center !important;
         }
+
         [dir="rtl"] .p1-hero-cta {
             justify-content: center !important;
         }
+
         @media (max-width: 992px) {
             [dir="rtl"] .p1-hero-left {
                 text-align: center !important;
                 align-items: center !important;
             }
+
             [dir="rtl"] .p1-hero-cta {
                 justify-content: center !important;
             }
@@ -715,7 +788,8 @@
 
         @media (max-width: 1024px) {
             .floating-card {
-                display: none !important; /* Prevent floating cards overlay conflicts on small viewports */
+                display: none !important;
+                /* Prevent floating cards overlay conflicts on small viewports */
             }
         }
 
@@ -725,6 +799,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -736,10 +811,22 @@
             animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.25s; }
-        .delay-3 { animation-delay: 0.4s; }
-        .delay-4 { animation-delay: 0.55s; }
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.25s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.55s;
+        }
+
         /* ── 2. TRUSTED: Client logos slider block ── */
         .p1-trusted {
             padding: 48px 0;
@@ -1555,9 +1642,18 @@
             border-radius: 50%;
             display: inline-block;
         }
-        .dashboard-window-controls .win-red { background: #EF4444; }
-        .dashboard-window-controls .win-yellow { background: #F59E0B; }
-        .dashboard-window-controls .win-green { background: #10B981; }
+
+        .dashboard-window-controls .win-red {
+            background: #EF4444;
+        }
+
+        .dashboard-window-controls .win-yellow {
+            background: #F59E0B;
+        }
+
+        .dashboard-window-controls .win-green {
+            background: #10B981;
+        }
 
         .dashboard-top-info span {
             font-weight: 800;
@@ -1616,6 +1712,7 @@
             box-shadow: var(--shadow-sm);
             border-inline-start-color: var(--accent-primary);
         }
+
         .dashboard-sidebar-menu li.active i {
             color: var(--accent-primary);
         }
@@ -1644,8 +1741,15 @@
         }
 
         @keyframes portalFadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive Dashboard Queries */
@@ -1653,17 +1757,20 @@
             .dashboard-main-layout {
                 grid-template-columns: 1fr;
             }
+
             .dashboard-sidebar-menu {
                 border-inline-end: none;
                 border-bottom: 1px solid var(--border-color);
                 padding: 16px;
             }
+
             .dashboard-sidebar-menu ul {
                 flex-direction: row;
                 overflow-x: auto;
                 padding-bottom: 4px;
                 scroll-snap-type: x mandatory;
             }
+
             .dashboard-sidebar-menu li {
                 white-space: nowrap;
                 border-inline-start: none;
@@ -1672,9 +1779,11 @@
                 padding: 10px 14px;
                 scroll-snap-align: start;
             }
+
             .dashboard-sidebar-menu li.active {
                 border-bottom-color: var(--accent-primary);
             }
+
             .dashboard-content-panel {
                 padding: 24px;
             }
@@ -1687,12 +1796,14 @@
             gap: 20px;
             margin-bottom: 24px;
         }
+
         @media (max-width: 576px) {
             .portal-stats-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
             }
         }
+
         .portal-stat-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -1703,10 +1814,12 @@
             gap: 6px;
             transition: transform 0.25s, border-color 0.25s;
         }
+
         .portal-stat-card:hover {
             transform: translateY(-2px);
             border-color: var(--accent-primary);
         }
+
         .portal-stat-card label {
             font-size: 0.68rem;
             font-weight: 700;
@@ -1714,6 +1827,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .portal-stat-card strong {
             font-size: 1.6rem;
             font-weight: 800;
@@ -1721,6 +1835,7 @@
             font-family: var(--font-heading);
             line-height: 1;
         }
+
         .portal-stat-card span {
             font-size: 0.72rem;
             font-weight: 700;
@@ -1728,6 +1843,7 @@
             align-items: center;
             gap: 4px;
         }
+
         .portal-stat-card span.positive {
             color: var(--success);
         }
@@ -1739,23 +1855,27 @@
             border-radius: 12px;
             padding: 24px;
         }
+
         .portal-chart-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
         }
+
         .portal-chart-header h5 {
             font-size: 0.9rem;
             font-weight: 700;
             color: var(--text-primary);
             margin: 0;
         }
+
         .portal-chart-header span {
             font-size: 0.72rem;
             font-weight: 700;
             color: var(--text-muted);
         }
+
         .portal-chart-bars {
             height: 180px;
             display: flex;
@@ -1764,6 +1884,7 @@
             padding-top: 16px;
             border-bottom: 1px solid var(--border-color);
         }
+
         .portal-chart-bar-item {
             flex: 1;
             margin: 0 8px;
@@ -1776,13 +1897,16 @@
             justify-content: center;
             transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
         }
+
         .portal-chart-bar-item:hover {
             background: rgba(37, 99, 235, 0.4);
         }
+
         .portal-chart-bar-item.active {
             background: linear-gradient(to top, var(--accent-primary), var(--accent-gold));
             box-shadow: 0 0 16px var(--accent-glow);
         }
+
         .portal-chart-bar-item span {
             position: absolute;
             bottom: -24px;
@@ -1790,6 +1914,7 @@
             font-weight: 700;
             color: var(--text-muted);
         }
+
         .portal-chart-bar-item.active span {
             color: var(--accent-primary);
         }
@@ -1800,6 +1925,7 @@
             flex-direction: column;
             gap: 12px;
         }
+
         .portal-data-row {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
@@ -1810,13 +1936,16 @@
             border-radius: 8px;
             transition: transform 0.2s, border-color 0.2s;
         }
+
         .portal-data-row:hover {
             transform: translateX(4px);
             border-color: var(--accent-primary);
         }
+
         [dir="rtl"] .portal-data-row:hover {
             transform: translateX(-4px);
         }
+
         .portal-data-row.header-row {
             background: transparent;
             border: none;
@@ -1827,14 +1956,17 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .portal-data-row.header-row:hover {
             transform: none;
         }
+
         .portal-data-row span {
             font-size: 0.88rem;
             color: var(--text-primary);
             font-weight: 600;
         }
+
         .portal-data-row .trend-badge {
             font-size: 0.72rem;
             font-weight: 700;
@@ -1852,12 +1984,14 @@
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
+
         @media (max-width: 576px) {
             .portal-ads-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
             }
         }
+
         .portal-ad-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -1868,19 +2002,23 @@
             gap: 12px;
             transition: border-color var(--transition);
         }
+
         .portal-ad-card:hover {
             border-color: var(--accent-primary);
         }
+
         .portal-ad-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .portal-ad-header label {
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--text-muted);
         }
+
         .portal-ad-status {
             width: 8px;
             height: 8px;
@@ -1888,16 +2026,19 @@
             background: var(--success);
             box-shadow: 0 0 8px var(--success);
         }
+
         .portal-ad-metrics {
             display: flex;
             flex-direction: column;
             gap: 2px;
         }
+
         .portal-ad-metrics strong {
             font-size: 1.5rem;
             font-weight: 800;
             color: var(--text-primary);
         }
+
         .portal-ad-metrics span {
             font-size: 0.72rem;
             font-weight: 700;
@@ -1910,6 +2051,7 @@
             flex-direction: column;
             gap: 12px;
         }
+
         .portal-creative-card {
             display: flex;
             justify-content: space-between;
@@ -1921,14 +2063,17 @@
             gap: 16px;
             transition: border-color 0.25s;
         }
+
         .portal-creative-card:hover {
             border-color: var(--accent-primary);
         }
+
         .portal-creative-info {
             display: flex;
             align-items: center;
             gap: 14px;
         }
+
         .portal-creative-icon {
             width: 36px;
             height: 36px;
@@ -1940,34 +2085,41 @@
             justify-content: center;
             font-size: 1rem;
         }
+
         [data-theme="dark"] .portal-creative-icon {
             background: rgba(6, 182, 212, 0.12);
             color: var(--accent-gold);
         }
+
         .portal-creative-meta {
             display: flex;
             flex-direction: column;
             gap: 2px;
         }
+
         .portal-creative-meta span {
             font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-primary);
         }
+
         .portal-creative-meta label {
             font-size: 0.72rem;
             color: var(--text-muted);
         }
+
         .portal-creative-status {
             font-size: 0.72rem;
             font-weight: 700;
             padding: 4px 12px;
             border-radius: 100px;
         }
+
         .portal-creative-status.approved {
             color: var(--success);
             background: rgba(16, 185, 129, 0.1);
         }
+
         .portal-creative-status.pending {
             color: var(--warning);
             background: rgba(245, 158, 11, 0.1);
@@ -1979,6 +2131,7 @@
             flex-direction: column;
             gap: 12px;
         }
+
         .portal-invoice-card {
             display: flex;
             justify-content: space-between;
@@ -1989,33 +2142,40 @@
             border-radius: 8px;
             transition: border-color var(--transition);
         }
+
         .portal-invoice-card:hover {
             border-color: var(--accent-primary);
         }
+
         .portal-invoice-details {
             display: flex;
             flex-direction: column;
             gap: 2px;
         }
+
         .portal-invoice-details span {
             font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-primary);
         }
+
         .portal-invoice-details label {
             font-size: 0.72rem;
             color: var(--text-muted);
         }
+
         .portal-invoice-billing {
             display: flex;
             align-items: center;
             gap: 24px;
         }
+
         .portal-invoice-billing strong {
             font-size: 0.9rem;
             font-weight: 700;
             color: var(--text-primary);
         }
+
         .portal-invoice-status {
             font-size: 0.72rem;
             font-weight: 700;
@@ -2649,8 +2809,10 @@
                         Home <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="homeDropdown">
-                        <li role="none"><a href="index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 - Minimal</a></li>
-                        <li role="none"><a href="home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
+                        <li role="none"><a href="index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 -
+                                Minimal</a></li>
+                        <li role="none"><a href="home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2
+                                - Bold</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -2673,8 +2835,10 @@
                         Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dashDropdown">
-                        <li role="none"><a href="dashboard/index.html" role="menuitem"><i class="fas fa-user-circle"></i> Client Portal</a></li>
-                        <li role="none"><a href="dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
+                        <li role="none"><a href="dashboard/index.html" role="menuitem"><i
+                                    class="fas fa-user-circle"></i> Client Portal</a></li>
+                        <li role="none"><a href="dashboard/admin-index.html" role="menuitem"><i
+                                    class="fas fa-shield-halved"></i> Admin Console</a></li>
                     </ul>
                 </li>
 
@@ -2719,22 +2883,26 @@
         <section class="p1-hero" id="hero">
             <!-- Dynamic cursor glowing follow spot -->
             <div class="hero-cursor-glow" id="heroCursorGlow"></div>
-            
+
             <div class="hero-glow-1"></div>
             <div class="hero-glow-2"></div>
-            
+
             <div class="container p1-hero-grid">
                 <!-- Left Column: Copy & CTAs -->
                 <div class="p1-hero-left">
                     <div class="p1-hero-tag hero-animate delay-1">Transparent Performance Driven Agency</div>
-                    <h1 class="p1-hero-title hero-animate delay-2">We Scale Brands Through <span>Measurable Growth.</span></h1>
-                    <p class="p1-hero-desc hero-animate delay-3">ApexGrowth combines cutting-edge data models, custom campaign execution, and a real-time portal to grow revenue with 100% transparency.</p>
+                    <h1 class="p1-hero-title hero-animate delay-2">We Scale Brands Through <span>Measurable
+                            Growth.</span></h1>
+                    <p class="p1-hero-desc hero-animate delay-3">ApexGrowth combines cutting-edge data models, custom
+                        campaign execution, and a real-time portal to grow revenue with 100% transparency.</p>
                     <div class="p1-hero-cta hero-animate delay-4">
-                        <a class="btn-primary trigger-strategy-call" href="#" style="padding:16px 40px; font-size:1rem;">Book Strategy Call</a>
-                        <a class="btn-outline" href="pages/case-studies.html" style="padding:16px 40px; font-size:1rem;">View Case Studies</a>
+                        <a class="btn-primary trigger-strategy-call" href="#"
+                            style="padding:16px 40px; font-size:1rem;">Book Strategy Call</a>
+                        <a class="btn-outline" href="pages/case-studies.html"
+                            style="padding:16px 40px; font-size:1rem;">View Case Studies</a>
                     </div>
                 </div>
-                
+
                 <!-- Right Column: Interactive Dashboard Mockup Card with Floating Metric Cards -->
                 <div class="p1-hero-right hero-animate delay-3">
                     <!-- Floating Card Left -->
@@ -2745,7 +2913,7 @@
                             <strong>+380% Increase</strong>
                         </div>
                     </div>
-                    
+
                     <!-- Floating Card Right -->
                     <div class="floating-card card-right">
                         <div class="f-card-icon"><i class="fas fa-mouse-pointer"></i></div>
@@ -2754,7 +2922,7 @@
                             <strong>4.8% Average</strong>
                         </div>
                     </div>
-                    
+
                     <div class="p1-hero-mockup">
                         <!-- Mockup Top Bar with Interactive Tab Trigger buttons -->
                         <div class="mockup-header">
@@ -2764,12 +2932,13 @@
                                 <span class="dot green"></span>
                             </div>
                             <div class="mockup-tabs">
-                                <button class="mockup-tab-btn active" data-mockup-tab="mockup-pane-overview">Overview</button>
+                                <button class="mockup-tab-btn active"
+                                    data-mockup-tab="mockup-pane-overview">Overview</button>
                                 <button class="mockup-tab-btn" data-mockup-tab="mockup-pane-seo">SEO</button>
                                 <button class="mockup-tab-btn" data-mockup-tab="mockup-pane-ads">Ads</button>
                             </div>
                         </div>
-                        
+
                         <!-- Mockup Body -->
                         <div class="mockup-body">
                             <!-- Tab Pane 1: Overview (Attributed Revenue & leads stats) -->
@@ -2778,15 +2947,17 @@
                                     <div class="mockup-stat-card">
                                         <span class="m-stat-label">Active ROAS</span>
                                         <strong class="m-stat-value text-gold">4.6x</strong>
-                                        <span class="m-stat-change positive"><i class="fas fa-arrow-up"></i> +12.4%</span>
+                                        <span class="m-stat-change positive"><i class="fas fa-arrow-up"></i>
+                                            +12.4%</span>
                                     </div>
                                     <div class="mockup-stat-card">
                                         <span class="m-stat-label">Monthly Leads</span>
                                         <strong class="m-stat-value">1,480</strong>
-                                        <span class="m-stat-change positive"><i class="fas fa-arrow-up"></i> +8.2%</span>
+                                        <span class="m-stat-change positive"><i class="fas fa-arrow-up"></i>
+                                            +8.2%</span>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Chart Mockup -->
                                 <div class="mockup-chart-wrap">
                                     <div class="mockup-chart-header">
@@ -2797,15 +2968,20 @@
                                         <!-- Dynamic Tooltip -->
                                         <div class="mockup-chart-tooltip" id="mockupChartTooltip">Active: $148,450</div>
 
-                                        <div class="chart-bar" data-month="Jan" data-rev="$98,200" style="--height: 40%"><span>Jan</span></div>
-                                        <div class="chart-bar" data-month="Feb" data-rev="$112,400" style="--height: 55%"><span>Feb</span></div>
-                                        <div class="chart-bar" data-month="Mar" data-rev="$128,100" style="--height: 70%"><span>Mar</span></div>
-                                        <div class="chart-bar" data-month="Apr" data-rev="$135,600" style="--height: 85%"><span>Apr</span></div>
-                                        <div class="chart-bar-active" data-month="May" data-rev="$148,450" style="--height: 100%"><span>May</span></div>
+                                        <div class="chart-bar" data-month="Jan" data-rev="$98,200"
+                                            style="--height: 40%"><span>Jan</span></div>
+                                        <div class="chart-bar" data-month="Feb" data-rev="$112,400"
+                                            style="--height: 55%"><span>Feb</span></div>
+                                        <div class="chart-bar" data-month="Mar" data-rev="$128,100"
+                                            style="--height: 70%"><span>Mar</span></div>
+                                        <div class="chart-bar" data-month="Apr" data-rev="$135,600"
+                                            style="--height: 85%"><span>Apr</span></div>
+                                        <div class="chart-bar-active" data-month="May" data-rev="$148,450"
+                                            style="--height: 100%"><span>May</span></div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Tab Pane 2: SEO Keywords list -->
                             <div class="mockup-pane" id="mockup-pane-seo">
                                 <div class="mockup-list">
@@ -2823,7 +2999,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Tab Pane 3: Ads conversion metrics cards -->
                             <div class="mockup-pane" id="mockup-pane-ads">
                                 <div class="mockup-ads-grid">
@@ -2843,7 +3019,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Scroll indicator -->
             <div class="p1-hero-scroll hero-animate delay-4">
                 <div class="p1-scroll-line"></div>
@@ -2883,7 +3059,8 @@
                     <div class="p1-trust-item"><i class="fas fa-shopping-cart"></i><span>E-com Dynamics</span></div>
                     <div class="p1-trust-item"><i class="fas fa-microchip"></i><span>Alpha Tech</span></div>
                     <div class="p1-trust-item"><i class="fas fa-store"></i><span>Local Retail Corp</span></div>
-                    <div class="p1-trust-item"><i class="fas fa-hand-holding-dollar"></i><span>Venture Capital</span></div>
+                    <div class="p1-trust-item"><i class="fas fa-hand-holding-dollar"></i><span>Venture Capital</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2893,66 +3070,80 @@
             <div class="container">
                 <div class="p1-features-top" data-aos="fade-up">
                     <div class="p1-features-label">Our Capabilities</div>
-                    <h2 class="p1-features-heading">Every marketing channel is an opportunity to <em>accelerate</em> your revenue growth.</h2>
+                    <h2 class="p1-features-heading">Every marketing channel is an opportunity to <em>accelerate</em>
+                        your revenue growth.</h2>
                 </div>
                 <div class="p1-services-list">
                     <div class="p1-service-item" data-aos="fade-up" data-aos-delay="0">
                         <div class="p1-service-num">01</div>
                         <div class="p1-service-body">
                             <h3>Search Engine Optimization</h3>
-                            <p>Drive organic search traffic, rank for high-intent queries, and structure web pages to convert users.</p>
-                            <a class="p1-service-link" href="pages/service-seo.html">Learn more <i class="fas fa-arrow-right"></i></a>
+                            <p>Drive organic search traffic, rank for high-intent queries, and structure web pages to
+                                convert users.</p>
+                            <a class="p1-service-link" href="pages/service-seo.html">Learn more <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="p1-service-item" data-aos="fade-up" data-aos-delay="60">
                         <div class="p1-service-num">02</div>
                         <div class="p1-service-body">
                             <h3>Paid Advertising</h3>
-                            <p>Scale returns profitably across Google Search, Meta Display, and LinkedIn ads with full cost attribution.</p>
-                            <a class="p1-service-link" href="pages/service-ppc.html">Learn more <i class="fas fa-arrow-right"></i></a>
+                            <p>Scale returns profitably across Google Search, Meta Display, and LinkedIn ads with full
+                                cost attribution.</p>
+                            <a class="p1-service-link" href="pages/service-ppc.html">Learn more <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="p1-service-item" data-aos="fade-up" data-aos-delay="120">
                         <div class="p1-service-num">03</div>
                         <div class="p1-service-body">
                             <h3>Social Media Marketing</h3>
-                            <p>Build viral communities, craft strategic customer engagements, and design educational content calendars.</p>
-                            <a class="p1-service-link" href="pages/service-social.html">Learn more <i class="fas fa-arrow-right"></i></a>
+                            <p>Build viral communities, craft strategic customer engagements, and design educational
+                                content calendars.</p>
+                            <a class="p1-service-link" href="pages/service-social.html">Learn more <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="p1-service-item" data-aos="fade-up" data-aos-delay="180">
                         <div class="p1-service-num">04</div>
                         <div class="p1-service-body">
                             <h3>Content Marketing</h3>
-                            <p>Bespoke copywriting, high-performing lead magnets, and informative guides that move prospects through buying funnels.</p>
-                            <a class="p1-service-link" href="pages/service-content.html">Learn more <i class="fas fa-arrow-right"></i></a>
+                            <p>Bespoke copywriting, high-performing lead magnets, and informative guides that move
+                                prospects through buying funnels.</p>
+                            <a class="p1-service-link" href="pages/service-content.html">Learn more <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="p1-service-item" data-aos="fade-up" data-aos-delay="240">
                         <div class="p1-service-num">05</div>
                         <div class="p1-service-body">
                             <h3>Email Marketing</h3>
-                            <p>Automate user nurturing flows, build newsletter lists, and segment customers to maximize lifetime value indicators.</p>
-                            <a class="p1-service-link" href="pages/service-email.html">Learn more <i class="fas fa-arrow-right"></i></a>
+                            <p>Automate user nurturing flows, build newsletter lists, and segment customers to maximize
+                                lifetime value indicators.</p>
+                            <a class="p1-service-link" href="pages/service-email.html">Learn more <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="p1-service-item" data-aos="fade-up" data-aos-delay="300">
                         <div class="p1-service-num">06</div>
                         <div class="p1-service-body">
                             <h3>Conversion Rate Optimization</h3>
-                            <p>Deploy landing pages, improve user interface pathways, and execute structured A/B split-tests.</p>
-                            <a class="p1-service-link" href="pages/service-cro.html">Learn more <i class="fas fa-arrow-right"></i></a>
+                            <p>Deploy landing pages, improve user interface pathways, and execute structured A/B
+                                split-tests.</p>
+                            <a class="p1-service-link" href="pages/service-cro.html">Learn more <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>        <!-- 4. ABOUT -->
+        </section> <!-- 4. ABOUT -->
         <section class="p1-about" id="about">
             <div class="container">
                 <div class="p1-about-grid">
                     <div class="p1-about-img-wrap" data-aos="fade-right">
                         <div class="p1-about-img-accent"></div>
-                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" alt="ApexGrowth Team Collaborating">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
+                            alt="ApexGrowth Team Collaborating">
                         <div class="p1-about-stat">
                             <strong>$48M+</strong>
                             <span>Generated for Clients</span>
@@ -2961,8 +3152,10 @@
                     <div class="p1-about-content" data-aos="fade-left">
                         <span class="p1-about-eyebrow">Who We Are</span>
                         <h2>A Marketing Firm Built on <span>Absolute Transparency.</span></h2>
-                        <p>Founded to change the agency paradigm, ApexGrowth merges analytical media buying with rigorous search optimizations. We believe clients deserve real-time portal access to campaign performance metrics, not generic monthly PDFs.</p>
-                        
+                        <p>Founded to change the agency paradigm, ApexGrowth merges analytical media buying with
+                            rigorous search optimizations. We believe clients deserve real-time portal access to
+                            campaign performance metrics, not generic monthly PDFs.</p>
+
                         <div class="about-features-grid">
                             <!-- Card 1: Traffic -->
                             <div class="about-feature-card">
@@ -3011,7 +3204,7 @@
                     <h2>Track Campaigns In Real-Time</h2>
                     <p>Log in 24/7 to monitor conversions, approve ad creatives, and download invoices instantly.</p>
                 </div>
-                
+
                 <div class="dashboard-frame" data-aos="fade-up">
                     <!-- Top Window Bar Shell -->
                     <div class="dashboard-topbar">
@@ -3023,60 +3216,76 @@
                             </div>
                             <span>ApexGrowth Client Dashboard</span>
                         </div>
-                        <a href="pages/login.html" class="btn btn-primary btn-sm" style="padding: 6px 14px; font-size: 0.75rem;">Enter Dashboard Demo</a>
+                        <a href="pages/login.html" class="btn btn-primary btn-sm"
+                            style="padding: 6px 14px; font-size: 0.75rem;">Enter Dashboard Demo</a>
                     </div>
-                    
+
                     <div class="dashboard-main-layout">
                         <!-- Sidebar Menu -->
                         <div class="dashboard-sidebar-menu">
                             <ul>
-                                <li class="active" data-db-tab="db-tab-overview"><i class="fas fa-chart-pie"></i> Overview</li>
+                                <li class="active" data-db-tab="db-tab-overview"><i class="fas fa-chart-pie"></i>
+                                    Overview</li>
                                 <li data-db-tab="db-tab-seo"><i class="fas fa-search"></i> SEO Rankings</li>
                                 <li data-db-tab="db-tab-ads"><i class="fas fa-bullseye"></i> Paid Ads</li>
-                                <li data-db-tab="db-tab-creative"><i class="fas fa-folder-open"></i> Creative Approvals</li>
+                                <li data-db-tab="db-tab-creative"><i class="fas fa-folder-open"></i> Creative Approvals
+                                </li>
                                 <li data-db-tab="db-tab-invoices"><i class="fas fa-credit-card"></i> Invoices</li>
                             </ul>
                         </div>
-                        
+
                         <!-- Main Content Tab Panel -->
                         <div class="dashboard-content-panel">
                             <!-- Tab Pane 1: Overview -->
                             <div class="dashboard-tab-content active" id="db-tab-overview">
-                                <h4 style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">Month-Over-Month Traffic Progress</h4>
-                                
+                                <h4
+                                    style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
+                                    Month-Over-Month Traffic Progress</h4>
+
                                 <div class="portal-stats-grid">
                                     <div class="portal-stat-card">
                                         <label>Organic Search Impressions</label>
                                         <strong>1.2M+</strong>
-                                        <span class="positive"><i class="fas fa-arrow-up"></i> +12.4% vs last month</span>
+                                        <span class="positive"><i class="fas fa-arrow-up"></i> +12.4% vs last
+                                            month</span>
                                     </div>
                                     <div class="portal-stat-card">
                                         <label>Goal Conversions</label>
                                         <strong>1,480</strong>
-                                        <span class="positive"><i class="fas fa-arrow-up"></i> +8.2% vs last month</span>
+                                        <span class="positive"><i class="fas fa-arrow-up"></i> +8.2% vs last
+                                            month</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="portal-chart-wrap">
                                     <div class="portal-chart-header">
                                         <h5>Attributed User Acquisitions</h5>
                                         <span>Monthly Growth Trend</span>
                                     </div>
                                     <div class="portal-chart-bars">
-                                        <div class="portal-chart-bar-item" style="--bar-height: 40%"><span>Jan</span></div>
-                                        <div class="portal-chart-bar-item" style="--bar-height: 55%"><span>Feb</span></div>
-                                        <div class="portal-chart-bar-item" style="--bar-height: 70%"><span>Mar</span></div>
-                                        <div class="portal-chart-bar-item" style="--bar-height: 60%"><span>Apr</span></div>
-                                        <div class="portal-chart-bar-item" style="--bar-height: 85%"><span>May</span></div>
-                                        <div class="portal-chart-bar-item active" style="--bar-height: 98%"><span>Jun</span></div>
+                                        <div class="portal-chart-bar-item" style="--bar-height: 40%"><span>Jan</span>
+                                        </div>
+                                        <div class="portal-chart-bar-item" style="--bar-height: 55%"><span>Feb</span>
+                                        </div>
+                                        <div class="portal-chart-bar-item" style="--bar-height: 70%"><span>Mar</span>
+                                        </div>
+                                        <div class="portal-chart-bar-item" style="--bar-height: 60%"><span>Apr</span>
+                                        </div>
+                                        <div class="portal-chart-bar-item" style="--bar-height: 85%"><span>May</span>
+                                        </div>
+                                        <div class="portal-chart-bar-item active" style="--bar-height: 98%">
+                                            <span>Jun</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Tab Pane 2: SEO Rankings -->
                             <div class="dashboard-tab-content" id="db-tab-seo">
-                                <h4 style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">Top Performing Keywords</h4>
-                                
+                                <h4
+                                    style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
+                                    Top Performing Keywords</h4>
+
                                 <div class="portal-data-list">
                                     <div class="portal-data-row header-row">
                                         <span>Target Keyword</span>
@@ -3100,16 +3309,19 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Tab Pane 3: Paid Ads -->
                             <div class="dashboard-tab-content" id="db-tab-ads">
-                                <h4 style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">Active Ad Platform ROAS</h4>
-                                
+                                <h4
+                                    style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
+                                    Active Ad Platform ROAS</h4>
+
                                 <div class="portal-ads-grid">
                                     <!-- Card Google -->
                                     <div class="portal-ad-card">
                                         <div class="portal-ad-header">
-                                            <label><i class="fab fa-google" style="color: #4285F4;"></i> Google Ads Account</label>
+                                            <label><i class="fab fa-google" style="color: #4285F4;"></i> Google Ads
+                                                Account</label>
                                             <span class="portal-ad-status"></span>
                                         </div>
                                         <div class="portal-ad-metrics">
@@ -3120,7 +3332,8 @@
                                     <!-- Card Meta -->
                                     <div class="portal-ad-card">
                                         <div class="portal-ad-header">
-                                            <label><i class="fab fa-facebook" style="color: #1877F2;"></i> Meta Campaign</label>
+                                            <label><i class="fab fa-facebook" style="color: #1877F2;"></i> Meta
+                                                Campaign</label>
                                             <span class="portal-ad-status"></span>
                                         </div>
                                         <div class="portal-ad-metrics">
@@ -3130,11 +3343,13 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Tab Pane 4: Creative Approvals -->
                             <div class="dashboard-tab-content" id="db-tab-creative">
-                                <h4 style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">Creative Review Queue</h4>
-                                
+                                <h4
+                                    style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
+                                    Creative Review Queue</h4>
+
                                 <div class="portal-creative-list">
                                     <div class="portal-creative-card">
                                         <div class="portal-creative-info">
@@ -3168,11 +3383,13 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Tab Pane 5: Invoices -->
                             <div class="dashboard-tab-content" id="db-tab-invoices">
-                                <h4 style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">Billing & Payments</h4>
-                                
+                                <h4
+                                    style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
+                                    Billing & Payments</h4>
+
                                 <div class="portal-invoices-list">
                                     <div class="portal-invoice-card">
                                         <div class="portal-invoice-details">
@@ -3219,7 +3436,8 @@
                         <div class="case-content">
                             <span class="case-tag">SaaS Growth</span>
                             <h3>Scaling SaaSify Global's Search Traffic</h3>
-                            <p>We revamped SaaSify's conversion funnels and integrated high-intent SEO topic hubs to capture key enterprise accounts.</p>
+                            <p>We revamped SaaSify's conversion funnels and integrated high-intent SEO topic hubs to
+                                capture key enterprise accounts.</p>
                             <a class="btn btn-outline" href="pages/case-studies.html">Read Case Study</a>
                         </div>
                     </div>
@@ -3231,7 +3449,8 @@
                         <div class="case-content">
                             <span class="case-tag">E-Commerce PPC</span>
                             <h3>Paid Ads Overhaul for E-Com Dynamics</h3>
-                            <p>How our Google Search and Shopping campaign optimizations reduced customer acquisition costs by 40% while doubling volumes.</p>
+                            <p>How our Google Search and Shopping campaign optimizations reduced customer acquisition
+                                costs by 40% while doubling volumes.</p>
                             <a class="btn btn-outline" href="pages/case-studies.html">Read Case Study</a>
                         </div>
                     </div>
@@ -3252,78 +3471,39 @@
                         <div class="process-step-indicator">01</div>
                         <div class="process-content-card">
                             <h3>Discovery & Audit</h3>
-                            <p>We perform deep competitor analysis, technical site audits, and review past account performance profiles to identify quick-win channels.</p>
+                            <p>We perform deep competitor analysis, technical site audits, and review past account
+                                performance profiles to identify quick-win channels.</p>
                         </div>
                     </div>
                     <div class="process-step" data-aos="fade-up" data-aos-delay="80">
                         <div class="process-step-indicator">02</div>
                         <div class="process-content-card">
                             <h3>Strategy Mapping</h3>
-                            <p>Constructing a bespoke keyword portfolio, ad messaging directives, budget allocations, and landing page wireframe optimizations.</p>
+                            <p>Constructing a bespoke keyword portfolio, ad messaging directives, budget allocations,
+                                and landing page wireframe optimizations.</p>
                         </div>
                     </div>
                     <div class="process-step" data-aos="fade-up" data-aos-delay="160">
                         <div class="process-step-indicator">03</div>
                         <div class="process-content-card">
                             <h3>Execution & Testing</h3>
-                            <p>Deploying targeted campaigns, implementing advanced schema tagging, and launching multivariate landing page conversion A/B tests.</p>
+                            <p>Deploying targeted campaigns, implementing advanced schema tagging, and launching
+                                multivariate landing page conversion A/B tests.</p>
                         </div>
                     </div>
                     <div class="process-step" data-aos="fade-up" data-aos-delay="240">
                         <div class="process-step-indicator">04</div>
                         <div class="process-content-card">
                             <h3>Scale & Dashboard Sync</h3>
-                            <p>Expanding top-performing segments while integrating performance streams into your live agency dashboard portal for total monitoring control.</p>
+                            <p>Expanding top-performing segments while integrating performance streams into your live
+                                agency dashboard portal for total monitoring control.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 9. ROI CALCULATOR -->
-        <section class="p1-dashboard-section" id="roi-calculator">
-            <div class="container">
-                <div class="p1-center-header" data-aos="fade-up">
-                    <p class="p1-about-eyebrow">ROI Estimation</p>
-                    <h2>Estimate Your Revenue Growth</h2>
-                    <p>Adjust the sliders below to calculate your estimated lead counts and ROAS returns.</p>
-                </div>
-                
-                <div class="calculator-card" data-aos="fade-up">
-                    <div class="calculator-grid">
-                        <div class="calc-inputs">
-                            <div class="form-group">
-                                <label>Monthly Ad Spend: <span id="spend-val" style="float: right; color: var(--accent-gold); font-weight: 700;">$10,000</span></label>
-                                <input type="range" id="calc-spend" min="1000" max="50000" step="1000" value="10000">
-                            </div>
-                            <div class="form-group">
-                                <label>Target Conversion Rate: <span id="conv-val" style="float: right; color: var(--accent-gold); font-weight: 700;">2.5%</span></label>
-                                <input type="range" id="calc-conv" min="0.5" max="10.0" step="0.1" value="2.5">
-                            </div>
-                            <div class="form-group">
-                                <label>Cost Per Acquisition Lead: <span id="lead-val" style="float: right; color: var(--accent-gold); font-weight: 700;">$40</span></label>
-                                <input type="range" id="calc-lead" min="10" max="150" step="5" value="40">
-                            </div>
-                        </div>
-                        
-                        <div class="calc-results">
-                            <div class="result-item">
-                                <div class="num" id="result-leads">250</div>
-                                <label>Estimated Leads</label>
-                            </div>
-                            <div class="result-item">
-                                <div class="num" id="result-revenue">$9,375</div>
-                                <label>Estimated Return</label>
-                            </div>
-                            <div class="result-item">
-                                <div class="num" id="result-roas">0.9x</div>
-                                <label>Projected ROAS</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- 6. TESTIMONIALS -->
         <section class="p1-testi" id="testimonials">
@@ -3337,7 +3517,8 @@
                     <div class="p1-testi-card" data-aos="fade-up" data-aos-delay="0">
                         <div class="p1-testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                                 class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="p1-testi-quote">"ApexGrowth doubled our sales volumes within three months while lowering PPC acquisition costs. Their real-time dashboard is a game-changer!"</p>
+                        <p class="p1-testi-quote">"ApexGrowth doubled our sales volumes within three months while
+                            lowering PPC acquisition costs. Their real-time dashboard is a game-changer!"</p>
                         <div class="p1-testi-author">
                             <div class="p1-testi-initials">MV</div>
                             <div>
@@ -3349,7 +3530,8 @@
                     <div class="p1-testi-card" data-aos="fade-up" data-aos-delay="80">
                         <div class="p1-testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                                 class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="p1-testi-quote">"Absolute transparency. We can track keyword rankings, check active content checklists, and communicate directly in the portal. Incredible team!"</p>
+                        <p class="p1-testi-quote">"Absolute transparency. We can track keyword rankings, check active
+                            content checklists, and communicate directly in the portal. Incredible team!"</p>
                         <div class="p1-testi-author">
                             <div class="p1-testi-initials">ER</div>
                             <div>
@@ -3361,7 +3543,8 @@
                     <div class="p1-testi-card" data-aos="fade-up" data-aos-delay="160">
                         <div class="p1-testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                                 class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="p1-testi-quote">"The ROI calculator was spot on. Their data-driven approach has allowed us to scale our ad spend profitably year-over-year."</p>
+                        <p class="p1-testi-quote">"The ROI calculator was spot on. Their data-driven approach has
+                            allowed us to scale our ad spend profitably year-over-year."</p>
                         <div class="p1-testi-author">
                             <div class="p1-testi-initials">JK</div>
                             <div>
@@ -3382,7 +3565,7 @@
                     <h2>Investment Tiers Scaled to Your Stage</h2>
                     <p>Flexible performance structures designed to drive conversions and scale organic rank.</p>
                 </div>
-                
+
                 <div class="pricing-grid">
                     <div class="pricing-card" data-aos="fade-up">
                         <div>
@@ -3396,9 +3579,10 @@
                                 <li>Core Conversion Mappings</li>
                             </ul>
                         </div>
-                        <a href="pages/pricing.html" class="btn btn-outline" style="width:100%; margin-top:20px;">Get Started</a>
+                        <a href="pages/pricing.html" class="btn btn-outline" style="width:100%; margin-top:20px;">Get
+                            Started</a>
                     </div>
-                    
+
                     <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="80">
                         <span class="pricing-badge">Most Popular</span>
                         <div>
@@ -3413,9 +3597,10 @@
                                 <li>Bi-weekly Optimization Sprints</li>
                             </ul>
                         </div>
-                        <a href="pages/pricing.html" class="btn btn-primary" style="width:100%; margin-top:20px;">Select Growth Plan</a>
+                        <a href="pages/pricing.html" class="btn btn-primary" style="width:100%; margin-top:20px;">Select
+                            Growth Plan</a>
                     </div>
-                    
+
                     <div class="pricing-card" data-aos="fade-up" data-aos-delay="160">
                         <div>
                             <h3>Scale Accelerator</h3>
@@ -3429,7 +3614,8 @@
                                 <li>Slack Support Channel Connect</li>
                             </ul>
                         </div>
-                        <a href="pages/pricing.html" class="btn btn-outline" style="width:100%; margin-top:20px;">Select Scale Plan</a>
+                        <a href="pages/pricing.html" class="btn btn-outline" style="width:100%; margin-top:20px;">Select
+                            Scale Plan</a>
                     </div>
                 </div>
             </div>
@@ -3442,7 +3628,7 @@
                     <p class="p1-about-eyebrow">FAQ</p>
                     <h2>Frequently Asked Questions</h2>
                 </div>
-                
+
                 <div class="faq-grid" data-aos="fade-up">
                     <div class="faq-item">
                         <div class="faq-header">
@@ -3450,17 +3636,20 @@
                             <span class="faq-icon">▼</span>
                         </div>
                         <div class="faq-body">
-                            <p>We offer absolute campaign transparency through our client dashboard portal, allowing you to log in 24/7 and see exact conversions, check-list statuses, and invoice tracking instantly.</p>
+                            <p>We offer absolute campaign transparency through our client dashboard portal, allowing you
+                                to log in 24/7 and see exact conversions, check-list statuses, and invoice tracking
+                                instantly.</p>
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-header">
                             Do you require long-term binding contracts?
                             <span class="faq-icon">▼</span>
                         </div>
                         <div class="faq-body">
-                            <p>No, we believe in performance. We operate on flexible monthly terms or custom project phases, meaning we have to earn your business month-over-month.</p>
+                            <p>No, we believe in performance. We operate on flexible monthly terms or custom project
+                                phases, meaning we have to earn your business month-over-month.</p>
                         </div>
                     </div>
 
@@ -3470,7 +3659,8 @@
                             <span class="faq-icon">▼</span>
                         </div>
                         <div class="faq-body">
-                            <p>Our backend structures sync data points directly from Google Analytics, Meta Ads Pixel, Stripe invoice channels, and Calendly event streams automatically.</p>
+                            <p>Our backend structures sync data points directly from Google Analytics, Meta Ads Pixel,
+                                Stripe invoice channels, and Calendly event streams automatically.</p>
                         </div>
                     </div>
                 </div>
@@ -3486,15 +3676,18 @@
                 </div>
                 <div class="p1-gallery-grid" data-aos="fade-up" data-aos-delay="100">
                     <div class="p1-gallery-item">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Main Strategy Office">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+                            alt="Main Strategy Office">
                         <div class="p1-gallery-cap"><span>Main Office</span></div>
                     </div>
                     <div class="p1-gallery-item">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Creative Design Lab">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                            alt="Creative Design Lab">
                         <div class="p1-gallery-cap"><span>Creative Design</span></div>
                     </div>
                     <div class="p1-gallery-item">
-                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80" alt="Analyst Command Hub">
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+                            alt="Analyst Command Hub">
                         <div class="p1-gallery-cap"><span>Conference Suite</span></div>
                     </div>
                     <div class="p1-gallery-item">
@@ -3515,7 +3708,8 @@
                 <div class="audit-cta-box" data-aos="fade-up">
                     <span class="p1-about-eyebrow" style="color: var(--accent-gold);">Instant Growth Check</span>
                     <h3>Request Your Free Performance Audit</h3>
-                    <p>Input your email and site address to receive immediate visual ratings on site speed, tracking errors, and competitor keyword ranks.</p>
+                    <p>Input your email and site address to receive immediate visual ratings on site speed, tracking
+                        errors, and competitor keyword ranks.</p>
                     <button class="btn btn-primary trigger-audit-tool">Start Free Assessment</button>
                 </div>
             </div>
@@ -3526,10 +3720,13 @@
             <div class="container" data-aos="fade-up">
                 <div class="p1-cta-rule"></div>
                 <h2>Ready to Scale Your Brand?</h2>
-                <p>Your most critical marketing initiatives deserve absolute performance and transparency. Start your strategic analysis today.</p>
+                <p>Your most critical marketing initiatives deserve absolute performance and transparency. Start your
+                    strategic analysis today.</p>
                 <div class="p1-cta-btns">
-                    <a class="btn-primary trigger-strategy-call" href="#" style="padding:16px 40px; font-size:1rem;">Book Strategy Call</a>
-                    <a class="btn-outline" href="pages/login.html" style="padding:16px 40px; font-size:1rem;">Client Portal</a>
+                    <a class="btn-primary trigger-strategy-call" href="#"
+                        style="padding:16px 40px; font-size:1rem;">Book Strategy Call</a>
+                    <a class="btn-outline" href="pages/login.html" style="padding:16px 40px; font-size:1rem;">Client
+                        Portal</a>
                 </div>
             </div>
         </section>
@@ -3541,7 +3738,8 @@
             <div class="p1-footer-grid">
                 <div class="p1-footer-brand">
                     <h2>APEXGROWTH.</h2>
-                    <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and automation.</p>
+                    <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and
+                        automation.</p>
                     <div class="p1-socials">
                         <a href="#" class="p1-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="p1-social" aria-label="X"><i class="fab fa-x-twitter"></i></a>
@@ -3592,22 +3790,44 @@
         <div class="modal-content">
             <button class="modal-close" aria-label="Close Modal">✕</button>
             <h3 style="margin-bottom: 16px; font-size:1.6rem; font-weight:800;">Schedule Your 1:1 Strategy Session</h3>
-            <p style="color:var(--text-muted); margin-bottom: 24px; font-size:0.95rem;">Pick a convenient date inside our simulated Calendly booking scheduler.</p>
-            
-            <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 24px; border-radius: 8px; text-align: center;">
+            <p style="color:var(--text-muted); margin-bottom: 24px; font-size:0.95rem;">Pick a convenient date inside
+                our simulated Calendly booking scheduler.</p>
+
+            <div
+                style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 24px; border-radius: 8px; text-align: center;">
                 <h4 style="margin-bottom:18px; font-weight:700;">Select Date & Time</h4>
-                <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 20px; font-size: 0.85rem; font-weight:700;">
-                    <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
-                    <div style="opacity:0.3;">14</div><div style="opacity:0.3;">15</div>
-                    <div style="background-color:var(--accent-primary); color:#ffffff; border-radius:4px; cursor:pointer; padding:6px 0;">16</div>
-                    <div style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">17</div>
-                    <div style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">18</div>
-                    <div style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">19</div>
-                    <div style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">20</div>
+                <div
+                    style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 20px; font-size: 0.85rem; font-weight:700;">
+                    <div>Su</div>
+                    <div>Mo</div>
+                    <div>Tu</div>
+                    <div>We</div>
+                    <div>Th</div>
+                    <div>Fr</div>
+                    <div>Sa</div>
+                    <div style="opacity:0.3;">14</div>
+                    <div style="opacity:0.3;">15</div>
+                    <div
+                        style="background-color:var(--accent-primary); color:#ffffff; border-radius:4px; cursor:pointer; padding:6px 0;">
+                        16</div>
+                    <div
+                        style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">
+                        17</div>
+                    <div
+                        style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">
+                        18</div>
+                    <div
+                        style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">
+                        19</div>
+                    <div
+                        style="background-color:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:6px 0;">
+                        20</div>
                 </div>
                 <div style="display:flex; justify-content:center; gap:12px;">
-                    <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">09:00 AM</button>
-                    <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">02:00 PM</button>
+                    <button class="btn btn-primary btn-sm"
+                        onclick="alert('Session Booked! Check your email for confirmation.')">09:00 AM</button>
+                    <button class="btn btn-primary btn-sm"
+                        onclick="alert('Session Booked! Check your email for confirmation.')">02:00 PM</button>
                 </div>
             </div>
         </div>
@@ -3618,11 +3838,15 @@
         <div class="modal-content" style="max-width: 600px; border-top: 4px solid var(--accent-primary);">
             <button class="modal-close" aria-label="Close Modal">✕</button>
             <h3 style="margin-bottom: 8px; font-size: 1.6rem; font-weight: 800;">Free Marketing Audit Assessment</h3>
-            <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.9rem;">Receive an instant scorecard of your domain speed, tag health, and rankings.</p>
-            
+            <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.9rem;">Receive an instant scorecard of
+                your domain speed, tag health, and rankings.</p>
+
             <!-- Wizard Progress Bar -->
-            <div style="height: 4px; width: 100%; background: var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 30px;">
-                <div id="audit-progress-bar" style="height: 100%; width: 0%; background: var(--accent-primary); transition: width 0.35s ease;"></div>
+            <div
+                style="height: 4px; width: 100%; background: var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 30px;">
+                <div id="audit-progress-bar"
+                    style="height: 100%; width: 0%; background: var(--accent-primary); transition: width 0.35s ease;">
+                </div>
             </div>
 
             <!-- STEP 1: Basic Site Info -->
@@ -3653,18 +3877,21 @@
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-top: 24px;">
                     <button class="btn btn-outline audit-prev" style="padding: 10px 24px;">Back</button>
-                    <button class="btn btn-primary audit-next" style="padding: 10px 24px;">Analyze Website &rarr;</button>
+                    <button class="btn btn-primary audit-next" style="padding: 10px 24px;">Analyze Website
+                        &rarr;</button>
                 </div>
             </div>
 
             <!-- STEP 3: Results Scorecard -->
             <div class="wizard-step" id="audit-step-3" style="display: none;">
                 <div style="text-align: center; margin-bottom: 24px;">
-                    <div id="audit-score-circle" style="width: 140px; height: 140px; border-radius: 50%; border: 8px solid var(--border-light); margin: 0 auto 16px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div id="audit-score-circle"
+                        style="width: 140px; height: 140px; border-radius: 50%; border: 8px solid var(--border-light); margin: 0 auto 16px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                         <!-- Calculated dynamically -->
                     </div>
                 </div>
-                <div id="audit-recommendations" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px;">
+                <div id="audit-recommendations"
+                    style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px;">
                     <!-- Appended dynamically -->
                 </div>
                 <div style="display: flex; justify-content: center;">
@@ -3678,7 +3905,7 @@
     <script src="assets/js/main.js"></script>
     <script>
         AOS.init({ duration: 700, once: true, offset: 50 });
-        
+
         // Tab display controller inside wizard (Step override show/hide)
         const wizardSteps = document.querySelectorAll('.wizard-step');
         const observer = new MutationObserver(mutations => {

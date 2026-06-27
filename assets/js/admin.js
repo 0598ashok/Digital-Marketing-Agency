@@ -132,11 +132,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 </tr>
             `).join('');
         } else {
+            // Assign a deterministic gender & seed per user id for consistent avatars
+            const avatarSeeds = {
+                101: { gender: 'men',   seed: 32 },
+                102: { gender: 'women', seed: 44 },
+                103: { gender: 'men',   seed: 17 },
+                104: { gender: 'men',   seed: 65 },
+                105: { gender: 'women', seed: 28 }
+            };
+            const getAvatarUrl = (uid) => {
+                const s = avatarSeeds[uid];
+                if (s) return `https://randomuser.me/api/portraits/${s.gender}/${s.seed}.jpg`;
+                // Fallback: use a stable picsum seed based on uid
+                return `https://picsum.photos/seed/user${uid}/80/80`;
+            };
+
             grid.innerHTML = users.map(u => `
                 <div class="kanban-card" style="display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; overflow:hidden; padding-top:10px;" id="user-card-${u.id}">
-                    <div style="width:100%; height:60px; background: linear-gradient(135deg, rgba(147,51,234,0.1) 0%, rgba(59,130,246,0.1) 100%); position:absolute; top:0; left:0; z-index:0;"></div>
-                    <div class="profile-avatar" style="width:64px; height:64px; font-size:1.5rem; margin-top:10px; z-index:1; border:4px solid var(--panel-bg);">${u.name.substring(0, 2).toUpperCase()}</div>
-                    <h3 style="font-size:1.1rem; margin-top:10px; margin-bottom:4px; z-index:1;">${u.name}</h3>
+                    <!-- Gradient banner -->
+                    <div style="width:100%; height:70px; background: linear-gradient(135deg, rgba(147,51,234,0.25) 0%, rgba(59,130,246,0.2) 100%); position:absolute; top:0; left:0; z-index:0;"></div>
+                    <!-- Real profile photo -->
+                    <div style="position:relative; z-index:1; margin-top:16px;">
+                        <img
+                            src="${getAvatarUrl(u.id)}"
+                            alt="${u.name}"
+                            width="72" height="72"
+                            style="width:72px; height:72px; border-radius:50%; object-fit:cover; border:4px solid var(--panel-bg); box-shadow:0 4px 16px rgba(0,0,0,0.25); display:block;"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        >
+                        <!-- Initials fallback (hidden by default, shown on img error) -->
+                        <div class="profile-avatar" style="width:72px; height:72px; font-size:1.5rem; border:4px solid var(--panel-bg); display:none; position:absolute; top:0; left:0;">${u.name.substring(0, 2).toUpperCase()}</div>
+                    </div>
+                    <!-- Online indicator dot -->
+                    <div style="position:absolute; top:66px; right:calc(50% - 42px); width:14px; height:14px; border-radius:50%; background:${u.status === 'active' ? 'var(--success)' : '#f59e0b'}; border:2px solid var(--panel-bg); z-index:2;"></div>
+                    <h3 style="font-size:1.1rem; margin-top:12px; margin-bottom:4px; z-index:1;">${u.name}</h3>
                     <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px; z-index:1;">${u.company}</p>
                     <div style="display:flex; gap:8px; margin-bottom:20px; z-index:1;">
                         <span class="status-badge" style="background-color:rgba(147,51,234,0.1); color:#9333ea;">${u.role}</span>
@@ -274,26 +303,101 @@ document.addEventListener('DOMContentLoaded', () => {
                 </tr>
             `).join('');
         } else {
+            // Avatar colour palettes per service type
+            const avatarColors = {
+                'SEO':      { bg: 'rgba(99,102,241,0.15)',  color: '#6366f1' },
+                'Paid Ads': { bg: 'rgba(16,185,129,0.15)',  color: '#10b981' },
+                'CRO':      { bg: 'rgba(245,158,11,0.15)',  color: '#f59e0b' },
+            };
+            const getAvatarStyle = (service) => {
+                const c = avatarColors[service] || { bg: 'rgba(147,51,234,0.15)', color: '#9333ea' };
+                return `background:${c.bg}; color:${c.color};`;
+            };
+
+            // SVG score ring builder
+            const scoreRing = (score, status) => {
+                const r = 22, cx = 27, cy = 27;
+                const circ = 2 * Math.PI * r;
+                if (status === 'pending' || score <= 0) {
+                    return `
+                        <div class="score-ring-wrap">
+                            <svg width="54" height="54" viewBox="0 0 54 54">
+                                <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--border-color)" stroke-width="4"/>
+                            </svg>
+                            <div class="score-ring-label"><span class="score-ring-tbd">TBD</span></div>
+                        </div>`;
+                }
+                const pct = score / 100;
+                const dash = circ * pct;
+                const color = score >= 80 ? '#10b981' : score >= 65 ? '#9333ea' : '#f59e0b';
+                return `
+                    <div class="score-ring-wrap">
+                        <svg width="54" height="54" viewBox="0 0 54 54">
+                            <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--border-color)" stroke-width="4"/>
+                            <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="4"
+                                stroke-dasharray="${dash.toFixed(1)} ${circ.toFixed(1)}"
+                                stroke-linecap="round"/>
+                        </svg>
+                        <div class="score-ring-label" style="color:${color};">${score}</div>
+                    </div>`;
+            };
+
+            // Domain initials (first 2 chars of domain, uppercase)
+            const domainInitials = (domain) => domain.replace(/^www\./, '').substring(0, 2).toUpperCase();
+
             feed.innerHTML = audits.map(a => `
-                <div class="timeline-item" style="border-left: 4px solid ${a.status === 'completed' ? 'var(--primary)' : 'var(--warning)'}; border-radius: var(--radius-md);">
-                    <div class="timeline-icon" style="background-color: ${a.status === 'completed' ? 'var(--primary)' : 'var(--warning)'}; border:none; box-shadow:none;">${a.status === 'completed' ? '<i class="ph ph-chart-bar"></i>' : '<i class="ph ph-clock"></i>'}</div>
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div>
-                            <h3 style="font-size:1.1rem; margin-bottom:4px;">${a.domain}</h3>
-                            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Contact: <a href="mailto:${a.email}" style="color:var(--text-color); text-decoration:none;">${a.email}</a> • Service: ${a.service}</p>
+                <div class="audit-card" data-status="${a.status}">
+                    <div class="audit-card-stripe ${a.status}"></div>
+                    <div class="audit-card-body">
+                        <!-- Top: avatar + info + score ring -->
+                        <div class="audit-card-top">
+                            <div class="audit-domain-avatar" style="${getAvatarStyle(a.service)}">${domainInitials(a.domain)}</div>
+                            <div class="audit-card-info">
+                                <h3 class="audit-card-domain" title="${a.domain}">${a.domain}</h3>
+                                <div class="audit-card-meta">
+                                    <span class="status-badge" style="background:rgba(147,51,234,0.12); color:#9333ea; font-size:0.72rem; padding:2px 8px;">${a.service}</span>
+                                    <span class="status-badge ${a.status === 'completed' ? 'paid' : 'pending'}" style="font-size:0.72rem; padding:2px 8px;">${a.status.toUpperCase()}</span>
+                                </div>
+                            </div>
+                            ${scoreRing(a.score, a.status)}
                         </div>
-                        <div style="text-align:right;">
-                            <span class="status-badge ${a.status === 'completed' ? 'paid' : 'pending'}" style="margin-bottom:6px;">${a.status.toUpperCase()}</span>
-                            <div style="font-size:1.25rem; font-weight:800; color:var(--primary);">${a.score > 0 ? a.score + '<span style="font-size:0.8rem; color:var(--text-muted);">/100</span>' : 'TBD'}</div>
+                        <!-- Email row -->
+                        <div class="audit-card-email">
+                            <i class="ph ph-envelope" style="font-size:0.9rem; flex-shrink:0;"></i>
+                            <a href="mailto:${a.email}" style="color:var(--text-muted); text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${a.email}</a>
                         </div>
                     </div>
-                    <div style="display:flex; justify-content:flex-end; align-items:center; margin-top:10px;">
-                        ${a.status === 'pending' ? `
-                            <button class="btn btn-primary btn-sm run-audit-calc" data-id="${a.id}">Run Audit Analysis</button>
-                        ` : `<span style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">Report Sent</span>`}
+                    <!-- Footer -->
+                    <div class="audit-card-footer">
+                        <span style="font-size:0.78rem; color:var(--text-muted);">ID: <strong style="color:var(--text-color);">#${a.id}</strong></span>
+                        ${a.status === 'pending'
+                            ? `<button class="btn btn-primary btn-sm run-audit-calc" data-id="${a.id}" style="font-size:0.8rem; padding:6px 14px;">
+                                   <i class="ph ph-play" style="margin-right:4px; vertical-align:middle;"></i>Run Audit
+                               </button>`
+                            : `<span style="font-size:0.82rem; color:var(--success); font-weight:600; display:flex; align-items:center; gap:4px;">
+                                   <i class="ph ph-check-circle"></i> Report Sent
+                               </span>`
+                        }
                     </div>
                 </div>
             `).join('');
+
+            // Update total badge
+            const badge = document.getElementById('audit-total-badge');
+            if (badge) badge.textContent = `${audits.length} total`;
+
+            // Wire up filter tabs
+            const tabs = document.querySelectorAll('.audit-filter-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    const filter = tab.getAttribute('data-filter');
+                    feed.querySelectorAll('.audit-card').forEach(card => {
+                        card.style.display = (filter === 'all' || card.dataset.status === filter) ? '' : 'none';
+                    });
+                });
+            });
         }
 
         feed.querySelectorAll('.run-audit-calc').forEach(btn => {
@@ -301,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const id = parseInt(btn.getAttribute('data-id'));
                 const audit = audits.find(item => item.id === id);
                 if (audit) {
-                    audit.score = Math.floor(Math.random() * 20) + 68; // Random score 68-88
+                    audit.score = Math.floor(Math.random() * 20) + 68;
                     audit.status = "completed";
                     saveState('admin_audits', audits);
                     renderAuditsTable();
@@ -334,22 +438,91 @@ document.addEventListener('DOMContentLoaded', () => {
                 </tr>
             `).join('');
         } else {
-            feed.innerHTML = invoices.map(inv => `
-                <div class="timeline-item" style="border-left: 4px solid ${inv.status === 'paid' ? 'var(--success)' : 'var(--warning)'}; border-radius: var(--radius-md);">
-                    <div class="timeline-icon" style="background-color: ${inv.status === 'paid' ? 'var(--success)' : 'var(--warning)'}; border:none; box-shadow:none;">${inv.status === 'paid' ? '<i class="ph ph-check"></i>' : '<i class="ph ph-warning"></i>'}</div>
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div>
-                            <h3 style="font-size:1.1rem; margin-bottom:4px;">${inv.description}</h3>
-                            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Invoice ID: ${inv.id} • Due: ${inv.due}</p>
+            // Icon map per status
+            const invIcon = { paid: 'ph-check-circle', pending: 'ph-clock', overdue: 'ph-warning-circle' };
+
+            // Check if a due date is past today
+            const isOverdue = (dueStr, status) => {
+                if (status === 'paid') return false;
+                const due = new Date(dueStr);
+                return !isNaN(due) && due < new Date();
+            };
+
+            feed.innerHTML = invoices.map(inv => {
+                const overdue = isOverdue(inv.due, inv.status);
+                const effectiveStatus = overdue ? 'overdue' : inv.status;
+                const icon = invIcon[effectiveStatus] || 'ph-receipt';
+                const amountColor = inv.status === 'paid' ? 'var(--success)' : overdue ? 'var(--danger)' : 'var(--text-color)';
+
+                return `
+                <div class="invoice-row-card" data-status="${inv.status}">
+
+                    <!-- TOP ROW wrapper: icon + description (stays together on mobile) -->
+                    <div class="inv-card-top-row">
+                        <div class="inv-status-icon ${effectiveStatus}">
+                            <i class="ph ${icon}"></i>
                         </div>
-                        <span style="font-size:1.25rem; font-weight:800; color:var(--text-color);">$${inv.amount.toLocaleString()}</span>
+                        <div class="inv-desc">
+                            <p class="inv-desc-title" title="${inv.description}">${inv.description}</p>
+                            <div class="inv-desc-meta">
+                                <span><i class="ph ph-hash" style="vertical-align:middle;"></i> ${inv.id}</span>
+                                <span class="${overdue ? 'inv-due-urgent' : ''}">
+                                    <i class="ph ph-calendar-blank" style="vertical-align:middle;"></i>
+                                    Due: ${inv.due}${overdue ? ' <strong>(Overdue)</strong>' : ''}
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
-                        <span class="status-badge ${inv.status}">${inv.status.toUpperCase()}</span>
-                        <button class="btn btn-secondary btn-sm toggle-payment-btn" data-id="${inv.id}">Toggle Status</button>
+
+                    <!-- MID ROW wrapper: amount + status badge (one line on mobile) -->
+                    <div class="inv-card-mid-row">
+                        <div class="inv-amount" style="color:${amountColor};">
+                            $${inv.amount.toLocaleString()}
+                        </div>
+                        <div class="inv-status-col">
+                            <span class="status-badge ${effectiveStatus === 'overdue' ? 'overdue' : inv.status}">
+                                ${effectiveStatus.toUpperCase()}
+                            </span>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+
+                    <!-- ACTION: full-width on mobile -->
+                    <div class="inv-action-col">
+                        <button class="btn btn-secondary btn-sm toggle-payment-btn" data-id="${inv.id}">
+                            ${inv.status === 'paid'
+                                ? '<i class="ph ph-arrow-counter-clockwise" style="margin-right:4px;vertical-align:middle;"></i>Mark Pending'
+                                : '<i class="ph ph-check" style="margin-right:4px;vertical-align:middle;"></i>Mark Paid'}
+                        </button>
+                    </div>
+
+                </div>`;
+            }).join('');
+
+            // ── Update summary totals ──────────────────────────
+            const totalAmt   = invoices.reduce((s, i) => s + i.amount, 0);
+            const paidAmt    = invoices.filter(i => i.status === 'paid').reduce((s, i) => s + i.amount, 0);
+            const pendingAmt = invoices.filter(i => i.status !== 'paid').reduce((s, i) => s + i.amount, 0);
+            const fmt = n => '$' + n.toLocaleString();
+            const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+            setEl('inv-total-val',   fmt(totalAmt));
+            setEl('inv-paid-val',    fmt(paidAmt));
+            setEl('inv-pending-val', fmt(pendingAmt));
+
+            // ── Update count pill ──────────────────────────────
+            const pill = document.getElementById('inv-count-pill');
+            if (pill) pill.textContent = `${invoices.length} total`;
+
+            // ── Wire filter tabs ───────────────────────────────
+            document.querySelectorAll('.inv-filter-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.inv-filter-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    const filter = tab.getAttribute('data-filter');
+                    feed.querySelectorAll('.invoice-row-card').forEach(row => {
+                        row.style.display = (filter === 'all' || row.dataset.status === filter) ? '' : 'none';
+                    });
+                });
+            });
         }
 
         feed.querySelectorAll('.toggle-payment-btn').forEach(btn => {

@@ -3,7 +3,36 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme Management (Light/Dark Mode via data-theme on html)
+    // 0. Setup Mobile Sidebar Actions dynamically
+    const setupMobileSidebarActions = () => {
+        const headerActions = document.querySelector('.dashboard-header-actions');
+        const sidebar = document.getElementById('sidebar');
+        if (headerActions && sidebar) {
+            // Check if already created (safety check)
+            if (sidebar.querySelector('.sidebar-mobile-actions')) return;
+
+            const mobileActions = document.createElement('div');
+            mobileActions.className = 'sidebar-mobile-actions';
+            
+            // Clone buttons (Notification, Theme, RTL, Profile)
+            const btns = headerActions.querySelectorAll('.control-btn, .header-profile');
+            btns.forEach(btn => {
+                const clone = btn.cloneNode(true);
+                mobileActions.appendChild(clone);
+            });
+            
+            // Insert right after sidebar brand
+            const brand = sidebar.querySelector('.sidebar-brand');
+            if (brand) {
+                brand.parentNode.insertBefore(mobileActions, brand.nextSibling);
+            } else {
+                sidebar.insertBefore(mobileActions, sidebar.firstChild);
+            }
+        }
+    };
+    setupMobileSidebarActions();
+
+    // 1. Theme Management (Light/Dark Mode via data-theme on html and dark-mode class on body)
     const initTheme = () => {
         const storedTheme = localStorage.getItem('theme');
         // If theme-2.html is active, default to dark. Otherwise, default to light
@@ -11,6 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentTheme = storedTheme || defaultTheme;
         
         document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        // Add/remove dark-mode class on document element and body for main.css layout compatibility
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            if (document.body) document.body.classList.add('dark-mode');
+        } else {
+            document.documentElement.classList.remove('dark-mode');
+            if (document.body) document.body.classList.remove('dark-mode');
+        }
+        
         updateThemeToggleIcons();
     };
 
@@ -19,17 +58,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+        
+        if (newTheme === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            if (document.body) document.body.classList.add('dark-mode');
+        } else {
+            document.documentElement.classList.remove('dark-mode');
+            if (document.body) document.body.classList.remove('dark-mode');
+        }
+        
         updateThemeToggleIcons();
     };
 
     const updateThemeToggleIcons = () => {
-        const toggles = document.querySelectorAll('.theme-switch i');
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        toggles.forEach(icon => {
+        
+        // 1. FontAwesome switches (.theme-switch i)
+        const faToggles = document.querySelectorAll('.theme-switch i');
+        faToggles.forEach(icon => {
             if (currentTheme === 'dark') {
                 icon.className = 'fas fa-sun';
             } else {
                 icon.className = 'fas fa-moon';
+            }
+        });
+
+        // 2. Phosphor switches (.theme-toggle-btn i, .theme-toggle-icon i)
+        const phToggles = document.querySelectorAll('.theme-toggle-btn i, .theme-toggle-icon i');
+        phToggles.forEach(icon => {
+            if (currentTheme === 'dark') {
+                icon.className = 'ph ph-sun';
+            } else {
+                icon.className = 'ph ph-moon';
+            }
+        });
+
+        // 3. Emoji text switches (.theme-toggle-icon without inner <i>)
+        const emojiToggles = document.querySelectorAll('.theme-toggle-icon');
+        emojiToggles.forEach(span => {
+            if (!span.querySelector('i')) {
+                span.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
             }
         });
     };
@@ -50,19 +118,24 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateRTLToggleLabels = () => {
-        const labels = document.querySelectorAll('.dir-switch .dir-text');
         const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
+        
+        const labels = document.querySelectorAll('.dir-switch .dir-text, .rtl-toggle-btn .rtl-toggle-text, .rtl-toggle-btn');
         labels.forEach(label => {
-            label.textContent = currentDir === 'ltr' ? 'RTL' : 'LTR';
+            if (label.classList.contains('dir-text') || label.classList.contains('rtl-toggle-text')) {
+                label.textContent = currentDir === 'ltr' ? 'RTL' : 'LTR';
+            } else if (label.classList.contains('rtl-toggle-btn') && !label.querySelector('.rtl-toggle-text')) {
+                label.textContent = currentDir === 'ltr' ? 'RTL' : 'LTR';
+            }
         });
     };
 
     // Attach Theme and RTL Toggles
-    document.querySelectorAll('.theme-switch').forEach(btn => {
+    document.querySelectorAll('.theme-switch, .theme-toggle-btn').forEach(btn => {
         btn.addEventListener('click', toggleTheme);
     });
 
-    document.querySelectorAll('.dir-switch').forEach(btn => {
+    document.querySelectorAll('.dir-switch, .rtl-toggle-btn').forEach(btn => {
         btn.addEventListener('click', toggleRTL);
     });
 

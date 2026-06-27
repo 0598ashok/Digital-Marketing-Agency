@@ -8,6 +8,301 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* =================================================
+           RECENT INVOICES — PREMIUM REDESIGN
+           ================================================= */
+
+        /* Scoped invoice section wrapper */
+        .invoice-section {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        /* Section top bar */
+        .invoice-section-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 24px 16px;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+        .invoice-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .invoice-section-title h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .invoice-count-pill {
+            background: rgba(147,51,234,0.14);
+            color: #9333ea;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 99px;
+        }
+
+        /* Filter tabs */
+        .inv-filter-tabs {
+            display: flex;
+            gap: 3px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 3px;
+        }
+        .inv-filter-tab {
+            padding: 4px 13px;
+            border-radius: 5px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            transition: all 0.18s;
+            white-space: nowrap;
+        }
+        .inv-filter-tab.active,
+        .inv-filter-tab:hover {
+            background: var(--panel-bg);
+            color: var(--text-color);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+        .inv-filter-tab.active { color: #9333ea; }
+
+        /* Summary totals row */
+        .invoice-summary-row {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .inv-summary-cell {
+            flex: 1;
+            padding: 12px 24px;
+            background: var(--bg-color);
+            text-align: center;
+        }
+        .inv-summary-cell:not(:last-child) {
+            border-right: 1px solid var(--border-color);
+        }
+        .inv-summary-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+            display: block;
+            line-height: 1.1;
+        }
+        .inv-summary-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* Invoice card list */
+        .invoice-card-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Single invoice row-card — 3 semantic children on desktop via display:contents */
+        .invoice-row-card {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto auto;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.18s;
+        }
+        .invoice-row-card:last-child {
+            border-bottom: none;
+        }
+        .invoice-row-card:hover {
+            background: rgba(147,51,234,0.04);
+        }
+
+        /* On desktop: wrapper divs are transparent to grid layout */
+        .inv-card-top-row,
+        .inv-card-mid-row {
+            display: contents;
+        }
+
+        /* Status icon circle */
+        .inv-status-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .inv-status-icon.paid    { background: rgba(16,185,129,0.15); color: var(--success); }
+        .inv-status-icon.pending { background: rgba(245,158,11,0.15);  color: var(--warning); }
+        .inv-status-icon.overdue { background: rgba(239,68,68,0.15);   color: var(--danger);  }
+
+        /* Description + meta */
+        .inv-desc { min-width: 0; }
+        .inv-desc-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0 0 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .inv-desc-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .inv-due-urgent { color: var(--danger) !important; font-weight: 600; }
+
+        /* Amount */
+        .inv-amount {
+            font-size: 1.05rem;
+            font-weight: 800;
+            white-space: nowrap;
+            letter-spacing: -0.3px;
+        }
+
+        /* Status badge col */
+        .inv-status-col { min-width: 76px; text-align: center; }
+
+        /* Action col */
+        .inv-action-col { flex-shrink: 0; }
+
+        /* ─── RESPONSIVE: Mobile-first, reliable flex approach ─── */
+
+        /* 1) Collapse split-panel to 1 column */
+        @media (max-width: 1100px) {
+            .split-panel { grid-template-columns: 1fr !important; }
+        }
+
+        /* 2) Metrics 3 → 2 cols */
+        @media (max-width: 900px) {
+            .metrics-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            .grid-2       { grid-template-columns: 1fr !important; }
+        }
+
+        /* 3) Main mobile layout ≤768px */
+        @media (max-width: 768px) {
+
+            /* Invoice card: 5-col grid → flex column with semantic rows */
+            .invoice-row-card {
+                display: flex;
+                flex-direction: column;
+                padding: 16px;
+                gap: 0;
+                align-items: stretch;
+            }
+
+            /* Wrappers become visible flex rows */
+            .inv-card-top-row {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 10px;
+            }
+            .inv-card-mid-row {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 10px;
+                padding-left: 46px;
+            }
+
+            .inv-status-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 0.9rem;
+                flex-shrink: 0;
+                margin-top: 2px;
+            }
+
+            /* Description fills remaining width */
+            .inv-desc { flex: 1; min-width: 0; }
+            .inv-desc-title { white-space: normal; font-size: 0.875rem; }
+            .inv-desc-meta  { flex-wrap: wrap; gap: 4px 8px; }
+
+            /* Amount + badge side by side */
+            .inv-amount { font-size: 1rem; }
+            .inv-status-col { min-width: unset; text-align: left; }
+
+            /* Action button full-width, indented to align with text */
+            .inv-action-col { padding-left: 46px; }
+            .inv-action-col .btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 0.82rem;
+                padding: 8px 14px;
+            }
+
+            /* Section header bar stacks */
+            .invoice-section-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 14px 16px;
+                gap: 10px;
+            }
+            .inv-filter-tabs { width: 100%; }
+            .inv-filter-tab  { flex: 1; text-align: center; padding: 5px 8px; }
+
+            /* Summary cells tighten */
+            .inv-summary-cell  { padding: 10px 8px; }
+            .inv-summary-value { font-size: 1rem; }
+            .inv-summary-label { font-size: 0.68rem; }
+
+            /* Bottom grid-2 collapses */
+            .grid-2 { grid-template-columns: 1fr !important; }
+        }
+
+        /* 4) Small phones ≤640px */
+        @media (max-width: 640px) {
+            .metrics-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
+            .inv-amount { font-size: 0.95rem; }
+        }
+
+        /* 5) Very small phones ≤480px */
+        @media (max-width: 480px) {
+            .metrics-grid { grid-template-columns: 1fr !important; }
+
+            /* Summary row stacks vertically */
+            .invoice-summary-row { flex-direction: column; }
+            .inv-summary-cell:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            /* Page title shrinks */
+            h1 { font-size: 1.15rem !important; }
+
+            /* Finance card padding reduces */
+            .finance-card { padding: 20px 16px !important; }
+            .form-input   { font-size: 0.875rem; }
+
+            /* Overdue list items stack */
+            ul li[style*="display:flex"] {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 8px;
+            }
+        }
+    </style>
 </head>
 
 <body class="dashboard-body dark-mode admin-mode">
@@ -127,13 +422,42 @@
 
                 <div class="split-panel">
 
-                    <!-- Invoice Feed -->
-                    <div
-                        style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
-                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Recent Invoices</h3>
-                        <div class="timeline" id="admin-invoices-timeline">
-                            <!-- JS injects invoices -->
+                    <!-- Invoice Section — Premium Redesign -->
+                    <div class="invoice-section">
+
+                        <!-- Section header bar -->
+                        <div class="invoice-section-bar">
+                            <div class="invoice-section-title">
+                                <i class="ph ph-receipt" style="font-size:1.2rem; color:#9333ea;"></i>
+                                <h3>Recent Invoices</h3>
+                                <span class="invoice-count-pill" id="inv-count-pill">0 total</span>
+                            </div>
+                            <div class="inv-filter-tabs" id="inv-filter-tabs">
+                                <button class="inv-filter-tab active" data-filter="all">All</button>
+                                <button class="inv-filter-tab" data-filter="paid">Paid</button>
+                                <button class="inv-filter-tab" data-filter="pending">Pending</button>
+                            </div>
                         </div>
+
+                        <!-- Summary totals bar -->
+                        <div class="invoice-summary-row" id="inv-summary-row">
+                            <div class="inv-summary-cell">
+                                <span class="inv-summary-value" id="inv-total-val">—</span>
+                                <span class="inv-summary-label">Total Billed</span>
+                            </div>
+                            <div class="inv-summary-cell">
+                                <span class="inv-summary-value" style="color:var(--success);" id="inv-paid-val">—</span>
+                                <span class="inv-summary-label">Collected</span>
+                            </div>
+                            <div class="inv-summary-cell">
+                                <span class="inv-summary-value" style="color:var(--warning);" id="inv-pending-val">—</span>
+                                <span class="inv-summary-label">Outstanding</span>
+                            </div>
+                        </div>
+
+                        <!-- JS-injected invoice cards -->
+                        <div class="invoice-card-list" id="admin-invoices-timeline"></div>
+
                     </div>
 
                     <!-- Add Invoice Panel -->

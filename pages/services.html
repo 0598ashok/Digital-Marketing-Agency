@@ -251,115 +251,136 @@
             color: var(--gold);
         }
 
-        /* ── Featured Full-Bleed Row ── */
+        /* ── Featured Immersive Cards ── */
         .sv-feature {
-            background: var(--bg-secondary);
+            background: var(--bg-primary);
+            padding: 120px 0;
             border-top: 1px solid var(--border-color);
         }
 
-        .sv-feature-row {
+        .sv-feature-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 480px;
-            border-bottom: 1px solid var(--border-color);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
         }
 
-        .sv-feature-row:last-child {
-            border-bottom: none;
-        }
-
-        .sv-feature-img {
-            overflow: hidden;
+        .sv-immersive-card {
             position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 3 / 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: #070b19;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: var(--shadow);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s;
+            cursor: pointer;
+            text-decoration: none;
         }
 
-        .sv-feature-img img {
+        .sv-immersive-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(6, 182, 212, 0.35);
+            box-shadow: 0 25px 50px rgba(6, 182, 212, 0.15), 0 0 20px rgba(6, 182, 212, 0.1) inset;
+        }
+
+        .sv-immersive-bg {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
-            transition: transform 0.6s ease, filter 0.4s;
+            filter: brightness(0.6) saturate(0.85);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s;
+            z-index: 1;
         }
 
-        .sv-feature-row:hover .sv-feature-img img {
-            transform: scale(1.03);
+        .sv-immersive-card:hover .sv-immersive-bg {
+            transform: scale(1.08);
+            filter: brightness(0.75) saturate(1);
         }
 
-        .sv-feature-text {
-            padding: 72px 64px;
+        .sv-immersive-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.98) 0%, rgba(2, 6, 23, 0.6) 45%, rgba(2, 6, 23, 0.1) 100%);
+            z-index: 2;
+            pointer-events: none;
+            transition: background 0.4s ease;
+        }
+
+        .sv-immersive-card:hover .sv-immersive-overlay {
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.98) 0%, rgba(2, 6, 23, 0.7) 50%, rgba(2, 6, 23, 0.2) 100%);
+        }
+
+        .sv-immersive-content {
+            position: relative;
+            z-index: 3;
+            padding: 40px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            background: var(--bg-primary);
+            pointer-events: none;
         }
 
-        .sv-feature-row.rev .sv-feature-img {
-            order: 2;
-        }
-
-        .sv-feature-row.rev .sv-feature-text {
-            order: 1;
-        }
-
-        .sv-feature-tag {
+        .sv-immersive-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 3px;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 2px;
             color: var(--gold);
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
 
-        .sv-feature-text h2 {
+        .sv-immersive-badge i {
+            font-size: 0.4rem;
+            color: var(--gold);
+            text-shadow: 0 0 8px var(--gold);
+        }
+
+        .sv-immersive-content h2 {
             font-family: var(--font-heading);
-            font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+            font-size: clamp(1.4rem, 2.2vw, 1.75rem);
             font-weight: 800;
-            color: var(--text-primary);
-            line-height: 1.15;
-            letter-spacing: -0.5px;
-            margin-bottom: 16px;
+            color: #fff;
+            line-height: 1.25;
+            margin-bottom: 12px;
         }
 
-        .sv-feature-text p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.85;
-            margin-bottom: 28px;
-            max-width: 440px;
+        .sv-immersive-content p {
+            font-size: 0.88rem;
+            color: rgba(248, 250, 252, 0.82);
+            line-height: 1.6;
+            margin-bottom: 24px;
         }
 
-        .sv-feature-btn {
+        .sv-immersive-link {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 800;
             letter-spacing: 2px;
-            color: var(--blue);
-            text-decoration: none;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .sv-feature-btn::after {
-            content: '';
-            display: block;
-            width: 32px;
-            height: 1px;
-            background: var(--blue);
-            transition: width 0.3s, background-color 0.3s;
-        }
-
-        .sv-feature-btn:hover {
             color: var(--gold);
+            text-transform: uppercase;
+            transition: gap 0.3s;
         }
 
-        .sv-feature-btn:hover::after {
-            width: 56px;
-            background: var(--gold);
+        .sv-immersive-link i {
+            font-size: 0.72rem;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sv-immersive-card:hover .sv-immersive-link {
+            gap: 12px;
+        }
+
+        .sv-immersive-card:hover .sv-immersive-link i {
+            transform: translateX(4px);
         }
 
         /* ── Process Section ── */
@@ -578,25 +599,13 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .sv-feature-row {
+            .sv-feature-grid {
                 grid-template-columns: 1fr;
-                min-height: auto;
+                gap: 24px;
             }
 
-            .sv-feature-row.rev .sv-feature-img {
-                order: 0;
-            }
-
-            .sv-feature-row.rev .sv-feature-text {
-                order: 0;
-            }
-
-            .sv-feature-img {
-                aspect-ratio: 16/9;
-            }
-
-            .sv-feature-text {
-                padding: 48px 40px;
+            .sv-immersive-card {
+                aspect-ratio: 4 / 5;
             }
 
             .sv-steps {
@@ -628,8 +637,13 @@
                 grid-template-columns: 1fr;
             }
 
-            .sv-feature-text {
-                padding: 40px 24px;
+            .sv-immersive-card {
+                aspect-ratio: auto;
+                min-height: 380px;
+            }
+
+            .sv-immersive-content {
+                padding: 30px 24px;
             }
 
             .sv-steps {
@@ -828,39 +842,45 @@
             </div>
         </section>
 
-        <!-- 3. FEATURED SERVICES (ALTERNATING) -->
+        <!-- 3. FEATURED SERVICES (IMMERSIVE CARDS) -->
         <section class="sv-feature">
-            <div class="sv-feature-row" data-aos="fade-up">
-                <div class="sv-feature-img">
-                    <img src="../assets/images/case-seo.png" alt="Search Engine Optimization">
-                </div>
-                <div class="sv-feature-text">
-                    <p class="sv-feature-tag"><i class="fas fa-circle" style="font-size:0.4rem;"></i> Flagship Service</p>
-                    <h2>Search Engine Optimization &amp;<br>Organic Dominance</h2>
-                    <p>Our search practice is built to drive high-intent, compounding traffic. We focus on technical site health, programmatic scale, and custom search intent maps to turn search visibility into a predictable revenue stream.</p>
-                    <a class="sv-feature-btn" href="service-seo.html">Explore Service</a>
-                </div>
-            </div>
-            <div class="sv-feature-row rev" data-aos="fade-up">
-                <div class="sv-feature-img">
-                    <img src="../assets/images/case-ppc.png" alt="Paid Advertisements">
-                </div>
-                <div class="sv-feature-text">
-                    <p class="sv-feature-tag"><i class="fas fa-circle" style="font-size:0.4rem;"></i> Paid Acquisition</p>
-                    <h2>Paid Advertising &amp;<br>Conversion Attribution</h2>
-                    <p>Scale search, display, and social acquisition funnels with custom-tailored campaign structures. We combine creative testing with algorithmic bidding and cohort analysis to maximize attributable return on ad spend.</p>
-                    <a class="sv-feature-btn" href="service-ppc.html">Explore Service</a>
-                </div>
-            </div>
-            <div class="sv-feature-row" data-aos="fade-up">
-                <div class="sv-feature-img">
-                    <img src="../assets/images/creative-showcase.png" alt="Social Media Marketing">
-                </div>
-                <div class="sv-feature-text">
-                    <p class="sv-feature-tag"><i class="fas fa-circle" style="font-size:0.4rem;"></i> Creative Strategy</p>
-                    <h2>Social Campaigns &amp;<br>Creative Scaling</h2>
-                    <p>Capture audience attention where they spend their time. We produce conversion-focused video and graphic assets, coordinate targeted influencer partnerships, and execute distribution designed to build brand equity.</p>
-                    <a class="sv-feature-btn" href="service-social.html">Explore Service</a>
+            <div class="container">
+                <div class="sv-feature-grid">
+                    <!-- Card 1: SEO -->
+                    <a class="sv-immersive-card" href="service-seo.html" data-aos="fade-up" data-aos-delay="0">
+                        <img class="sv-immersive-bg" src="../assets/images/case-seo.png" alt="Search Engine Optimization">
+                        <div class="sv-immersive-overlay"></div>
+                        <div class="sv-immersive-content">
+                            <span class="sv-immersive-badge"><i class="fas fa-circle"></i> Flagship Service</span>
+                            <h2>Search Engine Optimization &amp;<br>Organic Dominance</h2>
+                            <p>Our search practice is built to drive high-intent traffic. We focus on site health, programmatic scale, and intent mapping.</p>
+                            <span class="sv-immersive-link">Explore Service <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <!-- Card 2: PPC -->
+                    <a class="sv-immersive-card" href="service-ppc.html" data-aos="fade-up" data-aos-delay="100">
+                        <img class="sv-immersive-bg" src="../assets/images/case-ppc.png" alt="Paid Advertisements">
+                        <div class="sv-immersive-overlay"></div>
+                        <div class="sv-immersive-content">
+                            <span class="sv-immersive-badge"><i class="fas fa-circle"></i> Paid Acquisition</span>
+                            <h2>Paid Advertising &amp;<br>Conversion Attribution</h2>
+                            <p>Scale display, search, and social media channels. We combine creative iteration with custom cohort analysis.</p>
+                            <span class="sv-immersive-link">Explore Service <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: Social/Creative -->
+                    <a class="sv-immersive-card" href="service-social.html" data-aos="fade-up" data-aos-delay="200">
+                        <img class="sv-immersive-bg" src="../assets/images/creative-showcase.png" alt="Social Media Marketing">
+                        <div class="sv-immersive-overlay"></div>
+                        <div class="sv-immersive-content">
+                            <span class="sv-immersive-badge"><i class="fas fa-circle"></i> Creative Strategy</span>
+                            <h2>Social Campaigns &amp;<br>Creative Scaling</h2>
+                            <p>Capture client attention on active feeds. We design high-converting visual scripts, ad copies, and media integrations.</p>
+                            <span class="sv-immersive-link">Explore Service <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>

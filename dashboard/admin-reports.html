@@ -7,11 +7,408 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* =============================================
+           ADMIN REPORTS — SAME LAYOUT AS ADMIN CLIENTS
+           ============================================= */
+
+        /* Metric card header/value/trend — matching admin-clients style */
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .metric-header h3 {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin: 0;
+        }
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .metric-trend {
+            font-size: 0.82rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .metric-trend.positive { color: var(--success); }
+        .metric-trend.negative { color: var(--danger); }
+
+        /* Section header */
+        .section-header {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .section-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Split panel — same as admin-clients.html */
+        .split-panel {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 24px;
+        }
+
+        /* Audit timeline feed inside right panel */
+        .mini-timeline {
+            position: relative;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .mini-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 11px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        /* Pipeline stats (inside right widget of split panel) */
+        .pipeline-stats {
+            display: flex;
+            gap: 0;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .pipeline-stat {
+            flex: 1;
+            text-align: center;
+            padding: 14px 10px;
+            background-color: var(--bg-color);
+        }
+        .pipeline-stat:not(:last-child) {
+            border-right: 1px solid var(--border-color);
+        }
+        .pipeline-stat-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            line-height: 1;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .pipeline-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .widget-divider {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 18px 0;
+        }
+
+        /* ── Audit Cards Grid ─────────────────────────── */
+        .audit-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .audit-card {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            position: relative;
+        }
+        .audit-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            border-color: var(--primary-glow);
+        }
+
+        /* Top accent stripe */
+        .audit-card-stripe {
+            height: 4px;
+            width: 100%;
+        }
+        .audit-card-stripe.completed { background: linear-gradient(90deg, #6366f1, #9333ea); }
+        .audit-card-stripe.pending   { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+
+        /* Card body */
+        .audit-card-body {
+            padding: 20px 20px 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Top row: domain avatar + score ring */
+        .audit-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        /* Domain favicon / initials */
+        .audit-domain-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* SVG score ring */
+        .score-ring-wrap {
+            position: relative;
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+        }
+        .score-ring-wrap svg {
+            transform: rotate(-90deg);
+        }
+        .score-ring-label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .score-ring-tbd {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        /* Domain name + service badge */
+        .audit-card-info { flex: 1; min-width: 0; }
+        .audit-card-domain {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0 0 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .audit-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        /* Email row */
+        .audit-card-email {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Card footer */
+        .audit-card-footer {
+            padding: 14px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Section header with filter tabs */
+        .audit-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .audit-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .audit-section-title h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .audit-count-badge {
+            background: rgba(147,51,234,0.15);
+            color: #9333ea;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 99px;
+        }
+        .audit-filter-tabs {
+            display: flex;
+            gap: 4px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 4px;
+        }
+        .audit-filter-tab {
+            padding: 5px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            transition: all 0.18s;
+        }
+        .audit-filter-tab.active,
+        .audit-filter-tab:hover {
+            background: var(--panel-bg);
+            color: var(--text-color);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+        .audit-filter-tab.active { color: #9333ea; }
+
+        /* ── Responsive: consolidated ─────────────────── */
+        @media (max-width: 1100px) {
+            .audit-cards-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .metrics-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 768px) {
+            .audit-cards-grid { grid-template-columns: 1fr; }
+            .audit-section-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .audit-filter-tabs { width: 100%; justify-content: stretch; }
+            .audit-filter-tab { flex: 1; text-align: center; }
+            .audit-card-footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .audit-card-body { padding: 16px 16px 12px; }
+            .audit-card-footer { padding: 12px 16px; }
+            .split-panel { grid-template-columns: 1fr !important; }
+            .pipeline-stats { flex-direction: column; }
+            .pipeline-stat:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border-color); }
+            .pipeline-stat-value { font-size: 1.5rem; }
+            .score-bar-track { width: 60px; }
+        }
+        @media (max-width: 640px) {
+            .metrics-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
+            .audit-section-title h2 { font-size: 1.1rem; }
+            .risk-item { flex-direction: column; align-items: flex-start; }
+            .score-bar-track { width: 50px; }
+        }
+        @media (max-width: 480px) {
+            .metrics-grid { grid-template-columns: 1fr !important; }
+            .metric-value { font-size: 1.5rem; }
+            .audit-filter-tabs { padding: 3px; }
+            .audit-filter-tab { padding: 5px 8px; font-size: 0.75rem; }
+            .audit-count-badge { font-size: 0.7rem; }
+            .audit-card-top { flex-wrap: wrap; gap: 8px; }
+            .audit-card-meta { gap: 4px; }
+            .pipeline-stat-value { font-size: 1.3rem; }
+            .pipeline-stat { padding: 12px 8px; }
+            [class*="panel-left"], [class*="panel-right"] { padding: 20px !important; }
+            .form-input { font-size: 0.9rem; }
+            h3 { font-size: 1rem !important; }
+        }
+
+        /* Score bar rows */
+        .score-bar-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .score-bar-row span:first-child {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            flex: 1;
+        }
+        .score-bar-track {
+            width: 80px;
+            height: 6px;
+            background: var(--bg-color);
+            border-radius: 99px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .score-bar-fill {
+            height: 100%;
+            border-radius: 99px;
+        }
+        .score-bar-num {
+            font-size: 0.8rem;
+            font-weight: 700;
+            min-width: 26px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        /* At-risk list items (same as admin-clients) */
+        .risk-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .risk-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .risk-item-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            min-width: 0;
+        }
+        .risk-item-info span strong {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    </style>
 </head>
 <body class="dashboard-body dark-mode admin-mode">
 
     <div class="dashboard-wrapper">
-        
+
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
             <a href="../index.html" class="sidebar-brand" style="text-decoration:none; color:inherit;">APEXADMIN<span class="logo-dot">.</span></a>
@@ -51,20 +448,16 @@
                         <i class="ph ph-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:1.1rem;"></i>
                         <input type="text" placeholder="Search admin console..." style="background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:8px 16px 8px 38px; color:var(--text-color); font-size:0.9rem; outline:none; width:240px; transition:all 0.2s;">
                     </div>
-                    
                     <button class="control-btn" title="Notifications" style="position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
                         <i class="ph ph-bell" style="font-size:1.2rem;"></i>
                         <span style="position:absolute; top:8px; right:10px; width:8px; height:8px; background:var(--danger); border-radius:50%; border:2px solid var(--panel-bg);"></span>
                     </button>
-
                     <button class="control-btn theme-toggle-btn" title="Toggle Theme" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; transition:all 0.2s;">
                         <span class="theme-toggle-icon"><i class="ph ph-sun" style="font-size:1.2rem;"></i></span>
                     </button>
-                    
                     <button class="control-btn rtl-toggle-btn" title="Toggle RTL" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-color); background:var(--panel-bg); color:var(--text-color); cursor:pointer; font-weight:600; font-size:0.8rem; transition:all 0.2s;">
                         <span class="rtl-toggle-text">LTR</span>
                     </button>
-                    
                     <div class="header-profile" style="width:40px; height:40px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:600; cursor:pointer; margin-left:8px; border:2px solid var(--panel-bg); box-shadow:0 0 0 1px var(--border-color);">
                         AD
                     </div>
@@ -73,49 +466,185 @@
 
             <!-- Dashboard Content -->
             <div class="dashboard-content-inner">
-                <div class="section-header" style="text-align:left; margin-bottom:40px; max-width:100%;">
-                    <h2 style="font-size:1.5rem;">Audit & Assessment Requests</h2>
-                    <p style="font-size:0.95rem;">Review domains and email leads captured via website forms. Trigger automated reports generation.</p>
+
+                <!-- TOP ROW: Metrics Grid — same as admin-clients.html -->
+                <div class="metrics-grid" style="margin-bottom:24px;">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Total Audits</h3>
+                            <span><i class="ph ph-magnifying-glass" style="font-size:1.2rem; color:var(--primary);"></i></span>
+                        </div>
+                        <div class="metric-value">16</div>
+                        <div class="metric-trend positive"><i class="ph ph-trend-up"></i> +4 this month</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Completed</h3>
+                            <span><i class="ph ph-check-circle" style="font-size:1.2rem; color:var(--success);"></i></span>
+                        </div>
+                        <div class="metric-value">12</div>
+                        <div class="metric-trend positive"><i class="ph ph-trend-up"></i> 88% success rate</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>In Queue</h3>
+                            <span><i class="ph ph-clock" style="font-size:1.2rem; color:var(--warning);"></i></span>
+                        </div>
+                        <div class="metric-value">4</div>
+                        <div class="metric-trend negative"><i class="ph ph-warning"></i> Awaiting Scan</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h3>Avg Score</h3>
+                            <span><i class="ph ph-chart-bar" style="font-size:1.2rem; color:#9333ea;"></i></span>
+                        </div>
+                        <div class="metric-value">79<span style="font-size:1rem; color:var(--text-muted); font-weight:500;">/100</span></div>
+                        <div class="metric-trend positive"><i class="ph ph-trend-up"></i> +3 from last month</div>
+                    </div>
                 </div>
 
-                <div class="grid-2" style="align-items:flex-start;">
-                    <!-- Timeline Feed -->
-                    <div class="timeline" id="admin-audits-timeline" style="margin-bottom:20px;">
-                        <!-- JS injects audit requests here -->
+                <!-- SECTION HEADER with filter tabs -->
+                <div class="audit-section-header">
+                    <div class="audit-section-title">
+                        <h2>Audit &amp; Assessment Requests</h2>
+                        <span class="audit-count-badge" id="audit-total-badge">0 total</span>
+                    </div>
+                    <div class="audit-filter-tabs" id="audit-filter-tabs">
+                        <button class="audit-filter-tab active" data-filter="all">All</button>
+                        <button class="audit-filter-tab" data-filter="completed">Completed</button>
+                        <button class="audit-filter-tab" data-filter="pending">Pending</button>
+                    </div>
+                </div>
+
+                <!-- MIDDLE: Audit Cards Grid -->
+                <div class="audit-cards-grid" id="admin-audits-timeline" style="margin-bottom:30px;">
+                    <!-- JS injects audit cards here -->
+                </div>
+
+                <!-- BOTTOM: Split Panel — same as admin-clients.html -->
+                <div class="split-panel">
+
+                    <!-- LEFT: Manual Trigger + Score Overview -->
+                    <div class="panel-left" style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:20px; display:flex; align-items:center; gap:8px;">
+                            <i class="ph ph-play-circle" style="color:#9333ea;"></i> Trigger Manual Audit
+                        </h3>
+                        <form style="display:flex; flex-direction:column; gap:14px;" onsubmit="event.preventDefault(); alert('Audit scanner triggered successfully.');">
+                            <div class="form-group" style="margin:0;">
+                                <label style="font-size:0.82rem; margin-bottom:6px; display:block; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.3px;">Target Domain / URL</label>
+                                <input type="url" class="form-input" placeholder="https://clientdomain.com" required style="width:100%; box-sizing:border-box;">
+                            </div>
+                            <div class="form-group" style="margin:0;">
+                                <label style="font-size:0.82rem; margin-bottom:6px; display:block; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.3px;">Audit Type</label>
+                                <select class="form-input" style="background-color:var(--bg-color); width:100%; box-sizing:border-box;">
+                                    <option>Full Technical SEO Sweep</option>
+                                    <option>Performance &amp; Core Web Vitals</option>
+                                    <option>Content &amp; Keyword Gap Analysis</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin:0;">
+                                <label style="font-size:0.82rem; margin-bottom:6px; display:block; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.3px;">Priority Level</label>
+                                <select class="form-input" style="background-color:var(--bg-color); width:100%; box-sizing:border-box;">
+                                    <option>Normal</option>
+                                    <option>High</option>
+                                    <option>Urgent</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="margin-top:4px;">
+                                <i class="ph ph-play" style="margin-right:6px; vertical-align:middle;"></i>Run Scanner Instance
+                            </button>
+                        </form>
+
+                        <hr class="widget-divider" style="margin-top:24px;">
+
+                        <h3 style="font-size:1.05rem; font-weight:700; margin:0 0 14px;">Average Score by Type</h3>
+                        <div style="display:flex; flex-direction:column; gap:12px;">
+                            <div class="score-bar-row">
+                                <span>SEO Sweep</span>
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <div class="score-bar-track"><div class="score-bar-fill" style="width:78%; background:#9333ea;"></div></div>
+                                    <span class="score-bar-num">78</span>
+                                </div>
+                            </div>
+                            <div class="score-bar-row">
+                                <span>Core Web Vitals</span>
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <div class="score-bar-track"><div class="score-bar-fill" style="width:82%; background:var(--success);"></div></div>
+                                    <span class="score-bar-num">82</span>
+                                </div>
+                            </div>
+                            <div class="score-bar-row">
+                                <span>Keyword Gap</span>
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <div class="score-bar-track"><div class="score-bar-fill" style="width:65%; background:var(--warning);"></div></div>
+                                    <span class="score-bar-num">65</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Audit Management Widget -->
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px; position:sticky; top:30px;">
-                        <h3 style="font-size:1.15rem; margin-bottom:20px;">Audit Pipeline Overview</h3>
-                        <div style="display:flex; justify-content:space-between; margin-bottom:24px; text-align:center;">
-                            <div style="flex:1; border-right:1px solid var(--border-color); padding-right:16px;">
-                                <span style="font-size:2rem; font-weight:800; color:var(--text-color); display:block; line-height:1;">4</span>
-                                <span style="font-size:0.8rem; color:var(--text-muted);">In Queue</span>
+                    <!-- RIGHT: Pipeline Overview + Pending Domains -->
+                    <div class="panel-right" style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:30px;">
+                        <h3 style="font-size:1.15rem; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+                            <i class="ph ph-funnel" style="color:var(--primary);"></i> Audit Pipeline Overview
+                        </h3>
+                        <div class="pipeline-stats">
+                            <div class="pipeline-stat">
+                                <span class="pipeline-stat-value" style="color:var(--text-color);">4</span>
+                                <span class="pipeline-stat-label">In Queue</span>
                             </div>
-                            <div style="flex:1; padding-left:16px;">
-                                <span style="font-size:2rem; font-weight:800; color:var(--success); display:block; line-height:1;">12</span>
-                                <span style="font-size:0.8rem; color:var(--text-muted);">Completed</span>
+                            <div class="pipeline-stat">
+                                <span class="pipeline-stat-value" style="color:var(--success);">12</span>
+                                <span class="pipeline-stat-label">Completed</span>
+                            </div>
+                            <div class="pipeline-stat">
+                                <span class="pipeline-stat-value" style="color:#9333ea;">88<span style="font-size:0.9rem;">%</span></span>
+                                <span class="pipeline-stat-label">Success</span>
                             </div>
                         </div>
 
-                        <h3 style="font-size:1rem; margin-bottom:16px; border-top:1px solid var(--border-color); padding-top:24px;">Trigger Manual Audit</h3>
-                        <form style="display:flex; flex-direction:column; gap:16px;" onsubmit="event.preventDefault(); alert('Audit scanner triggered successfully.');">
-                            <div class="form-group">
-                                <label style="font-size:0.85rem;">Target Domain / URL</label>
-                                <input type="url" class="form-input" placeholder="e.g. https://clientdomain.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label style="font-size:0.85rem;">Audit Type</label>
-                                <select class="form-input" style="background-color:var(--bg-color);">
-                                    <option>Full Technical SEO Sweep</option>
-                                    <option>Performance & Core Web Vitals</option>
-                                    <option>Content & Keyword Gap Analysis</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="margin-top:8px;">Run Scanner Instance</button>
-                        </form>
+                        <hr class="widget-divider">
+
+                        <h3 style="font-size:1.05rem; font-weight:700; margin:0 0 16px; display:flex; align-items:center; gap:8px;">
+                            <i class="ph ph-clock" style="color:var(--warning);"></i> Pending Domains
+                        </h3>
+                        <ul style="list-style:none; display:flex; flex-direction:column; gap:14px; font-size:0.9rem;">
+                            <li class="risk-item">
+                                <div class="risk-item-info">
+                                    <div class="profile-avatar" style="width:36px; height:36px; font-size:0.8rem; margin:0; background:rgba(245,158,11,0.1); color:var(--warning); flex-shrink:0;">NT</div>
+                                    <span>
+                                        <strong>newtechstartup.io</strong>
+                                        <span style="font-size:0.75rem; color:var(--text-muted);">CRO Audit — Submitted 2d ago</span>
+                                    </span>
+                                </div>
+                                <span class="status-badge pending">PENDING</span>
+                            </li>
+                            <li class="risk-item">
+                                <div class="risk-item-info">
+                                    <div class="profile-avatar" style="width:36px; height:36px; font-size:0.8rem; margin:0; background:rgba(245,158,11,0.1); color:var(--warning); flex-shrink:0;">ZC</div>
+                                    <span>
+                                        <strong>zenithcorp.com</strong>
+                                        <span style="font-size:0.75rem; color:var(--text-muted);">SEO Sweep — Submitted 3d ago</span>
+                                    </span>
+                                </div>
+                                <span class="status-badge pending">PENDING</span>
+                            </li>
+                            <li class="risk-item">
+                                <div class="risk-item-info">
+                                    <div class="profile-avatar" style="width:36px; height:36px; font-size:0.8rem; margin:0; background:rgba(245,158,11,0.1); color:var(--warning); flex-shrink:0;">BF</div>
+                                    <span>
+                                        <strong>brightfolio.io</strong>
+                                        <span style="font-size:0.75rem; color:var(--text-muted);">Core Web Vitals — Submitted 5d ago</span>
+                                    </span>
+                                </div>
+                                <span class="status-badge pending">PENDING</span>
+                            </li>
+                        </ul>
                     </div>
+
                 </div>
+                <!-- /split-panel -->
+
             </div>
         </main>
     </div>

@@ -7,6 +7,154 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* ================================================
+           ADMIN CONTENT — MOBILE RESPONSIVE OVERRIDES
+           ================================================ */
+
+        /* ─ Publish Blog Form ───────────────────── */
+        #admin-add-blog-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: flex-end;
+        }
+        #admin-add-blog-form .form-group {
+            box-sizing: border-box;
+        }
+        #admin-add-blog-form button[type="submit"] {
+            flex-shrink: 0;
+        }
+
+        /* ─ Kanban Board ──────────────────────── */
+        /* Keep kanban as proper grid on desktop */
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* ─ Top Performing list items ────────────── */
+        .top-content-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .top-content-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+        /* ================================================
+           RESPONSIVE BREAKPOINTS
+           ================================================ */
+
+        /* Tablet: kanban 3 → 2 cols */
+        @media (max-width: 1100px) {
+            .kanban-board {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Tablet portrait / large phone */
+        @media (max-width: 900px) {
+            /* Kanban 2 → 1 col */
+            .kanban-board {
+                grid-template-columns: 1fr;
+            }
+
+            /* Publish form: each field full-width */
+            #admin-add-blog-form {
+                flex-direction: column;
+                gap: 12px;
+            }
+            #admin-add-blog-form .form-group {
+                flex: none !important;
+                width: 100% !important;
+                min-width: 100% !important;
+            }
+            #admin-add-blog-form button[type="submit"] {
+                width: 100%;
+                margin-bottom: 0 !important;
+            }
+
+            /* Bottom panels: 2 → 1 col */
+            .grid-2 { grid-template-columns: 1fr !important; gap: 20px; }
+        }
+
+        /* Mobile: ≤768px */
+        @media (max-width: 768px) {
+
+            /* Kanban cards: reduce padding */
+            .kanban-card { padding: 14px !important; }
+            .kanban-column-body { padding: 12px; gap: 12px; }
+            .kanban-column-header { padding: 12px 16px; font-size: 0.9rem; }
+
+            /* Top Performing list: let text wrap */
+            ul li[style*="display:flex; justify-content:space-between"] {
+                flex-wrap: wrap !important;
+                gap: 8px !important;
+            }
+            /* Rank number box + title group */
+            ul li[style*="display:flex; justify-content:space-between"] > div:first-child {
+                flex: 1;
+                min-width: 0;
+            }
+            /* Views + badge group */
+            ul li[style*="display:flex; justify-content:space-between"] > div:last-child {
+                text-align: left !important;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            /* Strategy insight cards: reduce padding */
+            div[style*="border-left:4px"] {
+                padding: 12px !important;
+            }
+
+            /* Panel paddings reduce */
+            .dashboard-content-inner > div[style*="padding:30px"],
+            .dashboard-content-inner > div > div[style*="padding:30px"] {
+                padding: 16px !important;
+            }
+
+            /* Generate AI Drafts button full-width */
+            .btn.btn-secondary.btn-sm[style*="align-self:flex-start"] {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Small phones: ≤480px */
+        @media (max-width: 480px) {
+            /* Kanban cards fully minimal */
+            .kanban-card { padding: 12px !important; }
+            .kanban-card h4 { font-size: 0.875rem !important; }
+            .kanban-card p  { font-size: 0.775rem !important; }
+
+            /* Publish panel title */
+            .dashboard-content-inner h3 { font-size: 1rem !important; }
+
+            /* Category badge + date row in kanban card */
+            .kanban-card > div[style*="display:flex"] {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            /* Page h1 title */
+            h1[style*="font-size:1.5rem"] { font-size: 1.1rem !important; }
+
+            /* Top performing rank box smaller */
+            div[style*="width:32px; height:32px"] {
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body class="dashboard-body dark-mode admin-mode">
 

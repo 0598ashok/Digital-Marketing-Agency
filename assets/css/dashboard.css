@@ -87,6 +87,10 @@ table {
     font-size: 1.25rem;
 }
 
+.sidebar-mobile-actions {
+    display: none;
+}
+
 .sidebar-menu {
     list-style: none;
     padding: 24px 16px;
@@ -847,6 +851,52 @@ table {
     .dashboard-content-inner {
         padding: 24px;
         overflow-y: auto;
+    }
+
+    /* Hide topbar header actions on mobile */
+    .dashboard-header-actions {
+        display: none !important;
+    }
+
+    /* Show mobile action bar in sidebar on mobile */
+    .sidebar-mobile-actions {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-around;
+        padding: 16px;
+        border-bottom: 1px solid var(--border-color);
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .sidebar-mobile-actions .control-btn {
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 50%;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+        color: var(--text-color);
+        cursor: pointer;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 0;
+    }
+
+    .sidebar-mobile-actions .header-profile {
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 50%;
+        background: var(--primary);
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        border: 2px solid var(--panel-bg);
+        box-shadow: 0 0 0 1px var(--border-color);
     }
 
     /* Target inline forms with flex */
