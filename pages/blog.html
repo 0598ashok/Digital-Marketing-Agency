@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -6,71 +6,363 @@
     <title>Marketing Blog | ApexGrowth Agency</title>
     <meta name="description" content="Stay up to date with digital marketing strategy updates, analytics optimization guides, and conversion rate checklists.">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* â”€â”€ Blog Page Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        @media (max-width: 768px) {
-            /* Hero section padding reduction */
-            .premium-blog-hero {
-                padding: 120px 0 80px !important;
-                margin-bottom: 40px !important;
-            }
-            /* Search bar full width on mobile */
-            .premium-blog-hero-search {
-                max-width: 100% !important;
-                margin: 0 16px !important;
-            }
-            /* Featured post */
-            .corp-featured-content h2 {
-                font-size: 1.5rem !important;
-            }
-            /* Filters wrap and smaller tap targets */
-            .corp-filters {
-                gap: 8px !important;
-                margin-bottom: 36px !important;
-            }
-            .corp-filter-btn {
-                padding: 7px 14px !important;
-                font-size: 0.88rem !important;
-            }
-            /* List cards stack */
-            .corp-list-img-wrap {
-                height: 180px !important;
-            }
-            /* Section title smaller */
-            .corp-section-title {
-                font-size: 1.5rem !important;
-            }
+        /* ══ BLOG HERO BANNER ══════════════════════════════════════════════ */
+        .blog-hero {
+            position: relative;
+            min-height: 540px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--bg-primary);
+            padding: 140px 0 90px;
+            transition: background var(--transition);
         }
+
+        /* Dot-grid overlay — adapts opacity per theme */
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
+            background-size: 36px 36px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        /* Animated gradient orbs */
+        .blog-hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+        }
+        .blog-hero-orb-1 {
+            width: 520px; height: 520px;
+            background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%);
+            top: -140px; left: -110px;
+            animation: orbFloat1 9s ease-in-out infinite;
+        }
+        .blog-hero-orb-2 {
+            width: 420px; height: 420px;
+            background: radial-gradient(circle, rgba(6,182,212,0.14) 0%, transparent 70%);
+            bottom: -100px; right: -70px;
+            animation: orbFloat2 11s ease-in-out infinite;
+        }
+        .blog-hero-orb-3 {
+            width: 290px; height: 290px;
+            background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%);
+            top: 50%; left: 55%;
+            animation: orbFloat3 7s ease-in-out infinite;
+        }
+        @keyframes orbFloat1 {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50%       { transform: translateY(-28px) scale(1.06); }
+        }
+        @keyframes orbFloat2 {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50%       { transform: translateY(-20px) scale(1.04); }
+        }
+        @keyframes orbFloat3 {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50%       { transform: translate(-50%, -58%) scale(1.09); }
+        }
+
+        /* Inner content */
+        .blog-hero-inner {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+        }
+
+        /* Pulsing live badge */
+        .blog-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(6,182,212,0.3);
+            color: var(--accent-gold);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            padding: 7px 20px;
+            border-radius: 100px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            animation: blogFadeUp 0.6s ease both;
+        }
+        .blog-badge-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            box-shadow: 0 0 8px var(--accent-gold);
+            flex-shrink: 0;
+            animation: badgePulse 1.6s infinite alternate;
+        }
+        @keyframes badgePulse {
+            from { transform: scale(0.8); opacity: 0.55; }
+            to   { transform: scale(1.35); opacity: 1; }
+        }
+
+        /* Headline */
+        .blog-hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5.5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -2px;
+            color: var(--text-primary);
+            max-width: 840px;
+            margin: 0;
+            animation: blogFadeUp 0.7s 0.1s ease both;
+        }
+        .blog-gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Subtitle */
+        .blog-hero-sub {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            max-width: 620px;
+            margin: 0;
+            animation: blogFadeUp 0.7s 0.2s ease both;
+        }
+
+        /* Floating category pills */
+        .blog-hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            animation: blogFadeUp 0.7s 0.3s ease both;
+        }
+        .blog-hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+        .blog-hero-pill:hover {
+            background: var(--accent-glow);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+        .blog-hero-pill i { font-size: 0.72rem; opacity: 0.8; }
+
+        /* Glassmorphic search bar */
+        .blog-hero-search-wrap {
+            width: 100%;
+            max-width: 600px;
+            animation: blogFadeUp 0.7s 0.4s ease both;
+        }
+        .blog-hero-search {
+            display: flex;
+            align-items: center;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 6px 6px 6px 20px;
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .blog-hero-search:focus-within {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+        .blog-hero-search .search-icon {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+        .blog-hero-search input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            padding: 9px 0;
+            min-width: 0;
+        }
+        .blog-hero-search input::placeholder { color: var(--text-muted); }
+        .blog-search-btn {
+            background: var(--accent-primary);
+            border: none;
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 11px 26px;
+            border-radius: 10px;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: filter 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        .blog-search-btn:hover {
+            filter: brightness(1.12);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.35);
+        }
+
+        /* Stats row */
+        .blog-hero-stats {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: blogFadeUp 0.7s 0.5s ease both;
+        }
+        .blog-hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+        .blog-hero-stat strong {
+            font-family: var(--font-heading);
+            font-size: 1.65rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+        .blog-hero-stat span {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .blog-stat-divider {
+            width: 1px;
+            height: 38px;
+            background: var(--border-color);
+            flex-shrink: 0;
+        }
+
+        /* Entrance animation */
+        @keyframes blogFadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Blog Page Responsive ─────────────────────────────── */
+        @media (max-width: 768px) {
+            /* Hero */
+            .blog-hero { padding: 120px 0 70px; min-height: auto; }
+            .blog-hero-title { letter-spacing: -1px; }
+            .blog-stat-divider { display: none; }
+            .blog-hero-stats { gap: 20px; }
+
+            /* Filters */
+            .corp-filters { gap: 8px !important; margin-bottom: 36px !important; }
+            .corp-filter-btn { padding: 7px 14px !important; font-size: 0.85rem !important; }
+
+            /* Featured card */
+            .corp-featured-content { padding: 28px !important; }
+            .corp-featured-content h2 { font-size: 1.45rem !important; margin-bottom: 12px; }
+            .corp-featured-content p { font-size: 0.95rem !important; margin-bottom: 18px; }
+            .corp-featured-img { min-height: 220px !important; height: 220px !important; }
+
+            /* Grid cards */
+            .corp-grid { gap: 20px; }
+            .corp-card-img-wrap { height: 180px !important; }
+            .corp-card-content { padding: 20px !important; }
+            .corp-card-content h3 { font-size: 1.1rem !important; margin-top: 10px; margin-bottom: 10px; }
+            .corp-card-content p { font-size: 0.88rem !important; margin-bottom: 16px; }
+            .corp-card-footer { padding-top: 14px; }
+
+            /* List cards */
+            .corp-list-img-wrap { height: 180px !important; }
+            .corp-list-content { padding: 20px !important; }
+            .corp-list-content h3 { font-size: 1.2rem !important; margin: 8px 0; }
+            .corp-list-content p { font-size: 0.9rem !important; margin-bottom: 12px; }
+
+            /* Section title */
+            .corp-section-title { font-size: 1.5rem !important; margin-bottom: 24px; }
+
+            /* Author row */
+            .corp-author-name { font-size: 0.88rem; }
+            .corp-author-date { font-size: 0.78rem; }
+            .corp-author-img { width: 36px !important; height: 36px !important; }
+        }
+
         @media (max-width: 480px) {
-            .premium-blog-hero {
-                padding: 100px 0 70px !important;
-            }
-            .premium-blog-hero h1 {
-                font-size: 2rem !important;
-            }
-            .premium-blog-hero p {
-                font-size: 1rem !important;
-            }
-            .corp-featured-content {
-                padding: 20px !important;
-            }
-            .corp-featured-content h2 {
-                font-size: 1.3rem !important;
-            }
-            .corp-list-content {
-                padding: 20px !important;
-            }
-            .corp-list-content h3 {
-                font-size: 1.2rem !important;
-            }
+            /* Hero */
+            .blog-hero { padding: 110px 0 60px; }
+            .blog-hero-pills { gap: 8px; }
+            .blog-hero-pill { font-size: 0.73rem; padding: 5px 12px; }
+            .blog-hero-search { border-radius: 12px; padding: 5px 5px 5px 16px; }
+            .blog-search-btn { padding: 10px 18px; font-size: 0.82rem; }
+            .blog-hero-stat strong { font-size: 1.35rem; }
+
+            /* Filter buttons */
+            .corp-filter-btn { padding: 6px 12px !important; font-size: 0.8rem !important; }
+
+            /* Featured card */
+            .corp-featured-content { padding: 18px !important; }
+            .corp-featured-content h2 { font-size: 1.2rem !important; margin-bottom: 10px; }
+            .corp-featured-content p { font-size: 0.88rem !important; margin-bottom: 14px; }
+            .corp-featured-img { min-height: 190px !important; height: 190px !important; }
+            .corp-tag { font-size: 0.75rem; padding: 3px 10px; }
+
+            /* Grid cards */
+            .corp-card-img-wrap { height: 160px !important; }
+            .corp-card-content { padding: 16px !important; }
+            .corp-card-content h3 { font-size: 1rem !important; margin-top: 8px; margin-bottom: 8px; }
+            .corp-card-content p { font-size: 0.84rem !important; margin-bottom: 12px; }
+            .corp-card-footer { padding-top: 12px; }
+
+            /* List cards */
+            .corp-list-img-wrap { height: 160px !important; }
+            .corp-list-content { padding: 16px !important; }
+            .corp-list-content h3 { font-size: 1.05rem !important; margin: 6px 0; }
+            .corp-list-content p { font-size: 0.84rem !important; margin-bottom: 10px; }
+
+            /* Section title */
+            .corp-section-title { font-size: 1.25rem !important; gap: 10px; margin-bottom: 18px; }
+
+            /* Author row compact */
+            .corp-author-row { gap: 10px; }
+            .corp-author-name { font-size: 0.84rem; }
+            .corp-author-date { font-size: 0.75rem; }
+            .corp-author-img { width: 30px !important; height: 30px !important; }
         }
     </style>
 </head>
-<body class="dark-mode">
+<body>
 
     <!-- Navigation Header -->
     <!-- NAVBAR -->
@@ -101,7 +393,7 @@
                 <li class="nav-item">
                     <a href="case-studies.html">Case Studies</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a href="blog.html">Blogs</a>
                 </li>
                 <li class="nav-item">
@@ -153,17 +445,75 @@
     </nav>
     <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
-    <!-- Premium Full-Width Hero -->
-    <section class="premium-blog-hero">
-        <div class="premium-blog-hero-content container">
-            <span class="premium-blog-hero-tag">Marketing Insights</span>
-            <h1>The Growth Hub</h1>
-            <p>Insights, technical frameworks, and marketing analytics theories that we use to scale high-growth enterprise brands. Stay ahead of the curve.</p>
-            
-            <form class="premium-blog-hero-search" onsubmit="event.preventDefault(); alert('Searching...');">
-                <input type="text" placeholder="Search growth frameworks..." required>
-                <button type="submit">Search</button>
-            </form>
+    <!-- ── BLOG HERO BANNER ──────────────────────────────────── -->
+    <section class="blog-hero" id="blogHero">
+        <!-- Animated gradient orbs -->
+        <div class="blog-hero-orb blog-hero-orb-1"></div>
+        <div class="blog-hero-orb blog-hero-orb-2"></div>
+        <div class="blog-hero-orb blog-hero-orb-3"></div>
+
+        <div class="container blog-hero-inner">
+
+            <!-- Live pulsing badge -->
+            <span class="blog-hero-badge">
+                <span class="blog-badge-dot"></span>
+                Marketing Insights &amp; Growth Strategies
+            </span>
+
+            <!-- Headline -->
+            <h1 class="blog-hero-title">
+                The <span class="blog-gradient-text">Growth Hub</span> &mdash;
+                Ideas That <span class="blog-gradient-text">Scale Brands</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="blog-hero-sub">
+                Technical frameworks, analytics theories, and proven playbooks we use to scale
+                high-growth enterprise brands. Stay ahead of the curve.
+            </p>
+
+            <!-- Floating category pill tags -->
+            <div class="blog-hero-pills">
+                <a href="#" class="blog-hero-pill"><i class="fas fa-search"></i> SEO</a>
+                <a href="#" class="blog-hero-pill"><i class="fas fa-bullseye"></i> Paid Media</a>
+                <a href="#" class="blog-hero-pill"><i class="fas fa-chart-line"></i> CRO</a>
+                <a href="#" class="blog-hero-pill"><i class="fas fa-envelope"></i> Email</a>
+                <a href="#" class="blog-hero-pill"><i class="fas fa-database"></i> Analytics</a>
+                <a href="#" class="blog-hero-pill"><i class="fas fa-users"></i> B2B</a>
+            </div>
+
+            <!-- Glassmorphic search bar -->
+            <div class="blog-hero-search-wrap">
+                <form class="blog-hero-search" onsubmit="event.preventDefault();">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search growth frameworks, strategies..." aria-label="Search articles">
+                    <button type="submit" class="blog-search-btn">Search</button>
+                </form>
+            </div>
+
+            <!-- Live stats row -->
+            <div class="blog-hero-stats">
+                <div class="blog-hero-stat">
+                    <strong>48+</strong>
+                    <span>Articles Published</span>
+                </div>
+                <div class="blog-stat-divider"></div>
+                <div class="blog-hero-stat">
+                    <strong>6</strong>
+                    <span>Topic Categories</span>
+                </div>
+                <div class="blog-stat-divider"></div>
+                <div class="blog-hero-stat">
+                    <strong>12k+</strong>
+                    <span>Monthly Readers</span>
+                </div>
+                <div class="blog-stat-divider"></div>
+                <div class="blog-hero-stat">
+                    <strong>Weekly</strong>
+                    <span>New Content</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -192,7 +542,7 @@
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Author" class="corp-author-img">
                         <div class="corp-author-info">
                             <span class="corp-author-name">David Chen</span>
-                            <span class="corp-author-date">June 15, 2026 â€¢ 8 Min Read</span>
+                            <span class="corp-author-date">June 15, 2026 &bull; 8 Min Read</span>
                         </div>
                     </div>
                 </div>
@@ -285,7 +635,7 @@
                         <span class="corp-tag" style="margin-bottom:0;">B2B Strategy</span>
                         <h3>How to Generate B2B Leads Using LinkedIn Ads</h3>
                         <p>Learn the exact targeting parameters and ad creative formulas we use to generate high-intent enterprise leads for SaaS clients.</p>
-                        <div class="corp-author-date" style="margin-top:auto;">June 22, 2026 â€¢ 6 Min Read</div>
+                        <div class="corp-author-date" style="margin-top:auto;">June 22, 2026 &bull; 6 Min Read</div>
                     </div>
                 </article>
             </a>
@@ -300,7 +650,7 @@
                         <span class="corp-tag" style="margin-bottom:0;">Analytics</span>
                         <h3>Setting Up Server-Side Tracking for Meta Pixel</h3>
                         <p>Overcome iOS14 restrictions and ad blockers by implementing a robust server-side tracking architecture using Google Tag Manager.</p>
-                        <div class="corp-author-date" style="margin-top:auto;">June 18, 2026 â€¢ 10 Min Read</div>
+                        <div class="corp-author-date" style="margin-top:auto;">June 18, 2026 &bull; 10 Min Read</div>
                     </div>
                 </article>
             </a>
@@ -315,7 +665,7 @@
                         <span class="corp-tag" style="margin-bottom:0;">Content Marketing</span>
                         <h3>The Content Repurposing Framework for 2026</h3>
                         <p>Turn a single core pillar post into 30+ pieces of micro-content for LinkedIn, X, and newsletters efficiently.</p>
-                        <div class="corp-author-date" style="margin-top:auto;">June 14, 2026 â€¢ 5 Min Read</div>
+                        <div class="corp-author-date" style="margin-top:auto;">June 14, 2026 &bull; 5 Min Read</div>
                     </div>
                 </article>
             </a>
@@ -387,4 +737,3 @@
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
-

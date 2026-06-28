@@ -1,243 +1,1653 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | ApexGrowth Agency</title>
-    <meta name="description" content="Reach out to our marketing team. Schedule a strategy review or request a campaign audit report.">
+    <meta name="description"
+        content="Reach out to ApexGrowth — request a free audit, schedule a strategy call, or discuss custom growth partnership models with our marketing specialists.">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* â”€â”€ Contact Page Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        @media (max-width: 768px) {
-            /* Hero title */
-            .contact-hero-title {
-                font-size: 2.2rem !important;
-                letter-spacing: -0.5px !important;
+        /* ══════════════════════════════════════════════════════
+           CONTACT PAGE — PREMIUM REDESIGN
+        ══════════════════════════════════════════════════════ */
+
+        /* ── 1. HERO ───────────────────────────────────────── */
+        .ct-hero {
+            position: relative;
+            background: var(--bg-primary);
+            padding: 150px 0 80px;
+            overflow: hidden;
+            transition: background var(--transition);
+        }
+
+        .ct-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .ct-hero-orb-1 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+            filter: blur(80px);
+            top: -200px;
+            right: -100px;
+            pointer-events: none;
+            animation: ctOrbFloat 10s ease-in-out infinite;
+        }
+
+        .ct-hero-orb-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            filter: blur(80px);
+            bottom: -100px;
+            left: -80px;
+            pointer-events: none;
+            animation: ctOrbFloat 12s 3s ease-in-out infinite;
+        }
+
+        @keyframes ctOrbFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
             }
-            .contact-hero-desc {
-                font-size: 1rem !important;
-            }
-            /* Contact cards: reduce padding */
-            .contact-info-card {
-                padding: 28px 20px !important;
-            }
-            /* Form submit button row */
-            .contact-form-btn-row {
-                flex-direction: column !important;
-            }
-            .contact-form-btn-row .btn {
-                width: 100% !important;
-                flex: unset !important;
+
+            50% {
+                transform: translateY(-30px);
             }
         }
-        @media (max-width: 576px) {
-            /* Hero section padding */
-            .contact-hero-section {
-                padding: 120px 0 80px !important;
+
+        .ct-hero-inner {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .ct-hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: var(--accent-gold);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            padding: 7px 18px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+
+        .ct-hero-tag-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            box-shadow: 0 0 8px var(--accent-gold);
+            animation: ctDotPulse 1.6s infinite alternate;
+        }
+
+        @keyframes ctDotPulse {
+            from {
+                transform: scale(0.8);
+                opacity: 0.5;
             }
-            .contact-hero-title {
-                font-size: 1.9rem !important;
+
+            to {
+                transform: scale(1.4);
+                opacity: 1;
             }
-            /* Map height reduction on small phones */
-            .contact-split-map {
-                min-height: 250px !important;
+        }
+
+        .ct-hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 5.5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -2px;
+            color: var(--text-primary);
+            margin: 0 0 20px;
+        }
+
+        .ct-hero-title .ct-grad {
+            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 60%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ct-hero-sub {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .ct-hero-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .ct-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--accent-primary);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .ct-btn-primary:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 8px 28px rgba(37, 99, 235, 0.4);
+        }
+
+        .ct-btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s, transform 0.2s, background 0.2s;
+        }
+
+        .ct-btn-outline:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* ── 2. QUICK INFO CARDS ───────────────────────────── */
+        .ct-cards-section {
+            padding: 0 0 64px;
+            background: var(--bg-primary);
+        }
+
+        .ct-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .ct-info-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ct-info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 16px 16px 0 0;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-gold));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .ct-info-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .ct-info-card:hover::before {
+            opacity: 1;
+        }
+
+        .ct-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: var(--accent-glow);
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .ct-info-card:hover .ct-card-icon {
+            background: var(--accent-primary);
+            color: #fff;
+        }
+
+        .ct-card-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .ct-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .ct-card-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .ct-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            text-decoration: none;
+            margin-top: auto;
+            transition: gap 0.2s;
+        }
+
+        .ct-card-link:hover {
+            gap: 10px;
+        }
+
+        /* ── 3. MAIN CONTACT SECTION ───────────────────────── */
+        .ct-main {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .ct-main-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* ── 3a. FORM PANEL ────────────────────────────────── */
+        .ct-form-panel {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: var(--shadow);
+            box-sizing: border-box;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .ct-form-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .ct-form-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.7rem, 3vw, 2.2rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .ct-form-sub {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin: 0 0 36px;
+            line-height: 1.65;
+        }
+
+        .ct-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .ct-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .ct-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .ct-field label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.3px;
+        }
+
+        .ct-field label span {
+            color: var(--accent-primary);
+            margin-left: 2px;
+        }
+
+        .ct-input {
+            width: 100%;
+            max-width: 100%;
+            padding: 13px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            box-sizing: border-box;
+        }
+
+        .ct-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .ct-input:focus {
+            border-color: var(--accent-primary);
+            background: var(--bg-elevated);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+
+        .ct-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 16px;
+            padding-right: 42px;
+            cursor: pointer;
+        }
+
+        .ct-textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .ct-form-service-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .ct-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 100px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .ct-chip:hover,
+        .ct-chip.selected {
+            border-color: var(--accent-primary);
+            background: var(--accent-glow);
+            color: var(--accent-primary);
+        }
+
+        .ct-chip i {
+            font-size: 0.75rem;
+        }
+
+        .ct-form-footer {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .ct-submit-btn {
+            flex: 1;
+            min-width: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 28px;
+            background: var(--accent-primary);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .ct-submit-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 8px 28px rgba(37, 99, 235, 0.4);
+        }
+
+        .ct-submit-btn i {
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .ct-submit-btn:hover i {
+            transform: translateX(3px);
+        }
+
+        .ct-book-btn {
+            flex: 1;
+            min-width: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 15px 28px;
+            background: transparent;
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .ct-book-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .ct-privacy-note {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+        }
+
+        .ct-privacy-note i {
+            color: var(--success);
+        }
+
+        /* ── 3b. SIDEBAR ───────────────────────────────────── */
+        .ct-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Availability widget */
+        .ct-avail-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ct-avail-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .ct-avail-live {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+            animation: liveRing 2s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes liveRing {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
             }
-            /* Contact cards layout */
-            .contact-cards-grid {
-                gap: 16px !important;
+
+            50% {
+                box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.08);
             }
-            /* Form panel padding */
-            .contact-split-form {
-                padding: 28px 18px !important;
+        }
+
+        .ct-avail-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .ct-avail-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ct-slot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .ct-slot:hover {
+            border-color: var(--accent-primary);
+            background: var(--accent-glow);
+        }
+
+        .ct-slot-time {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .ct-slot-badge {
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 100px;
+            letter-spacing: 0.5px;
+        }
+
+        .ct-slot-badge.open {
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--success);
+        }
+
+        .ct-slot-badge.few {
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--warning);
+        }
+
+        /* Response time widget */
+        .ct-resp-card {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.07) 0%, rgba(6, 182, 212, 0.05) 100%);
+            border: 1px solid rgba(37, 99, 235, 0.18);
+            border-radius: 16px;
+            padding: 28px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .ct-resp-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: var(--accent-primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .ct-resp-text strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-primary);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .ct-resp-text span {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        /* Social links widget */
+        .ct-social-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ct-social-title {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 16px;
+        }
+
+        .ct-socials {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ct-social-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+        }
+
+        .ct-social-row:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: var(--accent-glow);
+            transform: translateX(4px);
+        }
+
+        .ct-social-row .ct-social-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .ct-social-row.linkedin .ct-social-icon {
+            background: rgba(10, 102, 194, 0.12);
+            color: #0a66c2;
+        }
+
+        .ct-social-row.twitter .ct-social-icon {
+            background: rgba(29, 161, 242, 0.12);
+            color: #1da1f2;
+        }
+
+        .ct-social-row.facebook .ct-social-icon {
+            background: rgba(66, 103, 178, 0.12);
+            color: #4267b2;
+        }
+
+        .ct-social-row.instagram .ct-social-icon {
+            background: rgba(225, 48, 108, 0.12);
+            color: #e1306c;
+        }
+
+        .ct-social-handle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Text wrapper inside social row */
+        .ct-social-row-text {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex: 1;
+            min-width: 0;
+            gap: 8px;
+        }
+
+        /* ── 4. MAP STRIP ──────────────────────────────────── */
+        .ct-map-section {
+            padding: 64px 0 0;
+            background: var(--bg-secondary);
+        }
+
+        .ct-map-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .ct-map-header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 10px;
+        }
+
+        .ct-map-header p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .ct-map-wrap {
+            position: relative;
+            height: 380px;
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+        }
+
+        .ct-map-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .ct-map-overlay-card {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px 22px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            max-width: 320px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .ct-map-pin {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--accent-primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .ct-map-card-text strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 3px;
+        }
+
+        .ct-map-card-text span {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ── 5. OVERFLOW GUARD ──────────────────────────────── */
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        .ct-main-grid,
+        .ct-sidebar,
+        .ct-form-panel,
+        .ct-cards-grid,
+        .ct-info-card {
+            min-width: 0;
+            box-sizing: border-box;
+        }
+
+        /* ── 6. FOOTER (base styles — none exist globally) ──── */
+        .site-footer {
+            background: var(--text-primary);
+            color: rgba(255, 255, 255, 0.65);
+            padding: 64px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-brand .logo {
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+
+        .footer-brand p {
+            margin-top: 12px;
+            font-size: 0.87rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .footer-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: border-color 0.3s, color 0.3s;
+        }
+
+        .footer-social-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .footer-title {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 24px 0;
+        }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ── 7. RESPONSIVE ─────────────────────────────────── */
+        @media (max-width: 1100px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 32px;
+            }
+
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .ct-main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ct-sidebar {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Hero */
+            .ct-hero {
+                padding: 130px 0 60px;
+            }
+
+            .ct-hero-title {
+                letter-spacing: -1px;
+            }
+
+            .ct-hero-sub {
+                font-size: 0.95rem;
+                margin-bottom: 28px;
+            }
+
+            .ct-hero-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .ct-btn-primary,
+            .ct-btn-outline {
+                width: 100%;
+                max-width: 340px;
+                justify-content: center;
+            }
+
+            /* Info cards */
+            .ct-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            /* Form panel */
+            .ct-form-panel {
+                padding: 28px 20px;
+            }
+
+            .ct-form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .ct-form-title {
+                font-size: 1.5rem;
+            }
+
+            /* Sidebar */
+            .ct-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            /* Map */
+            .ct-map-section {
+                padding: 40px 0 0;
+            }
+
+            .ct-map-wrap {
+                height: 260px;
+                border-radius: 14px 14px 0 0;
+            }
+
+            .ct-map-overlay-card {
+                max-width: 240px;
+                padding: 12px 14px;
+                bottom: 12px;
+                left: 12px;
+            }
+
+            .ct-map-header h2 {
+                font-size: 1.4rem;
+            }
+
+            /* Form footer buttons */
+            .ct-form-footer {
+                flex-direction: column;
+            }
+
+            .ct-submit-btn,
+            .ct-book-btn {
+                width: 100%;
+                flex: unset;
+            }
+
+            /* Main section padding */
+            .ct-main {
+                padding: 52px 0;
+            }
+
+            /* Footer */
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 28px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+            .footer-bottom {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .footer-bottom-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            /* Hero */
+            .ct-hero {
+                padding: 115px 0 48px;
+            }
+
+            .ct-hero-sub {
+                font-size: 0.9rem;
+            }
+
+            .ct-btn-primary,
+            .ct-btn-outline {
+                padding: 12px 20px;
+                font-size: 0.88rem;
+                max-width: 100%;
+            }
+
+            /* Info cards */
+            .ct-info-card {
+                padding: 20px 16px;
+                gap: 10px;
+            }
+
+            .ct-card-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.15rem;
+            }
+
+            .ct-card-title {
+                font-size: 1rem;
+            }
+
+            .ct-card-desc {
+                font-size: 0.83rem;
+            }
+
+            /* Form panel */
+            .ct-form-panel {
+                padding: 20px 14px;
+            }
+
+            .ct-form-title {
+                font-size: 1.25rem;
+            }
+
+            .ct-form-sub {
+                font-size: 0.86rem;
+                margin-bottom: 20px;
+            }
+
+            .ct-input {
+                padding: 11px 12px;
+                font-size: 0.88rem;
+            }
+
+            /* Service chips */
+            .ct-form-service-chips {
+                gap: 6px;
+            }
+
+            .ct-chip {
+                font-size: 0.72rem;
+                padding: 5px 10px;
+            }
+
+            /* Buttons */
+            .ct-submit-btn,
+            .ct-book-btn {
+                padding: 13px 16px;
+                font-size: 0.88rem;
+            }
+
+            /* Response card */
+            .ct-resp-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 18px 14px;
+            }
+
+            .ct-resp-text strong {
+                font-size: 1.25rem;
+            }
+
+            .ct-resp-text span {
+                font-size: 0.8rem;
+            }
+
+            /* Availability slots — wrap badge below time on narrow screens */
+            .ct-avail-card {
+                padding: 18px 14px;
+            }
+
+            .ct-avail-title {
+                font-size: 0.9rem;
+            }
+
+            .ct-slot {
+                padding: 10px 12px;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            .ct-slot-time {
+                font-size: 0.78rem;
+                flex: 1 1 auto;
+                min-width: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .ct-slot-badge {
+                font-size: 0.63rem;
+                padding: 3px 8px;
+                flex-shrink: 0;
+            }
+
+            /* Social card — stack platform name + handle vertically */
+            .ct-social-card {
+                padding: 18px 14px;
+            }
+
+            .ct-social-title {
+                font-size: 0.88rem;
+                margin-bottom: 12px;
+            }
+
+            .ct-socials {
+                gap: 8px;
+            }
+
+            .ct-social-row {
+                padding: 10px 12px;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .ct-social-row .ct-social-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 0.82rem;
+                flex-shrink: 0;
+            }
+
+            /* Make the text portion a vertical stack */
+            .ct-social-row-text {
+                display: flex;
+                flex-direction: column;
+                gap: 1px;
+                min-width: 0;
+                flex: 1;
+            }
+
+            .ct-social-handle {
+                font-size: 0.68rem;
+                margin-left: 0;
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            /* Map overlay — hide on very small screens to prevent overflow */
+            .ct-map-overlay-card {
+                display: none;
+            }
+
+            .ct-map-wrap {
+                height: 210px;
+            }
+
+            .ct-map-section {
+                padding: 28px 0 0;
+            }
+
+            .ct-map-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .ct-map-header p {
+                font-size: 0.86rem;
+            }
+
+            /* Main section */
+            .ct-main {
+                padding: 36px 0;
+            }
+
+            /* Footer */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
             }
         }
     </style>
 </head>
-<body class="dark-mode">
 
-    <!-- Navigation Header -->
+<body>
+
     <!-- NAVBAR -->
     <nav class="navbar" id="mainNav" role="navigation" aria-label="Main Navigation">
         <div class="container">
-            <!-- Brand -->
             <a aria-label="ApexGrowth Home" class="nav-brand" href="../index.html" id="navBrand">
                 <span class="nav-brand-wordmark">APEXGROWTH<span>.</span></span>
             </a>
-
-            <!-- Primary Nav Links -->
             <ul class="nav-links" id="navLinks" role="list">
                 <li class="nav-item has-dropdown">
                     <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="homeDropdown">
                         Home <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="homeDropdown">
-                        <li role="none"><a href="../index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 - Minimal</a></li>
-                        <li role="none"><a href="../home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
+                        <li role="none"><a href="../index.html" role="menuitem"><i class="fas fa-home"></i> Home 1 -
+                                Minimal</a></li>
+                        <li role="none"><a href="../home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home
+                                2 - Bold</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="services.html">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a href="case-studies.html">Case Studies</a>
-                </li>
-                <li class="nav-item">
-                    <a href="blog.html">Blogs</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html">Contact</a>
-                </li>
+                <li class="nav-item"><a href="about.html">About</a></li>
+                <li class="nav-item"><a href="services.html">Services</a></li>
+                <li class="nav-item"><a href="case-studies.html">Case Studies</a></li>
+                <li class="nav-item"><a href="blog.html">Blogs</a></li>
+                <li class="nav-item active"><a href="contact.html">Contact</a></li>
                 <li class="nav-item has-dropdown">
                     <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="dashDropdown">
                         Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dashDropdown">
-                        <li role="none"><a href="../dashboard/index.html" role="menuitem"><i class="fas fa-user-circle"></i> Client Portal</a></li>
-                        <li role="none"><a href="../dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
+                        <li role="none"><a href="../dashboard/index.html" role="menuitem"><i
+                                    class="fas fa-user-circle"></i> Client Portal</a></li>
+                        <li role="none"><a href="../dashboard/admin-index.html" role="menuitem"><i
+                                    class="fas fa-shield-halved"></i> Admin Console</a></li>
                     </ul>
                 </li>
-
                 <li class="nav-mobile-controls">
-                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn">
-                        <i class="fas fa-sign-in-alt"></i> Login
-                    </a>
-                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction">
-                        <span class="dir-text">RTL</span>
-                    </button>
+                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn"><i class="fas fa-sign-in-alt"></i>
+                        Login</a>
+                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme"><i
+                            class="fas fa-moon"></i></button>
+                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction"><span
+                            class="dir-text">RTL</span></button>
                 </li>
             </ul>
-
             <div class="nav-controls">
-                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </a>
+                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn"><i class="fas fa-sign-in-alt"></i>
+                    Login</a>
                 <div class="nav-sep" aria-hidden="true"></div>
-                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction">
-                    <span class="dir-text">RTL</span>
-                </button>
+                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme"><i
+                        class="fas fa-moon"></i></button>
+                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction"><span
+                        class="dir-text">RTL</span></button>
             </div>
-
             <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
                 aria-controls="navLinks">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
     <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
-    <!-- Page Title Hero -->
-    <section class="hero contact-hero-section" style="padding: 180px 0 120px; position: relative; overflow: hidden;">
-        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:80vw; height:80vw; max-width:800px; max-height:800px; background:radial-gradient(circle, var(--primary-glow) 0%, transparent 70%); z-index:0; border-radius:50%; pointer-events:none;"></div>
-        <div class="container" style="text-align: center; position: relative; z-index: 1;">
-            <span class="hero-tag" style="background: var(--brand-gradient); color: #ffffff; border: none; padding: 6px 16px;">GET IN TOUCH</span>
-            <h1 class="contact-hero-title" style="font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px;">Let's Discuss Your Growth Targets</h1>
-            <p class="contact-hero-desc" style="margin: 0 auto; max-width: 680px; font-size: 1.1rem; color: var(--text-muted);">Request a free audit report, discuss partnership models, or schedule a comprehensive strategy review call with our marketing specialists.</p>
+    <!-- ══ 1. HERO ══════════════════════════════════════════ -->
+    <section class="ct-hero">
+        <div class="ct-hero-orb-1"></div>
+        <div class="ct-hero-orb-2"></div>
+        <div class="container">
+            <div class="ct-hero-inner" data-aos="fade-up">
+                <div class="ct-hero-tag">
+                    <span class="ct-hero-tag-dot"></span>
+                    Let's Build Something Great
+                </div>
+                <h1 class="ct-hero-title">
+                    Ready to <span class="ct-grad">Scale Your Brand</span><br>
+                    to the Next Level?
+                </h1>
+                <p class="ct-hero-sub">
+                    Whether you need a free audit, a custom campaign strategy, or simply want to explore what's possible
+                    — our growth specialists are ready to talk.
+                </p>
+                <div class="ct-hero-actions">
+                    <a href="#contact-form" class="ct-btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send a Message
+                    </a>
+                    <button class="ct-btn-outline trigger-strategy-call" id="heroBookBtn">
+                        <i class="fas fa-calendar-check"></i> Book a Free Call
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Contact Content Hub -->
-    <section class="cases-section" style="padding-top: 0; position: relative;">
+    <!-- ══ 2. QUICK INFO CARDS ════════════════════════════════ -->
+    <section class="ct-cards-section">
         <div class="container">
-            
-            <!-- 3-Column Floating Contact Cards -->
-            <div class="contact-cards-grid">
-                <div class="contact-info-card">
-                    <div class="contact-icon-wrapper">
-                        <i class="ph ph-headset"></i>
-                    </div>
-                    <h3 style="font-size:1.2rem; margin-bottom:12px;">Sales & Partnerships</h3>
-                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">Speak with our growth experts about pricing and custom campaign models.</p>
-                    <a href="tel:+15125550199" style="color:var(--primary); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
-                        <i class="ph ph-phone"></i> +1 (512) 555-0199
-                    </a>
-                </div>
-                
-                <div class="contact-info-card">
-                    <div class="contact-icon-wrapper">
-                        <i class="ph ph-envelope-open"></i>
-                    </div>
-                    <h3 style="font-size:1.2rem; margin-bottom:12px;">Support & Operations</h3>
-                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">Current clients can reach out here for technical assistance and reporting.</p>
-                    <a href="mailto:strategy@apexgrowth.com" style="color:var(--primary); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
-                        <i class="ph ph-paper-plane-tilt"></i> strategy@apexgrowth.com
-                    </a>
-                </div>
-                
-                <div class="contact-info-card">
-                    <div class="contact-icon-wrapper">
-                        <i class="ph ph-map-pin"></i>
-                    </div>
-                    <h3 style="font-size:1.2rem; margin-bottom:12px;">Global Headquarters</h3>
-                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">ApexGrowth Agency Inc.<br>100 Innovation Way, Suite 400<br>Austin, TX 78701</p>
-                    <a href="#map" style="color:var(--primary); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
-                        <i class="ph ph-navigation-arrow"></i> Get Directions
-                    </a>
-                </div>
-            </div>
+            <div class="ct-cards-grid">
 
-            <!-- Sleek Split-Panel (Form + Map) -->
-            <div class="contact-split" id="map">
-                
-                <!-- Premium Form Panel -->
-                <div class="contact-split-form">
-                    <h2 style="font-size:2rem; margin-bottom:8px; font-weight:700;">Send Direct Inquiry</h2>
-                    <p style="color:var(--text-muted); margin-bottom:32px;">Fill out the form below and we'll get back to you within 3 business hours.</p>
-                    
-                    <form id="contact-inquiry-form" onsubmit="event.preventDefault(); alert('Message submitted successfully! We will get back to you within 3 business hours.')" style="display:flex; flex-direction:column; gap:20px;">
-                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;" class="form-grid-mobile">
-                            <div class="form-group" style="margin:0;">
-                                <label style="font-weight:600; font-size:0.9rem; margin-bottom:8px; display:block;">Your Name</label>
-                                <input type="text" class="form-input premium-input" placeholder="John Doe" required>
+                <div class="ct-info-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="ct-card-icon"><i class="fas fa-headset"></i></div>
+                    <span class="ct-card-label">Sales &amp; Partnerships</span>
+                    <h3 class="ct-card-title">Talk to a Growth Expert</h3>
+                    <p class="ct-card-desc">Speak with our team about pricing models, campaign structures, and
+                        partnership opportunities tailored to your goals.</p>
+                    <a href="tel:+15125550199" class="ct-card-link">
+                        <i class="fas fa-phone"></i> +1 (512) 555-0199 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="ct-info-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="ct-card-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <span class="ct-card-label">Support &amp; Operations</span>
+                    <h3 class="ct-card-title">Client Support Line</h3>
+                    <p class="ct-card-desc">Current clients can reach our operations team directly for reporting
+                        queries, technical assistance, and dashboard help.</p>
+                    <a href="mailto:strategy@apexgrowth.com" class="ct-card-link">
+                        <i class="fas fa-paper-plane"></i> strategy@apexgrowth.com <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="ct-info-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="ct-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <span class="ct-card-label">Global Headquarters</span>
+                    <h3 class="ct-card-title">Visit Our Office</h3>
+                    <p class="ct-card-desc">ApexGrowth Agency Inc.<br>100 Innovation Way, Suite 400<br>Austin, TX 78701,
+                        USA</p>
+                    <a href="#ct-map" class="ct-card-link">
+                        <i class="fas fa-location-arrow"></i> Get Directions <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ 3. FORM + SIDEBAR ══════════════════════════════════ -->
+    <section class="ct-main" id="contact-form">
+        <div class="container">
+            <div class="ct-main-grid">
+
+                <!-- ── FORM PANEL ── -->
+                <div class="ct-form-panel" data-aos="fade-right">
+                    <p class="ct-form-eyebrow">Send an Inquiry</p>
+                    <h2 class="ct-form-title">Tell Us About Your Goals</h2>
+                    <p class="ct-form-sub">Fill in the form and our team will respond within <strong>3 business
+                            hours</strong>. We'll match you with the right specialist.</p>
+
+                    <!-- Service chips -->
+                    <div class="ct-form-service-chips" id="serviceChips">
+                        <div class="ct-chip selected" data-service="SEO"><i class="fas fa-search"></i> SEO</div>
+                        <div class="ct-chip" data-service="PPC"><i class="fas fa-bullseye"></i> Paid Media</div>
+                        <div class="ct-chip" data-service="CRO"><i class="fas fa-chart-line"></i> CRO</div>
+                        <div class="ct-chip" data-service="Email"><i class="fas fa-envelope"></i> Email Marketing</div>
+                        <div class="ct-chip" data-service="Analytics"><i class="fas fa-database"></i> Analytics</div>
+                        <div class="ct-chip" data-service="Audit"><i class="fas fa-clipboard-check"></i> Free Audit
+                        </div>
+                    </div>
+
+                    <form id="contact-inquiry-form" onsubmit="handleContactSubmit(event)">
+                        <div class="ct-form-row">
+                            <div class="ct-field">
+                                <label>Full Name <span>*</span></label>
+                                <input type="text" class="ct-input" placeholder="John Doe" required id="ct-name">
                             </div>
-                            <div class="form-group" style="margin:0;">
-                                <label style="font-weight:600; font-size:0.9rem; margin-bottom:8px; display:block;">Work Email</label>
-                                <input type="email" class="form-input premium-input" placeholder="john@company.com" required>
+                            <div class="ct-field">
+                                <label>Work Email <span>*</span></label>
+                                <input type="email" class="ct-input" placeholder="john@company.com" required
+                                    id="ct-email">
                             </div>
                         </div>
-                        <div class="form-group" style="margin:0;">
-                            <label style="font-weight:600; font-size:0.9rem; margin-bottom:8px; display:block;">Message Content</label>
-                            <textarea class="form-input premium-input" rows="5" placeholder="How can our marketing specialists help you scale?" required style="resize:none; padding:16px;"></textarea>
+                        <div class="ct-form-row">
+                            <div class="ct-field">
+                                <label>Company / Brand</label>
+                                <input type="text" class="ct-input" placeholder="Acme Corp" id="ct-company">
+                            </div>
+                            <div class="ct-field">
+                                <label>Monthly Ad Budget</label>
+                                <select class="ct-input ct-select" id="ct-budget">
+                                    <option value="" disabled selected>Select range</option>
+                                    <option>Under $2,000</option>
+                                    <option>$2,000 – $10,000</option>
+                                    <option>$10,000 – $50,000</option>
+                                    <option>$50,000+</option>
+                                </select>
+                            </div>
                         </div>
-                        
-                        <div class="contact-form-btn-row" style="display:flex; gap:16px; margin-top:12px; flex-wrap:wrap;">
-                            <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center; padding:14px; font-size:1rem;">Send Message</button>
-                            <button type="button" class="btn btn-secondary trigger-strategy-call" style="flex:1; justify-content:center; padding:14px; font-size:1rem; border:1px solid var(--border-color);">Book Call Inline</button>
+                        <div class="ct-form-row" style="grid-template-columns:1fr; margin-bottom: 28px;">
+                            <div class="ct-field full">
+                                <label>How Can We Help? <span>*</span></label>
+                                <textarea class="ct-input ct-textarea"
+                                    placeholder="Describe your goals, current challenges, or the campaign scope you have in mind..."
+                                    required id="ct-message"></textarea>
+                            </div>
                         </div>
+
+                        <div class="ct-form-footer">
+                            <button type="submit" class="ct-submit-btn">
+                                Send Message <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button type="button" class="ct-book-btn trigger-strategy-call">
+                                <i class="fas fa-calendar-alt"></i> Book a Call
+                            </button>
+                        </div>
+                        <p class="ct-privacy-note">
+                            <i class="fas fa-lock"></i>
+                            Your data is safe. We never share your information with third parties.
+                        </p>
                     </form>
                 </div>
 
-                <!-- Seamless Embedded Map -->
-                <div class="contact-split-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.6272449551465!2d-97.743060784876!3d30.272920981797435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b508f7b3df6d%3A0xe10439da5bc6b75e!2sAustin%20City%20Hall!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <!-- ── SIDEBAR ── -->
+                <div class="ct-sidebar" data-aos="fade-left">
+
+                    <!-- Availability slots -->
+                    <div class="ct-avail-card">
+                        <div class="ct-avail-header">
+                            <span class="ct-avail-live"></span>
+                            <h4 class="ct-avail-title">Available Consultation Slots</h4>
+                        </div>
+                        <div class="ct-avail-slots">
+                            <div class="ct-slot">
+                                <span class="ct-slot-time"><i class="fas fa-clock"
+                                        style="opacity:0.5;margin-right:8px;font-size:0.8rem;"></i>Today — 02:00 PM
+                                    IST</span>
+                                <span class="ct-slot-badge open">Open</span>
+                            </div>
+                            <div class="ct-slot">
+                                <span class="ct-slot-time"><i class="fas fa-clock"
+                                        style="opacity:0.5;margin-right:8px;font-size:0.8rem;"></i>Today — 05:30 PM
+                                    IST</span>
+                                <span class="ct-slot-badge few">2 Left</span>
+                            </div>
+                            <div class="ct-slot">
+                                <span class="ct-slot-time"><i class="fas fa-clock"
+                                        style="opacity:0.5;margin-right:8px;font-size:0.8rem;"></i>Tomorrow — 10:00 AM
+                                    IST</span>
+                                <span class="ct-slot-badge open">Open</span>
+                            </div>
+                            <div class="ct-slot">
+                                <span class="ct-slot-time"><i class="fas fa-clock"
+                                        style="opacity:0.5;margin-right:8px;font-size:0.8rem;"></i>Tomorrow — 03:00 PM
+                                    IST</span>
+                                <span class="ct-slot-badge open">Open</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Response time -->
+                    <div class="ct-resp-card">
+                        <div class="ct-resp-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="ct-resp-text">
+                            <strong>&lt; 3 hrs</strong>
+                            <span>Average first-response time during business hours (Mon–Fri, 9AM–7PM IST)</span>
+                        </div>
+                    </div>
+
+                    <!-- Social links -->
+                    <div class="ct-social-card">
+                        <h4 class="ct-social-title">Connect on Social</h4>
+                        <div class="ct-socials">
+                            <a href="#" class="ct-social-row linkedin">
+                                <span class="ct-social-icon"><i class="fab fa-linkedin-in"></i></span>
+                                <div class="ct-social-row-text">
+                                    LinkedIn
+                                    <span class="ct-social-handle">@apexgrowth</span>
+                                </div>
+                            </a>
+                            <a href="#" class="ct-social-row twitter">
+                                <span class="ct-social-icon"><i class="fab fa-twitter"></i></span>
+                                <div class="ct-social-row-text">
+                                    Twitter / X
+                                    <span class="ct-social-handle">@apexgrowth</span>
+                                </div>
+                            </a>
+                            <a href="#" class="ct-social-row facebook">
+                                <span class="ct-social-icon"><i class="fab fa-facebook-f"></i></span>
+                                <div class="ct-social-row-text">
+                                    Facebook
+                                    <span class="ct-social-handle">ApexGrowth Agency</span>
+                                </div>
+                            </a>
+                            <a href="#" class="ct-social-row instagram">
+                                <span class="ct-social-icon"><i class="fab fa-instagram"></i></span>
+                                <div class="ct-social-row-text">
+                                    Instagram
+                                    <span class="ct-social-handle">@apexgrowth.agency</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
-
             </div>
-
         </div>
     </section>
 
-    <!-- Footer Section -->
+    <!-- ══ 4. MAP STRIP ══════════════════════════════════════ -->
+    <section class="ct-map-section" id="ct-map" data-aos="fade-up">
+        <div class="container" style="margin-bottom: 25px;">
+            <div class="ct-map-header">
+                <h2>Find Us in Austin, TX</h2>
+                <p>100 Innovation Way, Suite 400 &mdash; Austin, TX 78701, USA</p>
+            </div>
+            <div class="ct-map-wrap ">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.6272449551465!2d-97.743060784876!3d30.272920981797435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b508f7b3df6d%3A0xe10439da5bc6b75e!2sAustin%20City%20Hall!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    title="ApexGrowth Office Location">
+                </iframe>
+                <div class="ct-map-overlay-card">
+                    <div class="ct-map-pin"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="ct-map-card-text">
+                        <strong>ApexGrowth Agency HQ</strong>
+                        <span>100 Innovation Way, Suite 400<br>Austin, TX 78701</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ════════════════════════════════════════════ -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="../index.html" class="logo" style="color:#ffffff;">APEXGROWTH<span class="logo-dot">.</span></a>
-                    <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and automation.</p>
+                    <a href="../index.html" class="logo" style="color:#ffffff;">APEXGROWTH<span
+                            class="logo-dot">.</span></a>
+                    <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and
+                        automation.</p>
                     <div class="footer-socials">
                         <a href="#" class="footer-social-link">FB</a>
                         <a href="#" class="footer-social-link">LN</a>
@@ -276,7 +1686,6 @@
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
                 <div class="footer-bottom-links">
@@ -290,33 +1699,93 @@
     <!-- MODAL: Strategy Booking Wizard -->
     <div class="modal-overlay" id="strategy-modal">
         <div class="modal-content">
-            <button class="modal-close">âœ•</button>
+            <button class="modal-close">&times;</button>
             <h3 style="margin-bottom: 12px; font-size:1.5rem;">Schedule Your Strategy Consultation</h3>
-            <p style="color:var(--text-muted); margin-bottom: 24px;">Pick a convenient date inside our simulated Calendly booking scheduler.</p>
-            <div style="background-color: var(--panel-hover); border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); text-align: center;">
-                <h4 style="margin-bottom:16px;">Select Date & Time</h4>
-                <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 20px; font-size: 0.85rem; font-weight:600;">
-                    <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
-                    <div style="opacity:0.3;">14</div><div style="opacity:0.3;">15</div>
-                    <div style="background-color:var(--primary); color:#ffffff; border-radius:4px; cursor:pointer; padding:4px 0;">16</div>
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">17</div>
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">18</div>
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">19</div>
-                    <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:4px; cursor:pointer; padding:4px 0;">20</div>
+            <p style="color:var(--text-muted); margin-bottom: 24px;">Pick a convenient slot for a free 30-minute
+                strategy review call.</p>
+            <div
+                style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 16px; border-radius: 12px; text-align: center; box-sizing: border-box; width: 100%;">
+                <h4 style="margin-bottom:14px;">Select Date &amp; Time</h4>
+                <div
+                    style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 16px; font-size: 0.8rem; font-weight:600;">
+                    <div>Su</div>
+                    <div>Mo</div>
+                    <div>Tu</div>
+                    <div>We</div>
+                    <div>Th</div>
+                    <div>Fr</div>
+                    <div>Sa</div>
+                    <div style="opacity:0.3;">14</div>
+                    <div style="opacity:0.3;">15</div>
+                    <div
+                        style="background:var(--accent-primary); color:#fff; border-radius:6px; cursor:pointer; padding:4px 0;">
+                        16</div>
+                    <div
+                        style="border:1px solid var(--border-color); border-radius:6px; cursor:pointer; padding:4px 0;">
+                        17</div>
+                    <div
+                        style="border:1px solid var(--border-color); border-radius:6px; cursor:pointer; padding:4px 0;">
+                        18</div>
+                    <div
+                        style="border:1px solid var(--border-color); border-radius:6px; cursor:pointer; padding:4px 0;">
+                        19</div>
+                    <div
+                        style="border:1px solid var(--border-color); border-radius:6px; cursor:pointer; padding:4px 0;">
+                        20</div>
                 </div>
-                <div style="display:flex; justify-content:center; gap:12px;">
-                    <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">09:00 AM</button>
-                    <button class="btn btn-primary btn-sm" onclick="alert('Session Booked! Check your email for confirmation.')">01:30 PM</button>
+                <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+                    <button class="btn btn-primary btn-sm"
+                        onclick="alert('Session Booked! Check your email for confirmation.')">09:00 AM</button>
+                    <button class="btn btn-primary btn-sm"
+                        onclick="alert('Session Booked! Check your email for confirmation.')">01:30 PM</button>
+                    <button class="btn btn-primary btn-sm"
+                        onclick="alert('Session Booked! Check your email for confirmation.')">04:00 PM</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 700, once: true, offset: 60 });
+
+        // Service chip multi-select toggle
+        document.querySelectorAll('#serviceChips .ct-chip').forEach(chip => {
+            chip.addEventListener('click', () => chip.classList.toggle('selected'));
+        });
+
+        // Form submission handler
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.ct-submit-btn');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                btn.style.background = 'var(--success)';
+                setTimeout(() => {
+                    btn.innerHTML = orig;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                    e.target.reset();
+                    document.querySelectorAll('#serviceChips .ct-chip').forEach((c, i) => {
+                        c.classList.toggle('selected', i === 0);
+                    });
+                }, 2500);
+            }, 1200);
+        }
+
+        // Smooth scroll to form
+        document.querySelectorAll('a[href="#contact-form"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
     </script>
     <script src="../assets/js/main.js"></script>
 </body>
-</html>
 
+</html>

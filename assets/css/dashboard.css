@@ -1049,6 +1049,40 @@ table {
         align-items: flex-start !important;
         gap: 16px !important;
     }
+
+    /* Compact timeline on mobile — icon tucked inside, no left bleed */
+    .timeline {
+        padding-left: 0 !important;
+    }
+    .timeline::before {
+        display: none !important;
+    }
+    .timeline-icon {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        margin-bottom: 8px !important;
+        box-shadow: none !important;
+    }
+    .timeline-item {
+        padding: 16px !important;
+        overflow: hidden;
+    }
+    /* Inner row: description + amount — wrap on small screens */
+    .timeline-item > div[style*="justify-content:space-between"],
+    .timeline-item > div[style*="justify-content: space-between"] {
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+    }
+    /* Footer row: status badge + button — wrap */
+    .timeline-item > div[style*="margin-top"] {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+    .timeline-item .btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
 }
 
 /* Direct Messaging Responsive Styles */

@@ -12,7 +12,7 @@
     height: 72px;
     z-index: 1000;
     transition: background 0.35s ease, box-shadow 0.35s ease, height 0.3s ease;
-    background: var(--glass-bg);
+    background: #ffffff;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--glass-border);

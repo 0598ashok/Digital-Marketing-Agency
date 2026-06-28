@@ -1,28 +1,321 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resources Hub & Blog | ApexGrowth Agency</title>
-    <meta name="description" content="Access our free marketing resources library: blogs, checklist templates, guides downloads, and on-demand webinars.">
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <title>Resources Hub | ApexGrowth Agency</title>
+    <meta name="description" content="Access our free marketing resources library: blog articles, checklists, strategy guides, and on-demand webinars from the ApexGrowth team.">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-</head>
-<body class="dark-mode">
+    <style>
+        /* ─────────────────────────────────────────────────────────
+           RESOURCES PAGE — PREMIUM DESIGN
+        ───────────────────────────────────────────────────────── */
+        html, body { overflow-x: hidden; }
+        *, *::before, *::after { box-sizing: border-box; }
 
-        <!-- Navigation Header -->
-        <!-- Navigation Header -->
-    <!-- NAVBAR -->
+        /* ── Hero ──────────────────────────────────────────────── */
+        .rs-hero {
+            position: relative;
+            padding: 150px 0 90px;
+            text-align: center;
+            overflow: hidden;
+            background: var(--bg-secondary, #f8fafc);
+        }
+        .rs-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, var(--border-color, #e2e8f0) 1px, transparent 1px);
+            background-size: 28px 28px;
+            opacity: 0.45;
+            pointer-events: none;
+        }
+        .rs-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+        .rs-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(37,99,235,.13) 0%, transparent 70%); top: -160px; right: -80px; animation: rsFloat 10s ease-in-out infinite; }
+        .rs-orb-2 { width: 360px; height: 360px; background: radial-gradient(circle, rgba(6,182,212,.11) 0%, transparent 70%); bottom: -80px; left: -60px; animation: rsFloat 13s 2s ease-in-out infinite; }
+        @keyframes rsFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} }
+
+        .rs-hero-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .rs-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(37,99,235,.1); border: 1px solid rgba(37,99,235,.22);
+            color: #2563eb; font-size: .68rem; font-weight: 700; letter-spacing: 2.5px;
+            text-transform: uppercase; padding: 6px 18px; border-radius: 100px; margin-bottom: 22px;
+        }
+        .rs-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #2563eb; animation: rsPulse 1.4s ease-in-out infinite alternate; }
+        @keyframes rsPulse { from{transform:scale(.7);opacity:.5} to{transform:scale(1.4);opacity:1} }
+
+        .rs-hero h1 {
+            font-size: clamp(2rem, 6vw, 3.8rem);
+            font-weight: 900; line-height: 1.1; letter-spacing: -2px;
+            color: var(--text-primary, #0f172a); margin: 0 0 18px;
+        }
+        .rs-hero-grad {
+            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 55%, #8b5cf6 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .rs-hero p {
+            font-size: 1.05rem; color: var(--text-secondary, #64748b);
+            line-height: 1.75; max-width: 600px; margin: 0 auto 44px;
+        }
+        .rs-hero-stats {
+            display: flex; justify-content: center; gap: 44px; flex-wrap: wrap;
+        }
+        .rs-hero-stat strong { display: block; font-size: 1.8rem; font-weight: 900; color: #2563eb; line-height: 1; }
+        .rs-hero-stat span { font-size: .8rem; color: var(--text-secondary, #64748b); margin-top: 4px; display: block; }
+
+        /* ── Filter Tabs ───────────────────────────────────────── */
+        .rs-filter-bar {
+            padding: 0 0 52px;
+            background: var(--bg-primary, #fff);
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
+        }
+        .rs-filter-wrap {
+            display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding-top: 32px;
+        }
+        .rs-filter-btn {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 10px 20px; border-radius: 100px; font-size: .85rem; font-weight: 600;
+            cursor: pointer; border: 1.5px solid var(--border-color, #e2e8f0);
+            background: var(--bg-primary, #fff); color: var(--text-secondary, #64748b);
+            transition: .2s;
+        }
+        .rs-filter-btn:hover { border-color: #2563eb; color: #2563eb; background: rgba(37,99,235,.06); }
+        .rs-filter-btn.active { background: #2563eb; color: #fff; border-color: #2563eb; box-shadow: 0 4px 14px rgba(37,99,235,.28); }
+        .rs-filter-btn i { font-size: .78rem; }
+
+        /* ── Section Base ──────────────────────────────────────── */
+        .rs-sec { padding: 72px 0; }
+        .rs-sec-alt { background: var(--bg-secondary, #f8fafc); }
+        .rs-sec-hd { text-align: center; margin-bottom: 48px; }
+        .rs-tag { display: inline-block; font-size: .67rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #2563eb; background: rgba(37,99,235,.1); border: 1px solid rgba(37,99,235,.18); padding: 5px 14px; border-radius: 100px; margin-bottom: 14px; }
+        .rs-h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 800; color: var(--text-primary, #0f172a); margin: 0 0 12px; letter-spacing: -.5px; line-height: 1.2; }
+        .rs-sub { font-size: .97rem; color: var(--text-secondary, #64748b); max-width: 560px; margin: 0 auto; line-height: 1.72; }
+
+        /* ── Resource Cards ────────────────────────────────────── */
+        .rs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .rs-card {
+            background: var(--bg-primary, #fff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 16px; overflow: hidden;
+            transition: transform .22s, box-shadow .22s, border-color .22s;
+            display: flex; flex-direction: column;
+        }
+        .rs-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,.1); border-color: #2563eb; }
+        .rs-card-top {
+            height: 9px;
+            background: linear-gradient(90deg, #2563eb, #06b6d4);
+        }
+        .rs-card-body { padding: 28px 26px; flex: 1; display: flex; flex-direction: column; }
+        .rs-card-meta {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+        }
+        .rs-card-cat {
+            font-size: .66rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            color: #2563eb; background: rgba(37,99,235,.1); padding: 3px 10px; border-radius: 100px;
+        }
+        .rs-card-type {
+            font-size: .72rem; color: var(--text-secondary, #64748b); font-weight: 600;
+            display: flex; align-items: center; gap: 5px; margin-left: auto;
+        }
+        .rs-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary, #0f172a); margin: 0 0 10px; line-height: 1.4; }
+        .rs-card p { font-size: .875rem; color: var(--text-secondary, #64748b); line-height: 1.68; margin: 0 0 20px; flex: 1; }
+        .rs-card-footer {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 16px; border-top: 1px solid var(--border-color, #e2e8f0);
+            margin-top: auto;
+        }
+        .rs-card-date { font-size: .78rem; color: var(--text-secondary, #64748b); }
+        .rs-card-link {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: .82rem; font-weight: 700; color: #2563eb; text-decoration: none;
+            transition: gap .2s;
+        }
+        .rs-card-link:hover { gap: 8px; }
+
+        /* ── Featured Banner ───────────────────────────────────── */
+        .rs-featured {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            border-radius: 20px;
+            padding: 56px 52px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .rs-featured::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 80% 50%, rgba(6,182,212,.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .rs-featured-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(6,182,212,.2); border: 1px solid rgba(6,182,212,.3);
+            color: #06b6d4; font-size: .67rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 18px;
+        }
+        .rs-featured h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 900; color: #fff; margin: 0 0 12px; letter-spacing: -.5px; line-height: 1.2; }
+        .rs-featured p { font-size: .95rem; color: rgba(255,255,255,.65); line-height: 1.72; margin: 0; max-width: 480px; }
+        .rs-featured-btns { display: flex; flex-direction: column; gap: 12px; align-items: stretch; min-width: 200px; }
+        .rs-fbtn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 13px 24px; border-radius: 10px; font-size: .88rem; font-weight: 700;
+            text-decoration: none; white-space: nowrap; transition: .2s; border: none; cursor: pointer;
+        }
+        .rs-fbtn.solid { background: #06b6d4; color: #0f172a; box-shadow: 0 4px 16px rgba(6,182,212,.3); }
+        .rs-fbtn.solid:hover { filter: brightness(1.08); transform: translateY(-1px); }
+        .rs-fbtn.outline { background: transparent; color: rgba(255,255,255,.8); border: 1.5px solid rgba(255,255,255,.22); }
+        .rs-fbtn.outline:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+
+        /* ── Checklist Download ─────────────────────────────────── */
+        .rs-downloads { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+        .rs-dl-card {
+            background: var(--bg-primary, #fff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 16px; padding: 30px 26px;
+            display: flex; align-items: flex-start; gap: 18px;
+            transition: .22s;
+        }
+        .rs-dl-card:hover { border-color: #2563eb; box-shadow: 0 8px 28px rgba(0,0,0,.08); transform: translateY(-3px); }
+        .rs-dl-icon {
+            width: 52px; height: 52px; border-radius: 12px;
+            background: rgba(37,99,235,.1); color: #2563eb;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.35rem; flex-shrink: 0;
+            transition: .2s;
+        }
+        .rs-dl-card:hover .rs-dl-icon { background: #2563eb; color: #fff; }
+        .rs-dl-content h4 { font-size: .95rem; font-weight: 700; color: var(--text-primary, #0f172a); margin: 0 0 6px; }
+        .rs-dl-content p { font-size: .84rem; color: var(--text-secondary, #64748b); line-height: 1.6; margin: 0 0 14px; }
+        .rs-dl-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: .82rem; font-weight: 700; color: #2563eb; text-decoration: none;
+            cursor: pointer; background: none; border: none; padding: 0; transition: gap .2s;
+        }
+        .rs-dl-btn:hover { gap: 9px; }
+
+        /* ── Newsletter CTA ─────────────────────────────────────── */
+        .rs-newsletter {
+            background: var(--bg-secondary, #f8fafc);
+            border-top: 1px solid var(--border-color, #e2e8f0);
+        }
+        .rs-newsletter-inner { max-width: 620px; margin: 0 auto; text-align: center; }
+        .rs-nl-h2 { font-size: clamp(1.55rem, 3vw, 2.1rem); font-weight: 900; color: var(--text-primary, #0f172a); margin: 0 0 12px; letter-spacing: -.5px; }
+        .rs-nl-sub { font-size: .96rem; color: var(--text-secondary, #64748b); margin: 0 0 32px; line-height: 1.7; }
+        .rs-nl-form {
+            display: flex; gap: 12px; max-width: 480px; margin: 0 auto;
+        }
+        .rs-nl-input {
+            flex: 1; padding: 13px 16px; background: var(--bg-primary, #fff);
+            border: 1.5px solid var(--border-color, #e2e8f0); border-radius: 10px;
+            color: var(--text-primary, #0f172a); font-size: .9rem; outline: none; transition: .2s;
+        }
+        .rs-nl-input:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37,99,235,.1); }
+        .rs-nl-btn {
+            padding: 13px 24px; background: #2563eb; color: #fff;
+            font-size: .9rem; font-weight: 700; border: none; border-radius: 10px;
+            cursor: pointer; white-space: nowrap; transition: .2s;
+            box-shadow: 0 4px 16px rgba(37,99,235,.28);
+        }
+        .rs-nl-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+        .rs-nl-note { font-size: .75rem; color: var(--text-secondary, #64748b); margin-top: 12px; }
+
+        /* ── Footer ────────────────────────────────────────────── */
+        .site-footer { background: #0f172a; color: rgba(255,255,255,.58); padding: 64px 0 0; }
+        .footer-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr; gap: 38px; padding-bottom: 46px; border-bottom: 1px solid rgba(255,255,255,.07); }
+        .footer-brand .logo { font-size: 1.12rem; font-weight: 900; letter-spacing: 3px; text-decoration: none; }
+        .footer-brand p { margin-top: 12px; font-size: .86rem; line-height: 1.8; color: rgba(255,255,255,.4); }
+        .footer-socials { display: flex; gap: 10px; margin-top: 16px; }
+        .footer-social-link { display: inline-flex; align-items: center; justify-content: center; width: 33px; height: 33px; border-radius: 50%; border: 1px solid rgba(255,255,255,.13); color: rgba(255,255,255,.52); text-decoration: none; font-size: .72rem; font-weight: 700; transition: .3s; }
+        .footer-social-link:hover { border-color: #2563eb; color: #2563eb; }
+        .footer-title { font-size: .62rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 15px; }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-links a { font-size: .87rem; color: rgba(255,255,255,.5); text-decoration: none; transition: .3s; }
+        .footer-links a:hover { color: #2563eb; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 24px 0; }
+        .footer-bottom p { font-size: .79rem; color: rgba(255,255,255,.28); }
+        .footer-bottom-links { display: flex; gap: 20px; }
+        .footer-bottom-links a { font-size: .79rem; color: rgba(255,255,255,.28); text-decoration: none; transition: .3s; }
+        .footer-bottom-links a:hover { color: #2563eb; }
+
+        /* ── Responsive ────────────────────────────────────────── */
+        @media (max-width: 1100px) {
+            .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 26px; }
+            .footer-brand { grid-column: span 3; }
+        }
+        @media (max-width: 992px) {
+            .rs-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+            .rs-featured { grid-template-columns: 1fr; padding: 40px 36px; }
+            .rs-featured-btns { flex-direction: row; min-width: auto; }
+            .rs-downloads { grid-template-columns: 1fr; gap: 16px; }
+        }
+        @media (max-width: 768px) {
+            .rs-hero { padding: 120px 0 64px; }
+            .rs-hero h1 { letter-spacing: -1px; }
+            .rs-hero-stats { gap: 22px; }
+            .rs-hero-stat strong { font-size: 1.5rem; }
+            .rs-filter-wrap { gap: 8px; }
+            .rs-filter-btn { padding: 8px 15px; font-size: .8rem; }
+            .rs-sec { padding: 52px 0; }
+            .rs-sec-hd { margin-bottom: 34px; }
+            .rs-h2 { font-size: 1.55rem; }
+            .rs-grid { grid-template-columns: 1fr; gap: 16px; }
+            .rs-card-body { padding: 22px 18px; }
+            .rs-featured { padding: 32px 24px; }
+            .rs-featured-btns { flex-direction: column; }
+            .rs-nl-form { flex-direction: column; }
+            .rs-nl-btn { width: 100%; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 22px; }
+            .footer-brand { grid-column: span 2; }
+            .footer-bottom { justify-content: center; text-align: center; }
+            .footer-bottom-links { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .rs-hero { padding: 110px 0 50px; }
+            .rs-hero h1 { font-size: 1.9rem; letter-spacing: -.5px; }
+            .rs-hero p { font-size: .9rem; }
+            .rs-hero-stats { gap: 16px; }
+            .rs-hero-stat strong { font-size: 1.35rem; }
+            .rs-filter-btn { padding: 7px 12px; font-size: .76rem; }
+            .rs-filter-btn i { display: none; }
+            .rs-sec { padding: 40px 0; }
+            .rs-h2 { font-size: 1.4rem; }
+            .rs-sub { font-size: .88rem; }
+            .rs-card-body { padding: 18px 14px; }
+            .rs-card h3 { font-size: .97rem; }
+            .rs-card p { font-size: .83rem; }
+            .rs-featured { padding: 26px 18px; gap: 24px; }
+            .rs-featured h2 { font-size: 1.35rem; }
+            .rs-featured p { font-size: .88rem; }
+            .rs-fbtn { padding: 11px 18px; font-size: .84rem; }
+            .rs-dl-card { padding: 22px 16px; gap: 14px; }
+            .rs-dl-icon { width: 42px; height: 42px; font-size: 1.1rem; }
+            .rs-nl-input { padding: 11px 13px; font-size: .87rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 18px; }
+            .footer-brand { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══ NAVBAR (same as index.html) ════════════════════════════ -->
     <nav class="navbar" id="mainNav" role="navigation" aria-label="Main Navigation">
         <div class="container">
-            <!-- Brand -->
             <a aria-label="ApexGrowth Home" class="nav-brand" href="../index.html" id="navBrand">
                 <span class="nav-brand-wordmark">APEXGROWTH<span>.</span></span>
             </a>
-
-            <!-- Primary Nav Links -->
             <ul class="nav-links" id="navLinks" role="list">
                 <li class="nav-item has-dropdown">
                     <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="homeDropdown">
@@ -33,21 +326,11 @@
                         <li role="none"><a href="../home-2.html" role="menuitem"><i class="fas fa-layer-group"></i> Home 2 - Bold</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="services.html">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a href="case-studies.html">Case Studies</a>
-                </li>
-                <li class="nav-item">
-                    <a href="blog.html">Blogs</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html">Contact</a>
-                </li>
+                <li class="nav-item"><a href="about.html">About</a></li>
+                <li class="nav-item"><a href="services.html">Services</a></li>
+                <li class="nav-item"><a href="case-studies.html">Case Studies</a></li>
+                <li class="nav-item"><a href="blog.html">Blog</a></li>
+                <li class="nav-item"><a href="contact.html">Contact</a></li>
                 <li class="nav-item has-dropdown">
                     <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="dashDropdown">
                         Dashboard <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
@@ -57,119 +340,250 @@
                         <li role="none"><a href="../dashboard/admin-index.html" role="menuitem"><i class="fas fa-shield-halved"></i> Admin Console</a></li>
                     </ul>
                 </li>
-
                 <li class="nav-mobile-controls">
-                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn">
-                        <i class="fas fa-sign-in-alt"></i> Login
-                    </a>
-                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction">
-                        <span class="dir-text">RTL</span>
-                    </button>
+                    <a class="nav-btn-login" href="login.html" id="mobileLoginBtn"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <button class="nav-icon-btn theme-switch" id="mobileThemeSwitch" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+                    <button class="nav-icon-btn dir-switch" id="mobileDirSwitch" aria-label="Toggle direction"><span class="dir-text">RTL</span></button>
                 </li>
             </ul>
-
             <div class="nav-controls">
-                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </a>
+                <a class="nav-btn-login" href="login.html" id="desktopLoginBtn"><i class="fas fa-sign-in-alt"></i> Login</a>
                 <div class="nav-sep" aria-hidden="true"></div>
-                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction">
-                    <span class="dir-text">RTL</span>
-                </button>
+                <button class="nav-icon-btn theme-switch" id="desktopThemeSwitch" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+                <button class="nav-icon-btn dir-switch" id="desktopDirSwitch" aria-label="Toggle direction"><span class="dir-text">RTL</span></button>
             </div>
-
-            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
-                aria-controls="navLinks">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
     <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
-    <!-- Page Title Hero -->
-    <section class="hero" style="padding: 140px 0 60px;">
-        <div class="container" style="text-align: center;">
-            <span class="hero-tag">RESOURCES HUB</span>
-            <h1 style="font-size: 3rem; margin-bottom: 16px;">Marketing Guides & Industry Insights</h1>
-            <p style="margin: 0 auto; max-width: 680px;">Equip your marketing managers with actionable spreadsheets, operational checkers, and blogs tracking algorithm overrides.</p>
-        </div>
-    </section>
-
-    <!-- Resources Main Content Grid -->
-    <section class="cases-section">
+    <!-- ══ HERO ════════════════════════════════════════════════════ -->
+    <section class="rs-hero">
+        <div class="rs-orb rs-orb-1"></div>
+        <div class="rs-orb rs-orb-2"></div>
         <div class="container">
-            
-            <!-- Category Tabs -->
-            <div style="display:flex; justify-content:center; gap:20px; margin-bottom:40px; font-weight:700; border-bottom:1px solid var(--border-color); padding-bottom:16px;">
-                <span style="color:var(--primary); cursor:pointer;">Articles & Blog</span>
-                <span style="color:var(--text-muted); cursor:pointer;" onclick="alert('Guides Library section coming soon!')">Operational Checklists</span>
-                <span style="color:var(--text-muted); cursor:pointer;" onclick="alert('Webinars directory loading...')">On-Demand Webinars</span>
-            </div>
-
-            <!-- Blog Grid -->
-            <div class="grid-3">
-                
-                <!-- Blog Item 1 -->
-                <div class="case-card">
-                    <div style="padding: 24px;">
-                        <span style="color:var(--primary); font-weight:600; font-size:0.8rem;">SEO CAMPAIGNS</span>
-                        <h3 style="font-size:1.25rem; margin:12px 0;">Google Core Algorithms: Crawling Recovery Roadmap</h3>
-                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">An actionable guideline to troubleshoot search position losses and crawl exclusions caused by catalog indexation changes.</p>
-                        <a href="#" onclick="event.preventDefault(); alert('Blog post details coming soon!')" style="color:var(--primary); font-weight:600; font-size:0.9rem;">Read Blog Post &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Blog Item 2 -->
-                <div class="case-card">
-                    <div style="padding: 24px;">
-                        <span style="color:var(--primary); font-weight:600; font-size:0.8rem;">PAID MEDIA</span>
-                        <h3 style="font-size:1.25rem; margin:12px 0;">Meta CAPI Setup: Optimizing Conversion Attributions</h3>
-                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">How deploying server-side pixel signals prevents attribution drops and lowers cost-per-acquisition metrics.</p>
-                        <a href="#" onclick="event.preventDefault(); alert('Blog post details coming soon!')" style="color:var(--primary); font-weight:600; font-size:0.9rem;">Read Blog Post &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Blog Item 3 -->
-                <div class="case-card">
-                    <div style="padding: 24px;">
-                        <span style="color:var(--primary); font-weight:600; font-size:0.8rem;">CONVERSION RATE</span>
-                        <h3 style="font-size:1.25rem; margin:12px 0;">Checkout Page Form UX Design Checkpoints</h3>
-                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Ten simple layout adjustments to reduce form abandonment, optimize input validation states, and scale payments.</p>
-                        <a href="#" onclick="event.preventDefault(); alert('Blog post details coming soon!')" style="color:var(--primary); font-weight:600; font-size:0.9rem;">Read Blog Post &rarr;</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Downloadable Checklists Section -->
-            <div style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:40px; margin-top:60px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:40px; align-items:center;">
-                <div>
-                    <h3 style="font-size:1.75rem; margin-bottom:12px;">Download Free Content Auditing Guide</h3>
-                    <p style="color:var(--text-muted); font-size:0.95rem;">Our exhaustive internal checklist used to audit site page crawl rates, link structures, and content keywords.</p>
-                </div>
-                <div style="text-align:center;">
-                    <button class="btn btn-primary" onclick="alert('Download started! Checklist PDF file is loading.')">Download Checklist PDF</button>
+            <div class="rs-hero-inner" data-aos="fade-up">
+                <div class="rs-eyebrow"><span class="rs-eyebrow-dot"></span> Free Marketing Resources</div>
+                <h1>Guides, Insights &amp; <span class="rs-hero-grad">Tools to Grow Faster</span></h1>
+                <p>Access our curated library of articles, downloadable checklists, strategy guides, and on-demand webinars — all built by our team of growth experts.</p>
+                <div class="rs-hero-stats">
+                    <div class="rs-hero-stat"><strong>80+</strong><span>Free Resources</span></div>
+                    <div class="rs-hero-stat"><strong>12K+</strong><span>Downloads This Year</span></div>
+                    <div class="rs-hero-stat"><strong>Weekly</strong><span>New Content</span></div>
                 </div>
             </div>
-
         </div>
     </section>
 
-        <!-- Footer Section -->
-        <!-- Footer Section -->
+    <!-- ══ FILTER TABS ═════════════════════════════════════════════ -->
+    <div class="rs-filter-bar">
+        <div class="container">
+            <div class="rs-filter-wrap" id="rsFilters">
+                <button class="rs-filter-btn active" data-filter="all" id="filter-all"><i class="fas fa-layer-group"></i> All Resources</button>
+                <button class="rs-filter-btn" data-filter="article" id="filter-article"><i class="fas fa-newspaper"></i> Articles</button>
+                <button class="rs-filter-btn" data-filter="guide" id="filter-guide"><i class="fas fa-book-open"></i> Guides</button>
+                <button class="rs-filter-btn" data-filter="checklist" id="filter-checklist"><i class="fas fa-list-check"></i> Checklists</button>
+                <button class="rs-filter-btn" data-filter="webinar" id="filter-webinar"><i class="fas fa-video"></i> Webinars</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ ARTICLES GRID ═══════════════════════════════════════════ -->
+    <section class="rs-sec">
+        <div class="container">
+            <div class="rs-sec-hd" data-aos="fade-up">
+                <div class="rs-tag">Latest Articles</div>
+                <h2 class="rs-h2">Actionable Insights From Our Team</h2>
+                <p class="rs-sub">Practical, data-driven reads covering search, paid media, conversion, email, and social strategies.</p>
+            </div>
+            <div class="rs-grid" id="rsGrid">
+
+                <div class="rs-card" data-type="article" data-aos="fade-up" data-aos-delay="0">
+                    <div class="rs-card-top"></div>
+                    <div class="rs-card-body">
+                        <div class="rs-card-meta">
+                            <span class="rs-card-cat">SEO</span>
+                            <span class="rs-card-type"><i class="fas fa-newspaper"></i> Article</span>
+                        </div>
+                        <h3>Google Core Algorithms: Crawling Recovery Roadmap</h3>
+                        <p>An actionable guideline to troubleshoot search position losses and crawl exclusions caused by catalog indexation changes and core updates.</p>
+                        <div class="rs-card-footer">
+                            <span class="rs-card-date"><i class="fas fa-calendar-alt" style="margin-right:4px;"></i>Jun 18, 2026</span>
+                            <a href="#" class="rs-card-link" onclick="event.preventDefault()">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rs-card" data-type="article" data-aos="fade-up" data-aos-delay="80">
+                    <div class="rs-card-top" style="background:linear-gradient(90deg,#8b5cf6,#06b6d4);"></div>
+                    <div class="rs-card-body">
+                        <div class="rs-card-meta">
+                            <span class="rs-card-cat" style="color:#8b5cf6;background:rgba(139,92,246,.1);">PAID MEDIA</span>
+                            <span class="rs-card-type"><i class="fas fa-newspaper"></i> Article</span>
+                        </div>
+                        <h3>Meta CAPI Setup: Optimizing Conversion Attributions</h3>
+                        <p>How deploying server-side pixel signals prevents attribution drops and systematically lowers cost-per-acquisition metrics across campaigns.</p>
+                        <div class="rs-card-footer">
+                            <span class="rs-card-date"><i class="fas fa-calendar-alt" style="margin-right:4px;"></i>Jun 12, 2026</span>
+                            <a href="#" class="rs-card-link" onclick="event.preventDefault()">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rs-card" data-type="article" data-aos="fade-up" data-aos-delay="160">
+                    <div class="rs-card-top" style="background:linear-gradient(90deg,#f59e0b,#ef4444);"></div>
+                    <div class="rs-card-body">
+                        <div class="rs-card-meta">
+                            <span class="rs-card-cat" style="color:#f59e0b;background:rgba(245,158,11,.1);">CRO</span>
+                            <span class="rs-card-type"><i class="fas fa-newspaper"></i> Article</span>
+                        </div>
+                        <h3>Checkout Page Form UX Design Checkpoints</h3>
+                        <p>Ten simple layout adjustments to reduce form abandonment, optimize input validation states, and increase payment completion rates.</p>
+                        <div class="rs-card-footer">
+                            <span class="rs-card-date"><i class="fas fa-calendar-alt" style="margin-right:4px;"></i>Jun 5, 2026</span>
+                            <a href="#" class="rs-card-link" onclick="event.preventDefault()">Read Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rs-card" data-type="guide" data-aos="fade-up">
+                    <div class="rs-card-top" style="background:linear-gradient(90deg,#10b981,#06b6d4);"></div>
+                    <div class="rs-card-body">
+                        <div class="rs-card-meta">
+                            <span class="rs-card-cat" style="color:#10b981;background:rgba(16,185,129,.1);">EMAIL</span>
+                            <span class="rs-card-type"><i class="fas fa-book-open"></i> Guide</span>
+                        </div>
+                        <h3>Complete Guide to Email Lifecycle Automation</h3>
+                        <p>Build a revenue-generating email machine with welcome flows, cart recovery, post-purchase sequences, and re-engagement campaigns.</p>
+                        <div class="rs-card-footer">
+                            <span class="rs-card-date"><i class="fas fa-calendar-alt" style="margin-right:4px;"></i>May 28, 2026</span>
+                            <a href="#" class="rs-card-link" onclick="event.preventDefault()">Read Guide <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rs-card" data-type="guide" data-aos="fade-up" data-aos-delay="80">
+                    <div class="rs-card-top"></div>
+                    <div class="rs-card-body">
+                        <div class="rs-card-meta">
+                            <span class="rs-card-cat">SEO</span>
+                            <span class="rs-card-type"><i class="fas fa-book-open"></i> Guide</span>
+                        </div>
+                        <h3>Technical SEO for E-Commerce: The 2026 Playbook</h3>
+                        <p>A step-by-step guide covering schema markup, Core Web Vitals, structured data, and crawl budget optimization for online stores.</p>
+                        <div class="rs-card-footer">
+                            <span class="rs-card-date"><i class="fas fa-calendar-alt" style="margin-right:4px;"></i>May 20, 2026</span>
+                            <a href="#" class="rs-card-link" onclick="event.preventDefault()">Read Guide <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rs-card" data-type="webinar" data-aos="fade-up" data-aos-delay="160">
+                    <div class="rs-card-top" style="background:linear-gradient(90deg,#ef4444,#f59e0b);"></div>
+                    <div class="rs-card-body">
+                        <div class="rs-card-meta">
+                            <span class="rs-card-cat" style="color:#ef4444;background:rgba(239,68,68,.1);">SOCIAL</span>
+                            <span class="rs-card-type"><i class="fas fa-video"></i> Webinar</span>
+                        </div>
+                        <h3>Building Brand Communities That Convert on Instagram</h3>
+                        <p>A 45-minute on-demand session covering content strategy, engagement tactics, and converting followers into paying customers.</p>
+                        <div class="rs-card-footer">
+                            <span class="rs-card-date"><i class="fas fa-calendar-alt" style="margin-right:4px;"></i>May 14, 2026</span>
+                            <a href="#" class="rs-card-link" onclick="event.preventDefault()">Watch Webinar <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FEATURED RESOURCE ═══════════════════════════════════════ -->
+    <section class="rs-sec rs-sec-alt">
+        <div class="container">
+            <div class="rs-featured" data-aos="fade-up">
+                <div>
+                    <div class="rs-featured-badge"><i class="fas fa-star"></i> Featured Resource</div>
+                    <h2>The Complete 2026 Digital Marketing Strategy Playbook</h2>
+                    <p>Our most comprehensive guide yet — 60+ pages covering SEO, paid ads, email, social, and CRO strategy with real campaign data, templates, and worked examples from our client portfolio.</p>
+                </div>
+                <div class="rs-featured-btns">
+                    <button class="rs-fbtn solid" onclick="alert('Download starting! Your PDF guide is ready.')"><i class="fas fa-download"></i> Free Download</button>
+                    <button class="rs-fbtn outline" onclick="alert('Preview loading...')"><i class="fas fa-eye"></i> Preview</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ DOWNLOADABLE CHECKLISTS ═════════════════════════════════ -->
+    <section class="rs-sec">
+        <div class="container">
+            <div class="rs-sec-hd" data-aos="fade-up">
+                <div class="rs-tag">Free Downloads</div>
+                <h2 class="rs-h2">Operational Checklists & Templates</h2>
+                <p class="rs-sub">Plug-and-play spreadsheets and PDFs our team uses on real client projects — free for you to use.</p>
+            </div>
+            <div class="rs-downloads">
+                <div class="rs-dl-card" data-aos="fade-up">
+                    <div class="rs-dl-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+                    <div class="rs-dl-content">
+                        <h4>SEO Site Audit Checklist (2026)</h4>
+                        <p>80-point technical and on-page checklist to identify and fix every ranking-blocking issue on your website.</p>
+                        <button class="rs-dl-btn" onclick="alert('Downloading: SEO Audit Checklist PDF...')"><i class="fas fa-file-pdf"></i> Download PDF <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="rs-dl-card" data-aos="fade-up" data-aos-delay="80">
+                    <div class="rs-dl-icon" style="background:rgba(139,92,246,.1);color:#8b5cf6;"><i class="fas fa-bullseye"></i></div>
+                    <div class="rs-dl-content">
+                        <h4>Google Ads Campaign Launch Template</h4>
+                        <p>Pre-built spreadsheet with keyword structure, ad group setup, bidding strategy, and tracking columns.</p>
+                        <button class="rs-dl-btn" onclick="alert('Downloading: Google Ads Template XLSX...')"><i class="fas fa-file-excel"></i> Download Sheet <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="rs-dl-card" data-aos="fade-up">
+                    <div class="rs-dl-icon" style="background:rgba(16,185,129,.1);color:#10b981;"><i class="fas fa-envelope-open-text"></i></div>
+                    <div class="rs-dl-content">
+                        <h4>Email Flow Mapping Worksheet</h4>
+                        <p>Visual flowchart template for planning welcome, nurture, cart recovery, and re-engagement email sequences.</p>
+                        <button class="rs-dl-btn" onclick="alert('Downloading: Email Flow Mapping PDF...')"><i class="fas fa-file-pdf"></i> Download PDF <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="rs-dl-card" data-aos="fade-up" data-aos-delay="80">
+                    <div class="rs-dl-icon" style="background:rgba(245,158,11,.1);color:#f59e0b;"><i class="fas fa-chart-line"></i></div>
+                    <div class="rs-dl-content">
+                        <h4>CRO Funnel Audit Checklist</h4>
+                        <p>Step-by-step checklist to identify conversion bottlenecks, UX friction points, and A/B test opportunities.</p>
+                        <button class="rs-dl-btn" onclick="alert('Downloading: CRO Audit Checklist PDF...')"><i class="fas fa-file-pdf"></i> Download PDF <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ NEWSLETTER CTA ══════════════════════════════════════════ -->
+    <section class="rs-sec rs-newsletter">
+        <div class="container">
+            <div class="rs-newsletter-inner" data-aos="fade-up">
+                <div class="rs-tag">Stay Updated</div>
+                <h2 class="rs-nl-h2">Get New Resources in Your Inbox</h2>
+                <p class="rs-nl-sub">Join 8,400+ marketers who receive our weekly resource drops — guides, templates, and strategy updates every Thursday.</p>
+                <div class="rs-nl-form">
+                    <input type="email" class="rs-nl-input" placeholder="your@company.com" id="nlEmail" aria-label="Email address">
+                    <button class="rs-nl-btn" onclick="handleNlSubmit(event)">Subscribe Free</button>
+                </div>
+                <p class="rs-nl-note"><i class="fas fa-lock" style="color:#10b981; margin-right:4px;"></i> No spam. Unsubscribe anytime. Your data stays private.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER (same as index.html) ════════════════════════════ -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="../index.html" class="logo" style="color:#ffffff;">APEXGROWTH<span class="logo-dot">.</span></a>
+                    <a href="../index.html" class="logo" style="color:#fff;">APEXGROWTH<span class="logo-dot" style="color:#2563eb;">.</span></a>
                     <p>Transparent, metric-driven digital marketing agency scaling brands across search, social, and automation.</p>
                     <div class="footer-socials">
                         <a href="#" class="footer-social-link">FB</a>
@@ -187,10 +601,11 @@
                 <div>
                     <h4 class="footer-title">Services</h4>
                     <ul class="footer-links">
-                        <li><a href="service-seo.html">SEO Optimization</a></li>
-                        <li><a href="service-ppc.html">Paid Advertisements</a></li>
-                        <li><a href="service-cro.html">Conversion Funnels</a></li>
-                        <li><a href="service-email.html">Email Automation</a></li>
+                        <li><a href="service-detail.html#seo">SEO Optimization</a></li>
+                        <li><a href="service-detail.html#ppc">Paid Advertisements</a></li>
+                        <li><a href="service-detail.html#cro">Conversion Funnels</a></li>
+                        <li><a href="service-detail.html#email">Email Automation</a></li>
+                        <li><a href="service-detail.html#social">Social Media</a></li>
                     </ul>
                 </div>
                 <div>
@@ -206,10 +621,10 @@
                     <ul class="footer-links">
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="blog.html">Marketing Blog</a></li>
+                        <li><a href="resources.html">Resources Hub</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2026 ApexGrowth Agency. All rights reserved.</p>
                 <div class="footer-bottom-links">
@@ -219,11 +634,42 @@
             </div>
         </div>
     </footer>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 700, once: true, offset: 60 });
+        AOS.init({ duration: 680, once: true, offset: 50 });
+
+        /* ── Filter tabs ───────────────────────────────────── */
+        const filters = document.querySelectorAll('.rs-filter-btn');
+        const cards   = document.querySelectorAll('.rs-card');
+
+        filters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filters.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.dataset.filter;
+                cards.forEach(card => {
+                    const show = f === 'all' || card.dataset.type === f;
+                    card.style.display = show ? 'flex' : 'none';
+                });
+            });
+        });
+
+        /* ── Newsletter ────────────────────────────────────── */
+        function handleNlSubmit(e) {
+            const input = document.getElementById('nlEmail');
+            const btn   = e.target;
+            if (!input.value || !input.value.includes('@')) {
+                input.focus(); input.style.borderColor = '#ef4444'; return;
+            }
+            input.style.borderColor = '';
+            const orig = btn.textContent;
+            btn.textContent = '✓ Subscribed!';
+            btn.style.background = '#10b981';
+            btn.disabled = true;
+            setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; input.value = ''; }, 3000);
+        }
     </script>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
-

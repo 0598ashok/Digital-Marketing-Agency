@@ -7,6 +7,90 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* ── Messaging Mobile Responsive Styles ── */
+        .dashboard-content-inner {
+            height: calc(100vh - 80px) !important;
+            overflow: hidden !important;
+            padding: 24px 32px;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        
+        .messaging-layout {
+            flex-grow: 1 !important;
+            height: auto !important;
+            min-height: 0 !important;
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            background-color: var(--panel-bg);
+            overflow: hidden;
+        }
+
+        .back-to-threads-btn {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-content-inner {
+                padding: 12px !important;
+                height: calc(100vh - 80px) !important;
+            }
+            .messaging-layout {
+                grid-template-columns: 1fr;
+            }
+            /* Resolve media query collision: show correct element on mobile depending on active chat state */
+            .messaging-layout:not(.show-chat) .chat-window {
+                display: none !important;
+            }
+            .messaging-layout:not(.show-chat) .chat-threads {
+                display: block !important;
+            }
+            .messaging-layout.show-chat .chat-threads {
+                display: none !important;
+            }
+            .messaging-layout.show-chat .chat-window {
+                display: flex !important;
+            }
+            
+            .back-to-threads-btn {
+                display: inline-flex !important;
+                align-items: center;
+                gap: 6px;
+                background: var(--bg-color);
+                border: 1px solid var(--border-color);
+                color: var(--text-color);
+                padding: 6px 12px;
+                border-radius: var(--radius-sm);
+                font-size: 0.85rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all var(--transition-fast);
+            }
+            .back-to-threads-btn:hover {
+                background: var(--panel-hover);
+            }
+            .chat-header {
+                padding: 12px 16px !important;
+                gap: 12px;
+            }
+            .chat-messages {
+                padding: 16px !important;
+                gap: 12px;
+            }
+            .chat-input-area {
+                padding: 12px 16px !important;
+                gap: 10px;
+            }
+            .chat-bubble {
+                max-width: 85%;
+                padding: 10px 14px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body class="dashboard-body dark-mode">
 
@@ -75,7 +159,7 @@
             <div class="dashboard-content-inner" style="display:flex; flex-direction:column;">
                 
                 <!-- Chat Support Interface -->
-                <div class="messaging-layout">
+                <div class="messaging-layout show-chat">
                     
                     <!-- Threads list -->
                     <div class="chat-threads">
@@ -98,9 +182,12 @@
                         
                         <!-- Header info -->
                         <div class="chat-header">
-                            <div>
-                                <h3 style="font-size:1.1rem; margin-bottom:2px;">Marcus Kincaid</h3>
-                                <span style="font-size:0.75rem; color:var(--text-muted);">ApexGrowth Account Director • strategy@apexgrowth.com</span>
+                            <div style="display:flex; align-items:center; gap:12px; min-width:0;">
+                                <button class="btn btn-secondary btn-sm back-to-threads-btn" id="backToThreadsBtn"><i class="ph ph-caret-left"></i> Back</button>
+                                <div style="min-width:0;">
+                                    <h3 style="font-size:1.1rem; margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Marcus Kincaid</h3>
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">ApexGrowth Account Director • strategy@apexgrowth.com</span>
+                                </div>
                             </div>
                             <!-- Mock File upload button -->
                             <button class="btn btn-secondary btn-sm" onclick="alert('Upload asset tool clicked. Select copy briefs or image files.')">📎 Attach File</button>
@@ -130,6 +217,31 @@
     <script>
         document.querySelector('.dashboard-menu-toggle')?.addEventListener('click', () => {
             document.getElementById('sidebar').classList.toggle('active');
+        });
+
+        // Toggle mobile chat view
+        document.addEventListener('DOMContentLoaded', () => {
+            const layout = document.querySelector('.messaging-layout');
+            const activeThread = document.querySelector('.chat-thread-item.active');
+            const backBtn = document.getElementById('backToThreadsBtn');
+
+            if (activeThread && layout) {
+                const threads = document.querySelectorAll('.chat-thread-item');
+                threads.forEach(thread => {
+                    thread.addEventListener('click', () => {
+                        if (thread.classList.contains('chat-thread-active-indicator')) {
+                            layout.classList.add('show-chat');
+                        }
+                    });
+                });
+            }
+
+            if (backBtn && layout) {
+                backBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    layout.classList.remove('show-chat');
+                });
+            }
         });
     </script>
 </body>

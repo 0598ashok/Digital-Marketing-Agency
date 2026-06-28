@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // If theme-2.html is active, default to dark. Otherwise, default to light
         const defaultTheme = window.location.pathname.includes('home-2.html') ? 'dark' : 'light';
         const currentTheme = storedTheme || defaultTheme;
-        
+
         document.documentElement.setAttribute('data-theme', currentTheme);
-        
+
         // Add/remove dark-mode class on document element and body for main.css layout compatibility
         if (currentTheme === 'dark') {
             document.documentElement.classList.add('dark-mode');
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.classList.remove('dark-mode');
             if (document.body) document.body.classList.remove('dark-mode');
         }
-        
+
         updateThemeToggleIcons();
     };
 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
-        
+
         if (newTheme === 'dark') {
             document.documentElement.classList.add('dark-mode');
             if (document.body) document.body.classList.add('dark-mode');
@@ -72,13 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.classList.remove('dark-mode');
             if (document.body) document.body.classList.remove('dark-mode');
         }
-        
+
         updateThemeToggleIcons();
     };
 
     const updateThemeToggleIcons = () => {
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        
+
         // 1. FontAwesome switches (.theme-switch i)
         const faToggles = document.querySelectorAll('.theme-switch i');
         faToggles.forEach(icon => {
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateRTLToggleLabels = () => {
         const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
-        
+
         const labels = document.querySelectorAll('.dir-switch .dir-text, .rtl-toggle-btn .rtl-toggle-text, .rtl-toggle-btn');
         labels.forEach(label => {
             if (label.classList.contains('dir-text') || label.classList.contains('rtl-toggle-text')) {
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Add active to current click item
                 item.classList.add('active');
-                
+
                 // Toggle active on correct tab pane
                 const targetId = item.getAttribute('data-db-tab');
                 const targetTab = document.getElementById(targetId);
@@ -323,11 +323,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetVal = parseInt(el.getAttribute('data-target') || '0');
             const suffix = el.getAttribute('data-suffix') || '';
             const isPercent = el.textContent.includes('%');
-            
+
             let currentVal = 0;
             const steps = 60;
             const increment = Math.ceil(targetVal / steps);
-            
+
             const counterInterval = setInterval(() => {
                 currentVal = Math.min(currentVal + increment, targetVal);
                 el.textContent = currentVal + suffix;
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearInterval(counterInterval);
                 }
             }, 25);
-            
+
             statObserver.unobserve(el);
         });
     }, { threshold: 0.2 });
@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = heroSection.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             cursorGlow.style.left = `${x}px`;
             cursorGlow.style.top = `${y}px`;
             cursorGlow.style.opacity = '1';
@@ -375,22 +375,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!mockupChartTooltip || !mockupRevenueVal) return;
         const rev = bar.getAttribute('data-rev');
         const month = bar.getAttribute('data-month');
-        
+
         // Update tooltip text
         mockupChartTooltip.textContent = `${month}: ${rev}`;
-        
+
         // Calculate position
         const barRect = bar.getBoundingClientRect();
         const containerRect = bar.parentElement.getBoundingClientRect();
-        
+
         // Calculate center relative to container
         const leftOffset = (barRect.left - containerRect.left) + (barRect.width / 2);
         const topOffset = (barRect.top - containerRect.top);
-        
+
         mockupChartTooltip.style.left = `${leftOffset}px`;
         mockupChartTooltip.style.top = `${topOffset}px`;
         mockupChartTooltip.classList.add('active');
-        
+
         // Dynamically update revenue header text with a fade transition
         if (mockupRevenueVal.textContent !== rev) {
             mockupRevenueVal.style.opacity = '0.3';
@@ -446,17 +446,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Deactivate all buttons & panes
                 mockupTabBtns.forEach(b => b.classList.remove('active'));
                 mockupPanes.forEach(p => p.classList.remove('active'));
-                
+
                 // Activate current button
                 btn.classList.add('active');
-                
+
                 // Activate targeted pane
                 const targetId = btn.getAttribute('data-mockup-tab');
                 const targetPane = document.getElementById(targetId);
                 if (targetPane) {
                     targetPane.classList.add('active');
                 }
-                
+
                 // If switching to Overview, make sure tooltip positions correctly
                 if (targetId === 'mockup-pane-overview') {
                     const activeBar = document.querySelector('.p1-hero-mockup .chart-bar-active');

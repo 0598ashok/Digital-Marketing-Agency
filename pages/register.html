@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | ApexGrowth Agency</title>
+    <meta name="description" content="Create your free ApexGrowth account to access campaign dashboards, analytics reports, and your dedicated growth team.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ══════════════════════════════════════════════════════
+           REGISTER PAGE — PREMIUM SPLIT LAYOUT
+        ══════════════════════════════════════════════════════ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .auth-page {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ── LEFT PANEL (Brand) ─────────────────────────────── */
+        .auth-left {
+            position: relative;
+            background: linear-gradient(135deg, #060c1a 0%, #0d1f3c 50%, #071428 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 48px;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .auth-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+        .auth-orb-1 {
+            width: 480px; height: 480px;
+            background: radial-gradient(circle, rgba(37,99,235,0.3) 0%, transparent 70%);
+            top: -120px; right: -100px;
+            animation: authOrb 10s ease-in-out infinite;
+        }
+        .auth-orb-2 {
+            width: 360px; height: 360px;
+            background: radial-gradient(circle, rgba(139,92,246,0.22) 0%, transparent 70%);
+            bottom: -80px; left: -50px;
+            animation: authOrb 13s 4s ease-in-out infinite;
+        }
+        .auth-orb-3 {
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 70%);
+            top: 45%; left: 40%;
+            animation: authOrb 8s 2s ease-in-out infinite;
+        }
+        @keyframes authOrb {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50%       { transform: translateY(-30px) scale(1.07); }
+        }
+        .auth-left::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .auth-left-content {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-brand {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            margin-bottom: auto;
+        }
+        .auth-brand-name {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #fff;
+        }
+        .auth-brand-name span { color: #06b6d4; }
+
+        .auth-left-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(139,92,246,0.15);
+            border: 1px solid rgba(139,92,246,0.35);
+            color: #a78bfa;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 28px;
+        }
+        .auth-left-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.9rem, 3vw, 2.8rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: #f8fafc;
+            margin-bottom: 18px;
+        }
+        .auth-left-title .hl {
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .auth-left-desc {
+            font-size: 0.95rem;
+            color: rgba(203,213,225,0.72);
+            line-height: 1.7;
+            max-width: 380px;
+            margin-bottom: 40px;
+        }
+
+        /* Stats grid */
+        .auth-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 0;
+        }
+        .auth-stat {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .auth-stat-value {
+            font-family: var(--font-heading);
+            font-size: 1.65rem;
+            font-weight: 900;
+            color: #06b6d4;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .auth-stat-label {
+            font-size: 0.75rem;
+            color: rgba(148,163,184,0.75);
+            font-weight: 500;
+        }
+
+        /* Testimonial */
+        .auth-testimonial {
+            position: relative;
+            z-index: 2;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 22px 24px;
+            backdrop-filter: blur(8px);
+        }
+        .auth-testimonial-stars { color: #f59e0b; font-size: 0.78rem; letter-spacing: 2px; margin-bottom: 10px; }
+        .auth-testimonial-text {
+            font-size: 0.87rem;
+            color: rgba(248,250,252,0.85);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+        .auth-testimonial-author { display: flex; align-items: center; gap: 10px; }
+        .auth-testimonial-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(139,92,246,0.5);
+        }
+        .auth-testimonial-name { font-size: 0.82rem; font-weight: 700; color: #f8fafc; }
+        .auth-testimonial-role { font-size: 0.72rem; color: rgba(148,163,184,0.8); }
+
+        /* ── RIGHT PANEL (Form) ─────────────────────────────── */
+        .auth-right {
+            background: var(--bg-primary);
+            display: flex;
+            padding: 60px 20px;
+            transition: background var(--transition);
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .auth-form-box {
+            width: 100%;
+            max-width: 460px;
+            margin: auto;
+        }
+
+        /* Back to login link */
+        .auth-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.83rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+        .auth-back:hover { color: var(--accent-primary); }
+
+        .auth-form-header { margin-bottom: 28px; }
+        .auth-form-header h1 {
+            font-family: var(--font-heading);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        .auth-form-header p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .auth-form-header p a {
+            color: var(--accent-primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .auth-form-header p a:hover { text-decoration: underline; }
+
+        /* Social buttons */
+        .auth-socials {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        .auth-social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.83rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .auth-social-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+        .auth-social-btn.google:hover   { border-color: #ea4335; background: rgba(234,67,53,0.05); }
+        .auth-social-btn.facebook:hover { border-color: #1877f2; background: rgba(24,119,242,0.05); }
+        .auth-social-btn.apple:hover    { border-color: #000; background: rgba(0,0,0,0.04); }
+        [data-theme="dark"] .auth-social-btn.apple:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+
+        .auth-social-icon { display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .auth-social-icon.google   { color: #ea4335; }
+        .auth-social-icon.facebook { color: #1877f2; }
+        .auth-social-icon.apple    { color: var(--text-primary); }
+
+        /* Divider */
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .auth-divider::before, .auth-divider::after {
+            content: ''; flex: 1; height: 1px; background: var(--border-color);
+        }
+        .auth-divider span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Fields */
+        .auth-form { display: flex; flex-direction: column; gap: 16px; }
+        .auth-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .auth-field { display: flex; flex-direction: column; gap: 7px; }
+        .auth-field label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .auth-field label span { color: var(--accent-primary); }
+        .auth-input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .auth-input-icon {
+            position: absolute;
+            left: 13px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .auth-input {
+            width: 100%;
+            padding: 12px 13px 12px 38px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .auth-input::placeholder { color: var(--text-muted); }
+        .auth-input:focus {
+            border-color: var(--accent-primary);
+            background: var(--bg-elevated);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+        .auth-input.valid   { border-color: var(--success); }
+        .auth-input.invalid { border-color: var(--danger); }
+        .auth-pw-toggle {
+            position: absolute;
+            right: 13px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 4px;
+            transition: color 0.2s;
+            z-index: 1;
+        }
+        .auth-pw-toggle:hover { color: var(--accent-primary); }
+
+        /* Password strength */
+        .auth-pw-strength {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 6px;
+        }
+        .auth-pw-bars {
+            display: flex;
+            gap: 4px;
+            flex: 1;
+        }
+        .auth-pw-bar {
+            flex: 1;
+            height: 4px;
+            border-radius: 100px;
+            background: var(--border-color);
+            transition: background 0.3s;
+        }
+        .auth-pw-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            min-width: 50px;
+        }
+
+        /* Plan selector */
+        .auth-plan-chips {
+            display: flex;
+            gap: 10px;
+        }
+        .auth-plan-chip {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 8px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            user-select: none;
+        }
+        .auth-plan-chip:hover {
+            border-color: var(--accent-primary);
+            background: var(--accent-glow);
+        }
+        .auth-plan-chip.selected {
+            border-color: var(--accent-primary);
+            background: var(--accent-glow);
+            color: var(--accent-primary);
+        }
+        .auth-plan-chip i { font-size: 1.1rem; margin-bottom: 2px; }
+        .auth-plan-chip strong { font-size: 0.78rem; font-weight: 700; display: block; }
+        .auth-plan-chip span { font-size: 0.67rem; color: var(--text-muted); }
+
+        /* Checkbox */
+        .auth-terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+        .auth-terms input { margin-top: 2px; accent-color: var(--accent-primary); cursor: pointer; flex-shrink: 0; }
+        .auth-terms a { color: var(--accent-primary); text-decoration: none; font-weight: 700; }
+        .auth-terms a:hover { text-decoration: underline; }
+
+        /* Submit */
+        .auth-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent-primary);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(37,99,235,0.3);
+        }
+        .auth-submit:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 8px 28px rgba(37,99,235,0.4);
+        }
+        .auth-submit i { transition: transform 0.2s; }
+        .auth-submit:hover i { transform: translateX(3px); }
+
+        .auth-footer-note {
+            text-align: center;
+            font-size: 0.73rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .auth-footer-note a { color: var(--accent-primary); text-decoration: none; }
+        .auth-footer-note a:hover { text-decoration: underline; }
+
+        /* Floating auth controls (top right) */
+        .auth-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+        .auth-control-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+        .auth-control-btn:hover {
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+            background: var(--accent-glow);
+        }
+        .auth-control-btn .dir-text {
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── RESPONSIVE ──────────────────────────────────────── */
+        @media (max-width: 1024px) {
+            .auth-socials { grid-template-columns: 1fr; }
+            .auth-social-btn { justify-content: flex-start; padding: 12px 16px; }
+        }
+        @media (max-width: 900px) {
+            .auth-page {
+                grid-template-columns: 1fr;
+                height: auto;
+                overflow: visible;
+            }
+            .auth-left {
+                display: none;
+                height: auto;
+                overflow: visible;
+            }
+            .auth-right {
+                padding: 80px 16px 48px;
+                height: auto;
+                overflow-y: visible;
+            }
+            .auth-socials { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .auth-right { padding: 70px 16px 36px; }
+            .auth-form-row { grid-template-columns: 1fr; }
+            .auth-plan-chips { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating controls -->
+    <div class="auth-controls">
+        <button class="auth-control-btn theme-switch" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="auth-control-btn dir-switch" aria-label="Toggle direction">
+            <span class="dir-text">RTL</span>
+        </button>
+    </div>
+
+    <div class="auth-page">
+
+        <!-- ══ LEFT — Brand Panel ══════════════════════════════ -->
+        <div class="auth-left">
+            <div class="auth-orb auth-orb-1"></div>
+            <div class="auth-orb auth-orb-2"></div>
+            <div class="auth-orb auth-orb-3"></div>
+
+            <!-- Brand -->
+            <a href="../index.html" class="auth-brand">
+                <span class="auth-brand-name">APEXGROWTH<span>.</span></span>
+            </a>
+
+            <!-- Center copy -->
+            <div class="auth-right-content">
+                <span class="auth-left-tag">
+                    <i class="fas fa-rocket" style="font-size:0.65rem;"></i>
+                    Join 500+ Growing Brands
+                </span>
+                <h2 class="auth-left-title">
+                    Your Free Account<br>
+                    Unlocks <span class="hl">Unlimited<br>Growth Potential</span>
+                </h2>
+                <p class="auth-left-desc">
+                    Get instant access to your growth dashboard, campaign analytics, creative tools, and a dedicated account manager — completely free to start.
+                </p>
+
+                <!-- Stats -->
+                <div class="auth-stats">
+                    <div class="auth-stat">
+                        <div class="auth-stat-value">500+</div>
+                        <div class="auth-stat-label">Brands scaling with us</div>
+                    </div>
+                    <div class="auth-stat">
+                        <div class="auth-stat-value">3.8×</div>
+                        <div class="auth-stat-label">Average ROAS achieved</div>
+                    </div>
+                    <div class="auth-stat">
+                        <div class="auth-stat-value">$120M+</div>
+                        <div class="auth-stat-label">Ad spend managed</div>
+                    </div>
+                    <div class="auth-stat">
+                        <div class="auth-stat-value">98%</div>
+                        <div class="auth-stat-label">Client retention rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial -->
+            <div class="auth-testimonial">
+                <div class="auth-testimonial-stars">★★★★★</div>
+                <p class="auth-testimonial-text">"Signing up was the best marketing decision we made. Within 30 days, our organic traffic doubled and leads from paid channels jumped 65%."</p>
+                <div class="auth-testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Sarah Jenkins" class="auth-testimonial-avatar">
+                    <div>
+                        <div class="auth-testimonial-name">Sarah Jenkins</div>
+                        <div class="auth-testimonial-role">CMO, TechVault Platforms</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ RIGHT — Register Form ═══════════════════════════ -->
+        <div class="auth-right">
+            <div class="auth-form-box">
+
+                <div class="auth-form-header">
+                    <h1>Create your account</h1>
+                    <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                </div>
+
+                <!-- Social register -->
+                <div class="auth-socials">
+                    <button class="auth-social-btn google" onclick="alert('Google OAuth — connect your API credentials.')">
+                        <span class="auth-social-icon google">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                            </svg>
+                        </span>
+                        Sign up with Google
+                    </button>
+                    <button class="auth-social-btn facebook" onclick="alert('Facebook OAuth — connect your App ID.')">
+                        <span class="auth-social-icon facebook"><i class="fab fa-facebook-f" style="font-size:1rem;"></i></span>
+                        Sign up with Facebook
+                    </button>
+                    <button class="auth-social-btn apple" onclick="alert('Apple Sign In — configure Sign in with Apple.')">
+                        <span class="auth-social-icon apple"><i class="fab fa-apple" style="font-size:1.15rem;"></i></span>
+                        Sign up with Apple
+                    </button>
+                </div>
+
+                <!-- Divider -->
+                <div class="auth-divider"><span>or register with email</span></div>
+
+                <!-- Register form -->
+                <form class="auth-form" id="registerForm" onsubmit="handleRegister(event)">
+
+                    <!-- Name row -->
+                    <div class="auth-form-row">
+                        <div class="auth-field">
+                            <label for="reg-fname">First Name <span>*</span></label>
+                            <div class="auth-input-wrap">
+                                <i class="fas fa-user auth-input-icon"></i>
+                                <input type="text" id="reg-fname" class="auth-input" placeholder="John" required>
+                            </div>
+                        </div>
+                        <div class="auth-field">
+                            <label for="reg-lname">Last Name <span>*</span></label>
+                            <div class="auth-input-wrap">
+                                <i class="fas fa-user auth-input-icon"></i>
+                                <input type="text" id="reg-lname" class="auth-input" placeholder="Doe" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="auth-field">
+                        <label for="reg-email">Work Email <span>*</span></label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-envelope auth-input-icon"></i>
+                            <input type="email" id="reg-email" class="auth-input" placeholder="john@company.com" required>
+                        </div>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="auth-field">
+                        <label for="reg-company">Company / Brand Name</label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-building auth-input-icon"></i>
+                            <input type="text" id="reg-company" class="auth-input" placeholder="Acme Corp">
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="auth-field">
+                        <label for="reg-password">Password <span>*</span></label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-lock auth-input-icon"></i>
+                            <input type="password" id="reg-password" class="auth-input" placeholder="Create a strong password" required oninput="updateStrength(this.value)">
+                            <button type="button" class="auth-pw-toggle" onclick="togglePw('reg-password', this)" aria-label="Show password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <!-- Strength indicator -->
+                        <div class="auth-pw-strength">
+                            <div class="auth-pw-bars">
+                                <div class="auth-pw-bar" id="bar1"></div>
+                                <div class="auth-pw-bar" id="bar2"></div>
+                                <div class="auth-pw-bar" id="bar3"></div>
+                                <div class="auth-pw-bar" id="bar4"></div>
+                            </div>
+                            <span class="auth-pw-label" id="pwLabel">Strength</span>
+                        </div>
+                    </div>
+
+                    <!-- Confirm password -->
+                    <div class="auth-field">
+                        <label for="reg-confirm">Confirm Password <span>*</span></label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-lock auth-input-icon"></i>
+                            <input type="password" id="reg-confirm" class="auth-input" placeholder="Repeat your password" required>
+                            <button type="button" class="auth-pw-toggle" onclick="togglePw('reg-confirm', this)" aria-label="Show confirm password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Interest -->
+                    <div class="auth-field">
+                        <label>I'm interested in</label>
+                        <div class="auth-plan-chips" id="planChips">
+                            <div class="auth-plan-chip selected" data-val="Growth">
+                                <i class="fas fa-chart-line"></i>
+                                <strong>Growth</strong>
+                                <span>Scale revenue</span>
+                            </div>
+                            <div class="auth-plan-chip" data-val="SEO">
+                                <i class="fas fa-search"></i>
+                                <strong>SEO</strong>
+                                <span>Organic reach</span>
+                            </div>
+                            <div class="auth-plan-chip" data-val="Ads">
+                                <i class="fas fa-bullseye"></i>
+                                <strong>Paid Ads</strong>
+                                <span>Performance</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms -->
+                    <label class="auth-terms">
+                        <input type="checkbox" id="reg-terms" required>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I consent to receiving marketing emails (unsubscribe anytime).
+                    </label>
+
+                    <button type="submit" class="auth-submit" id="registerBtn">
+                        Create Free Account <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <!-- Bottom Navigation Links -->
+                <div style="display:flex; justify-content:space-between; font-size:0.82rem; color:var(--text-muted); margin-top: 20px;">
+                    <a href="login.html" style="text-decoration:underline; color:var(--text-muted);">Back to Sign In</a>
+                    <a href="../index.html" style="text-decoration:underline; color:var(--text-muted);">Return to Home</a>
+                </div>
+
+                <p class="auth-footer-note">
+                    Protected by 256-bit SSL encryption &mdash; <a href="#">Privacy Policy</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Password visibility toggle
+        function togglePw(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const icon  = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                input.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        }
+
+        // Password strength indicator
+        function updateStrength(val) {
+            const bars   = [document.getElementById('bar1'), document.getElementById('bar2'), document.getElementById('bar3'), document.getElementById('bar4')];
+            const label  = document.getElementById('pwLabel');
+            let score = 0;
+            if (val.length >= 8)              score++;
+            if (/[A-Z]/.test(val))            score++;
+            if (/[0-9]/.test(val))            score++;
+            if (/[^A-Za-z0-9]/.test(val))     score++;
+            const colors = ['#ef4444', '#f59e0b', '#3b82f6', '#10b981'];
+            const labels = ['Weak', 'Fair', 'Good', 'Strong'];
+            bars.forEach((b, i) => {
+                b.style.background = i < score ? colors[score - 1] : 'var(--border-color)';
+            });
+            label.textContent = val.length ? labels[score - 1] || '' : 'Strength';
+            label.style.color  = val.length && score ? colors[score - 1] : 'var(--text-muted)';
+        }
+
+        // Plan chip selector
+        document.querySelectorAll('#planChips .auth-plan-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                document.querySelectorAll('#planChips .auth-plan-chip').forEach(c => c.classList.remove('selected'));
+                chip.classList.add('selected');
+            });
+        });
+
+        // Register submission
+        function handleRegister(e) {
+            e.preventDefault();
+            const pw  = document.getElementById('reg-password').value;
+            const cfm = document.getElementById('reg-confirm').value;
+            if (pw !== cfm) {
+                document.getElementById('reg-confirm').classList.add('invalid');
+                alert('Passwords do not match. Please try again.');
+                return;
+            }
+            const btn  = document.getElementById('registerBtn');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+            btn.disabled  = true;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Account Created!';
+                btn.style.background = 'var(--success)';
+                setTimeout(() => { window.location.href = '../dashboard/index.html'; }, 1000);
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

@@ -1,15 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Success Case Studies | ApexGrowth Agency</title>
     <meta name="description" content="Read details of how we scaled client revenues, improved traffic positions, and generated hundreds of sales leads.">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        /* ── Filter Buttons ─────────────────────────────────────────── */
         .filter-btn {
             background: none;
             border: 1px solid var(--border-color);
@@ -25,7 +27,122 @@
             border-color: var(--primary);
         }
 
-        /* â”€â”€ Case Studies Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── Cases Section ──────────────────────────────────────────── */
+        .cases-section {
+            padding: 60px 0 80px;
+        }
+
+        /* ── Footer Base Styles ─────────────────────────────────────── */
+        .site-footer {
+            background: var(--text-primary);
+            color: rgba(255,255,255,0.65);
+            padding: 64px 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-brand .logo {
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+        .footer-brand p {
+            margin-top: 12px;
+            font-size: 0.87rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.45);
+        }
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .footer-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: border-color 0.3s, color 0.3s;
+        }
+        .footer-social-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .footer-title {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 16px;
+        }
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-links a {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 24px 0;
+        }
+        .footer-bottom p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+        }
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-bottom-links a {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ── Responsive ─────────────────────────────────────────────── */
+
+        /* Tablet: footer 3-col */
+        @media (max-width: 1100px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 32px;
+            }
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        /* Portfolio card collapses to 1-col at 900px */
         @media (max-width: 900px) {
             .portfolio-item-card {
                 grid-template-columns: 1fr !important;
@@ -33,11 +150,14 @@
                 gap: 24px !important;
             }
         }
+
+        /* Mobile 768px */
         @media (max-width: 768px) {
             /* Hero */
             .cases-hero-title {
-                font-size: 2.2rem !important;
+                font-size: 2rem !important;
             }
+
             /* Filter row */
             .cases-filter-row {
                 gap: 8px !important;
@@ -45,31 +165,75 @@
             }
             .filter-btn {
                 padding: 7px 14px;
-                font-size: 0.88rem;
+                font-size: 0.85rem;
             }
-            /* Cards list gap */
+
+            /* Cards */
             #cases-portfolio-container {
-                gap: 36px !important;
+                gap: 32px !important;
             }
-            /* Portfolio cards */
             .portfolio-item-card {
-                padding: 24px !important;
+                padding: 22px !important;
             }
             .portfolio-item-card h2 {
-                font-size: 1.5rem !important;
+                font-size: 1.45rem !important;
+            }
+
+            /* Footer grid → 2 col */
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 28px;
+            }
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+            /* Footer bottom bar centered */
+            .footer-bottom {
+                justify-content: center;
+                text-align: center;
+            }
+            .footer-bottom-links {
+                justify-content: center;
             }
         }
+
+        /* Small mobile 480px */
         @media (max-width: 480px) {
+            /* Hero */
+            .cases-hero-title {
+                font-size: 1.7rem !important;
+            }
+
+            /* Filter buttons */
+            .cases-filter-row {
+                justify-content: center !important;
+            }
+            .filter-btn {
+                padding: 7px 12px;
+                font-size: 0.82rem;
+            }
+
+            /* Cards */
             .portfolio-item-card {
-                padding: 18px !important;
+                padding: 16px !important;
             }
             .portfolio-item-card h2 {
-                font-size: 1.3rem !important;
+                font-size: 1.2rem !important;
+            }
+
+            /* Footer grid → 1 col */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .footer-brand {
+                grid-column: span 1;
             }
         }
     </style>
 </head>
-<body class="dark-mode">
+<body>
 
     <!-- Navigation Header -->
     <!-- NAVBAR -->
@@ -97,7 +261,7 @@
                 <li class="nav-item">
                     <a href="services.html">Services</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a href="case-studies.html">Case Studies</a>
                 </li>
                 <li class="nav-item">
@@ -190,7 +354,7 @@
                         
                         <blockquote style="font-style:italic; border-inline-start:4px solid var(--primary); padding-inline-start:16px; margin:20px 0; color:var(--text-color);">
                             "ApexGrowth completely transformed our organic pipeline. The dashboard gave us constant sight of keyword progression monthly."
-                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">â€“ CEO, SaaSify Global</span>
+                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">— CEO, SaaSify Global</span>
                         </blockquote>
                     </div>
                     
@@ -214,7 +378,7 @@
                 <!-- Case Study 2: PPC -->
                 <div class="portfolio-item-card" data-category="ppc" style="background-color:var(--panel-bg); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:40px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:40px;">
                     <div>
-                        <span style="color:var(--primary); font-weight:700; text-transform:uppercase; font-size:0.8rem; display:block; margin-bottom:8px;">PAID MEDIA & ADVERTISING</span>
+                        <span style="color:var(--primary); font-weight:700; text-transform:uppercase; font-size:0.8rem; display:block; margin-bottom:8px;">PAID MEDIA &amp; ADVERTISING</span>
                         <h2 style="font-size:2rem; margin-bottom:20px;">E-Com Dynamics Paid Media Overhaul</h2>
                         
                         <h4 style="margin-bottom:8px;">The Challenge:</h4>
@@ -225,7 +389,7 @@
                         
                         <blockquote style="font-style:italic; border-inline-start:4px solid var(--primary); padding-inline-start:16px; margin:20px 0; color:var(--text-color);">
                             "The creative approval panel allowed us to request adjustments on copy frames seamlessly, saving days of back-and-forth emails."
-                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">â€“ Head of Growth, E-Com Dynamics</span>
+                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">— Head of Growth, E-Com Dynamics</span>
                         </blockquote>
                     </div>
                     
@@ -260,7 +424,7 @@
                         
                         <blockquote style="font-style:italic; border-inline-start:4px solid var(--primary); padding-inline-start:16px; margin:20px 0; color:var(--text-color);">
                             "Our booking rates jumped immediately. Removing form fields and simplifying mobile layout did the trick."
-                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">â€“ Clinic Director, MedGroup</span>
+                            <span style="display:block; font-size:0.8rem; font-weight:600; margin-top:6px; color:var(--primary);">— Clinic Director, MedGroup</span>
                         </blockquote>
                     </div>
                     
@@ -375,4 +539,3 @@
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
-

@@ -138,6 +138,10 @@
                 min-height: 100vh;
                 padding: 120px 0 80px;
             }
+
+            .btn-primary {
+                padding: 15px 10px;
+            }
         }
 
         .p1-hero-left {
@@ -783,6 +787,10 @@
 
             [dir="rtl"] .p1-hero-cta {
                 justify-content: center !important;
+            }
+
+            .btn-outline {
+                padding: 15px;
             }
         }
 
@@ -1754,6 +1762,32 @@
 
         /* Responsive Dashboard Queries */
         @media (max-width: 768px) {
+            .dashboard-topbar {
+                padding: 14px 16px;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .dashboard-top-info {
+                width: 100%;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .dashboard-top-info span {
+                font-size: 0.95rem;
+            }
+
+            .dashboard-topbar .btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+                justify-content: center;
+            }
+
             .dashboard-main-layout {
                 grid-template-columns: 1fr;
             }
@@ -1770,16 +1804,20 @@
                 overflow-x: auto;
                 padding-bottom: 8px;
                 scroll-snap-type: x mandatory;
-                scrollbar-width: thin; /* Firefox */
+                scrollbar-width: thin;
+                /* Firefox */
                 scrollbar-color: var(--border-color) transparent;
                 -webkit-overflow-scrolling: touch;
             }
+
             .dashboard-sidebar-menu ul::-webkit-scrollbar {
                 height: 4px;
             }
+
             .dashboard-sidebar-menu ul::-webkit-scrollbar-track {
                 background: transparent;
             }
+
             .dashboard-sidebar-menu ul::-webkit-scrollbar-thumb {
                 background: var(--border-color);
                 border-radius: 2px;
@@ -1817,26 +1855,31 @@
                 grid-template-columns: 1fr;
                 gap: 16px;
             }
+
             .portal-data-row {
                 grid-template-columns: 1fr auto !important;
                 padding: 12px 14px !important;
                 gap: 12px !important;
             }
+
             .portal-creative-card {
                 flex-direction: column !important;
                 align-items: flex-start !important;
                 gap: 12px !important;
                 padding: 12px 14px !important;
             }
+
             .portal-invoice-card {
                 flex-direction: column !important;
                 align-items: flex-start !important;
                 gap: 12px !important;
                 padding: 12px 14px !important;
             }
+
             .portal-chart-wrap {
                 padding: 16px !important;
             }
+
             .portal-chart-bar-item {
                 margin: 0 4px !important;
             }
@@ -3253,227 +3296,7 @@
             </div>
         </section>
         <!-- 7. REAL-TIME ANALYTICS PREVIEW -->
-        <section class="p1-dashboard-section" id="dashboard-preview">
-            <div class="container">
-                <div class="p1-center-header" data-aos="fade-up">
-                    <span class="p1-about-eyebrow">Client Portal</span>
-                    <h2>Track Campaigns In Real-Time</h2>
-                    <p>Log in 24/7 to monitor conversions, approve ad creatives, and download invoices instantly.</p>
-                </div>
 
-                <div class="dashboard-frame" data-aos="fade-up">
-                    <!-- Top Window Bar Shell -->
-                    <div class="dashboard-topbar">
-                        <div class="dashboard-top-info">
-                            <div class="dashboard-window-controls">
-                                <span class="win-red"></span>
-                                <span class="win-yellow"></span>
-                                <span class="win-green"></span>
-                            </div>
-                            <span>ApexGrowth Client Dashboard</span>
-                        </div>
-                        <a href="pages/login.html" class="btn btn-primary btn-sm"
-                            style="padding: 6px 14px; font-size: 0.75rem;">Enter Dashboard Demo</a>
-                    </div>
-
-                    <div class="dashboard-main-layout">
-                        <!-- Sidebar Menu -->
-                        <div class="dashboard-sidebar-menu">
-                            <ul>
-                                <li class="active" data-db-tab="db-tab-overview"><i class="fas fa-chart-pie"></i>
-                                    Overview</li>
-                                <li data-db-tab="db-tab-seo"><i class="fas fa-search"></i> SEO Rankings</li>
-                                <li data-db-tab="db-tab-ads"><i class="fas fa-bullseye"></i> Paid Ads</li>
-                                <li data-db-tab="db-tab-creative"><i class="fas fa-folder-open"></i> Creative Approvals
-                                </li>
-                                <li data-db-tab="db-tab-invoices"><i class="fas fa-credit-card"></i> Invoices</li>
-                            </ul>
-                        </div>
-
-                        <!-- Main Content Tab Panel -->
-                        <div class="dashboard-content-panel">
-                            <!-- Tab Pane 1: Overview -->
-                            <div class="dashboard-tab-content active" id="db-tab-overview">
-                                <h4
-                                    style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
-                                    Month-Over-Month Traffic Progress</h4>
-
-                                <div class="portal-stats-grid">
-                                    <div class="portal-stat-card">
-                                        <label>Organic Search Impressions</label>
-                                        <strong>1.2M+</strong>
-                                        <span class="positive"><i class="fas fa-arrow-up"></i> +12.4% vs last
-                                            month</span>
-                                    </div>
-                                    <div class="portal-stat-card">
-                                        <label>Goal Conversions</label>
-                                        <strong>1,480</strong>
-                                        <span class="positive"><i class="fas fa-arrow-up"></i> +8.2% vs last
-                                            month</span>
-                                    </div>
-                                </div>
-
-                                <div class="portal-chart-wrap">
-                                    <div class="portal-chart-header">
-                                        <h5>Attributed User Acquisitions</h5>
-                                        <span>Monthly Growth Trend</span>
-                                    </div>
-                                    <div class="portal-chart-bars">
-                                        <div class="portal-chart-bar-item" style="--bar-height: 40%"><span>Jan</span>
-                                        </div>
-                                        <div class="portal-chart-bar-item" style="--bar-height: 55%"><span>Feb</span>
-                                        </div>
-                                        <div class="portal-chart-bar-item" style="--bar-height: 70%"><span>Mar</span>
-                                        </div>
-                                        <div class="portal-chart-bar-item" style="--bar-height: 60%"><span>Apr</span>
-                                        </div>
-                                        <div class="portal-chart-bar-item" style="--bar-height: 85%"><span>May</span>
-                                        </div>
-                                        <div class="portal-chart-bar-item active" style="--bar-height: 98%">
-                                            <span>Jun</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab Pane 2: SEO Rankings -->
-                            <div class="dashboard-tab-content" id="db-tab-seo">
-                                <h4
-                                    style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
-                                    Top Performing Keywords</h4>
-
-                                <div class="portal-data-list">
-                                    <div class="portal-data-row header-row">
-                                        <span>Target Keyword</span>
-                                        <span>Rank Position</span>
-                                        <span>Search Volume</span>
-                                    </div>
-                                    <div class="portal-data-row">
-                                        <span>digital marketing agency</span>
-                                        <span class="trend-badge">#3 (↑1)</span>
-                                        <span>12.4K / mo</span>
-                                    </div>
-                                    <div class="portal-data-row">
-                                        <span>performance media scaling</span>
-                                        <span class="trend-badge">#1 (↑2)</span>
-                                        <span>4.1K / mo</span>
-                                    </div>
-                                    <div class="portal-data-row">
-                                        <span>transparent analytics portal</span>
-                                        <span class="trend-badge">#2 (↑4)</span>
-                                        <span>2.8K / mo</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab Pane 3: Paid Ads -->
-                            <div class="dashboard-tab-content" id="db-tab-ads">
-                                <h4
-                                    style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
-                                    Active Ad Platform ROAS</h4>
-
-                                <div class="portal-ads-grid">
-                                    <!-- Card Google -->
-                                    <div class="portal-ad-card">
-                                        <div class="portal-ad-header">
-                                            <label><i class="fab fa-google" style="color: #4285F4;"></i> Google Ads
-                                                Account</label>
-                                            <span class="portal-ad-status"></span>
-                                        </div>
-                                        <div class="portal-ad-metrics">
-                                            <strong>4.8x ROAS</strong>
-                                            <span>Active Optimizations Running</span>
-                                        </div>
-                                    </div>
-                                    <!-- Card Meta -->
-                                    <div class="portal-ad-card">
-                                        <div class="portal-ad-header">
-                                            <label><i class="fab fa-facebook" style="color: #1877F2;"></i> Meta
-                                                Campaign</label>
-                                            <span class="portal-ad-status"></span>
-                                        </div>
-                                        <div class="portal-ad-metrics">
-                                            <strong>4.2x ROAS</strong>
-                                            <span>Active Optimizations Running</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab Pane 4: Creative Approvals -->
-                            <div class="dashboard-tab-content" id="db-tab-creative">
-                                <h4
-                                    style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
-                                    Creative Review Queue</h4>
-
-                                <div class="portal-creative-list">
-                                    <div class="portal-creative-card">
-                                        <div class="portal-creative-info">
-                                            <div class="portal-creative-icon"><i class="far fa-image"></i></div>
-                                            <div class="portal-creative-meta">
-                                                <span>Google_Search_Banner_A.png</span>
-                                                <label>1.2 MB • Display Ad Graphic</label>
-                                            </div>
-                                        </div>
-                                        <span class="portal-creative-status approved">Approved</span>
-                                    </div>
-                                    <div class="portal-creative-card">
-                                        <div class="portal-creative-info">
-                                            <div class="portal-creative-icon"><i class="far fa-file-video"></i></div>
-                                            <div class="portal-creative-meta">
-                                                <span>Meta_Video_Hook_V3.mp4</span>
-                                                <label>14.8 MB • Social Video Creative</label>
-                                            </div>
-                                        </div>
-                                        <span class="portal-creative-status pending">Pending Review</span>
-                                    </div>
-                                    <div class="portal-creative-card">
-                                        <div class="portal-creative-info">
-                                            <div class="portal-creative-icon"><i class="far fa-file-pdf"></i></div>
-                                            <div class="portal-creative-meta">
-                                                <span>LinkedIn_Sponsor_Copy.pdf</span>
-                                                <label>420 KB • Copywriting Outline</label>
-                                            </div>
-                                        </div>
-                                        <span class="portal-creative-status approved">Approved</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab Pane 5: Invoices -->
-                            <div class="dashboard-tab-content" id="db-tab-invoices">
-                                <h4
-                                    style="font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
-                                    Billing & Payments</h4>
-
-                                <div class="portal-invoices-list">
-                                    <div class="portal-invoice-card">
-                                        <div class="portal-invoice-details">
-                                            <span>INV-2026-006 (June Retainer)</span>
-                                            <label>Issued: June 15, 2026</label>
-                                        </div>
-                                        <div class="portal-invoice-billing">
-                                            <strong>$3,000.00</strong>
-                                            <span class="portal-invoice-status">Paid ✓</span>
-                                        </div>
-                                    </div>
-                                    <div class="portal-invoice-card">
-                                        <div class="portal-invoice-details">
-                                            <span>INV-2026-005 (May Retainer)</span>
-                                            <label>Issued: May 15, 2026</label>
-                                        </div>
-                                        <div class="portal-invoice-billing">
-                                            <strong>$3,000.00</strong>
-                                            <span class="portal-invoice-status">Paid ✓</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- 5. CASE STUDIES -->
         <section class="cases-section" id="case-studies">
@@ -3640,7 +3463,7 @@
                     </div>
 
                     <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="80">
-                        <span class="pricing-badge">Most Popular</span>
+
                         <div>
                             <h3>Growth Campaign</h3>
                             <p>Full-funnel execution targeting multichannel lead volumes and keywords.</p>
